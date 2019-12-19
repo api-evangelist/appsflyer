@@ -1,0 +1,76 @@
+{
+    "name": "AppsFlyer",
+    "description": "Mobile App Tracking & Attribution Analytics platform that helps App-Developers, Brands and Ad-Agencies track and optimize their users\u2019 acquisition funnel.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/351-appsflyer.jpg",
+    "tags": [
+        "api service provider",
+        "have api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/appsflyer\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "AppsFlyer",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/351-appsflyer.jpg",
+            "humanURL": "http:\/\/www.appsflyer.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/appsflyer-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "http:\/\/www.appsflyer.com"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/appsflyer"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/appsflyer"
+        },
+        {
+            "type": "Email",
+            "url": "press@appsflyer.com"
+        },
+        {
+            "type": "Email",
+            "url": "support@appsflyer.com"
+        },
+        {
+            "type": "Email",
+            "url": "careers@appsflyer.com"
+        },
+        {
+            "type": "Email",
+            "url": "speakers@appsflyer.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@appsflyer.com"
+        },
+        {
+            "type": "Email",
+            "url": "dpo@appsflyer.com"
+        },
+        {
+            "type": "Partners",
+            "url": "https:\/\/www.appsflyer.com\/partners\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/appsflyer"
+        }
+    ]
+}
