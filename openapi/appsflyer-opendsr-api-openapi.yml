@@ -1,0 +1,808 @@
+openapi: 3.0.1
+info:
+  title: OpenDSR API
+  version: '1.0'
+  description: "AppsFlyer OpenDSR Requests API\n\nUse the OpenDSR Requests API as described in this section to implement DSR\
+    \ compliance. \n\n- **OpenDSR Request**: Perform one of the above request types: access, portability, erasure, rectification.\n\
+    - **Status Request**: Query the current status of an OpenDSR request.\n- **Discovery Request**: Inquire as to the supported\
+    \ API version and Data Format.\n- **Cancellation**: Cancel an OpenDSR request during its pending phase\n"
+servers:
+- url: https://hq1.appsflyer.com/
+  description: Production server
+security:
+- BearerAuth: []
+paths:
+  /api/gdpr/v1/opendsr_requests/{subject_request_id}:
+    delete:
+      tags:
+      - Production
+      summary: Cancel a OpenDSR request
+      operationId: cancel-opendsr-request
+      description: Cancels an existing OpenDSR request, the request must be in the pending state to be canceled.
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '202':
+          description: Accepted
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Request not found or cannot be canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+    get:
+      tags:
+      - Production
+      summary: Get OpenDSR request status
+      operationId: get-opendsr-request-status
+      description: Returns the latest status payload for the supplied `subject_request_id`.
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '200':
+          description: Request status payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '400':
+          description: Request not found or inaccessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/stub/{subject_request_id}:
+    delete:
+      tags:
+      - Stub & Testing
+      summary: Cancel a stub OpenDSR request
+      operationId: cancel-stub-opendsr-request
+      description: Cancels a stub submission identified by its `subject_request_id`.
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '202':
+          description: Accepted
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Request not found or cannot be canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+    get:
+      tags:
+      - Stub & Testing
+      summary: Get stub OpenDSR request status
+      operationId: get-stub-opendsr-request-status
+      description: Returns the status payload for a stub submission matching the provided `subject_request_id`.
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '200':
+          description: Stub request status payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '400':
+          description: Request not found or inaccessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/opendsr_requests/batch:
+    post:
+      tags:
+      - Production
+      summary: Submit a batch of OpenDSR requests
+      operationId: create-batch-opendsr-requests
+      description: Creates multiple OpenDSR requests in a single operation.
+      requestBody:
+        description: 'Batch request payload is an array of OpenDSR request payloads, all shared parameters in the request
+          object will be overridden by the parameters in the meta object. All requests in the batch must belong to the same
+          property ID.
+
+          '
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchRequest'
+      responses:
+        '201':
+          description: 'Batch submission result (batch_id, encoded_request, responses, errors), encoded_request will be provided
+            only in the root of the response body, not in the responses array.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBatchResponse'
+        '400':
+          description: Validation or authorization failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/opendsr_requests:
+    post:
+      tags:
+      - Production
+      summary: Submit a OpenDSR request
+      operationId: create-opendsr-request
+      description: Creates a new OpenDSR request.
+      requestBody:
+        description: OpenDSR request payload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResponse'
+        '400':
+          description: Validation or authorization failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/stub/batch:
+    post:
+      tags:
+      - Stub & Testing
+      summary: Submit a stub batch of OpenDSR requests
+      operationId: create-stub-batch-opendsr-requests
+      description: Same contract as the production batch endpoint but processed in stub mode for integration testing.
+      requestBody:
+        description: 'Batch request payload for stub processing is an array of OpenDSR request payloads, all shared parameters
+          in the request object will be overridden by the parameters in the meta object. All requests in the batch must belong
+          to the same property ID.
+
+          '
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchRequest'
+      responses:
+        '201':
+          description: 'Batch submission result (batch_id, encoded_request, responses, errors), encoded_request will be provided
+            only in the root of the response body, not in the responses array.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBatchResponse'
+        '400':
+          description: Validation or authorization failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/stub:
+    post:
+      tags:
+      - Stub & Testing
+      summary: Submit a stub OpenDSR request
+      operationId: create-stub-opendsr-request
+      description: Mirrors the production create endpoint but processes the payload in stub mode.
+      requestBody:
+        description: OpenDSR request payload
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResponse'
+        '400':
+          description: Validation or authorization failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/discovery:
+    get:
+      tags:
+      - Production
+      summary: Discovery metadata
+      operationId: discovery
+      description: Exposes the API version, supported subject identity types, supported request types, and the processor certificate
+        endpoint.
+      responses:
+        '200':
+          description: Discovery payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoveryResponse'
+  /api/gdpr/v1/download/{subject_request_id}:
+    get:
+      tags:
+      - Production
+      summary: Download request report
+      operationId: download-report
+      description: Downloads report that was generated for the specified `subject_request_id`. once an access or portability
+        request has been completed
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '200':
+          description: Report
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Unable to generate or locate report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/stub/download/{subject_request_id}:
+    get:
+      tags:
+      - Stub & Testing
+      summary: Download stub request report
+      operationId: download-stub-report
+      description: Downloads report generated for the specified stub `subject_request_id`.
+      parameters:
+      - in: path
+        name: subject_request_id
+        required: true
+        schema:
+          type: string
+        description: Subject request identifier
+      responses:
+        '200':
+          description: Report
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Unable to generate or locate report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorWrapper'
+  /api/gdpr/v1/opendsr_requests/batch/{batch_id}:
+    get:
+      tags:
+      - Production
+      summary: Get the statuses of requests in a batch
+      operationId: get-batch-status
+      description: Fetches the status payloads for every request that belongs to the specified `batch_id`.
+      parameters:
+      - in: path
+        name: batch_id
+        required: true
+        schema:
+          type: string
+        description: Batch identifier
+      responses:
+        '200':
+          description: Batch status payload
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status'
+        '400':
+          description: Batch not found or inaccessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/certificate:
+    get:
+      tags:
+      - Production
+      summary: Download signed certificate
+      operationId: get-certificate
+      description: Returns the public processor certificate used to sign OpenDSR responses.
+      responses:
+        '200':
+          description: Certificate file
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Unable to fetch certificate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/stub/batch/{batch_id}:
+    get:
+      tags:
+      - Stub & Testing
+      summary: Get the statuses of requests in a batch
+      operationId: get-stub-batch-status
+      description: Returns the status payloads for every stub request within the specified `batch_id`.
+      parameters:
+      - in: path
+        name: batch_id
+        required: true
+        schema:
+          type: string
+        description: Batch identifier
+      responses:
+        '200':
+          description: Stub batch status payload
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status'
+        '400':
+          description: Batch not found or inaccessible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/stub/certificate:
+    get:
+      tags:
+      - Stub & Testing
+      summary: Download signed certificate
+      operationId: get-stub-certificate
+      description: Returns the public processor certificate used to sign OpenDSR responses.
+      responses:
+        '200':
+          description: Certificate file
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Unable to fetch certificate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorData'
+  /api/gdpr/v1/stub/discovery:
+    get:
+      tags:
+      - Stub & Testing
+      summary: Discovery metadata
+      operationId: stub-discovery
+      description: Exposes the API version, supported subject identity types, supported request types, and the processor certificate
+        endpoint.
+      responses:
+        '200':
+          description: Discovery payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoveryResponse'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: "For API authorization, use the same V2 API token as for Pull API. \nAn admin user can retrieve the token\
+        \ from the API token page in the dashboard.\nAdd the token into the request header as follows: `Authorization: Bearer\
+        \ <V2_API_Token>`\n"
+  schemas:
+    APIErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: HTTP status code
+          example: 400
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid subject_request_id
+        af_gdpr_code:
+          type: string
+          description: 'AppsFlyer-specific error code for detailed error identification.
+
+
+            **Request State Errors (e2xx)**
+
+            - `e211`: Unable to cancel request with invalid status
+
+            - `e212`: Request not permitted
+
+            - `e213`: Request already exists
+
+            - `e214`: Request not found
+
+            - `e215`: One or more subject-identities already exist in an open request
+
+
+            **Validation Errors (e3xx)**
+
+            - `e311`: Invalid request content type
+
+            - `e312`: Invalid API version
+
+            - `e313`: Invalid subject_request_id
+
+            - `e314`: Invalid submitted_time format
+
+            - `e315`: Invalid status_callback_url length
+
+            - `e316`: Invalid status_callback_url format
+
+            - `e317`: Invalid app_id format
+
+            - `e318`: Invalid identity_type
+
+            - `e319`: Application platform does not match identity types
+
+            - `e321`: LAT users are not supported via API
+
+            - `e322`: Invalid subject_request_type
+
+            - `e323`: Invalid subject_identities format
+
+            - `e324`: Invalid subject_identities length
+
+            - `e325`: Invalid subject_identities value
+
+            - `e326`: Invalid JSON format in request body
+
+
+            **Authorization Errors (e4xx)**
+
+            - `e411`: AppID is incorrect or does not belong to your account
+
+            - `e412`: No permissions to cancel erasure request
+
+            - `e413`: No permissions to view request
+
+            - `e414`: Too many requests in batch
+
+            - `e415`: Duplicated subject_request_id in batch
+
+            - `e416`: Duplicated subject_identity in batch
+
+            - `e417`: PropertyID in request is not the same as in batch
+
+
+            **Server Errors (e5xx)**
+
+            - `e511`: Internal problem. Wait 60 mins and try again
+
+            '
+          enum:
+          - e211
+          - e212
+          - e213
+          - e214
+          - e215
+          - e311
+          - e312
+          - e313
+          - e314
+          - e315
+          - e316
+          - e317
+          - e318
+          - e319
+          - e321
+          - e322
+          - e323
+          - e324
+          - e325
+          - e326
+          - e411
+          - e412
+          - e413
+          - e414
+          - e415
+          - e416
+          - e417
+          - e511
+          example: e313
+    Request:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: External Fields
+        subject_request_type:
+          type: string
+          description: SubjectRequestType is the type of the request
+          enum:
+          - access
+          - portability
+          - rectification
+          - erasure
+          example: access
+        submitted_time:
+          type: string
+          description: SubmittedTime is the time when the request is submitted
+        api_version:
+          type: string
+          description: APIVersion is the version of the API
+        subject_identities:
+          type: array
+          description: SubjectIdentities is the list of subject identities.
+          items:
+            $ref: '#/components/schemas/SubjectIdentity'
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        property_id:
+          type: string
+          description: PropertyID is the AppID
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        requester:
+          type: string
+          description: Requester is the email of the requester
+    SubjectIdentity:
+      type: object
+      properties:
+        identity_type:
+          type: string
+          description: 'Type of identity used to identify the data subject.
+
+
+            **For Android, iOS, Web, WindowsPhone platforms:**
+
+            - `ios_advertising_id`
+
+            - `android_advertising_id`
+
+            - `fire_advertising_id`
+
+            - `microsoft_advertising_id`
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            - `idfv`
+
+
+            **For CTV, PC, and Console platforms:**
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+
+            > **Important!**
+
+            >
+
+            > To use CUID through the OpenDSR API, you must send the CUID with idfa/appsflyer_id inside in-app events using
+            `event_name: Login - Complete` or `Registration - Account created`
+
+            '
+          enum:
+          - ios_advertising_id
+          - android_advertising_id
+          - fire_advertising_id
+          - microsoft_advertising_id
+          - appsflyer_id
+          - customer_user_id
+          - idfv
+          example: android_advertising_id
+        identity_value:
+          type: string
+          description: Value of the identifier used to identify the data subject
+        identity_format:
+          type: string
+          enum:
+          - raw
+    BatchRequest:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Request'
+    CreateBatchResponse:
+      type: object
+      properties:
+        batch_id:
+          type: string
+        encoded_request:
+          type: string
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateResponse'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
+    CreateResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        original_request_id:
+          type: string
+        expected_completion_time:
+          type: string
+        received_time:
+          type: string
+        encoded_request:
+          type: string
+        info:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    Meta:
+      type: object
+      properties:
+        api_version:
+          type: string
+        property_id:
+          type: string
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        submitted_time:
+          type: string
+    APIErrorWrapper:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    DiscoveryResponse:
+      type: object
+      properties:
+        api_version:
+          type: string
+        supported_subject_request_types:
+          type: string
+        supported_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
+        processor_certificate:
+          type: string
+    SupportedIdentitiesDiscoveryResponse:
+      type: object
+      properties:
+        identity_type:
+          type: string
+          description: 'Type of identity supported by the API.
+
+
+            **For Android, iOS, Web, WindowsPhone platforms:**
+
+            - `ios_advertising_id`
+
+            - `android_advertising_id`
+
+            - `fire_advertising_id`
+
+            - `microsoft_advertising_id`
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            - `idfv`
+
+
+            **For CTV, PC, and Console platforms:**
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            '
+          enum:
+          - ios_advertising_id
+          - android_advertising_id
+          - fire_advertising_id
+          - microsoft_advertising_id
+          - appsflyer_id
+          - customer_user_id
+          - idfv
+          example: android_advertising_id
+        identity_format:
+          type: string
+    Status:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: SubjectRequestID is a unique identifier represent as UUID v4
+        controller_id:
+          type: string
+          description: ControllerID is the requester
+        expected_completion_time:
+          type: string
+          description: ExpectedCompletionTime is the expected time to complete the request
+        request_status:
+          type: string
+          description: RequestStatus is the current status of the request
+          enum:
+          - pending
+          - in-progress
+          - completed
+          - canceled
+          example: pending
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

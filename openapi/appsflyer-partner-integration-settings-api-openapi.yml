@@ -1,0 +1,726 @@
+openapi: 3.0.1
+info:
+  title: Partner integration settings API
+  description: Public API for managing partner integrations
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/app-integrations/
+  description: api server - production
+security:
+- bearerAuth: []
+paths:
+  /v1/integrations/{appid}:
+    get:
+      parameters:
+      - name: appid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/pid'
+        example: com.publisher.name
+      tags:
+      - Active integrations
+      summary: Get active integration parameters
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters
+        under the integration tab.
+
+        '
+      responses:
+        '200':
+          description: Retrieved app active integrations parameters successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppIntegrationsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+  /v1/integrations:
+    get:
+      tags:
+      - Active integrations
+      summary: Get active integrations
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of the active integrations with your partners arranged by app. An integration is considered active if one
+        of the following is enabled:
+
+        - Activate partner
+
+        - Cost
+
+        - Ad revenue
+
+        '
+      responses:
+        '200':
+          description: Retrieved active integrations successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveIntegrationsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+  /v1/partner-params/{pid}/{platform}:
+    get:
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/pid'
+        example: facebook_int
+      - name: platform
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/platform'
+      tags:
+      - Unique partner integration parameters
+      summary: Get a list of unique parameters
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a
+        successful message is recieved with no data.
+
+        '
+      responses:
+        '200':
+          description: Retrieved params successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerParamsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+  /copy:
+    post:
+      deprecated: true
+      tags:
+      - Integration settings
+      summary: Deprecated - Copy partner integration settings
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      requestBody:
+        description: 'Use these examples as a template for your request body:'
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/copyPartnerParams'
+            examples:
+              Facebook:
+                value:
+                  pid: facebook_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  facebook_app_id: '23502200095693'
+                  gp_referrer_decryption_key: 7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044
+              Snapchat:
+                value:
+                  pid: snapchat_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  snap_app_id: app id
+                  mact_tos_accepted: true
+              Tiktok:
+                value:
+                  pid: bytedanceglobal_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  tiktok_app_id: app id
+        required: true
+      responses:
+        '200':
+          description: 'Partner integration settings copied successfully.
+
+
+            Response parameters provide a summary of the settings and values copied from the source app to the destination
+            app.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '401':
+          description: Unauthorized/TOS not accepted
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+                - $ref: '#/components/schemas/UnauthorizedParamError'
+                - $ref: '#/components/schemas/UnauthorizedAppError'
+                - $ref: '#/components/schemas/TosError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+                appError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: App <app id> is not owned by the user
+                paramError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: Your app settings do not allow modifying <param Name> for app <app id>
+                tosError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: Attribution terms of service were not accepted for app <app id> and <pid>
+        '404':
+          description: Integration not found
+          content:
+            application/json:
+              examples:
+                integrationNotFound:
+                  value:
+                    status: NOT_FOUND
+                    message: Integration for <pid> was not found. Please check the pid value
+        '422':
+          description: Missing/invalid input params
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/InvalidValueError'
+                - $ref: '#/components/schemas/MissingParamError'
+                - $ref: '#/components/schemas/GeneralFailureError'
+                - $ref: '#/components/schemas/IntegrationNotEnabledError'
+                - $ref: '#/components/schemas/UnmatchedPlatformError'
+              examples:
+                invalidValueError:
+                  value:
+                    status: INVALID_VALUE
+                    message: <param> value is invalid.
+                missingParamError:
+                  value:
+                    status: MISSING_PARAMETER
+                    message: <param> is missing
+                generalFailureError:
+                  value:
+                    status: GENERAL_FAILURE
+                    message: At this time the integration can not be activated.Contact your CSM or support@appsflyer.com with
+                      a copy of this message
+                integrationNotEnabledError:
+                  value:
+                    status: INACTIVE_INTEGRATION
+                    message: Integration for app <app id> with <pid> is not enabled
+                unmatchedPlatformError:
+                  value:
+                    status: PLATFORM_UNMATCHED
+                    message: Both apps should be on the same mobile platform
+        '500':
+          description: Internal server error - please try again
+  /v1/copy:
+    post:
+      tags:
+      - Integration settings
+      summary: Copy partner integration settings
+      description: "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If\
+        \ your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\
+        \nCopy the integration settings from one app to another. Copying the parameters can be done only for apps on the same\
+        \ platform. To retrieve the partner's unique parameters needed for the integration, use the [GET request](https://dev.appsflyer.com/hc/reference/get_v1-partner-params-pid-platform).\n\
+        > \U0001F4D8 Note\n> Only parameters of event names with the `af_` prefix can be copied.  \n"
+      requestBody:
+        description: 'Use these examples as a template for your request body:'
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/copyPartnerParams'
+            examples:
+              Facebook:
+                value:
+                  pid: facebook_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  general_params:
+                    facebook_app_id: '123'
+                    gp_referrer_decryption_key: 7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044
+              Snapchat:
+                value:
+                  pid: snapchat_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  mact_tos_accepted: true
+                  general_params:
+                    snap_app_id: app id
+              Tiktok:
+                value:
+                  pid: bytedanceglobal_int
+                  copy_from_app_id: com.publisher.name
+                  copy_to_app_id: com.publisher.name2
+                  general_params:
+                    tiktok_app_id: app id
+        required: true
+      responses:
+        '200':
+          description: 'Partner integration settings copied successfully
+
+
+            Response parameters provide a summary of the settings and values copied from the source app to the destination
+            app.
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '401':
+          description: Unauthorized/TOS not accepted
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+                - $ref: '#/components/schemas/UnauthorizedParamError'
+                - $ref: '#/components/schemas/UnauthorizedAppError'
+                - $ref: '#/components/schemas/TosError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+                appError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: App <app id> is not owned by the user
+                paramError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: Your app settings do not allow modifying <param Name> for app <app id>
+                tosError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: Attribution terms of service were not accepted for app <app id> and <pid>
+        '404':
+          description: Integration not found
+          content:
+            application/json:
+              examples:
+                integrationNotFound:
+                  value:
+                    status: NOT_FOUND
+                    message: Integration for <pid> was not found. Please check the pid value
+        '422':
+          description: Missing/invalid input params
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/InvalidValueError'
+                - $ref: '#/components/schemas/MissingParamError'
+                - $ref: '#/components/schemas/GeneralFailureError'
+                - $ref: '#/components/schemas/IntegrationNotEnabledError'
+                - $ref: '#/components/schemas/UnmatchedPlatformError'
+              examples:
+                invalidValueError:
+                  value:
+                    status: INVALID_VALUE
+                    message: <param> value is invalid.
+                missingParamError:
+                  value:
+                    status: MISSING_PARAMETER
+                    message: <param> is missing
+                generalFailureError:
+                  value:
+                    status: GENERAL_FAILURE
+                    message: At this time the integration can not be activated.Contact your CSM or support@appsflyer.com with
+                      a copy of this message
+                integrationNotEnabledError:
+                  value:
+                    status: INACTIVE_INTEGRATION
+                    message: Integration for app <app id> with <pid> is not enabled
+                unmatchedPlatformError:
+                  value:
+                    status: PLATFORM_UNMATCHED
+                    message: Both apps should be on the same mobile platform
+        '500':
+          description: Internal server error - please try again
+  /v1/integration-params:
+    post:
+      tags:
+      - Google Play install referrer
+      summary: Set install referrer decryption key
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Set the Google Play install referrer decryption key for each app as recieved by Facebook.
+
+        '
+      requestBody:
+        description: 'Use these examples as a template for your request body:'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setFacebook'
+            examples:
+              Facebook:
+                value:
+                  pid: facebook_int
+                  app_id: com.publisher.name
+                  general_params:
+                    gp_referrer_decryption_key: 7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044
+        required: true
+      responses:
+        '200':
+          description: Integration params saved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+                - $ref: '#/components/schemas/UnauthorizedAppError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+                appError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: App <app id> is not owned by the user
+        '422':
+          description: Missing/invalid input params
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/InvalidValueError'
+                - $ref: '#/components/schemas/MissingParamError'
+                - $ref: '#/components/schemas/GeneralFailureError'
+                - $ref: '#/components/schemas/IntegrationNotEnabledError'
+              examples:
+                invalidValueError:
+                  value:
+                    status: INVALID_VALUE
+                    message: <param> value is invalid.
+                missingParamError:
+                  value:
+                    status: MISSING_PARAMETER
+                    message: <param> is missing
+                generalFailureError:
+                  value:
+                    status: GENERAL_FAILURE
+                    message: At this time the integration can not be activated. Contact your CSM or support@appsflyer.com
+                      with a copy of this message
+                integrationNotEnabledError:
+                  value:
+                    status: INACTIVE_INTEGRATION
+                    message: Integration for app <app id> with <pid> is not enabled
+        '500':
+          description: Internal server error - please try again
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before
+        this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        HTTP header containing the API token (bearer token) is required. Ask your account admin to [obtain the V2.0 token](https://support.appsflyer.com/hc/en-us/articles/360004562377)
+        from the AppsFlyer dashboard.
+
+        '
+  schemas:
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AppIntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          general_params:
+            type: object
+          in_app_postbacks_params:
+            type: object
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    ActiveIntegrationsResponse:
+      type: object
+      properties:
+        account_id:
+          type: string
+        applications:
+          type: array
+          items:
+            type: object
+            properties:
+              app_id:
+                type: string
+              active_integrations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    media_source_name:
+                      type: string
+                    is_integration_active:
+                      type: boolean
+                    is_cost_active:
+                      type: boolean
+                    is_adrevenue_active:
+                      type: boolean
+    platform:
+      type: string
+      description: 'iOS/Android/Roku/Windows Phone
+
+        '
+      enum:
+      - ios
+      - android
+      - roku
+      - windowsphone
+    PartnerParamsResponse:
+      properties:
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    copyPartnerParams:
+      title: Set the parameters for the request
+      required:
+      - pid
+      - copy_from_app_id
+      - copy_to_app_id
+      type: object
+      properties:
+        pid:
+          $ref: '#/components/schemas/pid'
+        copy_from_app_id:
+          $ref: '#/components/schemas/copy_from_app_id'
+        copy_to_app_id:
+          $ref: '#/components/schemas/copy_to_app_id'
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    copy_from_app_id:
+      type: string
+      description: 'App to copy integration configuration ***from*** (''source app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
+    copy_to_app_id:
+      type: string
+      description: 'App to copy integration configuration ***to*** (''destination app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
+    Response:
+      properties:
+        general_params:
+          properties:
+            Click Attribution Lookback Window:
+              type: string
+            Enable Advanced Privacy:
+              type: string
+            Ignore active users for retargeting:
+              type: string
+            Install Re-engagement Click Lookback Window:
+              type: string
+            Re-engagement attribution Enabled:
+              type: string
+            Re-engagement click-through lookback window:
+              type: string
+            Re-engagement view-through attribution:
+              type: string
+            Re-engagement window:
+              type: string
+            Time window for users to be considered inactive:
+              type: string
+            View-Through Attribution lookback window:
+              type: string
+        in_app_postbacks_params:
+          properties:
+            mapped-in-app-events:
+              type: object
+      type: object
+    UnauthorizedParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    UnauthorizedAppError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    TosError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    UnmatchedPlatformError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    setFacebook:
+      title: Facebook Ads
+      required:
+      - pid
+      - app_id
+      - gp_referrer_decryption_key
+      type: object
+      properties:
+        pid:
+          $ref: '#/components/schemas/pid'
+        app_id:
+          $ref: '#/components/schemas/app_id'
+        general_params:
+          type: object
+          properties:
+            gp_referrer_decryption_key:
+              type: string
+              description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
+
+                '
+    app_id:
+      type: string
+      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
+
+        Example values:
+
+        - **Android:** com.publisher.name
+
+        '

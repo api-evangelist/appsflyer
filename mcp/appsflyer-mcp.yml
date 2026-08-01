@@ -1,0 +1,162 @@
+generated: '2026-07-31'
+method: searched
+source: https://www.appsflyer.com/products/agentic-ai/mcp/ + https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
+  + live probe of https://mcp.appsflyer.com/.well-known/oauth-authorization-server
+status: published
+servers:
+- name: appsflyer-mcp
+  kind: hosted-remote
+  status: beta
+  transport: http
+  host: https://mcp.appsflyer.com/
+  docs: https://www.appsflyer.com/products/agentic-ai/mcp/
+  setup_docs: https://support.appsflyer.com/hc/en-us/articles/36349070304785--Beta-AppsFlyer-MCP
+  authorization:
+    model: oauth2
+    spec: RFC 8414 authorization server metadata
+    metadata_url: https://mcp.appsflyer.com/.well-known/oauth-authorization-server
+    issuer: https://mcp.appsflyer.com/
+    authorization_endpoint: https://mcp.appsflyer.com/authorize
+    token_endpoint: https://mcp.appsflyer.com/token
+    registration_endpoint: https://mcp.appsflyer.com/register
+    grant_types:
+    - authorization_code
+    - refresh_token
+    code_challenge_methods:
+    - S256
+    token_endpoint_auth_methods:
+    - client_secret_post
+    dynamic_client_registration: true
+    scopes_supported: null
+    alternative: Bearer-token auth is documented for non-interactive clients (automations, scheduled tasks, background
+      agents).
+  tools_list_probe:
+    attempted: true
+    result: gated
+    paths_probed:
+    - /
+    - /mcp
+    - /mcp/
+    - /sse
+    - /sse/
+    - /stream
+    - /rpc
+    - /v1
+    - /api
+    - /message
+    - /mcp/sse
+    - /mcp/message
+    - /mcp/stream
+    - /v1/mcp
+    - /api/mcp
+    - /mcp/v1
+    http_status: 404
+    note: No anonymous tools/list route is publicly discoverable; the connector URL is issued to the customer at
+      setup time. The OAuth endpoints above ARE live (GET /authorize returns a 400 invalid_request naming client_id/response_type/code_challenge).
+      Tool input schemas require an authenticated introspection.
+  capabilities_documented:
+  - Campaign performance metrics and ROAS
+  - SKAN data and SSOT metrics
+  - Audience lists and deployment status
+  - OneLink configurations and deep link templates
+  - App settings and SDK integration details
+  - AppsFlyer Help Center documentation
+  clients:
+  - Claude
+  - Cursor IDE
+  - VS Code
+  - Gemini CLI
+  - Copilot CLI
+  - ChatGPT (paid)
+  - n8n
+  - Make
+- name: appsflyer-sdk-mcp-server
+  kind: local-stdio
+  status: published
+  transport: stdio
+  package: '@appsflyer/sdk-mcp-server'
+  version: 1.5.2
+  url: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
+  repository: https://github.com/AppsFlyerKnowledge/appsflyer-sdk-mcp-server
+  scope: SDK integration, logcat/Xcode log analysis, event and deep-link validation — developer-side, not marketing
+    data.
+  config_env:
+  - DEV_KEY
+  - APP_ID
+  tools:
+  - name: integrateAppsFlyerSdk
+    category: sdk-integration
+    description: Guides AppsFlyer SDK integration for Android or iOS, with platform-specific setup options and code
+      instructions.
+  - name: getAppsFlyerInAppEventRecommendations
+    category: sdk-integration
+    description: Shows vertical-specific recommended AppsFlyer in-app events and parameters from the built-in catalog.
+  - name: createAppsFlyerLogEvent
+    category: sdk-integration
+    description: Generates Android Java code instructions for logging an in-app event with AppsFlyer.
+  - name: createIosAppsFlyerLogEvent
+    category: sdk-integration
+    description: Generates iOS Swift code instructions for logging an in-app event with AppsFlyer.
+  - name: fetchAppsflyerLogs
+    category: log-analysis
+    description: Fetches recent Android logcat logs related to AppsFlyer.
+  - name: getConversionLogs
+    category: log-analysis
+    description: Extracts Android conversion/install event logs from logcat.
+  - name: getInAppLogs
+    category: log-analysis
+    description: Returns Android in-app event logs captured by AppsFlyer from logcat.
+  - name: getLaunchLogs
+    category: log-analysis
+    description: Parses Android app launch/session events from logcat.
+  - name: getDeepLinkLogs
+    category: log-analysis
+    description: Extracts Android deep link-related logs from logcat.
+  - name: getAppsflyerErrors
+    category: log-analysis
+    description: Scans Android logcat for common AppsFlyer SDK errors and exceptions.
+  - name: verifyAppsFlyerSdk
+    category: testing-validation
+    description: Validates Android SDK integration by querying install data using appId, devKey, and device ID from
+      logcat.
+  - name: verifyAppsFlyerIosSdk
+    category: testing-validation
+    description: Validates iOS SDK integration using pasted Xcode logs and AppsFlyer install data.
+  - name: verifyInAppEvent
+    category: testing-validation
+    description: Validates that a specific Android in-app event was triggered and sent by checking recent AppsFlyer
+      logcat.
+  - name: verifyIosInAppEvent
+    category: testing-validation
+    description: Validates that a specific iOS in-app event was triggered and sent using pasted Xcode logs.
+  - name: createDeepLink
+    category: deep-linking
+    description: Guides Android AppsFlyer OneLink deep-link setup, including required manifest, URI scheme, and
+      code steps.
+  - name: createIosDeepLink
+    category: deep-linking
+    description: Guides iOS AppsFlyer OneLink deep-link setup, including Associated Domains, URL schemes, and Swift
+      delegate steps.
+  - name: guideDeepLinkTesting
+    category: deep-linking
+    description: Provides Android or iOS step-by-step testing instructions for deferred or direct deep links based
+      on setup context.
+  - name: verifyDeepLink
+    category: deep-linking
+    description: Validates Android deep-link handling from recent AppsFlyer logcat logs and confirms callback status.
+  - name: verifyIosDeepLink
+    category: deep-linking
+    description: Validates iOS deep-link handling from pasted Xcode logs saved in ios-deeplink-logs.txt.
+x-evidence:
+  fetched: '2026-07-31'
+  oauth_metadata:
+    url: https://mcp.appsflyer.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json
+  authorize_endpoint:
+    url: https://mcp.appsflyer.com/authorize
+    http_status: 400
+    note: invalid_request — proves the endpoint is live
+  npm:
+    url: https://registry.npmjs.org/@appsflyer/sdk-mcp-server
+    http_status: 200

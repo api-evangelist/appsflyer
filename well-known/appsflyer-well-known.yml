@@ -1,0 +1,78 @@
+generated: '2026-07-31'
+method: probed
+source: live GET probes of /.well-known/* on every apis.yml and OpenAPI servers[] host
+hosts:
+- host: https://dev.appsflyer.com
+  documents:
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: application/linkset+json
+    file: appsflyer-api-catalog.json
+    spec: RFC 9727
+  - path: /.well-known/security.txt
+    status: 200
+    note: HTML documentation shell, not RFC 9116 text — not a real security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: HTML SPA catch-all, not an AgentCard — rejected
+  - path: /.well-known/agent.json
+    status: 200
+    note: HTML SPA catch-all, not an AgentCard — rejected
+- host: https://mcp.appsflyer.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: appsflyer-mcp-oauth-authorization-server.json
+    spec: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://www.appsflyer.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+- host: https://hq1.appsflyer.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 202
+    note: empty body for every path — bot-mitigation catch-all
+  - path: /.well-known/api-catalog
+    status: 202
+    note: empty body — catch-all
+  - path: /.well-known/agent-card.json
+    status: 202
+    note: empty body — catch-all, rejected
+- host: https://api.appsflyer.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: CloudFront MissingKey error
+  - path: /.well-known/agent-card.json
+    status: 403
+- host: https://support.appsflyer.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+summary:
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: true
+  api_catalog: true
+  ai_plugin: false
+  agent_card: false

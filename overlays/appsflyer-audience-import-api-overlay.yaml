@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AppsFlyer — Audience Import API
+  version: 1.0.0
+extends: openapi/appsflyer-audience-import-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: appsflyer
+    x-apievangelist-generated: '2026-07-31'
+    x-apievangelist-source: https://dev.appsflyer.com/hc/reference
+    x-apievangelist-harvest-method: ReadMe hub per-operation OpenAPI documents merged by source spec file
+    x-apievangelist-operations: 1
+    x-apievangelist-authentication: authentication/appsflyer-authentication.yml
+    x-apievangelist-conventions: conventions/appsflyer-conventions.yml
+    x-apievangelist-errors: errors/appsflyer-problem-types.yml
+    x-apievangelist-lifecycle: lifecycle/appsflyer-lifecycle.yml
+    x-apievangelist-sandbox: sandbox/appsflyer-sandbox.yml
+    x-apievangelist-data-model: data-model/appsflyer-data-model.yml
+- target: $
+  update:
+    x-apievangelist-notes:
+    - Error responses use the proprietary {status, code, message, request_id} envelope; no RFC 9457 problem+json.
+    - No idempotency key is supported on any AppsFlyer operation.
+    - No RFC 8594 Sunset/Deprecation headers are declared.

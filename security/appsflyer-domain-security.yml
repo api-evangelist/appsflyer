@@ -1,0 +1,28 @@
+generated: '2026-07-31'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.appsflyer.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 12 09:34:25 2026 GMT
+  hsts: true
+  hsts_max_age: 15552000
+- host: dev.appsflyer.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 23:54:40 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: hq1.appsflyer.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  1 23:59:59 2027 GMT
+  hsts: false
+domains:
+- domain: appsflyer.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

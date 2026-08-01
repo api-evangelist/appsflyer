@@ -1,0 +1,92 @@
+# AppsFlyer
+
+> AppsFlyer is a mobile marketing analytics and attribution platform. Its developer surface spans platform SDKs (iOS, Android, Unity, React Native, Flutter, Cordova, Capacitor, Unreal, NativeScript, Roku/CTV) and a 39-document REST API estate published on the AppsFlyer developer hub, plus a Push API webhook surface and a hosted Model Context Protocol (MCP) server.
+
+Authentication for most REST APIs is an API V2 token (a JWT) sent as `Authorization: Bearer <token>`, issued from the AppsFlyer dashboard Security Center. Legacy Pull API endpoints accept an `api_token` query parameter; the server-to-server events APIs use the app Dev Key in an `authentication` header; OneLink and CTV/preload endpoints use a per-product token in an `authorization` header. No OAuth2 is used on the REST APIs — OAuth 2.1 with PKCE is used only by the hosted MCP server.
+
+## Docs
+- [Developer hub](https://dev.appsflyer.com/hc)
+- [API reference](https://dev.appsflyer.com/hc/reference)
+- [Getting started](https://dev.appsflyer.com/hc/docs/getting-started)
+- [Help Center](https://support.appsflyer.com/hc/en-us)
+- [Managing AppsFlyer tokens](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens)
+- [Report generation quotas (rate limits)](https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations)
+- [Integration testing](https://dev.appsflyer.com/hc/docs/integration-testing)
+- [Status page](https://status.appsflyer.com/)
+- [Product news](https://www.appsflyer.com/product-news/)
+- [Trust & security](https://www.appsflyer.com/trust/)
+- [Pricing](https://www.appsflyer.com/pricing/)
+
+## APIs
+
+39 OpenAPI documents, 141 operations, harvested verbatim from the AppsFlyer developer hub.
+
+- [Raw Data Pull API V2 Token](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-raw-data-pull-api-v2-token-openapi.yml): 23 operations, base `https://hq1.appsflyer.com/api/raw-data/export/app/`
+- [OpenDSR API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-opendsr-api-openapi.yml): 16 operations, base `https://hq1.appsflyer.com/`
+- [Audience External API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-audience-external-api-openapi.yml): 10 operations, base `https://hq1.appsflyer.com/api/audiences-external-api`
+- [Click Signing API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-click-signing-api-openapi.yml): 9 operations, base `https://hq1.appsflyer.com/api/p360-click-signing/v2.0`
+- [Push API Configuration API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-push-api-configuration-api-openapi.yml): 7 operations, base `https://hq1.appsflyer.com/api/pushapi/v1.0/`
+- [OneLink API v2.0](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-onelink-api-v20-openapi.yml): 6 operations, base `https://onelink.appsflyer.com/api/v2.0/`
+- [Partner integration settings API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-partner-integration-settings-api-openapi.yml): 6 operations, base `https://hq1.appsflyer.com/api/app-integrations/`
+- [Aggregate Pull API V1 Token](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-aggregate-pull-api-v1-token-openapi.yml): 5 operations, base `https://hq.appsflyer.com/export/`
+- [Aggregate Pull API V2 Token](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-aggregate-pull-api-v2-token-openapi.yml): 5 operations, base `https://hq1.appsflyer.com/api/agg-data/export/app/`
+- [ROI360 Net Revenue API (v2.0)](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-roi360-net-revenue-api-v20-openapi.yml): 5 operations, base `https://hq1.appsflyer.com/api/net-revenue/v2.0/`
+- [Engagements API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-engagements-api-openapi.yml): 4 operations, base `https://engagements.appsflyer.com/v1.0/s2s`
+- [User management](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-user-management-openapi.yml): 4 operations, base `https://hq1.appsflyer.com/api/user-management/v1.0`
+- [App management API V2.0](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-app-management-api-v20-openapi.yml): 3 operations, base `https://hq1.appsflyer.com/api/app/v2.0`
+- [PC/Console/CTV Events API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-pcconsolectv-events-api-openapi.yml): 3 operations, base `https://events.appsflyer.com/v1.0/s2s/`
+- [Test Console API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-test-console-api-openapi.yml): 3 operations, base `https://hq1.appsflyer.com/api/test-console/v1.0/app`
+- [AdRevenue Account Integrations API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-adrevenue-account-integrations-api-openapi.yml): 2 operations, base `https://hq1.appsflyer.com/api/adrevenue/v1.0`
+- [Deep linking REST API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-deep-linking-rest-api-openapi.yml): 2 operations, base `https://dls2s.appsflyer.com/v1.0`
+- [InCost API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-incost-api-1-openapi.yml): 2 operations, base `https://hq1.appsflyer.com/api/`
+- [PC/Console/CTV Client-app Events API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-pcconsolectv-client-app-events-api-openapi.yml): 2 operations, base `https://events.appsflyer.com/v1.0/c2s/`
+- [Raw Data Pull API V1 Token](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-raw-data-pull-api-v1-token-openapi.yml): 2 operations, base `https://hq.appsflyer.com/export/`
+- [SKAN conversion studio API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-skan-conversion-studio-api-openapi.yml): 2 operations, base `https://hq1.appsflyer.com/api/conversion-studio-config/v1/`
+- [SKAN CV schema API for ad networks](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-skan-cv-schema-api-for-ad-networks-2-openapi.yml): 2 operations, base `https://hq1.appsflyer.com/api/skad/conversion_schema`
+- [WEB Server-TO-Server API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-web-server-to-server-api-openapi.yml): 2 operations, base `https://webs2s.appsflyer.com/v1`
+- [Additional Identifiers API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-additional-identifiers-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/audience-bulk-api/v1/additional-identifiers`
+- [App list API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-app-list-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/mng`
+- [Audience Import API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-audience-import-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/audiences-import-api/`
+- [Audiences User Attribution Import API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-audiences-user-attribution-import-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/user-attributes-import-api`
+- [Audit Public API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-audit-public-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/audit/v1.0/`
+- [Cohort API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-cohort-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/cohorts/v1/data/app/`
+- [GCD API for SDK attribution testing](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-gcd-api-for-sdk-attribution-testing-1-openapi.yml): 1 operations, base `https://gcdsdk.appsflyer.com/install_data/v4.0/`
+- [[Legacy] Server-to-server events API (for mobile)](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-legacy-server-to-server-events-api-for-mobile-openapi.yml): 1 operations, base `https://api2.appsflyer.com/`
+- [Master API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-master-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/master-agg-data/v4`
+- [Master freshness API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-master-freshness-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/master-agg-data/`
+- [Preload C2S Measurement API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-preload-c2s-measurement-api-openapi.yml): 1 operations, base `https://engagements.appsflyer.com/v1.0/c2s/download/app/android`
+- [Preload Measurement API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-preload-measurement-api-1-openapi.yml): 1 operations, base `https://engagements.appsflyer.com/v1.0/s2s/download/app/android`
+- [Server-to-server events API (for mobile)](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-server-to-server-events-api-for-mobile-openapi.yml): 1 operations, base `https://api3.appsflyer.com/`
+- [SKAN aggregated performance report API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-skan-aggregated-performance-report-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/skadnetworks/v3`
+- [SKAN aggregated postback by arrival date API](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-skan-aggregated-postback-by-arrival-date-api-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/skadnetworks-postbacks/v3/`
+- [SKAN CV Schema API for Advertisers](https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/openapi/appsflyer-skan-cv-schema-api-for-advertisers-1-openapi.yml): 1 operations, base `https://hq1.appsflyer.com/api/skan-pull-cs-api/v1`
+
+## Agent surfaces
+- [AppsFlyer MCP (hosted, beta)](https://www.appsflyer.com/products/agentic-ai/mcp/): `https://mcp.appsflyer.com/` — OAuth 2.1 authorization code + PKCE (S256) with dynamic client registration; metadata at `https://mcp.appsflyer.com/.well-known/oauth-authorization-server`. Covers campaign performance/ROAS, SKAN + SSOT metrics, audience lists, OneLink configuration, app settings and Help Center retrieval.
+- [@appsflyer/sdk-mcp-server](https://www.npmjs.com/package/@appsflyer/sdk-mcp-server): first-party local (stdio) MCP server with 19 tools for SDK integration, logcat/Xcode log analysis, event and deep-link validation.
+- No A2A agent card is published (`/.well-known/agent-card.json` and `/.well-known/agent.json` miss on every host).
+
+## Events / webhooks
+- Push API (postbacks): configure with `https://hq1.appsflyer.com/api/pushapi/v1.0/`. Event types for regular attribution: install, organic-install, reinstall, organic-reinstall, re-engagement, re-attribution, install-in-app-event, organic-install-in-app-event, re-engagement-in-app-event, re-attribution-in-app-event. SKAdNetwork: install, re-download, in-app-event, postback, postbacks-copy.
+- No AsyncAPI document is published.
+
+## SDKs
+- [AppsFlyerFramework (iOS, CocoaPods)](https://cocoapods.org/pods/AppsFlyerFramework)
+- [com.appsflyer:af-android-sdk (Android, Maven Central)](https://central.sonatype.com/artifact/com.appsflyer/af-android-sdk)
+- [react-native-appsflyer (npm)](https://www.npmjs.com/package/react-native-appsflyer)
+- [appsflyer_sdk (Flutter, pub.dev)](https://pub.dev/packages/appsflyer_sdk)
+- [appsflyer-capacitor-plugin (npm)](https://www.npmjs.com/package/appsflyer-capacitor-plugin)
+- [cordova-plugin-appsflyer-sdk (npm)](https://www.npmjs.com/package/cordova-plugin-appsflyer-sdk)
+- [AppsFlyerXamarinBinding (NuGet)](https://www.nuget.org/packages/AppsFlyerXamarinBinding)
+- [appsflyer-unity-plugin (GitHub)](https://github.com/AppsFlyerSDK/appsflyer-unity-plugin)
+- [appsflyer-unreal-plugin (GitHub)](https://github.com/AppsFlyerSDK/appsflyer-unreal-plugin)
+- [GitHub organization](https://github.com/AppsFlyerSDK)
+
+## Conventions
+- Errors: proprietary `{status, code, message, request_id}` JSON envelope. No RFC 9457 problem+json.
+- Pagination: `limit` / `offset` on list endpoints (App list caps at 1,000 records per page). Report endpoints are unpaginated and return up to 1,000,000 rows.
+- Versioning: URI path (`/v2.0`, `/v5`, `/v3`). No Sunset or Deprecation headers.
+- Idempotency: not supported — no idempotency key header or parameter exists in any published operation.
+- Rate limiting: HTTP 429 on 17 operations; report-generation quotas are per report, per app, per day. OpenDSR is limited to 350 requests/minute. No rate-limit response headers are documented.
+- Sandbox: `sandbox-events.appsflyer.com` and `sandbox-engagements.appsflyer.com` mirror the event ingestion hosts; the OpenDSR API has eight `stub` operations mirroring production one-for-one.
+

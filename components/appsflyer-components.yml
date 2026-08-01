@@ -1,0 +1,33 @@
+generated: '2026-07-31'
+method: searched
+source: https://dev.appsflyer.com/hc/docs + https://github.com/AppsFlyerSDK
+families:
+- name: Smart Banners
+  kind: embeddable web component
+  docs: https://dev.appsflyer.com/hc/docs/dl_smart_banner_v2
+  loader: AppsFlyer Smart Banner script (web SDK)
+  note: A hosted, configurable banner rendered on a mobile web page that routes the visitor into the app via OneLink,
+    carrying attribution and deep-link context. v2 supersedes v1; a migration guide is published.
+  related_docs:
+  - https://dev.appsflyer.com/hc/docs/dl_smart_banner_migration_guide
+  - https://dev.appsflyer.com/hc/docs/smart-banner-web-tool
+- name: OneLink Smart Script
+  kind: client-side JS library
+  docs: https://dev.appsflyer.com/hc/docs/dl_smart_script_v2
+  repository: https://github.com/AppsFlyerSDK/appsflyer-onelink-smart-script
+  note: A drop-in script that rewrites outbound store links on a web page into OneLink URLs, forwarding the page
+    query parameters as attribution parameters. v2 current; v1 documented as legacy.
+  related_docs:
+  - https://dev.appsflyer.com/hc/docs/dl_legacy_smart_script_v1
+  - https://dev.appsflyer.com/hc/docs/smart-script-web-tool
+- name: Banner generator
+  kind: tool
+  repository: https://github.com/AppsFlyerSDK/AppsFlyerBannerGenerator
+- name: Deep-linking simulator
+  kind: developer tool
+  repository: https://github.com/AppsFlyerSDK/deep-linking-simulator
+- name: Link simulator
+  kind: developer tool
+  repository: https://github.com/AppsFlyerSDK/linkSimulator
+note: AppsFlyer ships no embedded-dashboard or hosted-checkout style UI component set; its client-side surface is
+  the deep-linking web toolkit above plus the platform SDKs catalogued in packages/.

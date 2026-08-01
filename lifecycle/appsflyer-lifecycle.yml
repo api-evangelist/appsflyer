@@ -1,0 +1,55 @@
+generated: '2026-07-31'
+method: searched
+source: https://status.appsflyer.com/ + https://www.appsflyer.com/product-news/ + https://dev.appsflyer.com/hc/docs/android-release-notes
+  + openapi/*.yml
+versioning:
+  scheme: uri-path
+  docs: https://dev.appsflyer.com/hc/reference
+  observed:
+  - app management v2.0
+  - click signing v2.0
+  - net revenue v2.0
+  - pull API report v5
+  - SKAN v2 and v3
+  - OneLink v2.0
+  - push API v1.0
+  - user management v1.0
+  - audit v1.0
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: AppsFlyer publishes no formal, versioned deprecation policy page and declares no RFC 8594 Sunset/Deprecation
+    headers in any harvested spec. Deprecations are announced ad hoc through the Help Center bulletins and product
+    news.
+  observed_deprecations:
+  - what: Pull API V1 token (api_token query parameter)
+    status: legacy, superseded by the API V2 bearer token
+    evidence: openapi/appsflyer-aggregate-pull-api-v1-token-openapi.yml, openapi/appsflyer-raw-data-pull-api-v1-token-openapi.yml
+  - what: Legacy server-to-server events API for mobile (api2.appsflyer.com)
+    status: labelled "[Legacy]" in the published spec title; superseded by api3.appsflyer.com
+    evidence: openapi/appsflyer-legacy-server-to-server-events-api-for-mobile-openapi.yml
+  - what: All API V2 tokens issued before 2026-03-10 19:00 UTC
+    status: revoked
+    evidence: securityScheme description in 24 harvested specs
+  - what: SDK methods setUserEmails and setPhoneNumber
+    status: soon to be deprecated
+    evidence: https://dev.appsflyer.com/hc/docs/api
+  - what: SDK methods setSharingFilterForAllPartners and setSharingFilter
+    status: deprecated
+    evidence: https://dev.appsflyer.com/hc/docs/api
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA/uptime commitment is published; SLAs are contractual.
+status_page: https://status.appsflyer.com/
+status_page_api: https://status.appsflyer.com/api/v2/summary.json
+release_notes:
+- https://dev.appsflyer.com/hc/docs/android-release-notes
+- https://dev.appsflyer.com/hc/docs/ios-release-notes
+- https://www.appsflyer.com/product-news/
+deprecated_operations:
+- 'openapi/appsflyer-partner-integration-settings-api-openapi.yml (one operation flagged deprecated: true in the
+  published spec)'
+support_windows:
+  note: SDK majors are supported alongside their predecessor — v6 and v7 migration guides both live in the developer
+    hub.

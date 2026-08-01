@@ -1,0 +1,82 @@
+generated: '2026-07-31'
+method: searched
+source: https://dev.appsflyer.com/hc/reference + https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens
+  + openapi/*.yml
+authentication:
+  primary: 'API V2 token (JWT) sent as Authorization: Bearer <token>'
+  issued_from: AppsFlyer dashboard Security Center (admin only)
+  rotation: Displayed once at creation and never retrievable again; max two API tokens per token type per account.
+  revocation_event: All API V2 tokens generated before 2026-03-10 19:00 UTC were revoked and had to be regenerated.
+  other_schemes:
+  - name: api_token query parameter
+    used_by: Pull API V1 token endpoints
+    note: Legacy; superseded by the V2 bearer token.
+  - name: authentication header (Dev Key)
+    used_by: Server-to-server events API for mobile (api3/api2)
+    note: The app Dev Key, taken from App Settings.
+  - name: authorization header (OneLink / CTV token)
+    used_by: OneLink API, PC/Console/CTV events, preload measurement
+    note: A per-product API token, not the account V2 token.
+  artifact: authentication/appsflyer-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter appears in any of the 141 harvested operations, and the docs do not
+    document one. Event ingestion instead relies on caller-supplied event identifiers and AppsFlyer-side deduplication
+    windows.
+pagination:
+  style: offset-limit
+  params:
+  - name: limit
+    in: query
+  - name: offset
+    in: query
+  note: 'Used by the App list API (up to 1,000 records per page) and the audit-log API. Report-pull endpoints are
+    not paginated: they stream a whole report (raw-data Pull API returns up to 1,000,000 rows per request) and use
+    maximum_rows / date-window parameters instead.'
+  docs: https://support.appsflyer.com/hc/en-us/articles/360011999877-App-list-API-for-app-owners
+versioning:
+  scheme: uri-path
+  note: Version is carried in the path or the report name — /api/app/v2.0, /api/p360-click-signing/v2.0, /api/net-revenue/v2.0/,
+    /export/{app-id}/installs_report/v5, /api/skadnetworks/v3. Older majors run alongside newer ones (SKAN v2 +
+    v3, Pull API V1 token + V2 token).
+  artifact: lifecycle/appsflyer-lifecycle.yml
+request_tracing:
+  field: request_id
+  location: error response body
+  note: A UUID returned on error payloads; quote it when opening a support ticket.
+errors:
+  envelope: '{status, code, message, request_id}'
+  rfc9457: false
+  artifact: errors/appsflyer-problem-types.yml
+rate_limiting:
+  signal: HTTP 429 on 17 operations across 8 specs
+  headers: None declared in the specs — no X-RateLimit-* or Retry-After header is documented.
+  model: Report-generation quotas per report, per app, per day rather than per-second throttling; OpenDSR API is
+    documented at 350 requests/minute (~504,000/day).
+  docs:
+  - https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+  - https://support.appsflyer.com/hc/en-us/articles/11332840660625-Send-OpenDSR-API-requests
+content_types:
+  request:
+  - application/json
+  response:
+  - application/json
+  - text/csv
+  - text/plain
+  note: Raw-data and aggregate Pull API endpoints return CSV by default; a JSON variant is available on some reports.
+field_expansion:
+  supported: false
+  note: No expand/sparse-fieldset convention; report endpoints instead accept an explicit additional_fields list.
+time:
+  timezone: Report endpoints accept a timezone parameter and default to UTC; account and app records carry their
+    own time_zone setting.
+  date_params:
+  - from
+  - to
+  format: YYYY-MM-DD (some endpoints accept YYYY-MM-DD HH:mm)
+cross_links:
+  authentication: authentication/appsflyer-authentication.yml
+  errors: errors/appsflyer-problem-types.yml
+  lifecycle: lifecycle/appsflyer-lifecycle.yml
+  sandbox: sandbox/appsflyer-sandbox.yml
+  webhooks: asyncapi/appsflyer-push-api-webhooks.yml

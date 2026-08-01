@@ -1,0 +1,99 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/*.yml + https://www.appsflyer.com/trust/ + https://dev.appsflyer.com/hc/reference
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 39 published OpenAPI 3.0.1/3.0.2 documents on the AppsFlyer developer hub (dev.appsflyer.com/hc/reference),
+    harvested to openapi/
+- id: oauth2
+  conforms: true
+  evidence: The hosted MCP server publishes RFC 8414 authorization-server metadata at https://mcp.appsflyer.com/.well-known/oauth-authorization-server
+    with authorization_code + refresh_token grants and S256 PKCE. The REST APIs themselves do NOT use OAuth2.
+- id: oauth2.1-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [S256]; grant_types_supported excludes implicit and password'
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: 'registration_endpoint: https://mcp.appsflyer.com/register'
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every probed host
+- id: rfc9727-api-catalog
+  conforms: true
+  evidence: https://dev.appsflyer.com/.well-known/api-catalog returns application/linkset+json (200)
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt on any probed host
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json response in any of the 141 harvested operations
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation response headers declared in any spec
+- id: http-bearer-rfc6750
+  conforms: true
+  evidence: securityScheme type http, scheme bearer, bearerFormat JWT in 24 of 39 specs
+- id: jwt-rfc7519
+  conforms: true
+  evidence: 'bearerFormat: JWT on the API V2 token scheme'
+- id: iab-opendsr
+  conforms: true
+  evidence: openapi/appsflyer-opendsr-api-openapi.yml implements the OpenDSR request/status/cancel/certificate surface
+    including the /discovery metadata endpoint
+- id: apple-skadnetwork
+  conforms: true
+  evidence: SKAN v2/v3/v4 conversion-value schema and aggregated postback APIs across 5 specs
+- id: gdpr
+  conforms: true
+  evidence: https://www.appsflyer.com/trust/privacy/ — TrustArc Enterprise Privacy Certification, ISO 27701, PRIVO,
+    Data Privacy Framework
+- id: ccpa
+  conforms: true
+  evidence: OpenDSR API supports CCPA subject requests; https://www.appsflyer.com/trust/privacy/
+- id: coppa
+  conforms: true
+  evidence: PRIVO certification named on https://www.appsflyer.com/trust/
+- id: soc2
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: iso-27001
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: iso-27017
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: iso-27018
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: iso-27032
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: iso-27701
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: csa-star
+  conforms: true
+  evidence: named on https://www.appsflyer.com/trust/
+- id: mcp
+  conforms: true
+  evidence: hosted MCP server at https://mcp.appsflyer.com/ plus the first-party @appsflyer/sdk-mcp-server npm package
+- id: a2a
+  conforms: false
+  evidence: no A2A agent card at /.well-known/agent-card.json or /.well-known/agent.json on any probed host
+- id: asyncapi
+  conforms: false
+  evidence: AppsFlyer documents a real webhook/postback surface (Push API) but publishes no AsyncAPI document
+- id: graphql
+  conforms: false
+  evidence: no GraphQL endpoint documented or discovered
+- id: grpc
+  conforms: false
+  evidence: no .proto published in the GitHub org or on buf.build
+- id: json-api
+  conforms: false
+- id: odata
+  conforms: false
+- id: scim
+  conforms: false
+  evidence: user management is a proprietary bulk-users API, not SCIM 2.0

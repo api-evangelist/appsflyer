@@ -1,0 +1,260 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "App list API",
+  "description": "Returns a list of apps based on the caller's account type:\n- **Ad networks**: Get apps for which advertisers have enabled an integration with you.\n- **Advertisers**: Get apps in your account.\n",
+  "version": "1.0.0"
+ },
+ "servers": [
+  {
+   "url": "https://hq1.appsflyer.com/api/mng"
+  }
+ ],
+ "paths": {
+  "/apps": {
+   "get": {
+    "tags": [
+     "Get app list"
+    ],
+    "summary": "App list",
+    "description": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+    "operationId": "app-list-ad-nets-api-get",
+    "parameters": [
+     {
+      "name": "capabilities",
+      "in": "query",
+      "description": "To get the list and number of apps to which you have permission/integration capabilities,\nset the capabilities parameter to one of the options listed:\n- `protect_360` (Report permission): Get [Protect360 raw data reports for ad networks](https://support.appsflyer.com/hc/en-us/articles/115004745523-Protect360-for-integrated-partners)  \n- `cost` (Integration): App is enabled to get cost data [via InCost API](https://support.appsflyer.com/hc/en-us/articles/360007714957) \n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "enum": [
+        "",
+        "protect_360",
+        "cost"
+       ]
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "description": "Number of records that return per call.\nIf you don't send `limit`, it is automatically set to 1,000.\n",
+      "schema": {
+       "type": "integer",
+       "maximum": 1000,
+       "example": 2
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "Number of records that return per call.\nIf you don't send `limit`, it is automatically set to 1,000.\n",
+      "schema": {
+       "type": "integer",
+       "maximum": 1000,
+       "example": 2
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "data": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "id": {
+              "type": "string"
+             },
+             "type": {
+              "type": "string"
+             },
+             "attributes": {
+              "type": "object",
+              "properties": {
+               "name": {
+                "type": "string"
+               },
+               "platform": {
+                "type": "string"
+               },
+               "currency": {
+                "type": "string"
+               },
+               "time_zone": {
+                "type": "string"
+               },
+               "enable_retargetting": {
+                "type": "boolean"
+               }
+              }
+             }
+            }
+           }
+          },
+          "meta": {
+           "type": "object",
+           "properties": {
+            "total_items": {
+             "type": "integer"
+            }
+           }
+          },
+          "links": {
+           "type": "object",
+           "properties": {
+            "prev": {
+             "type": "string",
+             "description": "The link to the previous page of results."
+            },
+            "self": {
+             "type": "string",
+             "description": "The link to the current page of results."
+            },
+            "next": {
+             "type": "string",
+             "description": "The link to the next page of results."
+            }
+           }
+          }
+         }
+        },
+        "example": {
+         "data": [
+          {
+           "id": "com.appsflyer.xpend_qa1",
+           "type": "app",
+           "attributes": {
+            "name": "com.appsflyer.xpend_qa1",
+            "platform": "android",
+            "currency": "USD",
+            "time_zone": "UTC"
+           }
+          },
+          {
+           "id": "com.abc.app",
+           "type": "app",
+           "attributes": {
+            "name": "com.abc.app",
+            "platform": "android",
+            "currency": "USD",
+            "time_zone": "UTC",
+            "enable_retargetting": true
+           }
+          },
+          {
+           "id": "com.xyz.app",
+           "type": "app",
+           "attributes": {
+            "name": "com.xyz.app",
+            "platform": "android",
+            "currency": "JPY",
+            "time_zone": "UTC"
+           }
+          }
+         ],
+         "meta": {
+          "total_items": 3
+         },
+         "links": {
+          "self": "https://hq1.appsflyer.com/api/mng/apps?capabilities=protect_360&offset=0&limit=1000"
+         }
+        }
+       }
+      }
+     },
+     "400": {
+      "description": "Bad request",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        },
+        "examples": {
+         "BadRequest": {
+          "summary": "Bad request",
+          "value": "Bad request"
+         }
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "Unauthorized",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        },
+        "examples": {
+         "NotFound": {
+          "summary": "Authorization token is missing or invalid",
+          "value": "Unauthorized"
+         }
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        },
+        "examples": {
+         "NotFound": {
+          "summary": "Not Found",
+          "value": "Not found"
+         }
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too many requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        },
+        "examples": {
+         "TooManyRequests": {
+          "summary": "Too many requests",
+          "value": "Too many requests"
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": [
+     {
+      "bearerAuth": []
+     }
+    ]
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "Error": {
+    "type": "string"
+   }
+  },
+  "securitySchemes": {
+   "bearerAuth": {
+    "type": "http",
+    "scheme": "bearer",
+    "bearerFormat": "JWT",
+    "description": "**Important: API V2 Token Revocation**\nAll API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nToken required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.\n"
+   }
+  }
+ }
+}

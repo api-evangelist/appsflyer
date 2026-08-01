@@ -1,0 +1,86 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/appsflyer-push-api-configuration-api-openapi.yml + https://support.appsflyer.com/hc/en-us/articles/208439256-In-app-event-postback-configuration
+spec_type: Webhooks
+asyncapi_published: false
+note: AppsFlyer calls its webhooks "postbacks" and its outbound webhook product the "Push API". AppsFlyer publishes
+  no AsyncAPI document; the event surface below is derived verbatim from the enums and schemas of the published
+  Push API Configuration OpenAPI, which is the API you use to register and manage the webhook destinations.
+delivery:
+  protocol: https
+  methods:
+  - GET
+  - POST
+  timing: near real time
+  max_url_length: 2048
+  authentication: A per-app Push API authentication token, set with PUT /tokens/app/{app_id} and removed with DELETE
+    /tokens/app/{app_id}. AppsFlyer sends it on each postback so the receiver can verify the sender.
+  url_validation: POST /validate-url returns tested_endpoint_url_http_response so a destination can be checked before
+    it is saved.
+configuration_api:
+  spec: openapi/appsflyer-push-api-configuration-api-openapi.yml
+  base: https://hq1.appsflyer.com/api/pushapi/v1.0/
+  operations:
+  - method: GET
+    path: /app/{app-id}
+    summary: Get Push API configuration
+  - method: PUT
+    path: /app/{app-id}
+    summary: Update Push API configuration
+  - method: PUT
+    path: /tokens/app/{app_id}
+    summary: Set Push API Authentication Token
+  - method: DELETE
+    path: /tokens/app/{app_id}
+    summary: Delete Push API Authentication Token
+  - method: GET
+    path: /event-types/{attributing-entity}
+    summary: Retrieve event types per attributing entity
+  - method: GET
+    path: /fields/{platform}
+    summary: Retrieve message fields per platform
+  - method: POST
+    path: /validate-url
+    summary: Validate URL
+attributing_entities:
+- regular (iOS)
+- regular (Android)
+- skadnetwork
+events:
+- attributing_entity: regular
+  platforms:
+  - ios
+  - android
+  types:
+  - install
+  - organic-install
+  - reinstall
+  - organic-reinstall
+  - re-engagement
+  - re-attribution
+  - install-in-app-event
+  - organic-install-in-app-event
+  - re-engagement-in-app-event
+  - re-attribution-in-app-event
+  source: components.schemas.RegularIosConfig / RegularAndroidConfig event_types enum
+- attributing_entity: skadnetwork
+  platforms:
+  - ios
+  types:
+  - install
+  - re-download
+  - in-app-event
+  - postback
+  - postbacks-copy
+  source: components.schemas.SkadConfig event_types enum
+payload:
+  field_selection: selected_fields accepts the literal "all" or an explicit list; GET /fields/{platform} returns
+    the available field set per platform.
+related_surfaces:
+- name: Blocked events postbacks
+  note: Protect360 fraud and validation-rule blocked installs/in-app events are also exposed as raw-data pull reports
+    (blocked_installs_report, blocked_in_app_events_report, blocked_install_postbacks, blocked_clicks_report) in
+    openapi/appsflyer-raw-data-pull-api-v2-token-openapi.yml.
+- name: Partner postbacks
+  docs: https://support.appsflyer.com/hc/en-us/articles/207273946-Postback-macros-for-ad-networks
+  note: Ad-network-facing postbacks configured per integration; macro reference published in the Help Center.

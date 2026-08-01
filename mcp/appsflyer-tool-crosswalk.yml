@@ -1,0 +1,185 @@
+generated: '2026-07-31'
+method: derived
+source: mcp/appsflyer-mcp.yml + openapi/*.yml
+note: 'The hosted AppsFlyer MCP server does not expose an anonymous tools/list, so its tool NAMES are not public;
+  the rows below bind the six DOCUMENTED capability areas of the hosted server to the backing OpenAPI operations,
+  and record the local @appsflyer/sdk-mcp-server tools (whose names ARE public) as mcp_only because they wrap the
+  mobile SDK and local device tooling rather than any public REST operation. Confidence is set honestly: no row
+  is high, because the live tool schemas are auth-gated.'
+surfaces:
+  openapi:
+    files: 39
+    operations: 141
+    location: openapi/
+    gated: false
+  mcp_hosted:
+    url: https://mcp.appsflyer.com/
+    tools_list: gated (OAuth 2.1 + PKCE, dynamic client registration)
+  mcp_local:
+    package: '@appsflyer/sdk-mcp-server'
+    tools_list: published in the package README
+    gated: false
+  graphql: null
+crosswalk:
+- tool: campaign performance / ROAS (documented capability)
+  category: reporting
+  binding: rest
+  confidence: medium
+  rest:
+  - appsflyer-master-api-openapi.yml GET /app/{app_id}
+  - appsflyer-aggregate-pull-api-v2-token-openapi.yml GET /{app-id}/partners_report/v5
+  - appsflyer-aggregate-pull-api-v2-token-openapi.yml GET /{app-id}/daily_report/v5
+  - appsflyer-roi360-net-revenue-api-v20-openapi.yml
+  note: Master API + Aggregate Pull API + ROI360 net revenue are the public REST projection of the same aggregate
+    metrics.
+- tool: SKAN + SSOT metrics (documented capability)
+  category: skadnetwork
+  binding: rest
+  confidence: medium
+  rest:
+  - appsflyer-skan-aggregated-performance-report-api-openapi.yml
+  - appsflyer-skan-aggregated-postback-by-arrival-date-api-openapi.yml
+  - appsflyer-skan-cv-schema-api-for-advertisers-1-openapi.yml
+  note: SSOT (single source of truth) blends SKAN with attributed installs; only the SKAN half has a public REST
+    contract.
+- tool: audience lists and deployment status (documented capability)
+  category: audiences
+  binding: rest
+  confidence: medium
+  rest:
+  - audience-external-active-audiences
+  - audience-external-pause
+  - audience-import-post
+  - audiences-user-attr-import-post
+  note: operationIds verified in openapi/appsflyer-audience-external-api-openapi.yml, appsflyer-audience-import-api-openapi.yml
+    and appsflyer-audiences-user-attribution-import-api-openapi.yml. Connections and split-sync endpoints exist
+    but carry no operationId in the published spec.
+- tool: OneLink configurations and deep link templates (documented capability)
+  category: deep-linking
+  binding: rest
+  confidence: medium
+  rest:
+  - onelink-v2-create-link
+  - get-onelink-v2-link
+  - update-onelink-v2-link
+  - delete-onelink-v2-link
+  - get-onelink-v2-link-qr
+  - get-onelink-v2-link-quota
+  note: operationIds verified in openapi/appsflyer-onelink-api-v20-openapi.yml.
+- tool: app settings and SDK integration details (documented capability)
+  category: management
+  binding: rest
+  confidence: low
+  rest:
+  - app-mng-v2-post
+  - app-mng-v2-put
+  - app-mng-v2-delete
+  - app-list-ad-nets-api-get
+  note: App management V2.0 + app list APIs cover app settings; SDK integration detail has no public REST operation.
+- tool: AppsFlyer Help Center documentation (documented capability)
+  category: knowledge
+  binding: none
+  confidence: low
+  rest: []
+  note: Retrieval over support.appsflyer.com content; no REST contract exists for it.
+mcp_only:
+- tool: integrateAppsFlyerSdk
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getAppsFlyerInAppEventRecommendations
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: createAppsFlyerLogEvent
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: createIosAppsFlyerLogEvent
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: fetchAppsflyerLogs
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getConversionLogs
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getInAppLogs
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getLaunchLogs
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getDeepLinkLogs
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: getAppsflyerErrors
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyAppsFlyerSdk
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyAppsFlyerIosSdk
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyInAppEvent
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyIosInAppEvent
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: createDeepLink
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: createIosDeepLink
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: guideDeepLinkTesting
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyDeepLink
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+- tool: verifyIosDeepLink
+  reason: local SDK/device tooling in @appsflyer/sdk-mcp-server — reads logcat/Xcode logs or emits SDK code; no
+    public REST operation backs it.
+rest_only:
+- capability: Raw data export (installs, in-app events, retargeting, uninstalls, ad revenue, Protect360 fraud, postbacks)
+  operations: 23
+  files:
+  - appsflyer-raw-data-pull-api-v2-token-openapi.yml
+  - appsflyer-raw-data-pull-api-v1-token-openapi.yml
+- capability: OpenDSR privacy data-subject requests
+  operations: 16
+  files:
+  - appsflyer-opendsr-api-openapi.yml
+- capability: Protect360 click signing
+  operations: 9
+  files:
+  - appsflyer-click-signing-api-openapi.yml
+- capability: Push API (webhook/postback) configuration
+  operations: 7
+  files:
+  - appsflyer-push-api-configuration-api-openapi.yml
+- capability: Server-to-server and client-to-server event ingestion
+  operations: 12
+  files:
+  - appsflyer-server-to-server-events-api-for-mobile-openapi.yml
+  - appsflyer-web-server-to-server-api-openapi.yml
+  - appsflyer-pcconsolectv-events-api-openapi.yml
+  - appsflyer-pcconsolectv-client-app-events-api-openapi.yml
+  - appsflyer-engagements-api-openapi.yml
+- capability: User management, audit logs, partner integration settings, cost ingestion
+  operations: 13
+  files:
+  - appsflyer-user-management-openapi.yml
+  - appsflyer-audit-public-api-openapi.yml
+  - appsflyer-partner-integration-settings-api-openapi.yml
+  - appsflyer-incost-api-1-openapi.yml
+coverage:
+  hosted_mcp_tools_named: 0
+  hosted_mcp_capabilities_documented: 6
+  capabilities_bound_to_rest: 5
+  local_mcp_tools_named: 19
+  local_mcp_tools_bound_to_rest: 0
+  rest_operations_total: 141
+  rest_operations_with_a_tool: 0
+  note: rest_operations_with_a_tool is 0 because no hosted tool NAME is public — the binding is at capability level,
+    not tool level.

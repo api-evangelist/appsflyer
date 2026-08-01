@@ -1,0 +1,73 @@
+generated: '2026-07-31'
+method: searched
+source: openapi/appsflyer-pcconsolectv-events-api-openapi.yml, openapi/appsflyer-pcconsolectv-client-app-events-api-openapi.yml,
+  openapi/appsflyer-preload-measurement-api-1-openapi.yml, openapi/appsflyer-preload-c2s-measurement-api-openapi.yml,
+  openapi/appsflyer-opendsr-api-openapi.yml, openapi/appsflyer-test-console-api-openapi.yml, https://dev.appsflyer.com/hc/docs/integration-testing
+model: Dedicated sandbox hosts for event ingestion, stub endpoints for privacy requests, and registered test devices
+  + debug apps for SDK verification. There is no single global test-mode key prefix.
+sandbox_hosts:
+- host: https://sandbox-events.appsflyer.com/v1.0/s2s/
+  mirrors: https://events.appsflyer.com/v1.0/s2s/
+  api: PC/Console/CTV Events API
+  declared_in: openapi servers[]
+- host: https://sandbox-events.appsflyer.com/v1.0/c2s/
+  mirrors: https://events.appsflyer.com/v1.0/c2s/
+  api: PC/Console/CTV Client-app Events API
+  declared_in: openapi servers[]
+- host: https://sandbox-engagements.appsflyer.com/v1.0/s2s/download/app/android/
+  mirrors: https://engagements.appsflyer.com/v1.0/s2s/download/app/android
+  api: Preload Measurement API
+  declared_in: openapi servers[]
+- host: https://sandbox-engagements.appsflyer.com/v1.0/c2s/download/app/android/
+  mirrors: https://engagements.appsflyer.com/v1.0/c2s/download/app/android
+  api: Preload C2S Measurement API
+  declared_in: openapi servers[]
+stub_endpoints:
+- api: OpenDSR API
+  base: https://hq1.appsflyer.com/api/gdpr/v1/stub
+  tag: Stub & Testing
+  operations:
+  - create-stub-opendsr-request
+  - create-stub-batch-opendsr-requests
+  - get-stub-opendsr-request-status
+  - get-stub-batch-status
+  - cancel-stub-opendsr-request
+  - download-stub-report
+  - get-stub-certificate
+  - stub-discovery
+  note: Eight stub operations mirror the eight production operations one-for-one, so a client can be exercised end
+    to end without submitting a real data-subject request.
+test_tooling:
+- name: Test Console API
+  spec: openapi/appsflyer-test-console-api-openapi.yml
+  operations:
+  - test-console-api-post
+  - test-console-api-get
+  - test-console-api-delete
+  note: Registers a device as a test device, retrieves the events it produced, and removes it.
+- name: Registered test devices
+  docs: https://support.appsflyer.com/hc/en-us/articles/207031996-Registering-test-devices-
+  note: A device must be registered before its installs count as test installs rather than production attribution.
+- name: Debug apps
+  docs: https://dev.appsflyer.com/hc/docs/integration-testing
+  note: A separate app ID with its own dashboard instance, never published to a store, so test conversions never
+    mix with production data.
+- name: SDK debug logging
+  api: AppsFlyer.setIsDebug(true)
+  docs: https://dev.appsflyer.com/hc/docs/testing
+- name: GCD API for SDK attribution testing
+  spec: openapi/appsflyer-gcd-api-for-sdk-attribution-testing-1-openapi.yml
+  operations:
+  - gcd-get-data
+  note: Fetches the conversion data the SDK would have received, for verifying an integration server-side.
+- name: Deep-linking simulator
+  url: https://github.com/AppsFlyerSDK/deep-linking-simulator
+- name: Link simulator
+  url: https://github.com/AppsFlyerSDK/linkSimulator
+- name: IDFV test tool app
+  docs: https://dev.appsflyer.com/hc/docs/install-the-idfv-test-tool-app
+test_values:
+  note: AppsFlyer publishes no fixed magic test identifiers (no test card / test MSISDN equivalent). Isolation is
+    achieved by device registration and debug apps, not by reserved values.
+time_simulation:
+  supported: false

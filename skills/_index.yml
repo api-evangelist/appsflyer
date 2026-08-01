@@ -1,0 +1,114 @@
+generated: '2026-07-31'
+method: generated
+source: openapi/*.yml (operationIds grepped and verified) + conventions/appsflyer-conventions.yml + errors/appsflyer-problem-types.yml
+  + sandbox/appsflyer-sandbox.yml
+note: Provider-published agent skills were searched for first (no AGENTS.md or skills/ in the AppsFlyerSDK GitHub
+  organization, and none on the developer hub). Every operationId referenced below exists verbatim in the harvested
+  specs; operations that the published specs leave without an operationId are addressed by method + path and are
+  called out as such inside the skill.
+skills:
+- file: appsflyer-onboard-an-app.md
+  name: Onboard an app and register a test device
+  api: openapi/appsflyer-app-management-api-v20-openapi.yml
+  operations:
+  - app-mng-v2-post
+  - app-list-ad-nets-api-get
+  - test-console-api-post
+  - test-console-api-get
+  - test-console-api-delete
+  also:
+  - openapi/appsflyer-app-list-api-openapi.yml
+  - openapi/appsflyer-test-console-api-openapi.yml
+- file: appsflyer-create-and-manage-onelink.md
+  name: Create, inspect and retire a OneLink short link
+  api: openapi/appsflyer-onelink-api-v20-openapi.yml
+  operations:
+  - get-onelink-v2-link-quota
+  - onelink-v2-create-link
+  - get-onelink-v2-link
+  - get-onelink-v2-link-qr
+  - update-onelink-v2-link
+  - delete-onelink-v2-link
+- file: appsflyer-pull-attribution-data.md
+  name: Pull raw and aggregate attribution data
+  api: openapi/appsflyer-raw-data-pull-api-v2-token-openapi.yml
+  operations:
+  - master-lastupdate
+  also:
+  - openapi/appsflyer-aggregate-pull-api-v2-token-openapi.yml
+  - openapi/appsflyer-master-api-openapi.yml
+  - openapi/appsflyer-master-freshness-api-openapi.yml
+  - openapi/appsflyer-cohort-api-openapi.yml
+- file: appsflyer-configure-push-api-webhooks.md
+  name: Configure Push API webhooks (postbacks)
+  api: openapi/appsflyer-push-api-configuration-api-openapi.yml
+  operations: []
+- file: appsflyer-send-server-to-server-events.md
+  name: Send server-to-server and web events
+  api: openapi/appsflyer-server-to-server-events-api-for-mobile-openapi.yml
+  operations:
+  - s2s-events-api3-post
+  - web-s2s-api-event-post
+  - web-s2s-api-setcuid-post
+  - ctv-c2s-events-inapps-post
+  - ctv-c2s-events-sessions-post
+  also:
+  - openapi/appsflyer-web-server-to-server-api-openapi.yml
+  - openapi/appsflyer-pcconsolectv-events-api-openapi.yml
+  - openapi/appsflyer-pcconsolectv-client-app-events-api-openapi.yml
+- file: appsflyer-handle-opendsr-privacy-requests.md
+  name: Handle an OpenDSR privacy request end to end
+  api: openapi/appsflyer-opendsr-api-openapi.yml
+  operations:
+  - discovery
+  - create-opendsr-request
+  - create-batch-opendsr-requests
+  - get-opendsr-request-status
+  - get-batch-status
+  - download-report
+  - get-certificate
+  - cancel-opendsr-request
+  - stub-discovery
+  - create-stub-opendsr-request
+  - get-stub-opendsr-request-status
+  - download-stub-report
+  - get-stub-certificate
+  - cancel-stub-opendsr-request
+  - create-stub-batch-opendsr-requests
+  - get-stub-batch-status
+- file: appsflyer-manage-audiences.md
+  name: List, import and pause audiences
+  api: openapi/appsflyer-audience-external-api-openapi.yml
+  operations:
+  - audience-external-active-audiences
+  - audience-external-pause
+  - audience-import-post
+  - audiences-user-attr-import-post
+  - audience-put-additional-identifier
+  also:
+  - openapi/appsflyer-audience-import-api-openapi.yml
+  - openapi/appsflyer-audiences-user-attribution-import-api-openapi.yml
+  - openapi/appsflyer-additional-identifiers-api-openapi.yml
+- file: appsflyer-protect360-click-signing.md
+  name: Roll out and rotate Protect360 click signing
+  api: openapi/appsflyer-click-signing-api-openapi.yml
+  operations:
+  - click-signing-config-get
+  - click-signing-secret-post
+  - click-signing-config-update-put
+  - click-signing-test-post
+  - click-signing-config-excluded-apps-add
+  - click-signing-config-excluded-apps-delete
+  - click-signing-config-circuit-breaker-put
+  - click-signing-report-get
+  - click-signing-secret-delete
+- file: appsflyer-manage-users-and-audit.md
+  name: Manage users in bulk and read the audit log
+  api: openapi/appsflyer-user-management-openapi.yml
+  operations:
+  - bulk-users-get
+  - bulk-users-post
+  - bulk-users-delete
+  - audit-public-api-get
+  also:
+  - openapi/appsflyer-audit-public-api-openapi.yml

@@ -1,0 +1,53 @@
+generated: '2026-07-31'
+method: searched
+source: https://www.appsflyer.com/product-news/ + https://dev.appsflyer.com/hc/docs/android-release-notes + https://dev.appsflyer.com/hc/docs/ios-release-notes
+scheme: semver per SDK; uri-path major versions per API
+channels:
+- name: Product news
+  url: https://www.appsflyer.com/product-news/
+  scope: platform + product announcements
+  dated: true
+- name: Android SDK release notes
+  url: https://dev.appsflyer.com/hc/docs/android-release-notes
+  scope: Android SDK
+  dated: true
+- name: iOS SDK release notes
+  url: https://dev.appsflyer.com/hc/docs/ios-release-notes
+  scope: iOS SDK
+  dated: true
+- name: Help Center bulletins
+  url: https://support.appsflyer.com/hc/en-us
+  scope: breaking API changes are announced as "Bulletin:" articles
+  dated: true
+note: The developer hub has no unified /changelog route (probe of https://dev.appsflyer.com/hc/changelog returned
+  404); API changes are announced through Help Center bulletins and product news rather than a single dated API
+  changelog.
+current_versions:
+  android_sdk: 6.17.0 (com.appsflyer:af-android-sdk, Maven Central)
+  react_native_plugin: 6.18.0
+  capacitor_plugin: 6.18.0
+  cordova_plugin: 6.18.1
+  flutter_plugin: 6.18.1
+  xamarin_binding: 6.18.1
+  purchase_connector_android: 2.1.1
+  sdk_mcp_server: 1.5.2
+entries:
+- date: '2026-03-10'
+  breaking: true
+  title: All API V2 tokens issued before 2026-03-10 19:00 UTC revoked
+  detail: Every pre-existing API V2 token was revoked and had to be regenerated from the Security Center. Announced
+    in the securityScheme description of 24 published OpenAPI documents and in the Help Center bulletin on API token
+    changes.
+  source: https://support.appsflyer.com/hc/en-us/articles/12399683708305-Bulletin-API-token-changes
+- date: '2026-07-27'
+  breaking: false
+  title: Developer hub OpenAPI documents re-synced
+  detail: Most of the 39 published OpenAPI documents on dev.appsflyer.com carry an updated_at of 2026-07-27, indicating
+    a bulk re-sync from the source GitHub repository.
+  source: https://dev.appsflyer.com/hc/reference
+- title: AppsFlyer MCP (beta) launched
+  breaking: false
+  detail: A hosted Model Context Protocol server connecting AppsFlyer marketing data to LLM clients, with OAuth-based
+    connection and bearer-token auth for non-interactive agents.
+  source: https://www.appsflyer.com/product-news/agentic-ai-suite/appsflyer-mcp-model-context-protocol-beta-server-is-launched/
+window: recent only — the live channels above are the source of truth

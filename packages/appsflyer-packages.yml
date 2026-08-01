@@ -1,0 +1,121 @@
+generated: '2026-07-31'
+method: searched
+source: npm, Maven Central, NuGet, pub.dev, CocoaPods, and https://dev.appsflyer.com/hc/docs/getting-started
+notes: First-party AppsFlyer SDKs and plugins. All repositories live under https://github.com/AppsFlyerSDK.
+packages:
+- language: swift
+  registry: cocoapods
+  name: AppsFlyerFramework
+  url: https://cocoapods.org/pods/AppsFlyerFramework
+  install: pod 'AppsFlyerFramework'
+  official: true
+  repo: https://github.com/AppsFlyerSDK/AppsFlyerFramework
+- language: java
+  registry: maven
+  name: com.appsflyer:af-android-sdk
+  url: https://central.sonatype.com/artifact/com.appsflyer/af-android-sdk
+  install: implementation 'com.appsflyer:af-android-sdk:6.17.0'
+  official: true
+- language: java
+  registry: maven
+  name: com.appsflyer:purchase-connector
+  url: https://central.sonatype.com/artifact/com.appsflyer/purchase-connector
+  install: implementation 'com.appsflyer:purchase-connector:2.1.1'
+  official: true
+- language: java
+  registry: maven
+  name: com.appsflyer:unity-wrapper
+  url: https://central.sonatype.com/artifact/com.appsflyer/unity-wrapper
+  official: true
+- language: java
+  registry: maven
+  name: com.appsflyer:appsflyer-adobe-aep-sdk-extension
+  url: https://central.sonatype.com/artifact/com.appsflyer/appsflyer-adobe-aep-sdk-extension
+  official: true
+- language: javascript
+  registry: npm
+  name: react-native-appsflyer
+  url: https://www.npmjs.com/package/react-native-appsflyer
+  install: npm install react-native-appsflyer
+  official: true
+  repo: https://github.com/AppsFlyerSDK/appsflyer-react-native-plugin
+- language: javascript
+  registry: npm
+  name: appsflyer-capacitor-plugin
+  url: https://www.npmjs.com/package/appsflyer-capacitor-plugin
+  install: npm install appsflyer-capacitor-plugin
+  official: true
+  repo: https://github.com/AppsFlyerSDK/appsflyer-capacitor-plugin
+- language: javascript
+  registry: npm
+  name: cordova-plugin-appsflyer-sdk
+  url: https://www.npmjs.com/package/cordova-plugin-appsflyer-sdk
+  install: cordova plugin add cordova-plugin-appsflyer-sdk
+  official: true
+  repo: https://github.com/AppsFlyerSDK/appsflyer-cordova-plugin
+- language: javascript
+  registry: npm
+  name: nativescript-plugin-appsflyer
+  url: https://www.npmjs.com/package/nativescript-plugin-appsflyer
+  install: npm install nativescript-plugin-appsflyer
+  official: true
+  repo: https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer
+- language: javascript
+  registry: npm
+  name: appsflyer-html5-ctv-sdk
+  url: https://www.npmjs.com/package/appsflyer-html5-ctv-sdk
+  install: npm install appsflyer-html5-ctv-sdk
+  official: true
+- language: javascript
+  registry: npm
+  name: '@appsflyer/sdk-mcp-server'
+  url: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
+  install: npm install @appsflyer/sdk-mcp-server
+  official: true
+  kind: mcp-server
+  repo: https://github.com/AppsFlyerKnowledge/appsflyer-sdk-mcp-server
+- language: dart
+  registry: pub.dev
+  name: appsflyer_sdk
+  url: https://pub.dev/packages/appsflyer_sdk
+  install: flutter pub add appsflyer_sdk
+  official: true
+  repo: https://github.com/AppsFlyerSDK/appsflyer-flutter-plugin
+- language: csharp
+  registry: nuget
+  name: AppsFlyerXamarinBinding
+  url: https://www.nuget.org/packages/AppsFlyerXamarinBinding
+  install: dotnet add package AppsFlyerXamarinBinding
+  official: true
+  repo: https://github.com/AppsFlyerSDK/XamariniOSBinding
+- language: csharp
+  registry: nuget
+  name: AppsFlyerXamarinBindingAndroid
+  url: https://www.nuget.org/packages/AppsFlyerXamarinBindingAndroid
+  install: dotnet add package AppsFlyerXamarinBindingAndroid
+  official: true
+  repo: https://github.com/AppsFlyerSDK/XamarinAndroidBinding
+- language: csharp
+  registry: unity
+  name: appsflyer-unity-plugin
+  url: https://github.com/AppsFlyerSDK/appsflyer-unity-plugin
+  official: true
+  note: Distributed as a Unity package from GitHub releases, not a public registry.
+- language: cpp
+  registry: github
+  name: appsflyer-unreal-plugin
+  url: https://github.com/AppsFlyerSDK/appsflyer-unreal-plugin
+  official: true
+- language: brightscript
+  registry: github
+  name: appsflyer-roku-sample-app
+  url: https://github.com/AppsFlyerSDK/appsflyer-roku-sample-app
+  official: true
+  note: Roku/CTV integration is distributed as source in the sample app repo.
+unofficial_noted:
+- language: python
+  registry: pypi
+  name: appsflyer
+  url: https://pypi.org/project/appsflyer/
+  official: false
+  note: Community S2S events client by Frederico Jordan; AppsFlyer publishes no first-party Python SDK.

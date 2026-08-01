@@ -1,0 +1,643 @@
+openapi: 3.0.1
+info:
+  title: Preload C2S Measurement API
+  version: '1.0'
+servers:
+- url: https://engagements.appsflyer.com/v1.0/c2s/download/app/android
+  description: Production server
+- url: https://sandbox-engagements.appsflyer.com/v1.0/c2s/download/app/android/
+  description: Sandbox server
+security:
+- HeaderApiKeyAuth: []
+paths:
+  /{app_id}:
+    post:
+      tags:
+      - Download Events
+      summary: Download event
+      security:
+      - HeaderApiKeyAuth: []
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      requestBody:
+        $ref: '#/components/requestBodies/CommonBody'
+      responses:
+        '202':
+          $ref: '#/components/responses/Success'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/AuthenticationFailed'
+        '500':
+          $ref: '#/components/responses/NotImplemented'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeout'
+components:
+  securitySchemes:
+    HeaderApiKeyAuth:
+      type: apiKey
+      description: AppsFlyer will provide a secret key (uuid v4) which is unique per partner integration
+      name: authorization
+      in: header
+  parameters:
+    AppId:
+      name: app_id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: App ID of the app for which you are posting
+        example: com.example.testapp
+  requestBodies:
+    CommonBody:
+      description: common body for impression and click
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - af_media_source
+            - af_request_id
+            - af_ip
+            - af_engagement_type
+            type: object
+            properties:
+              af_media_source:
+                $ref: '#/components/schemas/AfMediaSource'
+              af_request_id:
+                $ref: '#/components/schemas/AfRequestId'
+              af_engagement_type:
+                $ref: '#/components/schemas/AfEngagementType'
+              af_campaign:
+                $ref: '#/components/schemas/AfCampaign'
+              af_campaign_id:
+                $ref: '#/components/schemas/AfCampaignId'
+              af_adset:
+                $ref: '#/components/schemas/AfAdSet'
+              af_adset_id:
+                $ref: '#/components/schemas/AfAdSetId'
+              af_ad:
+                $ref: '#/components/schemas/AfAd'
+              af_ad_id:
+                $ref: '#/components/schemas/AfAdId'
+              af_prt:
+                $ref: '#/components/schemas/AfPrt'
+              af_click_id:
+                $ref: '#/components/schemas/AfClickId'
+              af_lookback_window:
+                $ref: '#/components/schemas/AflookbackWindow'
+              af_ad_type:
+                $ref: '#/components/schemas/AfAdType'
+              af_channel:
+                $ref: '#/components/schemas/AfChannel'
+              af_cost_model:
+                $ref: '#/components/schemas/AfCostModel'
+              af_cost_value:
+                $ref: '#/components/schemas/AfCostValue'
+              af_cost_currency:
+                $ref: '#/components/schemas/AfCostCurrency'
+              af_custom1:
+                $ref: '#/components/schemas/AfCustom'
+              af_custom2:
+                $ref: '#/components/schemas/AfCustom'
+              af_custom3:
+                $ref: '#/components/schemas/AfCustom'
+              af_custom4:
+                $ref: '#/components/schemas/AfCustom'
+              af_custom5:
+                $ref: '#/components/schemas/AfCustom'
+              af_model:
+                $ref: '#/components/schemas/AfModel'
+              af_os_version:
+                $ref: '#/components/schemas/AfOsVersion'
+              af_siteid:
+                $ref: '#/components/schemas/AfSiteId'
+              af_sub_siteid:
+                $ref: '#/components/schemas/AfSubSiteId'
+              af_device_id_type:
+                $ref: '#/components/schemas/AfDeviceIdType'
+              af_device_id_value:
+                $ref: '#/components/schemas/AfDeviceIdValue'
+              af_device_id_encoding:
+                $ref: '#/components/schemas/AfDeviceIdEncoding'
+  responses:
+    Success:
+      description: Request successful.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              transaction_id:
+                type: string
+          example:
+            transaction_id: 31BfH9aQNPs5XyB/vBiQPw
+    BadRequest:
+      description: Bad Request. The request message is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Bad Request
+    AuthenticationFailed:
+      description: Authentication failed. Unknown secret.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Authentication failed
+    NotImplemented:
+      description: Not implmented.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Not implmented
+    ServiceUnavailable:
+      description: Service Unavailable.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Service unavailable
+    GatewayTimeout:
+      description: Gateway Timeout.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Gateway timeout
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    AfMediaSource:
+      type: string
+      pattern: ^[^+-=@]
+      description: 'This is the partner unique identifier as defined on AppsFlyer platform.
+
+        It cannot start with: +,-,=,@
+
+        '
+    AfEngagementType:
+      type: string
+      enum:
+      - preload
+      - click_to_download
+      description: The type of engagement
+    AfCampaignId:
+      type: string
+      maxLength: 64
+      pattern: ^[^+-=@]
+      description: Campaign ID
+    AfRequestId:
+      type: string
+      format: ^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+      example: 6ccccc43-730d-470b-8adf-3a698ed0f508
+      description: 'An identifier that uniquely identifies a request by partner.
+
+        Value must be in a UUID format.
+
+        '
+    AfCampaign:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Campaign name
+    AfAdSetId:
+      type: string
+      pattern: ^[^+-=@]
+      maxLength: 64
+      description: Ad Set ID
+    AfAdSet:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Ad Set Name
+    AfAdId:
+      type: string
+      maxLength: 64
+      pattern: ^[^+-=@]
+      description: Ad ID
+    AfAd:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Ad Name
+    AfPrt:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Agency Account Name
+    AfSiteId:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Unique ID that identifies the publisher that displays the ad
+    AfSubSiteId:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Ad sub-network / Publisher ID
+    AfClickId:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Ad network unique transaction identifier
+    AflookbackWindow:
+      type: string
+      maxLength: 256
+      description: "Attribution lookback window\nConfigurable number of days/hours for the lookback window attribution period.\
+        \ \nSupported values: 1d - 30d (days) OR 1h-23h (hours). \n** Only valid if `af_engagement_type=click_to_download`\
+        \ **\n"
+    AfAdType:
+      type: string
+      enum:
+      - text
+      - banner
+      - interstitial
+      - video
+      - rewarded_video
+      - playable
+      - audio
+      description: 'Ad network unique transaction identifiers.
+
+        '
+    AfChannel:
+      type: string
+      maxLength: 64
+      pattern: ^[^+-=@]
+      description: The media source channel through which the ads are distributed
+    AfCostModel:
+      type: string
+      enum:
+      - cpi
+      - cpa
+      - cpe
+      - cpr
+      - cpm
+      - cpc
+      description: 'Cost model
+
+        '
+    AfCostValue:
+      type: string
+      pattern: ^[0-9]*(\.)?[0-9]+$
+    AfCostCurrency:
+      type: string
+      description: 'Use a currency code which is compliant with ISO-4217.
+
+        '
+      enum:
+      - ADP
+      - AED
+      - AFA
+      - AFN
+      - ALK
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - AOK
+      - AON
+      - AOR
+      - ARA
+      - ARP
+      - ARS
+      - ARY
+      - ATS
+      - AUD
+      - AWG
+      - AYM
+      - AZM
+      - AZN
+      - BAD
+      - BAM
+      - BBD
+      - BDT
+      - BEC
+      - BEF
+      - BEL
+      - BGJ
+      - BGK
+      - BGL
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BOP
+      - BOV
+      - BRB
+      - BRC
+      - BRE
+      - BRL
+      - BRN
+      - BRR
+      - BSD
+      - BTN
+      - BUK
+      - BWP
+      - BYB
+      - BYN
+      - BYR
+      - BZD
+      - CAD
+      - CDF
+      - CHC
+      - CHE
+      - CHF
+      - CHW
+      - CLF
+      - CLP
+      - CNY
+      - COP
+      - COU
+      - CRC
+      - CSD
+      - CSJ
+      - CSK
+      - CUC
+      - CUP
+      - CVE
+      - CYP
+      - CZK
+      - DDM
+      - DEM
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - ECS
+      - ECV
+      - EEK
+      - EGP
+      - ERN
+      - ESA
+      - ESB
+      - ESP
+      - ETB
+      - EUR
+      - FIM
+      - FJD
+      - FKP
+      - FRF
+      - GBP
+      - GEK
+      - GEL
+      - GHC
+      - GHP
+      - GHS
+      - GIP
+      - GMD
+      - GNE
+      - GNF
+      - GNS
+      - GQE
+      - GRD
+      - GTQ
+      - GWE
+      - GWP
+      - GYD
+      - HKD
+      - HNL
+      - HRD
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - IEP
+      - ILP
+      - ILR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISJ
+      - ISK
+      - ITL
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAJ
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LSM
+      - LTL
+      - LTT
+      - LUC
+      - LUF
+      - LUL
+      - LVL
+      - LVR
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MGF
+      - MKD
+      - MLF
+      - MMK
+      - MNT
+      - MOP
+      - MRO
+      - MRU
+      - MTL
+      - MTP
+      - MUR
+      - MVQ
+      - MVR
+      - MWK
+      - MXN
+      - MXP
+      - MXV
+      - MYR
+      - MZE
+      - MZM
+      - MZN
+      - NAD
+      - NGN
+      - NIC
+      - NIO
+      - NLG
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEH
+      - PEI
+      - PEN
+      - PES
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PLZ
+      - PTE
+      - PYG
+      - QAR
+      - RHD
+      - ROK
+      - ROL
+      - RON
+      - RSD
+      - RUB
+      - RUR
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDD
+      - SDG
+      - SDP
+      - SEK
+      - SGD
+      - SHP
+      - SIT
+      - SKK
+      - SLL
+      - SOS
+      - SRD
+      - SRG
+      - SSP
+      - STD
+      - STN
+      - SUR
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJR
+      - TJS
+      - TMM
+      - TMT
+      - TND
+      - TOP
+      - TPE
+      - TRL
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UAK
+      - UGS
+      - UGW
+      - UGX
+      - USD
+      - USN
+      - USS
+      - UYI
+      - UYN
+      - UYP
+      - UYU
+      - UYW
+      - UZS
+      - VEB
+      - VEF
+      - VES
+      - VNC
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XBA
+      - XBB
+      - XBC
+      - XBD
+      - XCD
+      - XDR
+      - XEU
+      - XFO
+      - XFU
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - XRE
+      - XSU
+      - XTS
+      - XUA
+      - XXX
+      - YDD
+      - YER
+      - YUD
+      - YUM
+      - YUN
+      - ZAL
+      - ZAR
+      - ZMK
+      - ZMW
+      - ZRN
+      - ZRZ
+      - ZWC
+      - ZWD
+      - ZWL
+      - ZWN
+      - ZWR
+    AfCustom:
+      type: string
+      maxLength: 256
+      pattern: ^[^+-=@]
+      description: Optional custom parameter defined by the advertiser
+    AfModel:
+      type: string
+      maxLength: 64
+      pattern: ^[^+-=@]
+      description: The device’s model
+      example: “SM-S115DL”
+    AfOsVersion:
+      type: string
+      maxLength: 12
+      pattern: ^[0-9]*[\.]?[0-9]*[\.]?[0-9]+$
+      description: 'The device’s os_version.
+
+        Only digits and dots allowed
+
+        '
+      example: 8.1.0
+    AfDeviceIdType:
+      type: string
+      enum:
+      - gaid
+      - oaid
+      description: Device identifier type
+    AfDeviceIdValue:
+      type: string
+      description: "Device identifier type.\nDepends on the device identifier provided. \nIn case it is `gaid`, the value\
+        \ must be in a UUID format\n"
+    AfDeviceIdEncoding:
+      type: string
+      enum:
+      - sha256
+      description: Device identifier encoding method
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
