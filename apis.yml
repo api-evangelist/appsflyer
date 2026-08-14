@@ -15,7 +15,7 @@ x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.20'
 created: '2026-07-31'
-modified: '2026-07-31'
+modified: '2026-08-13'
 tags:
 - Company
 - Mobile Attribution
@@ -397,6 +397,34 @@ apis:
     url: authentication/appsflyer-authentication.yml
   - type: Conventions
     url: conventions/appsflyer-conventions.yml
+- name: Creative External API
+  description: The Creative External API uploads creative assets and publishes ads to ad networks programmatically,
+    bypassing the AppsFlyer Creative Dashboard UI. It is asynchronous — a batch is submitted for upload
+    and publication and returns a batch identifier, then per-item processing status and results are polled
+    separately (AppsFlyer recommends starting at a 5-second poll interval with exponential backoff capped
+    at 60 seconds). Facebook (Meta) is the currently supported destination network. Authenticated with
+    the account API V2 token as a bearer token.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - creatives
+  - ad-networks
+  - creative-management
+  - advertising
+  - asynchronous
+  - meta
+  properties:
+  - type: Documentation
+    url: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  - type: APIReference
+    url: https://dev.appsflyer.com/hc/reference
+  - type: Authentication
+    url: authentication/appsflyer-authentication.yml
+  - type: Conventions
+    url: conventions/appsflyer-conventions.yml
+  x-no-openapi: 'AppsFlyer documents this API as a narrative guide page only. Unlike the other 36 APIs
+    in this profile it has no OAS-backed reference pages in the developer hub, so there is no published
+    OpenAPI to harvest. The two operations are POST /creative/v1.0/upload/batch and GET /creative/v1.0/upload/status/{batch_id}.'
 - name: AppsFlyer MCP Server
   description: AppsFlyer's hosted Model Context Protocol server exposes AppsFlyer's unified marketing
     data to LLM clients and agents over an OAuth 2.1 authorization-code + PKCE flow with dynamic client
@@ -506,8 +534,12 @@ common:
   url: security/appsflyer-vulnerability-disclosure.yml
 - type: TrustCenter
   url: security/appsflyer-trust-center.yml
+- type: Plans
+  url: plans/appsflyer-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/appsflyer-rate-limits.yml
 x-enrichment:
-  date: '2026-07-31'
+  date: '2026-08-13'
   status: enriched
-  artifacts_added: 147
+  artifacts_added: 2
   pass: local-v1
