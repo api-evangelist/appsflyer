@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SKAN CV Schema API for Advertisers",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversion value (CV) schema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CV schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/skan-pull-cs-api/v1/conversion-studio-schema/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the app"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

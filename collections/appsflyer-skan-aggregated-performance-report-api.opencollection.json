@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SKAN aggregated performance report API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKAN performance report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get performance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/skadnetworks/v3/data/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the app"
+              },
+              {
+                "name": "date_type",
+                "value": "",
+                "type": "query",
+                "description": "The date type used in the date range bounded by `start_date` and `end_date`\nOptions: \n- [Default] `install`: The install date derived by AppsFlyer using the postback arrival time and after considering the measurement period.\n- `arrival`: The postback arrival time. Note: Organic install metrics have the value N/A. \nGoogle Ads data: The install and arrival dates are the same due to the Google Ads reporting methodology.\n"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The install date range is bounded by `start_date` and `end_date`. \nNote! The install date differs from the postback arrival date.\n- Earliest install date having format YYYY-MM-DD \n- Earliest date permitted: 2020-11-01\n"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "- Most recent install date having format YYYY-MM-DD \n- Maximum number of days per report call: 90 days\n"
+              },
+              {
+                "name": "view_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter the installs by type as follows: \n\n- `acquisition`: Installs \n- `retargeting`: Redownloads\n- `unified`: Acquisition and redownloads combined.\n- [Default] `unified`\n- Cost, click, and impression metrics return when `view_type=unified`\n"
+              },
+              {
+                "name": "modeled_conversion_values",
+                "value": "",
+                "type": "query",
+                "description": "- Only supported from V2\n- If `true`, the postback includes the modeled data when populating the decoded metric columns.  [See available field](https://support.appsflyer.com/hc/en-us/articles/360014104157-SKAN-aggregated-performance-report-API#report-structure-and-example)\n- If `false`, the postback presents decoded data as received by raw SKAN postbacks, without modeled data.\n- Default value is `false`.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\n> ℹ️ For the base URL (on the right), select either /v2/ for SKAN V3 or /v3/ for SKAN V4.\n> If you select SKAN V4, but results are for SKAN V3 postbacks, the SKAN V4 fields return `null`. \n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

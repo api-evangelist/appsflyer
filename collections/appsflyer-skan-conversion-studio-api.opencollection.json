@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SKAN conversion studio API",
+    "version": "0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKAN conversion studio API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SKAN schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/conversion-studio-config/v1/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the SKAN conversion schema you have configured for a specific app."
+        },
+        {
+          "info": {
+            "name": "Copy SKAN schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/conversion-studio-config/v1/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "**First item**: source app ID (the app ID of the app from which you want to copy the CV schema)\n**Second item**: destination app ID (the app ID for the app to which you want to copy the CV schema)\n"
+              }
+            ]
+          },
+          "docs": "Copy the SKAN conversion value (CV) schema from 1 app to another.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

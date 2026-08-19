@@ -1,0 +1,597 @@
+{
+  "item": [
+    {
+      "id": "7e143058-bf49-4524-8819-82c6d020a3b5",
+      "name": "Android deep linking request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5b73a04-572b-4fbc-968e-62c1b1d6bc18",
+          "name": "Deep linking for Android",
+          "request": {
+            "name": "Deep linking for Android",
+            "description": {},
+            "url": {
+              "path": [
+                "android",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "af_sig",
+                  "value": "<string>",
+                  "description": "(Required) Create an HMAC signature by concatenating the values of the following fields:\n\n`timestamp` + `ip`\n\nThe HMAC is generated using SHA256 and uses the DevKey as the signature’s secret key. \nTo retrieve the DevKey, in the AppsFlyer dashboard, go ***Configuration*** > ***App Settings***.\n\nFor example, the concatenation of the timestamp and IP are: \n> `2015-01-22T08:45:33.412127.0.0.1`\n\nThe DevKey is `w8sZzy8EaPaxFKfaoTqUi6` \n\n**Note**: Make sure you put the timestamp first, and then the IP.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App ID of the app for which you are passing data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"os\": \"<string>\",\n  \"timestamp\": \"<string>\",\n  \"type\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"referrers\": [\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"oaid\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"gaid\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd8a751b-f0c6-4932-800e-7a749cbb5ff4",
+              "name": "Response for Android deep linking request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "android",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"SM-A115M\",\n  \"ip\": \"198.51.100.78\",\n  \"referrers\": [\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"oaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"gaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"found\": false,\n  \"click_event\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2f30d2e-c612-4bca-9367-972053d75283",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "android",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"SM-A115M\",\n  \"ip\": \"198.51.100.78\",\n  \"referrers\": [\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"oaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"gaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6bedea0-6c82-4510-b1a9-cad858379ff8",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "android",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"SM-A115M\",\n  \"ip\": \"198.51.100.78\",\n  \"referrers\": [\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"oaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"gaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d00f4d9c-ed42-4185-81e7-1a65271d2cd0",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "android",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"SM-A115M\",\n  \"ip\": \"198.51.100.78\",\n  \"referrers\": [\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"source\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"oaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"gaid\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ce669e1-db38-4b23-9148-03435fb6a84a",
+      "name": "iOS deep linking request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2345bfb-1824-49a2-ac03-389fdfdae628",
+          "name": "Deep linking for IOS",
+          "request": {
+            "name": "Deep linking for IOS",
+            "description": {},
+            "url": {
+              "path": [
+                "ios",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "af_sig",
+                  "value": "<string>",
+                  "description": "(Required) Create an HMAC signature by concatenating the values of the following fields:\n\n`timestamp` + `ip`\n\nThe HMAC is generated using SHA256 and uses the DevKey as the signature’s secret key. \nTo retrieve the DevKey, in the AppsFlyer dashboard, go ***Configuration*** > ***App Settings***.\n\n\nFor example, the concatenation of the timestamp and IP are: \n> `2015-01-22T08:45:33.412127.0.0.1`\n\nThe DevKey is `w8sZzy8EaPaxFKfaoTqUi6` \n\n**Note**: Make sure you put the timestamp first, and then the IP.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App ID of the app for which you are passing data"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"os\": \"<string>\",\n  \"timestamp\": \"<string>\",\n  \"type\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"idfv\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"att_status\": \"<integer>\",\n  \"open_referrer\": \"<string>\",\n  \"idfa\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee427b11-9320-44c6-b4c1-71304eb2181f",
+              "name": "Response for iOS deep linking request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ios",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"iPhone\",\n  \"ip\": \"198.51.100.23\",\n  \"idfv\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"att_status\": 1,\n  \"open_referrer\": \"com.myexample.myapp\",\n  \"idfa\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"found\": false,\n  \"click_event\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d80dcdf1-86d1-46f6-b8e2-f9a0bcc0c199",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ios",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"iPhone\",\n  \"ip\": \"198.51.100.23\",\n  \"idfv\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"att_status\": 1,\n  \"open_referrer\": \"com.myexample.myapp\",\n  \"idfa\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fc0d6ae-7ec5-4d1f-a649-1e7e11bca4b2",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ios",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"iPhone\",\n  \"ip\": \"198.51.100.23\",\n  \"idfv\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"att_status\": 1,\n  \"open_referrer\": \"com.myexample.myapp\",\n  \"idfa\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a6bc7bd-daf1-4185-b22e-d68bdd7686a8",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ios",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_sig",
+                      "value": "ce2d1e6b4619b9e19bc6be116183b92e43aa01e182b15012a7215bdd879ec327"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are passing data"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_first\": \"<string>\",\n  \"lang\": \"en-US\",\n  \"os\": \"10.3.3\",\n  \"timestamp\": \"2015-01-22T08:45:33.412\",\n  \"type\": \"iPhone\",\n  \"ip\": \"198.51.100.23\",\n  \"idfv\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"att_status\": 1,\n  \"open_referrer\": \"com.myexample.myapp\",\n  \"idfa\": {\n    \"type\": \"sha1\",\n    \"value\": \"123456436CDFAC250CBEAF3BFFCD713E3F123456\"\n  },\n  \"sharing_filter\": \"<string>\",\n  \"request_id\": \"1644179019889-6748098\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dls2s.appsflyer.com/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5811e197-2ad9-4bf2-bd9d-22ef595d6c5d",
+    "name": "Deep linking REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

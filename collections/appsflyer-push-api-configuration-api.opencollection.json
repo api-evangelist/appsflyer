@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Push API Configuration API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Set Push API Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/tokens/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        },
+        {
+          "info": {
+            "name": "Delete Push API Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/tokens/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Manage Push API configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Push API configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/app/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        },
+        {
+          "info": {
+            "name": "Update Push API configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/app/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve per attributing-entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/event-types/:attributing-entity",
+            "params": [
+              {
+                "name": "attributing-entity",
+                "value": "",
+                "type": "path",
+                "description": "The endpoint type"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nReturns a list of the available event types for the specified endpoint type\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Message Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve per platform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/fields/:platform",
+            "params": [
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The platform related to this configuration"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nReturns a list of the available message fields for each platform\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "URL Validation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/pushapi/v1.0/validate-url",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nValidates and tests URL to be used as a Push API endpoint\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

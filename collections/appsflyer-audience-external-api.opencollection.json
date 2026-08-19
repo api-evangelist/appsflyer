@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Audience External API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Active audiences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get active audiences for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/active-audiences"
+          },
+          "docs": "Get active audiences for account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pauses audience",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pause audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/pause",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause audience"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audience connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List partner connections for audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience/:audience_id/connections",
+            "params": [
+              {
+                "name": "audience_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List partner connections for audience"
+        },
+        {
+          "info": {
+            "name": "Connect audience to existing partners",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience/:audience_id/connections",
+            "params": [
+              {
+                "name": "audience_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Connect audience to existing partners"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audience split",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get split percentages for audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience/:audience_id/split_syncs",
+            "params": [
+              {
+                "name": "audience_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get split percentages for audience"
+        },
+        {
+          "info": {
+            "name": "Update split percentages for audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience/:audience_id/split_syncs",
+            "params": [
+              {
+                "name": "audience_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update split percentages for audience"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List partner connections for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/connections"
+          },
+          "docs": "List partner connections for account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account splits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get split percentages for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/split_syncs"
+          },
+          "docs": "Get split percentages for account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Audience upload",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload audience to partners now",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience/:audience_id/upload_now",
+            "params": [
+              {
+                "name": "audience_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upload audience to partners now"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Create audience",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new imported audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/audiences-external-api/audience",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new imported audience"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

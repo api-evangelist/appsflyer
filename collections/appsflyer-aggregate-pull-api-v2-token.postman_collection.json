@@ -1,0 +1,2231 @@
+{
+  "item": [
+    {
+      "id": "15c12a73-585b-433a-8473-02f9c580deeb",
+      "name": "Aggregate (user acquisition and retargeting)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4c08cf9-b8e6-4e62-af8e-886826da7ac3",
+          "name": "Daily",
+          "request": {
+            "name": "Daily",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, media source, and campaign, and excludes in-app events.\nData type: LTV\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "daily_report",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "attribution_touch_type",
+                  "value": "<string>",
+                  "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "<string>",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66a53ef0-ccdc-4076-98ac-a4c77f7c3aa0",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "daily_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a483e99d-d9e9-4cf6-9b41-9d1869299aaf",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "daily_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46736772-0406-4e74-8cdd-74a20c3aae45",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "daily_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e6e00e-15ef-49a6-a542-c8359fbdd033",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "daily_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e9da293-ba76-44ed-8c55-18bf681f62ba",
+          "name": "Geo daily",
+          "request": {
+            "name": "Geo daily",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, geo, media source, and campaign.\nData type: LTV\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "geo_by_date_report",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "attribution_touch_type",
+                  "value": "<string>",
+                  "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "<string>",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f2f1868-cfff-4b7c-96a1-bd78b589c9fe",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdab6502-9dd5-44a4-b3fa-1997be751378",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd9d2a3e-3a46-4d68-a582-105f594943dd",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8119469a-785a-4224-819b-88f097c0f44c",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94623601-bf12-4ee9-bd5b-d73a486df5ab",
+          "name": "Geo",
+          "request": {
+            "name": "Geo",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by geo, media source, and campaign.\nData type: LTV\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "geo_report",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "attribution_touch_type",
+                  "value": "<string>",
+                  "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "<string>",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8d8dfb0-83fe-4d26-b6cc-f993ec5a85e3",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c83b3d31-153a-4e38-bee3-afd7741a6fd0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a40b00d-2baf-4a9e-8f96-bc7be875a390",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a13510f9-53a1-4650-b9e1-2cf965d6a098",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "geo_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "942623da-56f5-428b-8d63-4c83e4fd2d13",
+          "name": "Partners daily",
+          "request": {
+            "name": "Partners daily",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, media source, and campaign.\nData type: LTV\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "partners_by_date_report",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "attribution_touch_type",
+                  "value": "<string>",
+                  "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "<string>",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6121df0-94c4-409c-9522-eb00ebc62729",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc195bac-0980-4757-8f63-3811ecc0221d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13193efd-2384-439a-90b7-dad7443b3dcd",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36e9e3f0-a153-4577-adb1-53d1618c7b61",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_by_date_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dbe9469-2c7e-4f02-bd0c-7c32bd7b2b86",
+          "name": "Partners",
+          "request": {
+            "name": "Partners",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by media source and campaign.\nData type: LTV\nFor details, see [KB link](https://support.appsflyer.com/hc/en-us/articles/360007530258-Using-Pull-API-raw-data)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "partners_report",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "attribution_touch_type",
+                  "value": "<string>",
+                  "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "<string>",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cb0d6a5-986a-4df5-90dc-a34094c6190c",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19f787fb-cd52-4cdd-8bed-b35ad5f58b47",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98f91b6d-9c3a-4a59-8e51-7ca9c114e521",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d89f524-2b79-414a-9573-8abebf9babc4",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "partners_report",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribution_touch_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/agg-data/export/app/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "921cac09-e390-4173-bd7f-9b450bb479af",
+    "name": "Aggregate Pull API V2 Token",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

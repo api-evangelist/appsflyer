@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PC/Console/CTV Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "authorization",
+      "value": "{{authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Measure first app opens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Measure first app opens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.appsflyer.com/v1.0/s2s/first_open/app/:platform/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "Application ID\n"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The CTV platform of the measured app\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ℹ️ This is a server to server API. If you need to report events directly from your application's client please see [this section](doc:c2s-integrations-overview) or contact your CSM\n\n### Generate the authentication signature\n\nTo authenticate the API request, generate a Hash-Based Message Authentication Code (HMAC) signature by hashing the entire raw message using SHA-256 and the Devkey as the secret key. Place the resulting signature in the request authentication header.\n\nFor example, if the ra"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Measure in-app events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Measure in-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.appsflyer.com/v1.0/s2s/inapp/app/:platform/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "Application ID\n"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The CTV platform of the measured app\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ℹ️ This is a server to server API. If you need to report events directly from your application's client please see [this section](doc:c2s-integrations-overview) or contact your CSM\n\nThis AppsFlyer API integration allows advertisers to measure any\npost-install in-app event and attribute it to a media source and campaign\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Measure sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Measure sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.appsflyer.com/v1.0/s2s/session/app/:platform/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "Application ID\n"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The CTV platform of the measured app\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ℹ️ This is a server to server API. If you need to report events directly from your application's client please see [this section](doc:c2s-integrations-overview) or contact your CSM\n\nThis AppsFlyer API integration provide advertisers with the ability\nto measure post-install sessions and attribute it to a media source and campaign\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

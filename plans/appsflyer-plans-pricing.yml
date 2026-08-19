@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.appsflyer.com/pricing/
+docs: https://www.appsflyer.com/pricing/
+currency: USD
+billing_unit: conversion
+billing_unit_definition: 'AppsFlyer bills on conversions, defined on the pricing page as "a successful
+  app install or user action that your efforts drove and that you measured with AppsFlyer." Pricing is
+  therefore volume-based on measured conversions, not on API calls or seats.'
+plan_count: 3
+plans:
+- name: Zero
+  price: 0
+  price_display: Free
+  currency: USD
+  billing_period: annual
+  self_serve: true
+  included_quota:
+    conversions: 12000
+    window: first 12 months from signup
+    note: Part of the one-time Welcome Package granted at signup.
+  overage: null
+  limits:
+    intended_use: Apps running owned-media activity only; the page states it is not suited to paid campaigns.
+  includes:
+  - Core marketing analytics
+  - Deep linking basics
+  - 30-day trial of select premium add-ons
+- name: Growth
+  price: null
+  price_display: '$0.07 each'
+  currency: USD
+  billing_period: pay-as-you-go
+  self_serve: true
+  marketed_as: Most popular
+  included_quota:
+    conversions: 12000
+    window: first 12 months from signup
+    note: Welcome Package; metered pricing begins once the free conversions are consumed.
+  overage:
+    unit: conversion
+    price: 0.07
+    currency: USD
+    note: Published verbatim as "$0.07 each" for conversions beyond the Welcome Package.
+  includes:
+  - Basic mobile attribution
+  - Core analytics
+  - Deep linking
+  - 30-day trial of select premium add-ons
+- name: Enterprise
+  price: null
+  price_display: Custom pricing
+  currency: USD
+  billing_period: contract
+  self_serve: false
+  sales_gated: true
+  cta: Request a demo
+  included_quota: null
+  overage: null
+  includes:
+  - Cross-channel attribution
+  - Fraud protection (Protect360)
+  - Advanced AI insights
+  - Audience segmentation
+  - Incrementality testing
+welcome_package:
+  conversions: 12000
+  window: 12 months from signup
+  trial_days: 30
+  trial_addons:
+  - Raw Data API Access
+  - API Analytics Suite
+  - Custom Dashboards
+  note: The Welcome Package is granted once per account at signup and is what makes API access available
+    on the free and self-serve tiers.
+api_access_notes:
+- 'Raw Data API Access is an explicitly named premium add-on, not a baseline entitlement: the Pull API
+  surface is gated behind it after the 30-day trial.'
+- Several OneLink API operations are tagged "Premium" in AppsFlyer's own published OpenAPI (for example
+  operationId get-onelink-v2-link-quota and onelink-v2-create-link carry a "Premium" badge in the operation
+  description), which is a per-operation entitlement gate rather than a per-plan one.
+- No per-add-on prices are published; add-on pricing requires a sales conversation.
+machine_readable_pricing: false
+note: AppsFlyer publishes named, priced self-serve tiers and a single unit price ($0.07 per conversion),
+  which is more than most enterprise martech vendors disclose, but the Enterprise tier and every premium
+  add-on remain quote-only. There is no machine-readable pricing or catalog endpoint.

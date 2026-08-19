@@ -1,0 +1,670 @@
+{
+  "item": [
+    {
+      "id": "d603fa7e-f714-4276-8213-344761a93fbb",
+      "name": "InCost job status",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddf1c1df-3ab8-458b-828f-ecfb7bd56273",
+          "name": "Get job status",
+          "request": {
+            "name": "Get job status",
+            "description": {},
+            "url": {
+              "path": [
+                "incost-jobstatus",
+                "v1",
+                "data",
+                "app",
+                ":app_id",
+                "job",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "job_id",
+                  "description": "(Required) The job identifier returned by the send cost data call. \n      \n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d137362d-5e14-424d-938d-817872c438d6",
+              "name": "This response signals that the request arrived and processed, but it doesn't necessarily means the request was accepted as a success.\nCheck `status` and the existence of the field `error`\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-jobstatus",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id",
+                    "job",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier returned by the send cost data call. \n      \n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date_from\": \"2023-12-07\",\n  \"date_to\": \"2023-12-07\",\n  \"matched_records_percentage\": \"0.00\",\n  \"app_id\": \"id888123456\",\n  \"agency\": \"\",\n  \"status\": \"Applied\",\n  \"Uploaded_request_url\": \"https://af-eu-west-1-prod-xpend-incost.s3.eu-west-1.amazonaws.com/-1693396491/MjAyMy……….json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231225T174454Z&X-Amz-SignedHeaders=host&X-Amz-Expires=7199&X-Amz-Credential=AKIAS25E……………...&X-Amz-Signature=07ce………………..\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4412357c-7b09-41bd-9831-43937e50ec9c",
+              "name": "Job ID doesn't match app ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-jobstatus",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id",
+                    "job",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier returned by the send cost data call. \n      \n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"af_error_code\": \"ic415\",\n    \"error_message\": \"Job ID does not match to the app ID sent in the request. Change the job ID or app ID and try again.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f126c1a1-03ba-4ebf-ba55-ee0d865c902c",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-jobstatus",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id",
+                    "job",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier returned by the send cost data call. \n      \n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"not-found\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "725afebd-a995-4e98-a393-0a35b5a6775d",
+              "name": "Job ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-jobstatus",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id",
+                    "job",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The job identifier returned by the send cost data call. \n      \n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"af_error_code\": \"ic224\",\n    \"error_message\": \"General error occurred. Retry invoking the API in 10 minutes.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "66f5c4d8-5141-42c5-8b69-c7eac9430efb",
+      "name": "InCost uploader",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0866e774-b3b6-4421-a35e-03e437230f1a",
+          "name": "Upload cost data",
+          "request": {
+            "name": "Upload cost data",
+            "description": {},
+            "url": {
+              "path": [
+                "incost-uploader",
+                "v1",
+                "data",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"date\": \"<string>\",\n    \"app_id\": \"<string>\",\n    \"media_source\": \"<string>\",\n    \"campaign_id\": \"<string>\",\n    \"campaign_name\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"spend\": \"<double>\",\n    \"af_prt\": \"<string>\",\n    \"adset_id\": \"<string>\",\n    \"adset_name\": \"<string>\",\n    \"ad_id\": \"<string>\",\n    \"site_id\": \"<string>\",\n    \"ad_name\": \"<string>\",\n    \"geo\": \"<string>\",\n    \"channel\": \"<string>\",\n    \"keywords\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d82ad929-8a2b-4dab-96ba-3fe70af60fc8",
+              "name": "InCost upload successful\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-uploader",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"date\": \"2019-12-30\",\n    \"app_id\": \"id123456789\",\n    \"media_source\": \"network_int\",\n    \"campaign_id\": \"<string>\",\n    \"campaign_name\": \"my_campagin123\",\n    \"currency\": \"<string>\",\n    \"spend\": \"<double>\",\n    \"af_prt\": \"agencya\",\n    \"adset_id\": \"123A\",\n    \"adset_name\": \"my_adset_name\",\n    \"ad_id\": \"123AB\",\n    \"site_id\": \"<string>\",\n    \"ad_name\": \"Ad-name\",\n    \"geo\": \"<string>\",\n    \"channel\": \"my_channel\",\n    \"keywords\": \"abc app\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"job_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b1438c6-99a3-4e32-9012-2dcbc9e1c3aa",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-uploader",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"date\": \"2019-12-30\",\n    \"app_id\": \"id123456789\",\n    \"media_source\": \"network_int\",\n    \"campaign_id\": \"<string>\",\n    \"campaign_name\": \"my_campagin123\",\n    \"currency\": \"<string>\",\n    \"spend\": \"<double>\",\n    \"af_prt\": \"agencya\",\n    \"adset_id\": \"123A\",\n    \"adset_name\": \"my_adset_name\",\n    \"ad_id\": \"123AB\",\n    \"site_id\": \"<string>\",\n    \"ad_name\": \"Ad-name\",\n    \"geo\": \"<string>\",\n    \"channel\": \"my_channel\",\n    \"keywords\": \"abc app\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"not-found\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be57c517-1f33-4421-89c6-547bb4a099db",
+              "name": "Media source not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-uploader",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"date\": \"2019-12-30\",\n    \"app_id\": \"id123456789\",\n    \"media_source\": \"network_int\",\n    \"campaign_id\": \"<string>\",\n    \"campaign_name\": \"my_campagin123\",\n    \"currency\": \"<string>\",\n    \"spend\": \"<double>\",\n    \"af_prt\": \"agencya\",\n    \"adset_id\": \"123A\",\n    \"adset_name\": \"my_adset_name\",\n    \"ad_id\": \"123AB\",\n    \"site_id\": \"<string>\",\n    \"ad_name\": \"Ad-name\",\n    \"geo\": \"<string>\",\n    \"channel\": \"my_channel\",\n    \"keywords\": \"abc app\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"af_error_code\": \"ic213\",\n    \"error_message\": \"media_source was not found. Verify and resubmit.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7413da33-1753-44ba-9272-4bf19dc9c469",
+              "name": "Incorrect JSON format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incost-uploader",
+                    "v1",
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"date\": \"2019-12-30\",\n    \"app_id\": \"id123456789\",\n    \"media_source\": \"network_int\",\n    \"campaign_id\": \"<string>\",\n    \"campaign_name\": \"my_campagin123\",\n    \"currency\": \"<string>\",\n    \"spend\": \"<double>\",\n    \"af_prt\": \"agencya\",\n    \"adset_id\": \"123A\",\n    \"adset_name\": \"my_adset_name\",\n    \"ad_id\": \"123AB\",\n    \"site_id\": \"<string>\",\n    \"ad_name\": \"Ad-name\",\n    \"geo\": \"<string>\",\n    \"channel\": \"my_channel\",\n    \"keywords\": \"abc app\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"af_error_code\": \"ic416\",\n    \"error_message\": \"Incorrect JSON format. Verify and resubmit.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a24107a-05bb-417e-8251-f2cf08384fac",
+    "name": "InCost API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "InCost API, part of AppsFlyer ROI360, lets ad network partners programmatically send advertising cost data to AppsFlyer. Doing so provides advertisers with aggregate cost data from all their ad networks in one place.\n",
+      "type": "text/plain"
+    }
+  }
+}

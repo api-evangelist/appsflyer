@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WEB Server-TO-Server API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://webs2s.appsflyer.com/v1/:bundleId/event",
+            "params": [
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path",
+                "description": "The bundle ID for which the user ID(s) is to be set."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets a custom user ID or an AppsFlyer user ID for the specified bundle, at least one identifier is required."
+        },
+        {
+          "info": {
+            "name": "Associate Customer User ID with AF User ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://webs2s.appsflyer.com/v1/:bundleId/setcuid",
+            "params": [
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path",
+                "description": "The bundle ID for which the user ID(s) is to be set."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "On associating a CUID with a visitor to your website. For example, any time you match the web `afUserId` with your customer user ID. Doing so enables PBA to match data from various sources. \nThis is similar to [`setCustomerUserId`](https://support.appsflyer.com/hc/en-us/articles/360001610038-PBA-web-SDK-integration-guide#identifying-users-using-customer-user-id-cuid) on the website.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Server-to-server events API (for mobile)",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "authentication",
+      "value": "{{authentication}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inapp Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api3.appsflyer.com/inappevent/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to send mobile events that occur outside the app from your servers to AppsFlyer.\n> ⚠️ \n> **JSON payload limitation** JSON payload size: up to 1KB\n\n> ⚠️ \n> This API requires **TLS v1.2** or higher\n\n> 📘 \n> **Encode URLs** - [Encode (percent) code reserved characters](https://tools.ietf.org/html/rfc3986#section-2.1) before forming the method URL. \n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,834 @@
+{
+  "item": [
+    {
+      "id": "867e224d-5d59-4ec3-88aa-7eeac292c910",
+      "name": "Measure in-app events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8c63154-aed2-466e-889f-82ed9ea37604",
+          "name": "Measure in-app events",
+          "request": {
+            "name": "Measure in-app events",
+            "description": {
+              "content": "> ℹ️ This is  API is used to to report events directly from your application's client. If you need Server-to-Server please see [this section](https://dev.appsflyer.com/hc/reference/post_inapp-app-platform-app-id)         \nThis AppsFlyer API integration allows advertisers to measure any\npost-install in-app event and attribute it to a media source and campaign\n\n> 📘 Note\n>\n> ### Generate the authentication signature\n>\n> To authenticate the API request, generate a Hash-Based Message Authentication Code (HMAC) signature by hashing the entire raw message using SHA-256 and the Devkey as the secret key. Place the resulting signature in the request authentication header.\n>\n> For example, if the raw message is:\n> `{\"timestamp\": 1604503583337, \"ip\": \"127.0.0.1\", \"user_agent\": \"Roku/DVP-9.21 (AE9.21E04090A)\", \"device_os_version\": \"9.3.0\", \"device_model\": \"3920X\", \"device_ids\": [{\"type\": \"rida\", \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"}], \"limit_ad_tracking\": false}`\n>\n> The Devkey is:\n> `w8sZzy8EaPaxFKfaoTqU16`\n>\n> The signature is:\n> 715b133d5a327b77beb898688a3ad438da0f78071cd3df70e8ec5ecf60751972\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inapp",
+                "app",
+                ":platform",
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The CTV platform of the measured app\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request_id\": \"<string>\",\n  \"device_ids\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"device_model\": \"<string>\",\n  \"device_os_version\": \"<string>\",\n  \"event_name\": \"<string>\",\n  \"limit_ad_tracking\": \"<boolean>\",\n  \"app_version\": \"<string>\",\n  \"customer_user_id\": \"<string>\",\n  \"event_parameters\": {\n    \"af_duration_seconds\": \"<integer>\",\n    \"af_revenue\": \"<double>\",\n    \"af_price\": \"<double>\",\n    \"af_currency\": \"<string>\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79f77a31-a848-45a4-97a5-5d78811e1c5c",
+              "name": "The request was accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"event_name\": \"af_purchase\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\",\n  \"event_parameters\": {\n    \"af_revenue\": 1.99,\n    \"af_price\": 2.456,\n    \"af_currency\": \"MYR\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2b7c863-642c-4970-ad20-8f98165cff81",
+              "name": "Mandatory fields in the message body are missing, or fields are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"event_name\": \"af_purchase\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\",\n  \"event_parameters\": {\n    \"af_revenue\": 1.99,\n    \"af_price\": 2.456,\n    \"af_currency\": \"MYR\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9c46361-534d-4d7d-95a5-c15cd7ac0023",
+              "name": "The app doesn't exist or the authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"event_name\": \"af_purchase\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\",\n  \"event_parameters\": {\n    \"af_revenue\": 1.99,\n    \"af_price\": 2.456,\n    \"af_currency\": \"MYR\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9747cb78-876f-40da-9aba-153f7a48e92a",
+              "name": "App traffic blocked due to Zero package limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"event_name\": \"af_purchase\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\",\n  \"event_parameters\": {\n    \"af_revenue\": 1.99,\n    \"af_price\": 2.456,\n    \"af_currency\": \"MYR\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69df9a9a-faec-42a7-a0a3-1b7ce8d1fa77",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"event_name\": \"af_purchase\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\",\n  \"event_parameters\": {\n    \"af_revenue\": 1.99,\n    \"af_price\": 2.456,\n    \"af_currency\": \"MYR\"\n  },\n  \"event_custom_parameters\": \"<json>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4c060fc6-2458-455e-bb12-930b3bcddb60",
+      "name": "Measure sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fd8544c-5602-47e9-99df-5b15246f2445",
+          "name": "Measure sessions",
+          "request": {
+            "name": "Measure sessions",
+            "description": {
+              "content": "> ℹ️ This is  API is used to to report events directly from your application's client. If you need Server-to-Server please see [this section](https://dev.appsflyer.com/hc/reference/post_session-app-platform-app-id)         \n\nThis AppsFlyer API integration provide advertisers with the ability\nto measure post-install sessions and attribute it to a media source and campaign\n\n> 📘 Note\n>\n> ### Generate the authentication signature\n>\n> To authenticate the API request, generate a Hash-Based Message Authentication Code (HMAC) signature by hashing the entire raw message using SHA-256 and the Devkey as the secret key. Place the resulting signature in the request authentication header.\n>\n> For example, if the raw message is:\n> `{\"timestamp\": 1604503583337, \"ip\": \"127.0.0.1\", \"user_agent\": \"Roku/DVP-9.21 (AE9.21E04090A)\", \"device_os_version\": \"9.3.0\", \"device_model\": \"3920X\", \"device_ids\": [{\"type\": \"rida\", \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"}], \"limit_ad_tracking\": false}`\n>\n> The Devkey is:\n> `w8sZzy8EaPaxFKfaoTqU16`\n>\n> The signature is:\n> 715b133d5a327b77beb898688a3ad438da0f78071cd3df70e8ec5ecf60751972\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "session",
+                "app",
+                ":platform",
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The CTV platform of the measured app\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request_id\": \"<string>\",\n  \"device_ids\": [\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"device_model\": \"<string>\",\n  \"device_os_version\": \"<string>\",\n  \"limit_ad_tracking\": \"<boolean>\",\n  \"app_version\": \"<string>\",\n  \"customer_user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e25b393-1f22-407c-b854-93ec8107b1b3",
+              "name": "The request was accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb2039e5-80d1-4582-93dc-bccbb6fb261d",
+              "name": "The authentication succeeded, but mandatory fields in the message body are missing, or fields are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7120a49-4494-49ee-9bcb-def634f413fc",
+              "name": "The app doesn't exist or the authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e9ba66b-7f0a-4d78-ae16-63d22e382b61",
+              "name": "App traffic blocked due to Zero package limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd6000b6-7e1f-4b57-8831-6857d9fa1398",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "session",
+                    "app",
+                    ":platform",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The CTV platform of the measured app\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request_id\": \"71dad7da-7926-40d8-9b15-b94a6d46e15a\",\n  \"device_ids\": [\n    {\n      \"type\": \"rida\",\n      \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"\n    },\n    {\n      \"type\": \"custom\",\n      \"value\": \"045f4137-57b7-45e6-8a45-c303101a086a\"\n    }\n  ],\n  \"device_model\": \"3920X\",\n  \"device_os_version\": \"9.3.0\",\n  \"limit_ad_tracking\": true,\n  \"app_version\": \"1.0.5\",\n  \"customer_user_id\": \"15667737-366d-4994-ac8b-653fe6b2be4a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://events.appsflyer.com/v1.0/c2s/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "144001d6-2518-4c4e-873f-c16e08deed94",
+    "name": "PC/Console/CTV Client-app Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

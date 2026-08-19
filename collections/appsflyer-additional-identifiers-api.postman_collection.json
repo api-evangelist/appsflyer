@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "a3fef042-4ad4-4ec8-89e1-2273687deef8",
+      "name": "Additional Identifiers Handling",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bb95285-0e5d-4f77-bf21-c0666b006de9",
+          "name": "Add, Modify or Remove",
+          "request": {
+            "name": "Add, Modify or Remove",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_type\": \"<string>\",\n  \"data\": [\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"phone_number_sha256\": \"<string>\",\n        \"phone_number_e164_sha256\": \"<string>\"\n      }\n    },\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"phone_number_sha256\": \"<string>\",\n        \"phone_number_e164_sha256\": \"<string>\"\n      }\n    }\n  ],\n  \"action\": \"add\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7cf48ae-f177-44fc-aa18-2a4fbdb9e73c",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_type\": \"<string>\",\n  \"data\": [\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    },\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    }\n  ],\n  \"action\": \"add\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Accepted for processing\",\n  \"received\": 1000,\n  \"invalid\": 2,\n  \"trace-id\": \"698ed323-c787-45b5-b792-463c67c94064\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0dc64d7-1b99-4193-9e84-e9adb03573e2",
+              "name": "Issue with request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_type\": \"<string>\",\n  \"data\": [\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    },\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    }\n  ],\n  \"action\": \"add\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Request body must have a valid key_type\",\n  \"trace-id\": \"18a5f685-ea4d-4ca9-beab-a542a3786d12\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc7552ad-d1c5-4b5b-bec3-9177f637c591",
+              "name": "Issue with request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_type\": \"<string>\",\n  \"data\": [\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    },\n    {\n      \"key_value\": \"<string>\",\n      \"identifiers\": {\n        \"hashed_emails\": [\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n          \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n        ],\n        \"phone_number_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\",\n        \"phone_number_e164_sha256\": \"99e9a5b2334f447022f47a08422abed1742dee5e83408ea6e7b2ed3d50ddb1af\"\n      }\n    }\n  ],\n  \"action\": \"add\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Request body must have a valid key_type\",\n  \"trace-id\": \"18a5f685-ea4d-4ca9-beab-a542a3786d12\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/audience-bulk-api/v1/additional-identifiers",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf515924-708f-4f5e-8340-7bfdce3758a9",
+    "name": "Additional Identifiers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

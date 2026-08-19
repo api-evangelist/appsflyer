@@ -1,0 +1,1455 @@
+{
+  "item": [
+    {
+      "id": "d2a4fef2-c8c5-4e95-9888-6b4b2c2cdf06",
+      "name": "App management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5376091-1963-4702-98fa-4f1b56ee4dd6",
+          "name": "Delete app",
+          "request": {
+            "name": "Delete app",
+            "description": {
+              "content": "Public API for deleting an app from your AppsFlyer account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":app_id",
+                ":platform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App id to delete (case-sensitive)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) Platform app to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "181c52ad-4deb-47c4-85db-478bae625dcc",
+              "name": "app deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"message\": \"string\",\n  \"error\": {\n    \"status\": 6097.923931099673,\n    \"message\": \"string\",\n    \"code\": \"string\",\n    \"resource\": \"string\",\n    \"documentation\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05522b46-3a68-4b39-9911-6a202bee5c43",
+              "name": "Missing / Invaild input params or request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The platform name was either misspelled or isn't in the list of supported app platforms. The supported platforms are: 'android', 'ios', 'windowsphone' 'roku','smartcast','tizen', 'webos', 'playstation', 'vidaa', 'steam', 'quest', 'battlenet', 'web', 'switch', 'xbox', 'epic', 'nativepc', 'chatgpt' . For more information please refer to the attached documentation link.\",\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"VALIDATION_FAILED\",\n    \"message\": \"The platform name was either misspelled or isn't in the list of supported app platforms. The supported platforms are: 'android', 'ios', 'windowsphone' 'roku','smartcast','tizen', 'webos', 'playstation', 'vidaa', 'steam', 'quest', 'battlenet', 'web', 'switch', 'xbox', 'epic', 'nativepc', 'chatgpt' . For more information please refer to the attached documentation link.\",\n    \"resource\": \"app,\",\n    \"documentation\": \"https://support.appsflyer.com/hc/en-us/articles/207377436-Adding-an-app-to-AppsFlyer#enter-app-details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7627f037-a570-42b7-8fd4-b28ee2d8275a",
+              "name": "Unauthorized - Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n  \"error\": {\n    \"status\": 401,\n    \"code\": \"AUTHENTICATION_FAILED\",\n    \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ac3baee-eef1-4920-96ff-ba9095e17b51",
+              "name": "Forbidden - You are not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN_UNAUTHORIZED_USER_ACTION\",\n    \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f46a382d-c784-4e91-8d7b-c06a1110b44f",
+              "name": "Not found - Something went wrong please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The app wasn’t found. Possible reasons: The app doesn't exist in your account, the app ID was misspelled, or the wrong platform was entered. Please try again with the correct details. If the issue persists, contact your CSM or hello@appsflyer.com\",\n  \"error\": {\n    \"status\": 404,\n    \"code\\\"\": \"APP_ENTITY_NOT_FOUND\",\n    \"message\": \"The app wasn’t found. Possible reasons: The app doesn't exist in your account, the app ID was misspelled, or the wrong platform was entered. Please try again with the correct details. If the issue persists, contact your CSM or hello@appsflyer.com\",\n    \"resource\\\"\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b24b3ba-4433-4480-9257-86c4b0ffdca7",
+              "name": "We were unable to complete your request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"We were unable to verify your api access token. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n  \"error\": {\n    \"status\": 422,\n    \"code\": \"API_TOKEN_VERIFICATION_FAILED\",\n    \"message\": \"We were unable to verify your api access token. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38ba972c-417f-4c53-9a6a-6e303fcb6800",
+              "name": "Too many requests - Exceeded rate limitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to delete (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a8371e7-f720-48cb-88ec-3ec2269441a2",
+          "name": "Update app",
+          "request": {
+            "name": "Update app",
+            "description": {
+              "content": "Public API for updating an app on your AppsFlyer account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":app_id",
+                ":platform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App id to update (case-sensitive)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) Platform app to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4b03d60-647d-425d-80a0-692fe2ea6f5c",
+              "name": "app updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"message\": \"string\",\n  \"error\": {\n    \"status\": 6097.923931099673,\n    \"message\": \"string\",\n    \"code\": \"string\",\n    \"resource\": \"string\",\n    \"documentation\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc03e30e-b762-46c2-86f0-a539a18f85d1",
+              "name": "Invalid or missing input params or request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid value. The value must be a whole number, expressed in seconds, representing either 1-59 minutes or 1-24 hours.\",\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"VALIDATION_FAILED\",\n    \"message\": \"Invalid value. The value must be a whole number, expressed in seconds, representing either 1-59 minutes or 1-24 hours.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd52ac5e-57a4-4881-acc0-6afd06e2250c",
+              "name": "Unauthorized - Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n  \"error\": {\n    \"status\": 401,\n    \"code\": \"AUTHENTICATION_FAILED\",\n    \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6eb1436-fb36-43a6-a2f1-18f27006f0e9",
+              "name": "Forbidden - You are not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN_UNAUTHORIZED_USER_ACTION\",\n    \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a229cbf9-b0dd-429f-91eb-532068ea3d90",
+              "name": "Not found - Something went wrong please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The app wasn’t found. Possible reasons: The app doesn’t exist in your account, the app ID was misspelled, or the wrong platform was entered. Please try again with the correct details. If the issue persists, contact your CSM or hello@appsflyer.com\",\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"APP_ENTITY_NOT_FOUND\",\n    \"message\": \"The app wasn’t found. Possible reasons: The app doesn’t exist in your account, the app ID was misspelled, or the wrong platform was entered. Please try again with the correct details. If the issue persists, contact your CSM or hello@appsflyer.com\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ae90c6b-33fd-4b7f-9082-9c857a4f9fdb",
+              "name": "We were unable to complete your request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"We were unable to verify your api access token. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n  \"error\": {\n    \"status\": 422,\n    \"code\": \"API_TOKEN_VERIFICATION_FAILED\",\n    \"message\": \"We were unable to verify your api access token. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9c4a7c5-7180-44ff-928d-5cfc76de145e",
+              "name": "Too many requests - Exceeded rate limitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App id to update (case-sensitive)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) Platform app to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enableProbabilisticViewThroughAttribution\": \"<boolean>\",\n  \"enableIpMasking\": \"<boolean>\",\n  \"minTimeBetweenSessions\": \"<number>\",\n  \"reAttributionWindow\": \"<number>\",\n  \"reEngagementAttribution\": {\n    \"isEnabled\": \"<boolean>\",\n    \"minTimeBetweenReEngagements\": \"<number>\"\n  },\n  \"enableSeoAppAttribution\": \"<boolean>\",\n  \"enableAggregatedAdvancedPrivacy\": \"<boolean>\",\n  \"enableReinstallDetection\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"message\": \"string\",\n  \"error\": {\n    \"status\": 6097.923931099673,\n    \"message\": \"string\",\n    \"code\": \"string\",\n    \"resource\": \"string\",\n    \"documentation\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05903a5b-f90c-46ae-9376-d13c7bea5df6",
+          "name": "Add app",
+          "request": {
+            "name": "Add app",
+            "description": {
+              "content": "Public API for adding an app to your AppsFlyer account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform\": \"<string>\",\n  \"status\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"app_url\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"kidsPrivacy\": \"<boolean>\",\n  \"app_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb4f5abe-591d-44fc-9734-c4cb202bef9a",
+              "name": "app added successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"message\": \"string\",\n  \"error\": {\n    \"status\": 6097.923931099673,\n    \"message\": \"string\",\n    \"code\": \"string\",\n    \"resource\": \"string\",\n    \"documentation\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f00f8e2-bc02-4b53-87ee-c7104b839e5f",
+              "name": "Invalid or missing input params or request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The app ID that was entered exceeded the 100-character limit.\",\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"VALIDATION_FAILED\",\n    \"message\": \"The app ID that was entered exceeded the 100-character limit.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0008c07c-3f97-4cce-a442-f45dc3b95d15",
+              "name": "Unauthorized - Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.\",\n  \"error\": {\n    \"status\": 401,\n    \"code\": \"AUTHENTICATION_FAILED\",\n    \"message\": \"Authentication failed. Please ensure the provided token is correct and try again. If the issue persists, contact your CSM.,\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aaf9b99-84f0-4222-9b9c-b21554970714",
+              "name": "Forbidden - You are not authorized to perform this action",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN_UNAUTHORIZED_USER_ACTION\",\n    \"message\": \"Forbidden. You are not authorized to perform this action. Please verify you have the correct role, and required permissions to perform this action. If this issue persists please contact your CSM.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "451291f6-1f79-4a37-ae37-cd8010f0c21a",
+              "name": "Not found - Something went wrong please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47346225-ad27-47f7-a718-82f10603bf9b",
+              "name": "We were unable to complete your request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API access token that was entered either doesn’t exist in the account or was misspelled. Please try again with the correct token. If the issue persists, contact your CSM or hello@appsflyer.com.\",\n  \"error\": {\n    \"status\": 422,\n    \"code\": \"API_TOKEN_VERIFICATION_FAILED\",\n    \"message\": \"The API access token that was entered either doesn’t exist in the account or was misspelled. Please try again with the correct token. If the issue persists, contact your CSM or hello@appsflyer.com.\",\n    \"resource\": \"app\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3b89a11-40c6-4789-8314-e2474d9e34ce",
+              "name": "Too many requests - Exceeded rate limitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"available\",\n  \"platform\": \"android\",\n  \"time_zone\": \"UTC\",\n  \"currency\": \"USD\",\n  \"app_name\": \"Optional custom app name\",\n  \"app_url\": \"https://play.google.com/store/apps/details?id=com.publisher.name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/app/v2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "89391f57-2cb6-4ecc-b9e1-f25ef6847256",
+    "name": "App management API V2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing an app on your AppsFlyer account",
+      "type": "text/plain"
+    }
+  }
+}

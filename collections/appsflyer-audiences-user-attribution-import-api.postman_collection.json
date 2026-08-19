@@ -1,0 +1,113 @@
+{
+  "item": [
+    {
+      "id": "3f982a55-1b13-455a-a862-e13b2f87dc42",
+      "name": "Audiences User Attribution Import API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d701d23-caf4-4e42-b547-cbeba222b10d",
+          "name": "Import User Attributes",
+          "request": {
+            "name": "Import User Attributes",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "set-user-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"import_key\": \"<string>\",\n  \"attributes_values\": [\n    {\n      \"device_id\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"app_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"attributes\": [\n        {\n          \"attribute_key\": \"<string>\",\n          \"attribute_value\": \"<string>\"\n        },\n        {\n          \"attribute_key\": \"<string>\",\n          \"attribute_value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"device_id\": \"<string>\",\n      \"customer_id\": \"<string>\",\n      \"app_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"attributes\": [\n        {\n          \"attribute_key\": \"<string>\",\n          \"attribute_value\": \"<string>\"\n        },\n        {\n          \"attribute_key\": \"<string>\",\n          \"attribute_value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9670917c-b41b-4d1e-a6d1-15c3acfc5a23",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "set-user-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"import_key\": \"c733e4d7-b538-4d12-a2ef-ffffffffffff\",\n  \"attributes_values\": [\n    {\n      \"device_id\": \"0bcfc579-f1f3-4452-9111f\",\n      \"customer_id\": \"2222222\",\n      \"app_ids\": [\n        \"com.example11.mygoodapp\"\n      ],\n      \"attributes\": [\n        {\n          \"attribute_key\": \"score\",\n          \"attribute_value\": 5\n        },\n        {\n          \"attribute_key\": \"favorite_sport\",\n          \"attribute_value\": \"cricket\"\n        }\n      ]\n    },\n    {\n      \"device_id\": \"555555-d1d1-d1d1-555-fffffffff\",\n      \"customer_id\": \"111111\",\n      \"app_ids\": [\n        \"com.example22.mybestapp\"\n      ],\n      \"attributes\": [\n        {\n          \"attribute_key\": \"order\",\n          \"attribute_value\": 7\n        },\n        {\n          \"attribute_key\": \"number\",\n          \"attribute_value\": 8\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/user-attributes-import-api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc96f4ec-65ec-4099-93be-f744f3eac8ff",
+    "name": "Audiences User Attribution Import API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "item": [
+    {
+      "id": "b05ac709-5c6c-41ab-88eb-d89f6369e25a",
+      "name": "Conversion Data for SDK attribution testing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3cf43c64-d448-4ea8-9e60-1ea8798d29f8",
+          "name": "Get the conversion data",
+          "request": {
+            "name": "Get the conversion data",
+            "description": {},
+            "url": {
+              "path": [
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "devkey",
+                  "value": "<string>",
+                  "description": "(Required) The Dev Key"
+                },
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<string>",
+                  "description": "(Required) The UID of this specific install. \n** Not to be confused with Advertiser ID**.\nInstrcutions to retrieve the UID:\n- [Android](https://dev.appsflyer.com/hc/docs/testing-android#inspect-conversion-data)\n- [iOS](https://dev.appsflyer.com/hc/docs/testing-ios#inspect-conversion-data) \n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) The app ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5fc0f66-625a-4445-bed1-402629979c94",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "devkey",
+                      "value": "ABCDEw4F78vGTeTuY12345"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "1600009251234-1234567"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) The app ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"af_status\": \"Organic\",\n  \"af_message\": \"organic install\",\n  \"install_time\": \"2021-08-23 06:59:51.194\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "363ffa73-aeee-40ec-8860-c9ed191b018d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "devkey",
+                      "value": "ABCDEw4F78vGTeTuY12345"
+                    },
+                    {
+                      "key": "device_id",
+                      "value": "1600009251234-1234567"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) The app ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_reason\": \"Attribution data for this AppsFlyer ID is not available\",\n  \"status_code\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://gcdsdk.appsflyer.com/install_data/v4.0/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d1d215e-2df6-4c6f-a12d-59f672084697",
+    "name": "GCD API for SDK attribution testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

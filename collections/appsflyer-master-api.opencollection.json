@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Master API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Master Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Master Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/master-agg-data/v4/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupings",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kpis",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "calculated_kpis",
+                "value": "",
+                "type": "query",
+                "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+              },
+              {
+                "name": "pid",
+                "value": "",
+                "type": "query",
+                "description": "Used for selecting the rows, which the specified media source/s are displayed in. Comma-separated multiple selection is supported"
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by campaign name"
+              },
+              {
+                "name": "af_prt",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by agency name"
+              },
+              {
+                "name": "af_channel",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by channel name"
+              },
+              {
+                "name": "af_siteid",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by publisher id"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filtering by country"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "By default, the response data is received in CSV file format. If you prefer to get the data in JSON format append `format=json` to the URI\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

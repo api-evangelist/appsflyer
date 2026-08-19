@@ -1,0 +1,300 @@
+{
+  "item": [
+    {
+      "id": "c91d0af3-cb1b-4e6b-9931-d6c1a80ddf70",
+      "name": "Cohort Report",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e843b01a-1e4a-4f23-a342-79997dec08ee",
+          "name": "Create Cohort Report",
+          "request": {
+            "name": "Create Cohort Report",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cohort_type\": \"<string>\",\n  \"from\": \"<string>\",\n  \"to\": \"<string>\",\n  \"groupings\": [\n    \"<string>\"\n  ],\n  \"kpis\": [\n    \"<string>\"\n  ],\n  \"aggregation_type\": \"<string>\",\n  \"min_cohort_size\": \"<integer>\",\n  \"granularity\": \"<string>\",\n  \"partial_data\": \"<boolean>\",\n  \"filters\": {\n    \"af_ad\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_ad_id\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"c\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_c_id\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_channel\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"pid\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_sub1\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_keywords\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_prt\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"cohort_type\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"site_id\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"revenue_type\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"attributed_touch_type\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_adset\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"af_adset_id\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geo\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"period\": \"<integer>\"\n  },\n  \"preferred_currency\": \"<boolean>\",\n  \"preferred_timezone\": \"<boolean>\",\n  \"per_user\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c579d33c-c920-4599-92f8-9e44210822c7",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cea62f2-31ad-4754-a575-4c6722539bb5",
+              "name": "Authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Authentication error\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8117b170-55a9-43aa-a2f3-ca681882ea4c",
+              "name": "Unprocessable entity.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid value: days for key: granularity. Expected one of: hour, week, month, day\",\n  \"expose\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7504deb7-7b07-4c82-9652-add2c3be61ba",
+              "name": "Rate Limit Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/cohorts/v1/data/app/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f0d83c1f-886d-4d05-992a-228866906ed8",
+    "name": "Cohort API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

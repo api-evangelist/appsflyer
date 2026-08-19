@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "App list API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get app list",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "App list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/mng/apps",
+            "params": [
+              {
+                "name": "capabilities",
+                "value": "",
+                "type": "query",
+                "description": "To get the list and number of apps to which you have permission/integration capabilities,\nset the capabilities parameter to one of the options listed:\n- `protect_360` (Report permission): Get [Protect360 raw data reports for ad networks](https://support.appsflyer.com/hc/en-us/articles/115004745523-Protect360-for-integrated-partners)  \n- `cost` (Integration): App is enabled to get cost data [via InCost API](https://support.appsflyer.com/hc/en-us/articles/360007714957) \n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records that return per call.\nIf you don't send `limit`, it is automatically set to 1,000.\n"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records that return per call.\nIf you don't send `limit`, it is automatically set to 1,000.\n"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

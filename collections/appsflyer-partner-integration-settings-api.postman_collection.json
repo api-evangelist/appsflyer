@@ -1,0 +1,1527 @@
+{
+  "item": [
+    {
+      "id": "5eab7759-1821-4f0f-99ca-0c60b533d2ef",
+      "name": "Active integrations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69e4caa3-4d63-4f3c-a484-dc28eda3c0c0",
+          "name": "Get active integration parameters",
+          "request": {
+            "name": "Get active integration parameters",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters under the integration tab.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integrations",
+                ":appid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79a942bd-8aaf-4997-adbe-3e375ade3dc0",
+              "name": "Retrieved app active integrations parameters successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations",
+                    ":appid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"general_params\": {},\n    \"in_app_postbacks_params\": {}\n  },\n  {\n    \"general_params\": {},\n    \"in_app_postbacks_params\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed5c4e05-b304-4e95-b77a-3c3c144f3655",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations",
+                    ":appid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c8e71b-3601-4056-9372-0eaaac6dc65a",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations",
+                    ":appid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26f11ae8-9b67-4b44-86d3-6993b2935b5b",
+          "name": "Get active integrations",
+          "request": {
+            "name": "Get active integrations",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of the active integrations with your partners arranged by app. An integration is considered active if one of the following is enabled:\n- Activate partner\n- Cost\n- Ad revenue\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "495711ca-ae9f-4295-94aa-eb68a90e7900",
+              "name": "Retrieved active integrations successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account_id\": \"string\",\n  \"applications\": [\n    {\n      \"app_id\": \"string\",\n      \"active_integrations\": [\n        {\n          \"media_source_name\": \"string\",\n          \"is_integration_active\": false,\n          \"is_cost_active\": false,\n          \"is_adrevenue_active\": true\n        },\n        {\n          \"media_source_name\": \"string\",\n          \"is_integration_active\": false,\n          \"is_cost_active\": false,\n          \"is_adrevenue_active\": true\n        }\n      ]\n    },\n    {\n      \"app_id\": \"string\",\n      \"active_integrations\": [\n        {\n          \"media_source_name\": \"string\",\n          \"is_integration_active\": false,\n          \"is_cost_active\": true,\n          \"is_adrevenue_active\": false\n        },\n        {\n          \"media_source_name\": \"string\",\n          \"is_integration_active\": true,\n          \"is_cost_active\": false,\n          \"is_adrevenue_active\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc7eb586-99d0-40b1-aa2a-a4983efde402",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d48cbbe-2a32-4c2a-8ebd-63a239d4ce43",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "086ecb3f-c10d-47e6-a310-6da6eeaea70d",
+      "name": "Unique partner integration parameters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8e5ae7a-2fba-43d7-bb67-a5671a9c74d9",
+          "name": "Get a list of unique parameters",
+          "request": {
+            "name": "Get a list of unique parameters",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a successful message is recieved with no data.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "partner-params",
+                ":pid",
+                ":platform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47236c73-ea64-4cae-a08e-cd2bb45e2958",
+              "name": "Retrieved params successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-params",
+                    ":pid",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"general_params\": {},\n  \"in_app_postbacks_params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22eaee1e-5983-4e3d-9bc3-2254f726eeda",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-params",
+                    ":pid",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "281a1704-51bd-4c80-92b4-cdbc09cc71b2",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "partner-params",
+                    ":pid",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d8959117-359a-4f8b-be79-68bb00dd94e1",
+      "name": "Integration settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "004b1806-809a-4074-9188-83f028714c37",
+          "name": "Deprecated - Copy partner integration settings",
+          "request": {
+            "name": "Deprecated - Copy partner integration settings",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pid\": \"<string>\",\n  \"copy_from_app_id\": \"<string>\",\n  \"copy_to_app_id\": \"<string>\",\n  \"general_params\": \"<object>\",\n  \"in_app_postbacks_params\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac1f2f2b-74b1-46ef-9e39-bdfbb89c974a",
+              "name": "Partner integration settings copied successfully.\n\nResponse parameters provide a summary of the settings and values copied from the source app to the destination app.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"facebook_app_id\": \"23502200095693\",\n  \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"general_params\": {\n    \"Click Attribution Lookback Window\": \"string\",\n    \"Enable Advanced Privacy\": \"string\",\n    \"Ignore active users for retargeting\": \"string\",\n    \"Install Re-engagement Click Lookback Window\": \"string\",\n    \"Re-engagement attribution Enabled\": \"string\",\n    \"Re-engagement click-through lookback window\": \"string\",\n    \"Re-engagement view-through attribution\": \"string\",\n    \"Re-engagement window\": \"string\",\n    \"Time window for users to be considered inactive\": \"string\",\n    \"View-Through Attribution lookback window\": \"string\"\n  },\n  \"in_app_postbacks_params\": {\n    \"mapped-in-app-events\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39b319c2-0a77-43ff-9ec6-7997c406e513",
+              "name": "Unauthorized/TOS not accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"facebook_app_id\": \"23502200095693\",\n  \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bdd2766-23da-4e46-bc59-d380f05edfe4",
+              "name": "Integration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"facebook_app_id\": \"23502200095693\",\n  \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"NOT_FOUND\",\n  \"message\": \"Integration for <pid> was not found. Please check the pid value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2693d6ba-edbe-4917-8309-3e0e17edeb9e",
+              "name": "Missing/invalid input params",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"facebook_app_id\": \"23502200095693\",\n  \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"INVALID_VALUE\",\n  \"message\": \"<param> value is invalid.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8f32ed3-4915-4b4f-a6bf-6cb827922d4c",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"facebook_app_id\": \"23502200095693\",\n  \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "447795bd-e5c3-4979-9fce-89ca393e159e",
+          "name": "Copy partner integration settings",
+          "request": {
+            "name": "Copy partner integration settings",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nCopy the integration settings from one app to another. Copying the parameters can be done only for apps on the same platform. To retrieve the partner's unique parameters needed for the integration, use the [GET request](https://dev.appsflyer.com/hc/reference/get_v1-partner-params-pid-platform).\n> 📘 Note\n> Only parameters of event names with the `af_` prefix can be copied.  \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pid\": \"<string>\",\n  \"copy_from_app_id\": \"<string>\",\n  \"copy_to_app_id\": \"<string>\",\n  \"general_params\": \"<object>\",\n  \"in_app_postbacks_params\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46e1a656-9659-4615-8b7c-8e1789fd8a27",
+              "name": "Partner integration settings copied successfully\n\nResponse parameters provide a summary of the settings and values copied from the source app to the destination app.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"general_params\": {\n    \"facebook_app_id\": \"123\",\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"general_params\": {\n    \"Click Attribution Lookback Window\": \"string\",\n    \"Enable Advanced Privacy\": \"string\",\n    \"Ignore active users for retargeting\": \"string\",\n    \"Install Re-engagement Click Lookback Window\": \"string\",\n    \"Re-engagement attribution Enabled\": \"string\",\n    \"Re-engagement click-through lookback window\": \"string\",\n    \"Re-engagement view-through attribution\": \"string\",\n    \"Re-engagement window\": \"string\",\n    \"Time window for users to be considered inactive\": \"string\",\n    \"View-Through Attribution lookback window\": \"string\"\n  },\n  \"in_app_postbacks_params\": {\n    \"mapped-in-app-events\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ef8597e-1c1d-4a8f-b3c5-3034099fb660",
+              "name": "Unauthorized/TOS not accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"general_params\": {\n    \"facebook_app_id\": \"123\",\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52500360-c3a0-4fdc-9d3d-f91ac6f1f23f",
+              "name": "Integration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"general_params\": {\n    \"facebook_app_id\": \"123\",\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"NOT_FOUND\",\n  \"message\": \"Integration for <pid> was not found. Please check the pid value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30109147-1ae8-4dde-ba9c-83b2c810ce60",
+              "name": "Missing/invalid input params",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"general_params\": {\n    \"facebook_app_id\": \"123\",\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"INVALID_VALUE\",\n  \"message\": \"<param> value is invalid.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ce85a21-675d-49b9-b737-cd0442f606f6",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"copy_from_app_id\": \"com.publisher.name\",\n  \"copy_to_app_id\": \"com.publisher.name2\",\n  \"general_params\": {\n    \"facebook_app_id\": \"123\",\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "30b3cbeb-8432-4ae6-846d-72ea5a212945",
+      "name": "Google Play install referrer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35960a33-c877-41ec-9f47-4620c97ecc56",
+          "name": "Set install referrer decryption key",
+          "request": {
+            "name": "Set install referrer decryption key",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nSet the Google Play install referrer decryption key for each app as recieved by Facebook.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "integration-params"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pid\": \"<string>\",\n  \"app_id\": \"<string>\",\n  \"general_params\": {\n    \"gp_referrer_decryption_key\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5aa3d754-2a35-4c8d-82aa-499c6bb39af4",
+              "name": "Integration params saved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration-params"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"app_id\": \"com.publisher.name\",\n  \"general_params\": {\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"general_params\": {\n    \"Click Attribution Lookback Window\": \"string\",\n    \"Enable Advanced Privacy\": \"string\",\n    \"Ignore active users for retargeting\": \"string\",\n    \"Install Re-engagement Click Lookback Window\": \"string\",\n    \"Re-engagement attribution Enabled\": \"string\",\n    \"Re-engagement click-through lookback window\": \"string\",\n    \"Re-engagement view-through attribution\": \"string\",\n    \"Re-engagement window\": \"string\",\n    \"Time window for users to be considered inactive\": \"string\",\n    \"View-Through Attribution lookback window\": \"string\"\n  },\n  \"in_app_postbacks_params\": {\n    \"mapped-in-app-events\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49505bc9-60a7-4901-b0ea-e140389a5900",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration-params"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"app_id\": \"com.publisher.name\",\n  \"general_params\": {\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNAUTHORIZED\",\n  \"message\": \"This api is not available for your account type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9876e2f8-fbce-47bc-a40d-18e54b9a8698",
+              "name": "Missing/invalid input params",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration-params"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"app_id\": \"com.publisher.name\",\n  \"general_params\": {\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"INVALID_VALUE\",\n  \"message\": \"<param> value is invalid.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09364fb5-24a1-4b21-8815-3b964038ab25",
+              "name": "Internal server error - please try again",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "integration-params"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pid\": \"facebook_int\",\n  \"app_id\": \"com.publisher.name\",\n  \"general_params\": {\n    \"gp_referrer_decryption_key\": \"7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/app-integrations/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a25167f4-7500-434f-826a-32c03d6ec250",
+    "name": "Partner integration settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public API for managing partner integrations",
+      "type": "text/plain"
+    }
+  }
+}

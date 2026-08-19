@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Click Signing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Circuit breaker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Circuit breaker",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/config/circuit-breaker",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Add excluded app",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add excluded app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/config/excluded-apps/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Remove excluded app",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Remove excluded app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/config/excluded-apps/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Get config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get click signing config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/config"
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Update config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update click signing config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/config/signatures/:signature_version",
+            "params": [
+              {
+                "name": "signature_version",
+                "value": "",
+                "type": "path",
+                "description": "The version of the signature"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/report",
+            "params": [
+              {
+                "name": "signature-version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query",
+                "description": "start time for the report in the format yyyy-mm-ddThh"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "end time for the report in the format yyyy-mm-ddThh"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Revoke secret key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Revoke secret key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/secret/:secret-key-id",
+            "params": [
+              {
+                "name": "secret-key-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Generate secret key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate secret key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/secret",
+            "params": [
+              {
+                "name": "ttl-hours",
+                "value": "",
+                "type": "query",
+                "description": "Default value: 36"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Test",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/p360-click-signing/v2.0/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

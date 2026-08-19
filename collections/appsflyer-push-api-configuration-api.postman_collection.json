@@ -1,0 +1,4084 @@
+{
+  "item": [
+    {
+      "id": "8baa7476-5202-465e-9c76-39c952f5775e",
+      "name": "Authentication Token",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff904f65-361f-4a63-8050-6b63790fde8d",
+          "name": "Delete Push API Authentication Token",
+          "request": {
+            "name": "Delete Push API Authentication Token",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e37d0ea1-32e7-4fa9-862c-f497be7c5232",
+              "name": "The token has been deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7a9ed94-ab6e-4d9c-a271-3dd7458c157c",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "776c1a90-2afe-4c30-b0f7-e3b71142af0e",
+              "name": "Push API isn't part of your subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"MissingAsset\",\n  \"message\": \"Push API isn't part of your subscription. Contact AppsFlyer support or your AppsFlyer account executive\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7e92427-c227-4a1d-8d2d-a17ad7a29057",
+              "name": "Account problem occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"AccountProblem\",\n  \"message\": \"An account problem occurred. Please contact your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fac090a-1bdf-4b50-bb6c-a301d6303791",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "166c3468-1ee6-4fce-9116-984ed0ed84e9",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "869fedfc-ebea-4bf6-9e3d-158ac9517510",
+          "name": "Set Push API Authentication Token",
+          "request": {
+            "name": "Set Push API Authentication Token",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1982fedd-7c61-4082-a0fe-27123825ab1f",
+              "name": "The token has been set successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\",\n  \"message\": \"Your token has been set successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e64a487-e27b-4207-abc7-e965ecfdf5a0",
+              "name": "JSON parsing error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"JSONParsingError\",\n  \"message\": \"An error occurred while parsing the JSON body. Check the body and try again..\",\n  \"requestId\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60331f58-ad5d-4617-82d6-5568f5c8afc4",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bb04f32-1e70-4bd7-b5db-f45b008ad4d7",
+              "name": "Push API isn't part of your subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"MissingAsset\",\n  \"message\": \"The specified message type ({event-type} isn't part of your subscription. Contact AppsFlyer support or your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c41812e-60b1-489c-8754-c41258b047bc",
+              "name": "Account problem occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"AccountProblem\",\n  \"message\": \"An account problem occurred. Please contact your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e005361-c7b7-4bc5-95c0-138d299f1c3e",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "502c905f-977e-41ba-83a1-bc0c60076ed5",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6c71a20-33ee-41b2-b9e0-3c74fb81b945",
+              "name": "Schema Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"token_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SchemaError\",\n  \"message\": \"Invalid JSON format or no JSON found. Verify the content and resubmit.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d46a891b-76e1-4d51-bf23-65cf1eb9bd0d",
+      "name": "Manage Push API configuration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f49ab94-19b8-4fa1-b83d-1437b3ec3e30",
+          "name": "Get Push API configuration",
+          "request": {
+            "name": "Get Push API configuration",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab5a9f53-e6fd-477c-9aff-61615dc3d9ae",
+              "name": "URL validated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"selected_fields\": \"all\",\n      \"selected_inapps\": \"all\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"selected_fields\": \"all\",\n      \"selected_inapps\": \"all\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d37764a-b5c9-4885-96b6-d5db9a88e49a",
+              "name": "Invalid JSON format or no JSON found. Verify the content and resubmit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e21664-60b6-4894-ab03-8b91a49bb0b6",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a1e3d4b-b146-470d-bd76-82f48f4ac4b1",
+              "name": "Push API isn't part of your subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"MissingAsset\",\n  \"message\": \"Push API isn't part of your subscription. Contact AppsFlyer support or your AppsFlyer account executive\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b885168-84bb-4dcf-990e-1349d8ee4e41",
+              "name": "Account problem occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"AccountProblem\",\n  \"message\": \"An account problem ocurred. Please contact your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd9d23b7-7daf-4f0e-a870-70dc949c5d1d",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43488337-fdf2-4240-a370-60b363181e2b",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37994a30-3bae-4e48-8258-983371505c4a",
+          "name": "Update Push API configuration",
+          "request": {
+            "name": "Update Push API configuration",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                ":app-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"<string>\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"<string>\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d6af2e8-fac5-4ed4-b652-17f5e7e18f28",
+              "name": "URL validated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0ded005-1267-4819-85b3-635806dc5ebd",
+              "name": "JSON parsing error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidPlatform\",\n  \"message\": \"An error occurred while parsing the JSON body. Check the body and try again..\",\n  \"requestId\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f2bda40-b40a-4b45-ab5e-cb3db8397c66",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b480714f-173d-4d26-9e78-d9936a883dce",
+              "name": "Push API isn't part of your subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"MissingAsset\",\n  \"message\": \"The specified message type ({event-type} isn't part of your subscripton. Contact AppsFlyer support or your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9de919c5-a0d0-4345-9dec-b911830ce49a",
+              "name": "Account problem occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"AccountProblem\",\n  \"message\": \"An account problem ocurred. Please contact your AppsFlyer account executive.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b14a11d4-cec6-4da5-aa4f-b1e0778e035e",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20002ff2-e626-476c-a904-faa000470bba",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3482538c-993b-41b8-aacf-22b12534d66f",
+              "name": "Schema Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endpoints\": [\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    },\n    {\n      \"url\": \"http://some.url.com:40/dir\",\n      \"method\": \"<string>\",\n      \"attributing_entity\": \"appsflyer\",\n      \"event_types\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"selected_fields\": \"<string>\",\n      \"selected_inapps\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SchemaError\",\n  \"message\": \"Invalid JSON format or no JSON found. Verify the content and resubmit.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "453ce6aa-f6af-4ed4-8a31-e7e8ff29ae7d",
+      "name": "Event Types",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24a653df-9843-4336-b3f7-a306ad40c5b9",
+          "name": "Retrieve per attributing-entity",
+          "request": {
+            "name": "Retrieve per attributing-entity",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nReturns a list of the available event types for the specified endpoint type\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event-types",
+                ":attributing-entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attributing-entity",
+                  "description": "(Required) The endpoint type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b89d8a1a-eb08-4d30-8615-b9b1ef5353fa",
+              "name": "Event types successfully retrieved.\nThe permitted event types are:\n- appsflyer: [\"organic-install-in-app-event\", \"install\", \"organic-install\", \"re-engagement\", \n\"re-attribution\", \"reinstall\", \"organic-reinstall\", \"install-in-app-event\", \n\"re-engagement-in-app-event\", \"re-attribution-in-app-event\" ]\n- skadnetwork: [\"in-app-event\", \"re-download\", \"install\", \"postbacks-copy\", \"postback\"]\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-types",
+                    ":attributing-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attributing-entity",
+                      "description": "(Required) The endpoint type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_types\": [\n    \"string\",\n    \"string\"\n  ],\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "314ed046-2484-4533-aa15-057b7db9f868",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-types",
+                    ":attributing-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attributing-entity",
+                      "description": "(Required) The endpoint type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e2b5914-d766-4f0c-8754-12537cf7c1a2",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-types",
+                    ":attributing-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attributing-entity",
+                      "description": "(Required) The endpoint type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b818ab2-f9f0-4558-8908-12a6e27bb56a",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-types",
+                    ":attributing-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attributing-entity",
+                      "description": "(Required) The endpoint type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2032c9ea-da4d-4a48-9ae4-166baf1d1097",
+              "name": "Invalid path-params. Verify the content and resubmit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-types",
+                    ":attributing-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attributing-entity",
+                      "description": "(Required) The endpoint type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid path-params. Verify the content and resubmit.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e0ad97bd-4326-485a-b008-d2f5f2f0fde5",
+      "name": "Message Fields",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84c04681-cb48-4045-b789-1fb25608791c",
+          "name": "Retrieve per platform",
+          "request": {
+            "name": "Retrieve per platform",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nReturns a list of the available message fields for each platform\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fields",
+                ":platform"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The platform related to this configuration"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "672a8403-3844-460d-bccc-405350ecdd24",
+              "name": "Fields successfully retrieved\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"advertising_id\",\n  \"app_id\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "908b3d0e-adcc-41a6-9ba0-f43934e07bb5",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71979c96-a4de-4b60-b35d-5082edc84100",
+              "name": "An account problem occurred. Please contact your AppsFlyer account executive.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41e14e09-96de-4c4f-8665-71d017508c8c",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45fc5f06-e9f2-4586-ac47-cb55d5363c8b",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "507f6db1-bf60-4cad-976b-2872838b6007",
+              "name": "Invalid path-params. Verify the content and resubmit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fields",
+                    ":platform"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The platform related to this configuration"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid path-params. Verify the content and resubmit.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "60824861-8e45-48a6-891c-4c734d54f0e5",
+      "name": "URL Validation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f1290bf-ff3e-4457-9a2f-d0e8ac40118e",
+          "name": "Validate URL",
+          "request": {
+            "name": "Validate URL",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nValidates and tests URL to be used as a Push API endpoint\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "validate-url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d40160f-216f-496e-b339-6012b40da164",
+              "name": "URL validated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tested_endpoint_url_http_response\": 404,\n  \"request_id\": \"907ea912-9ce9-4dec-9423-b0a04404e1e2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78ef854c-6e70-43f5-8116-3392c750db44",
+              "name": "Request to test URL returned an error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multi-Status (WebDAV) (RFC 4918)",
+              "code": 207,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated?",
+                  "key": "deprecated",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tested_endpoint_url_http_response\": 404,\n  \"request_id\": \"907ea912-9ce9-4dec-9423-b0a04404e1e2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0350ed75-f291-4784-8edb-c12f86a5c179",
+              "name": "JSON parsing error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidPlatform\",\n  \"message\": \"An error occurred while parsing the JSON body. Check the body and try again..\",\n  \"requestId\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d71edec2-0774-44c3-90d2-024068db03f3",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SomeErrorCode\",\n  \"message\": \"Some error message.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80901e9a-5148-4ab4-b386-b1b72b9358da",
+              "name": "The API version listed in the URL doesn't exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidVersion\",\n  \"message\": \"The API version listed in the URL doesn't exist. Check the API documentation\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d89a404d-988e-4f65-a7c5-991ff44fff15",
+              "name": "The API version listed in the URL is no longer valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The API version listed in the URL is no longer valid. Check the API documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b40c0af-5dd1-42ca-bcbc-e40a9411d24d",
+              "name": "Schema Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate-url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"http://some.url.com:40/dir\",\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "is the api version deprecated",
+                  "key": "deprecated",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation date",
+                  "key": "deprecationDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "sunset date",
+                  "key": "sunsetDate",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "deprecation message",
+                  "key": "deprecationMessage",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"InvalidURL\",\n  \"message\": \"Invalid URL.\",\n  \"request_id\": \"8a3f4fa6-a91c-11ec-b909-0242ac120002\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/pushapi/v1.0/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "522438c1-6a46-4613-b581-6edf60cb6857",
+    "name": "Push API Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

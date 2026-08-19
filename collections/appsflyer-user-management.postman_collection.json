@@ -1,0 +1,880 @@
+{
+  "item": [
+    {
+      "id": "aa16bffb-fa58-42c1-a0ef-26b3b34f5721",
+      "name": "Managing users in bulk",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09779d80-33d9-4c69-97bc-dec754050f15",
+          "name": "Delete users",
+          "request": {
+            "name": "Delete users",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nDelete multiple users for the specified account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userIds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userIds",
+                  "description": "(Required) Comma-separated list of user IDs to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80fd4c8a-e587-455a-99a0-20f3d73c2c42",
+              "name": "Users deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIds",
+                      "description": "(Required) Comma-separated list of user IDs to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41a391e5-4e8a-4db7-b872-596c32557095",
+              "name": "Bad request - Invalid input format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIds",
+                      "description": "(Required) Comma-separated list of user IDs to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6281bdfd-8c46-4956-aa98-9ffbec2eff48",
+              "name": "Unauthorized - Missing or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIds",
+                      "description": "(Required) Comma-separated list of user IDs to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10a8cf6a-a725-4098-b658-bb1c0b679639",
+              "name": "Unprocessable Entity - Invalid input data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userIds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userIds",
+                      "description": "(Required) Comma-separated list of user IDs to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d4dac25-4b02-4c1c-b5d5-cda1c98ee8a1",
+          "name": "Get users",
+          "request": {
+            "name": "Get users",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRetrieve users data for the specified account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95e87e14-3ba3-4de4-abf2-5465d57afcc6",
+              "name": "Successful response containing the list of users.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"role\": \"string\",\n      \"apps\": \"string\",\n      \"media_sources\": \"string\",\n      \"geos\": \"string\",\n      \"last_login\": \"string\"\n    },\n    {\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"role\": \"string\",\n      \"apps\": \"string\",\n      \"media_sources\": \"string\",\n      \"geos\": \"string\",\n      \"last_login\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "195b93e3-9a8f-44f4-bec5-17b00ab0824b",
+              "name": "Bad request - Invalid input or exceeded limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e150b15-393c-4cf1-828b-5c97550acf0b",
+              "name": "Unauthorized - Missing or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89b885e3-a438-48b6-8d77-444f69589f0e",
+          "name": "Create bulk users",
+          "request": {
+            "name": "Create bulk users",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19b9fc07-4144-44f9-91b9-3a0d4d86d270",
+              "name": "Users created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"user_id\": \"string\",\n      \"username\": \"string\",\n      \"pending\": true,\n      \"role\": \"string\"\n    },\n    {\n      \"user_id\": \"string\",\n      \"username\": \"string\",\n      \"pending\": true,\n      \"role\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c58a5895-1c8d-4847-bbf8-a18099a5a287",
+              "name": "Bad request - exceeded limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47c6f822-65d2-441c-ade7-66a058d974f3",
+              "name": "Unauthorized - Missing or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f929cdfc-3916-441a-9ab2-90a9321c7b22",
+              "name": "Unprocessable Entity - Invalid input data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"email\": \"<email>\",\n    \"username\": \"<string>\",\n    \"role\": \"<string>\",\n    \"allow_access_to_all_future_apps\": \"<boolean>\",\n    \"department\": \"<string>\",\n    \"app_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"geos\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"media_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e3709815-f434-431d-bc1d-855e202624db",
+      "name": "Managing roles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91005f22-018d-49f8-a4ae-72b51691480c",
+          "name": "Get roles",
+          "request": {
+            "name": "Get roles",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRetrieve roles data for account with list of users for each role\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae8bff36-aa0d-46cd-ac8f-30136dd6d573",
+              "name": "Successful response containing the list of roles with capabilities and users for each role",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"custom\",\n      \"capabilities\": [\n        {\n          \"section\": \"string\",\n          \"capabilities\": [\n            {\n              \"name\": \"string\",\n              \"access_level\": \"blocked\"\n            },\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            }\n          ]\n        },\n        {\n          \"section\": \"string\",\n          \"capabilities\": [\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            },\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            }\n          ]\n        }\n      ],\n      \"users\": [\n        {\n          \"email\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"custom\",\n      \"capabilities\": [\n        {\n          \"section\": \"string\",\n          \"capabilities\": [\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            },\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            }\n          ]\n        },\n        {\n          \"section\": \"string\",\n          \"capabilities\": [\n            {\n              \"name\": \"string\",\n              \"access_level\": \"all\"\n            },\n            {\n              \"name\": \"string\",\n              \"access_level\": \"blocked\"\n            }\n          ]\n        }\n      ],\n      \"users\": [\n        {\n          \"email\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fce1d0dd-c03e-415b-a096-7ffa256de148",
+              "name": "Bad request - exceeded limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "934feead-923e-435e-af8b-0354b96e237b",
+              "name": "Unauthorized - Missing or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/user-management/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e57f9d82-9dfe-4176-97d1-789ed03e130d",
+    "name": "User management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

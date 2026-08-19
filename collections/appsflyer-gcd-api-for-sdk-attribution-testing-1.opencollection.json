@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GCD API for SDK attribution testing",
+    "version": "0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversion Data for SDK attribution testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the conversion data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gcdsdk.appsflyer.com/install_data/v4.0/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "The app ID"
+              },
+              {
+                "name": "devkey",
+                "value": "ABCDEw4F78vGTeTuY12345",
+                "type": "query",
+                "description": "The Dev Key"
+              },
+              {
+                "name": "device_id",
+                "value": "1600009251234-1234567",
+                "type": "query",
+                "description": "The UID of this specific install. \n** Not to be confused with Advertiser ID**.\nInstrcutions to retrieve the UID:\n- [Android](https://dev.appsflyer.com/hc/docs/testing-android#inspect-conversion-data)\n- [iOS](https://dev.appsflyer.com/hc/docs/testing-ios#inspect-conversion-data) \n"
+              }
+            ]
+          },
+          "docs": "Get the conversion data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2061 @@
+{
+  "item": [
+    {
+      "id": "d798ae54-e621-44d7-9ba4-621688732ad0",
+      "name": "OneLink REST API v2.0",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2cd2990-2a6e-401c-a65c-bdb856074c0b",
+          "name": "Delete OneLink link",
+          "request": {
+            "name": "Delete OneLink link",
+            "description": {
+              "content": "<p><span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span></p>\n\n> 📘 Note\n>\n> This API replaces [Delete OneLink link v1.0](https://dev.appsflyer.com/hc/reference/delete-onelink-attribution-link)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks",
+                ":onelink-id",
+                ":shortlink-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onelink-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shortlink-id",
+                  "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "341c2789-4983-495a-940b-a87ffa0b6bd6",
+              "name": "The link was deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"ok\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab5f9616-dd4c-4847-8142-2511b8992750",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_source\",\n  \"message\": \"This operation is not allowed for this shortlink source-caller.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0897d53d-aef2-4523-9291-3864527258c3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"authentication_failure\",\n  \"message\": \"Authentication failed. Use a valid OneLink API token from your security center.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9de67ed9-f72d-4444-930a-b7a54db0b238",
+              "name": "The shortlink does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fe26e46-00c9-4010-9822-8dbaf2bcad80",
+              "name": "Limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"quota_exceeded\",\n  \"message\": \"Monthly Quota Exceeded.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b27fed31-493e-4fa1-b794-d1a11644e57b",
+          "name": "Get OneLink link data",
+          "request": {
+            "name": "Get OneLink link data",
+            "description": {
+              "content": "<p><span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span></p>\n\n> 📘 Note\n>\n> This API replaces [Get OneLink link data v1.0](https://dev.appsflyer.com/hc/reference/get-onelink-attribution-link)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks",
+                ":onelink-id",
+                ":shortlink-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onelink-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shortlink-id",
+                  "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40b57381-41e6-40d5-afa5-6e6c06140bb5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payload\": {\n    \"af_web_dp\": \"https://perfpatients.apollo247.com/payments/consult/240918025618661624?utm_token=BearerQVBPTExPMjQ3KzkxNzQxNjMzOTUyMQ==\",\n    \"af_sub1\": \"\",\n    \"c\": \"\",\n    \"pid\": \"appointment payment\",\n    \"af_channel\": \"appointment payment\",\n    \"af_force_deeplink\": \"true\",\n    \"utm_mobile_number\": \" 917416339521\"\n  },\n  \"expiry\": \"2024-07-01T12:00:00Z\",\n  \"ttl\": 86400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53d4c0b5-d49e-42a8-a601-74d0b77fd0cf",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_source\",\n  \"message\": \"This operation is not allowed for this shortlink source-caller.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "357c4a33-03f7-4713-99a3-9a92711af82d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"authentication_failure\",\n  \"message\": \"Authentication failed. Use a valid OneLink API token from your security center.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c99b856-4cc7-4c39-b4d8-1273c26e9935",
+              "name": "The shortlink does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f558fcbb-c248-4718-b7f7-6581070d9410",
+          "name": "Update OneLink link",
+          "request": {
+            "name": "Update OneLink link",
+            "description": {
+              "content": "<p><span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span></p>\n\n> 📘 Note\n>\n> This API replaces [Update OneLink link v1.0](https://dev.appsflyer.com/hc/reference/update-onelink-attribution-link)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks",
+                ":onelink-id",
+                ":shortlink-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onelink-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shortlink-id",
+                  "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": \"<json>\",\n  \"brand_domain\": \"<string>\",\n  \"ttl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d0280a2-d1ce-442c-9faf-194edde893bc",
+              "name": "The link was updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"brand_domain\": \"newbranded.com\",\n  \"ttl\": \"22d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shortlink_url\": \"https://myapp.onelink.me/A1b3/my_shortlink_id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b326985a-e47f-4d6a-acc7-7cc9cc737e8e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"brand_domain\": \"newbranded.com\",\n  \"ttl\": \"22d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"limit_exceeded\",\n  \"message\": \"Generating shortlink failed, data sent exceeds limit\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef79eedf-de42-4278-95af-1a7f9bb078a6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"brand_domain\": \"newbranded.com\",\n  \"ttl\": \"22d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"authentication_failure\",\n  \"message\": \"Authentication failed. Use a valid OneLink API token from your security center.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af6755dd-4adc-416f-b657-fb4e52a919fc",
+              "name": "The shortlink does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"brand_domain\": \"newbranded.com\",\n  \"ttl\": \"22d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb0cb422-27ef-4bbe-a044-2e68cae716d6",
+              "name": "Limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"brand_domain\": \"newbranded.com\",\n  \"ttl\": \"22d\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"quota_exceeded\",\n  \"message\": \"Monthly Quota Exceeded.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54804c3e-1f97-452e-a434-78032fe18015",
+          "name": "Get OneLink QR code",
+          "request": {
+            "name": "Get OneLink QR code",
+            "description": {
+              "content": "<span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span>\n\n> 📘 Note\n>\n> The QR code's color and logo are automatically pulled from your OneLink template settings. To customize these design elements or restore the default, go to the OneLink Management page in the AppsFlyer dashboard.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks",
+                ":onelink-id",
+                ":shortlink-id",
+                "qr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "Size of the QR code. Default is 300x300. Specifies size (widthxheight in pixels). limit 3000"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Format of the QR code. Default is png"
+                },
+                {
+                  "disabled": false,
+                  "key": "brand_domain",
+                  "value": "<string>",
+                  "description": "Add branded to associate the link with (must be one of the branded that associated to the templates domain)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "margin",
+                  "value": "<boolean>",
+                  "description": "The quiet zone - white frame of the QR image.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onelink-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shortlink-id",
+                  "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "439252d9-d290-4c72-acec-bf1f2d2a9ef9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "300"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand_domain",
+                      "value": "app.example.com/apps/myapp"
+                    },
+                    {
+                      "key": "margin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"qr\": \"image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QByRXhp\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ce8bdb0-078d-4b87-8fd6-297464034dde",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "300"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand_domain",
+                      "value": "app.example.com/apps/myapp"
+                    },
+                    {
+                      "key": "margin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_source\",\n  \"message\": \"This operation is not allowed for this shortlink source-caller.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b45597-ca9d-48cc-9e25-2d9e6d41c7f6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "300"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand_domain",
+                      "value": "app.example.com/apps/myapp"
+                    },
+                    {
+                      "key": "margin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"authentication_failure\",\n  \"message\": \"Authentication failed. Use a valid OneLink API token from your security center.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb33e9de-2c85-4483-a3df-13b4d700b3e2",
+              "name": "The shortlink does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id",
+                    ":shortlink-id",
+                    "qr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "300"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand_domain",
+                      "value": "app.example.com/apps/myapp"
+                    },
+                    {
+                      "key": "margin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shortlink-id",
+                      "description": "(Required) The ID of the short OneLink query params. For example, for the following OneLink link: myapp.onelink.me/abc123/qwer9876 , the shortlink-id is qwer9876"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09dbef62-c97b-4dba-9ba4-0e3a65cbca43",
+          "name": "Get account quota",
+          "request": {
+            "name": "Get account quota",
+            "description": {
+              "content": "<span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks-quota",
+                ":account-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a7290f6-7604-4334-92fa-e58f20ff82d3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks-quota",
+                    ":account-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"remaining_api_calls\": 120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7d0fec4-3114-4cad-bc90-8226a645f900",
+          "name": "Create OneLink link",
+          "request": {
+            "name": "Create OneLink link",
+            "description": {
+              "content": "<p><span style=\"background-color: #6e00ff; color: #fff; font-size: 12px; font-weight: 400; padding: 4px; border-radius: 8px;\">\n  Premium\n</span></p>\n\n> 📘 Note\n>\n> This API replaces [Create OneLink link v1.0](https://dev.appsflyer.com/hc/reference/create-onelink-attribution-link)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shortlinks",
+                ":onelink-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onelink-id",
+                  "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": \"<json>\",\n  \"shortlink_id\": \"<string>\",\n  \"ttl\": \"<string>\",\n  \"brand_domain\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "936cd944-c3a4-4037-bdba-f871fdaef2fd",
+              "name": "The link was created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shortlink_url\": \"https://myapp.onelink.me/A1b3/my_shortlink_id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d726d02d-8045-4694-89ec-8f4b981671f8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"limit_exceeded\",\n  \"message\": \"Generating shortlink failed, data sent exceeds limit\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1571148-7c09-41c1-93c4-c38d3e1ed26d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"authentication_failure\",\n  \"message\": \"Authentication failed. Use a valid OneLink API token from your security center.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70b50fda-e7f0-431c-9345-5e196be4b8c9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"feature_not_enabled\",\n  \"message\": \"OneLink API is not enabled for this account. Note: OneLink API is a premium feature. Please contact your AppsFlyer Customer Success Manager for access.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "900f8fb3-3204-4c98-8852-9f300f7ac781",
+              "name": "Shortlink not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "802f557e-2b8f-43c5-832c-bfb0148543d3",
+              "name": "Shortlink ID already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"invalid_parameter\",\n  \"message\": \"Shortlink ID already exists\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c796037f-c1d6-473e-bb06-a487b48358e1",
+              "name": "Limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shortlinks",
+                    ":onelink-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onelink-id",
+                      "description": "(Required) Get this from the person using the AppsFlyer dashboard. Taken from the OneLink template screen"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": \"{\\\"pid\\\": \\\"my_media_source_SMS\\\", \\\"c\\\": \\\"my_campaign\\\" }\",\n  \"shortlink_id\": \"my_shortlink_id\",\n  \"ttl\": \"1h\",\n  \"brand_domain\": \"mybranded.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"quota_exceeded\",\n  \"message\": \"Monthly Quota Exceeded.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://onelink.appsflyer.com/api/v2.0/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "125df40c-cd0a-4dd8-878b-3a8e7c048c11",
+    "name": "OneLink API v2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

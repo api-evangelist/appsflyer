@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Test Console API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Allowed devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/test-console/v1.0/app/:app-id/devices/:device-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device-id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the device being removed."
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        },
+        {
+          "info": {
+            "name": "Add device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/test-console/v1.0/app/:app-id/devices",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/test-console/v1.0/app/:app-id/events",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "device_id",
+                "value": "09ad6f30-a39c-4c6c-8862-636eabd54709",
+                "type": "query"
+              },
+              {
+                "name": "start_time",
+                "value": "2023-07-12T09:02:26Z",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "2023-07-12T09:02:26Z",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,3597 @@
+{
+  "item": [
+    {
+      "id": "bd23a976-fe2e-4fc4-9f40-55e2f4512683",
+      "name": "Click Engagement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "567d453e-a4fe-44e4-83a7-de35360dd18c",
+          "name": "Click Engagement",
+          "request": {
+            "name": "Click Engagement",
+            "description": {},
+            "url": {
+              "path": [
+                "click",
+                "app",
+                ":platform",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "af_media_source",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "af_request_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_adset_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_adset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_prt",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_siteid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_sub_siteid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_click_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_lookback_window",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_placement",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_channel",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom1",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom2",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom3",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom4",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom5",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_model",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_os_version",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_device_id_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_device_id_value",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_user_agent",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The application platform"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "570a440f-8db8-4f5e-a6fc-9ec13fadc87e",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ff44497-b7db-4ffa-b248-ba925940fca1",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b260566-d915-4a3f-a073-0a81f513c42e",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ecbc40d-f479-429a-ab7b-0960f08ceebe",
+              "name": "Application ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Application ID not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eeea7764-6edd-4950-bf44-4a3685a0c3d8",
+              "name": "Not implmented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not implmented\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ea1d7fd-5af3-4f54-b575-7f1d818cf33a",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "332e1d5e-ff25-47ab-9bcd-d8ad0b0c7c2f",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Gateway timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83f9eda2-c76d-4fbb-a4a3-e8e1d786726f",
+          "name": "Click Engagement",
+          "request": {
+            "name": "Click Engagement",
+            "description": {},
+            "url": {
+              "path": [
+                "click",
+                "app",
+                ":platform",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The application platform"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"af_media_source\": \"<string>\",\n  \"af_campaign_id\": \"<string>\",\n  \"af_request_id\": \"<uuid>\",\n  \"af_campaign\": \"<string>\",\n  \"af_adset_id\": \"<string>\",\n  \"af_adset\": \"<string>\",\n  \"af_ad_id\": \"<string>\",\n  \"af_ad\": \"<string>\",\n  \"af_campaign_type\": \"<string>\",\n  \"af_prt\": \"<string>\",\n  \"af_siteid\": \"<string>\",\n  \"af_sub_siteid\": \"<string>\",\n  \"af_click_id\": \"<string>\",\n  \"af_lookback_window\": \"<string>\",\n  \"af_ad_placement\": \"<string>\",\n  \"af_ad_type\": \"<string>\",\n  \"af_channel\": \"<string>\",\n  \"af_custom1\": \"<string>\",\n  \"af_custom2\": \"<string>\",\n  \"af_custom3\": \"<string>\",\n  \"af_custom4\": \"<string>\",\n  \"af_custom5\": \"<string>\",\n  \"af_model\": \"<string>\",\n  \"af_os_version\": \"<string>\",\n  \"af_device_id_type\": \"<string>\",\n  \"af_device_id_value\": \"<string>\",\n  \"af_ip\": \"<string>\",\n  \"af_user_agent\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24f476aa-fb5d-4c3a-aee2-084e7f2558ce",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d906c024-a1f2-42e9-b226-62915120aa9b",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e678c74-1254-470f-ac8f-73e0df37a7d5",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8758ce4d-4147-47b1-b6e8-a905dcb21dba",
+              "name": "Application ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Application ID not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bca07879-6be1-4d58-a72a-48c1e9fbcfa8",
+              "name": "Not implmented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not implmented\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "820aba91-194b-4754-b5df-a3ae341ee630",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7584d033-e4e0-4ab7-ad6b-6afcf70c686f",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "click",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Gateway timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bf11634f-f34a-4152-8902-e474bb308432",
+      "name": "Impression Engagement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d33476de-881a-4ed8-bc28-57522d496dd7",
+          "name": "Impression Engagement",
+          "request": {
+            "name": "Impression Engagement",
+            "description": {},
+            "url": {
+              "path": [
+                "impression",
+                "app",
+                ":platform",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "af_media_source",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "af_request_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_adset_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_adset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_campaign_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_prt",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_siteid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_sub_siteid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_click_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_lookback_window",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_placement",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ad_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_channel",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom1",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom2",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom3",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom4",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_custom5",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_model",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_os_version",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_device_id_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_device_id_value",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_ip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_user_agent",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The application platform"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "558e28e7-21cd-41bf-a0e7-0d629c888013",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "465bde24-5614-455e-b2c2-28dfe94857ac",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a3b2fe4-c213-42d2-b258-e189f38e545c",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83a4edf8-75c9-4923-8600-2b43fcf26992",
+              "name": "Application ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Application ID not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3c79e16-7279-40b8-90b3-207d09c63f43",
+              "name": "Not implmented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not implmented\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3881b688-22f6-4e39-8646-24cd3e4357d5",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85d30988-4660-427a-baee-a7c75c489724",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "af_media_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_request_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "af_campaign",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_adset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_campaign_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_sub_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_click_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_lookback_window",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_placement",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ad_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom2",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_custom5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_model",
+                      "value": "“SM-S115DL”"
+                    },
+                    {
+                      "key": "af_os_version",
+                      "value": "8.1.0"
+                    },
+                    {
+                      "key": "af_device_id_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_device_id_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_user_agent",
+                      "value": "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36 CrKey/1.0.999999 "
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Gateway timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6227aba6-055a-4a27-a40a-15076e1dc994",
+          "name": "Impression Engagement",
+          "request": {
+            "name": "Impression Engagement",
+            "description": {},
+            "url": {
+              "path": [
+                "impression",
+                "app",
+                ":platform",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) The application platform"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"af_media_source\": \"<string>\",\n  \"af_campaign_id\": \"<string>\",\n  \"af_request_id\": \"<uuid>\",\n  \"af_campaign\": \"<string>\",\n  \"af_adset_id\": \"<string>\",\n  \"af_adset\": \"<string>\",\n  \"af_ad_id\": \"<string>\",\n  \"af_ad\": \"<string>\",\n  \"af_campaign_type\": \"<string>\",\n  \"af_prt\": \"<string>\",\n  \"af_siteid\": \"<string>\",\n  \"af_sub_siteid\": \"<string>\",\n  \"af_click_id\": \"<string>\",\n  \"af_lookback_window\": \"<string>\",\n  \"af_ad_placement\": \"<string>\",\n  \"af_ad_type\": \"<string>\",\n  \"af_channel\": \"<string>\",\n  \"af_custom1\": \"<string>\",\n  \"af_custom2\": \"<string>\",\n  \"af_custom3\": \"<string>\",\n  \"af_custom4\": \"<string>\",\n  \"af_custom5\": \"<string>\",\n  \"af_model\": \"<string>\",\n  \"af_os_version\": \"<string>\",\n  \"af_device_id_type\": \"<string>\",\n  \"af_device_id_value\": \"<string>\",\n  \"af_ip\": \"<string>\",\n  \"af_user_agent\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "216adc34-97c8-4b30-8749-749ecd55cb6e",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "379c59c3-47aa-48cb-9110-372926809522",
+              "name": "Bad Request. The request message is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb02369e-19ce-44b2-a075-86a0cea9b2ff",
+              "name": "Authentication failed. The authentication token is not valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64ee23e6-5b1b-4566-a091-85086325b2f0",
+              "name": "Application ID not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Application ID not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ba81224-d8fa-462f-94fc-48a34bce9a7d",
+              "name": "Not implmented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not implmented\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39f168e8-fa3d-4d24-99a5-d707f6650ba7",
+              "name": "Service Unavailable. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service unavailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f62c1aa-e209-4f55-a542-849e0ce9c84c",
+              "name": "Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "impression",
+                    "app",
+                    ":platform",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) The application platform"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Gateway timeout\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://engagements.appsflyer.com/v1.0/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "049e9c04-b67f-4f65-adcf-c1df1a35da29",
+    "name": "Engagements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

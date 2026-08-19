@@ -50,12 +50,21 @@ errors:
   artifact: errors/appsflyer-problem-types.yml
 rate_limiting:
   signal: HTTP 429 on 17 operations across 8 specs
-  headers: None declared in the specs — no X-RateLimit-* or Retry-After header is documented.
-  model: Report-generation quotas per report, per app, per day rather than per-second throttling; OpenDSR API is
-    documented at 350 requests/minute (~504,000/day).
+  headers: None declared in the specs — no X-RateLimit-*, RateLimit-* or Retry-After header is documented
+    on any operation.
+  budget_endpoint: 'GET /shortlinks-quota/{account-id} (OneLink API, operationId get-onelink-v2-link-quota)
+    returns {remaining_api_calls}. It is the only machine-readable rate budget AppsFlyer exposes, it covers
+    only OneLink, and it is badged Premium.'
+  model: 'Two mechanisms, not one: per-calendar-day report-generation quotas counted per report type,
+    per app and per account (reset 00:00 UTC), plus conventional per-second/per-minute limits on the transactional
+    APIs. Published figures include OneLink at 7,500,000 requests/month and 500 requests/second per account,
+    Cohort API at 60 calls/minute per account, SKAN aggregate at 10 calls/minute per account, Master API
+    unlimited, and OpenDSR at 350 requests/minute (~504,000/day).'
+  artifact: rate-limits/appsflyer-rate-limits.yml
   docs:
   - https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
   - https://support.appsflyer.com/hc/en-us/articles/11332840660625-Send-OpenDSR-API-requests
+  - https://dev.appsflyer.com/hc/reference/overview-3
 content_types:
   request:
   - application/json
@@ -80,3 +89,5 @@ cross_links:
   lifecycle: lifecycle/appsflyer-lifecycle.yml
   sandbox: sandbox/appsflyer-sandbox.yml
   webhooks: asyncapi/appsflyer-push-api-webhooks.yml
+  rate_limits: rate-limits/appsflyer-rate-limits.yml
+  plans: plans/appsflyer-plans-pricing.yml

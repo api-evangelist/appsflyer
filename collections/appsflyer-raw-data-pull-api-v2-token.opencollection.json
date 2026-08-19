@@ -1,0 +1,2033 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Raw Data Pull API V2 Token",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ad Revenue raw data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organic ad revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/ad_revenue_organic_raw/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords ad revenue for users not attributed to a media source.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Retargeting ad revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/ad-revenue-raw-retarget/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nAd revenue of users attributed to a retargeting media source during the re-engagement window.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Attributed ad revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/ad_revenue_raw/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords ad revenue for users attributed to a media source.\nData freshness: Daily\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Protect360 fraud",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Clicks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/blocked_clicks_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords clicks performed by users blocked by Protect360.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "In-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/blocked_in_app_events_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords in-app events identified as fraudulent by Protect360.\nData freshness: Daily \n"
+        },
+        {
+          "info": {
+            "name": "Blocked install postbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/blocked_install_postbacks/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords copies of postbacks sent to a media source resulting in a blocked install.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/blocked_installs_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords installs identified as fraudulent and therefore not attributed to any media source.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Post-attribution installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/detection/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nReports include installs attributed to a media source but later found to be fraudulent.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Post-attribution in-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/fraud-post-inapps/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords in-app events for installs identified as fraudulent after being attributed to a media source or judged fraudulent without regard to the install itself.\nData freshness: Daily\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Postbacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "In-app event postbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/in-app-events-postbacks/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords in-app event postbacks sent to the media source.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Install postbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/postbacks/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords install events generated when a user opens the app for the first time.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Retargeting in-app event postbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/retarget_in_app_events_postbacks/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords in-app events users performed during the re-engagement window.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Retargeting conversions postbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/retarget_install_postbacks/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords in-app events users performed during the re-engagement window.\nData freshness: Real-time\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Raw data reports (non-organic)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "In-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/in_app_events_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords the events performed by users.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/installs_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords non-organic installs. The record is generated when a user opens the app for the first time.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Reinstalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/reinstalls/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords users who after uninstalling the app, engage with a UA media source and reinstall the app during the re-attribution window.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Uninstalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/uninstall_events_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords when a user uninstalls the app.\nData freshness: Daily\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Retargeting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "In-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/in-app-events-retarget/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nIn-app events performed by the user during the re-engagement window.\nData freshness: Real-time\n"
+        },
+        {
+          "info": {
+            "name": "Conversions (re-engagements & re-attributions)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/installs-retarget/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRe-engagement: Record of a user opening the app after engaging with a retargeting campaign.\nRe-attribution (retargeting-reinstall): Event generated when a user, having uninstalled the app, engages with a retargeting media source an"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Raw data reports (organic)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organic in-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/organic_in_app_events_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "event_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter in-app events by specified events. Select multiple events by using a comma-separated list.\nExample: `event_name=af_purchase,ftd`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords details about events performed by users.\nData freshness: Continuous\n"
+        },
+        {
+          "info": {
+            "name": "Organic Installs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/organic_installs_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords when the app is opened by a user for the first time.\nData freshness: Continuous\n"
+        },
+        {
+          "info": {
+            "name": "Organic uninstalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/organic_uninstall_events_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords users uninstalling the app.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Organic reinstalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/raw-data/export/app/:app-id/reinstalls_organic/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_install_time",
+                "value": "",
+                "type": "query",
+                "description": "From install time"
+              },
+              {
+                "name": "to_install_time",
+                "value": "",
+                "type": "query",
+                "description": "To install time"
+              },
+              {
+                "name": "agency",
+                "value": "",
+                "type": "query",
+                "description": "Use to filter by a specific agency\n"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nRecords users uninstalling the app and then installing it again.\nData freshness: Daily\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

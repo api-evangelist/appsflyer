@@ -1,0 +1,2384 @@
+{
+  "item": [
+    {
+      "id": "7207cfb9-595d-41e2-a1e0-82d78b4edfc0",
+      "name": "Store commission rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7bd53031-1d5e-40ad-81ae-50ab7dd2bf6d",
+          "name": "Delete store commission rates for specific apps or all apps in account",
+          "request": {
+            "name": "Delete store commission rates for specific apps or all apps in account",
+            "description": {
+              "content": "Delete custom store commission rates to restore default values for one or more apps. Use comma-separated app IDs or 'all' to delete all apps in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "store_commission_rates",
+                "app",
+                ":app_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_ids",
+                  "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac8c00e7-bcb5-42d6-9470-d273a7450280",
+              "name": "Valid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Successfully processed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44de724e-3d87-440f-9602-1d40d4f3b427",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid request - No app_ids specified\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e20d78dd-0b8c-4efe-9a02-974d0d295fd4",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Get the API V2 token from your AppsFlyer admin\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb476ff0-29d9-4999-b501-f7a0449e473d",
+              "name": "Token unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Method not allowed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55fde8d1-bcc0-4dca-b3cf-336ea32e7f43",
+              "name": "Method not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Token unauthorized\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "298a86af-541b-4d59-9bae-d0be3b9093c8",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The rate limit is XXX requests per minute, please try again later\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e7447ec-4e79-43ff-86a3-9214add29001",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to delete all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Internal error. please try again later.\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8db84811-2da9-4fc1-be27-d27d78f26dba",
+          "name": "Get store commission rates for specific apps or all apps in account",
+          "request": {
+            "name": "Get store commission rates for specific apps or all apps in account",
+            "description": {
+              "content": "Retrieve store commission rates for one or more apps. Use comma-separated app IDs or 'all' to get all apps in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "store_commission_rates",
+                "app",
+                ":app_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_ids",
+                  "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37c2c13f-403c-4d77-a69e-a6dd9978b2ba",
+              "name": "Store commission rates returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26954a55-05fd-4030-8a30-b195c48d3c48",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid request - No app_ids specified\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b25520a-f95e-4e71-8873-06127caddda0",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Get the API V2 token from your AppsFlyer admin\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e033675-97dd-45d5-a0b2-563422ee8e6c",
+              "name": "Token unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Method not allowed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec4fa51d-b538-4b51-8a36-e76fafd4121f",
+              "name": "Method not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Token unauthorized\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "897cfbd8-8458-4a0b-aa9c-ed2e92c8cf08",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The rate limit is XXX requests per minute, please try again later\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5d65b94-85e7-493d-903c-27abd6a3be2a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates",
+                    "app",
+                    ":app_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_ids",
+                      "description": "(Required) Comma-separated app IDs or 'all' to get all apps in the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Internal error. please try again later.\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6135ca1a-9476-486a-b09e-434ac2e42ec7",
+          "name": "Create or update store commission rates",
+          "request": {
+            "name": "Create or update store commission rates",
+            "description": {
+              "content": "Create or update store commission rates for one or more apps. Each app can have a specific commission rate based on various store programs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "store_commission_rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"app_id\": \"<string>\",\n    \"store_commission_rate\": \"<float>\",\n    \"store_commission_reason\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffb57f2a-c73e-4d58-a889-980e58d5699c",
+              "name": "Valid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Successfully processed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca1099f-9fba-4758-946b-c2ea12c9996b",
+              "name": "Various errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Incorrect JSON format. Please verify and resubmit\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ec5712-d30f-4832-8b90-eb1ff9cc9ad4",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Get the API V2 token from your AppsFlyer admin\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9504a987-adba-4272-8436-de8145452f86",
+              "name": "Token unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Method not allowed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed7458b2-72c2-4a79-be2c-cef5c6b03e71",
+              "name": "Method not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Token unauthorized\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48e60245-595c-4f42-9aae-b5a1a8964813",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The rate limit is XXX requests per minute, please try again later\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcf52075-17d7-44fa-a4be-0832cdcb762d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store_commission_rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"app_id\": \"id123456789\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"google_15pct_tier_first_1m\"\n  },\n  {\n    \"app_id\": \"id987654321\",\n    \"store_commission_rate\": 15,\n    \"store_commission_reason\": \"apple_sbp\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Internal error. please try again later.\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "493540b7-d7d9-41fc-ae59-96f01ee3bb07",
+      "name": "Tax rate rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "637ce09f-2220-4644-bb33-2dcf6d3d6667",
+          "name": "Get a filtered list of taxes or the entire tax catalog if no filters are provided",
+          "request": {
+            "name": "Get a filtered list of taxes or the entire tax catalog if no filters are provided",
+            "description": {
+              "content": "Obtain tax catalog data for all available taxes or apply filters to narrow down the search based on specific tax attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tax_rates",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "The output format of the tax catalog data. Defaults to 'json'."
+                },
+                {
+                  "disabled": false,
+                  "key": "tax_name",
+                  "value": "<string>",
+                  "description": "Filter catalog by the name appearing in the customer invoice that describes the specific type of tax, such as sales, VAT, GST."
+                },
+                {
+                  "disabled": false,
+                  "key": "tax_rate",
+                  "value": "<double>",
+                  "description": "Filter catalog by the percentage rate of the tax, specified up to 4 decimal places."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter catalog by the two-letter ISO country code where the tax is applied."
+                },
+                {
+                  "disabled": false,
+                  "key": "subdivision",
+                  "value": "<string>",
+                  "description": "Filter catalog by the ISO 3166-2 subdivision code within the specified country."
+                },
+                {
+                  "disabled": false,
+                  "key": "postal_code",
+                  "value": "<string>",
+                  "description": "Filter catalog by postal code to identify area-specific tax rates."
+                },
+                {
+                  "disabled": false,
+                  "key": "tax_exclusive",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the tax is exclusive of the price. False means tax is included in the overall revenue. True means tax is in addition to the overall stated revenue. For example, in the USA or Canada, where the sticker price doesn't include sales tax."
+                },
+                {
+                  "disabled": false,
+                  "key": "deduction_order",
+                  "value": "<integer>",
+                  "description": "Filter catalog by the order deductions are applied against gross revenue.  The deduction_order is an enum that can be set to one of 0, 1, or 2. - 0: Store commission is deducted first from the gross revenue and tax is deducted from the remaining amount. - 1: Tax is deducted first from the gross revenue and store commission is deducted from the remaining amount. - 2: Both tax and store commission are deducted from the total revenue.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa025ab9-da8b-4069-81f9-c6fa4db92d48",
+              "name": "Integration returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"MP\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    },\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"TG\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6ea9915-f30d-45ee-9938-7e348a74daf8",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Please contact your CSM for further information\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bc5911c-2598-48e0-9cc1-7936f78e40fd",
+              "name": "Token unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Method not allowed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7974883a-d7c7-4638-9b9f-8774a3f17d2a",
+              "name": "Method not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Token unauthorized\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0933c5c-b28c-4231-8038-d99a7acd5453",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The rate limit is XXX requests per minute, please try again later\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ac39ada-41e3-4bba-b2da-0b1c4e79dcfe",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "tax_name",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "tax_rate",
+                      "value": "7.25"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subdivision",
+                      "value": "US-CA"
+                    },
+                    {
+                      "key": "postal_code",
+                      "value": "L4J8E3"
+                    },
+                    {
+                      "key": "tax_exclusive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "deduction_order",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are getting tax rate rule catalog"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Internal error. please try again later.\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5a320f3-e6bf-466a-9435-06db45b428fb",
+          "name": "Create tax rate rule",
+          "request": {
+            "name": "Create tax rate rule",
+            "description": {
+              "content": "Create custom tax rate rules for a specific app.\n\n> ⚠️\n> **Note:** After you set a tax rate for a specific app + country, ROI360 stops applying default tax updates for that combination.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tax_rates",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"<string>\",\n      \"tax_rate\": \"<float>\",\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "92759da6-d501-400d-9a04-6656d1d3d033",
+              "name": "Valid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Successfully processed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "296942fd-fc00-4452-ada8-b85893c861b6",
+              "name": "Various errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Incorrect JSON format. Please verify and resubmit\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1071f39b-e946-4e2e-953b-229ff150eceb",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Get the API V2 token from your AppsFlyer admin\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97e26efa-a6bc-4bf4-bb82-fe636e6c1e19",
+              "name": "Token unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Method not allowed\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02dd04eb-52fc-4992-8fd6-7c0236f95aa8",
+              "name": "Method not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Token unauthorized\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3c6a6cc-d4c6-43da-897d-7735176d80fe",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The rate limit is XXX requests per minute, please try again later\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca01f804-a6ef-402f-8c1b-aa952e096ec2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tax_rates",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) App ID of the app for which you are setting the tax rate rule"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taxes\": [\n    {\n      \"tax_name\": \"Sales\",\n      \"tax_rate\": 7.25,\n      \"tax_exclusive\": false,\n      \"country\": \"<string>\",\n      \"subdivision\": \"US-CA\",\n      \"postal_code\": \"L4J8E3\",\n      \"deduction_order\": 0\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Internal error. Please try again later.\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/net-revenue/v2.0/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "01bf5b8c-e7b4-4864-a45b-678e68f6c243",
+    "name": "ROI360 Net Revenue API (v2.0)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ROI360 automatically calculates net in-app-purchase (IAP) and subscription revenue by deducting store commissions and local taxes from the gross amount.\n\nThe default settings cover standard App Store and Google Play fees and taxes. If your store commission differs (e.g. Apple Small Business Program at 15%) or you operate in a country with special tax treatment, use the Net Revenue API to override the defaults.\n\nROI360 applies the following default store commissions:\n- **IAP (one-time purchases):** 30% on both iOS and Android.\n- **Subscriptions:** 30% on iOS during the first 12 months, dropping to 15% thereafter; 15% on Android from day one.\n\nDefault tax rates can be found [here](https://docs.google.com/document/d/e/2PACX-1vSl3DwlK2Gt2aa5gmDzD3-K3CtnIM85oMNrqx3PCTamwCERWYU48GugNpD31BFjA2PJjZnqaXIVe2Hx/pub).\n\n> ⚠️\n>  **Deprecation Notice:** API v1.0 (`/api/stores-taxes/v1.0/`) is deprecated. Please migrate to v2.0 (`/api/net-revenue/v2.0/`).\n",
+      "type": "text/plain"
+    }
+  }
+}

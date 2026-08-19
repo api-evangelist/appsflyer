@@ -33,6 +33,12 @@ hosts:
     status: 404
   - path: /.well-known/openid-configuration
     status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+    checked: '2026-08-13'
+  - path: /.well-known/agent.json
+    status: 404
+    checked: '2026-08-13'
 - host: https://www.appsflyer.com
   documents:
   - path: /.well-known/security.txt
@@ -68,6 +74,20 @@ hosts:
   - path: /.well-known/api-catalog
     status: 404
   - path: /.well-known/agent-card.json
+    status: 404
+- host: https://api3.appsflyer.com
+  checked: '2026-08-13'
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://onelink.appsflyer.com
+  checked: '2026-08-13'
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
     status: 404
 summary:
   security_txt: false

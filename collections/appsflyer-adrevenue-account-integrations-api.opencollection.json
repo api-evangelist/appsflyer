@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AdRevenue Account Integrations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Integration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/adrevenue/v1.0/integrations"
+          },
+          "docs": "List integrations"
+        },
+        {
+          "info": {
+            "name": "Set integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/adrevenue/v1.0/integrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set integration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

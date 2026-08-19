@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "App management API V2.0",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "App management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update app",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/app/v2.0/apps/:app_id/:platform",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "App id to update (case-sensitive)"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "Platform app to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Public API for updating an app on your AppsFlyer account"
+        },
+        {
+          "info": {
+            "name": "Delete app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/app/v2.0/apps/:app_id/:platform",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path",
+                "description": "App id to delete (case-sensitive)"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "Platform app to delete"
+              }
+            ]
+          },
+          "docs": "Public API for deleting an app from your AppsFlyer account"
+        },
+        {
+          "info": {
+            "name": "Add app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/app/v2.0/apps/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Public API for adding an app to your AppsFlyer account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

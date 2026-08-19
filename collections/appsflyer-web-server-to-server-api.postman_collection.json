@@ -1,0 +1,458 @@
+{
+  "item": [
+    {
+      "id": "840e229f-fc3b-4b58-94e8-f666eec19cfb",
+      "name": "Events management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b29f89fa-a904-4f41-89a3-7826aa47fbc4",
+          "name": "Send Event",
+          "request": {
+            "name": "Send Event",
+            "description": {
+              "content": "Sets a custom user ID or an AppsFlyer user ID for the specified bundle, at least one identifier is required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":bundleId",
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bundleId",
+                  "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerUserId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventType\": \"<string>\",\n  \"webDevKey\": \"<string>\",\n  \"timestamp\": \"<long>\",\n  \"eventValue\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"eventRevenueCurrency\": \"<string>\",\n  \"eventRevenue\": \"<double>\",\n  \"referrer\": \"<string>\",\n  \"UserAgent\": \"<string>\",\n  \"ip\": \"<ipv4>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f3c60ad-edc4-49dd-a28f-2a2be682716d",
+              "name": "User information updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"eventName\": \"my_web_event\",\n  \"eventType\": \"EVENT\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\",\n  \"timestamp\": 1234567890123,\n  \"eventValue\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"eventRevenueCurrency\": \"EUR\",\n  \"eventRevenue\": 1234.56,\n  \"referrer\": \"https://www.google.com/\",\n  \"UserAgent\": \"Chrome/80.0.3987\",\n  \"ip\": \"192.0.2.1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"OK\",\n  \"message\": \"Customer user ID or AF user ID was set successfully for the specified bundle ID.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e78f4c02-f80f-4bcb-afcc-a250e45325db",
+              "name": "Bad request. One or both identifiers are incorrect, not provided, or the request body is otherwise malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"eventName\": \"my_web_event\",\n  \"eventType\": \"EVENT\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\",\n  \"timestamp\": 1234567890123,\n  \"eventValue\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"eventRevenueCurrency\": \"EUR\",\n  \"eventRevenue\": 1234.56,\n  \"referrer\": \"https://www.google.com/\",\n  \"UserAgent\": \"Chrome/80.0.3987\",\n  \"ip\": \"192.0.2.1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 1610\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc3b337b-f6f8-41f2-87ce-1f707a077c62",
+          "name": "Associate Customer User ID with AF User ID",
+          "request": {
+            "name": "Associate Customer User ID with AF User ID",
+            "description": {
+              "content": "On associating a CUID with a visitor to your website. For example, any time you match the web `afUserId` with your customer user ID. Doing so enables PBA to match data from various sources. \nThis is similar to [`setCustomerUserId`](https://support.appsflyer.com/hc/en-us/articles/360001610038-PBA-web-SDK-integration-guide#identifying-users-using-customer-user-id-cuid) on the website.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":bundleId",
+                "setcuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bundleId",
+                  "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerUserId\": \"<string>\",\n  \"afUserId\": \"<string>\",\n  \"webDevKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5246e97-cb1f-4de2-a63b-e13dea73e741",
+              "name": "User information updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "setcuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"afUserId\": \"9999999-f848-4963-a091-568f0bf9a361\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Success\",\n  \"message\": \"Customer user ID or AF user ID was set successfully for the specified bundle ID.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78791712-c940-4486-a17e-51e5bba0f73c",
+              "name": "Bad request. One or both identifiers are incorrect, not provided, or the request body is otherwise malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "setcuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"afUserId\": \"9999999-f848-4963-a091-568f0bf9a361\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 1610\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1287278e-a28a-4709-9ef6-76582c041d2a",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "setcuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"afUserId\": \"9999999-f848-4963-a091-568f0bf9a361\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 1610\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73e1090f-5573-4b32-a602-cc129ebc3dd4",
+              "name": "The specified bundle ID was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":bundleId",
+                    "setcuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) The bundle ID for which the user ID(s) is to be set."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerUserId\": \"1234567890abcdef\",\n  \"afUserId\": \"9999999-f848-4963-a091-568f0bf9a361\",\n  \"webDevKey\": \"99999999-9999-9999-9999-999999999999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 1610\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://webs2s.appsflyer.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86ad3c7c-6628-4c1c-9dbc-143e0d37d30f",
+    "name": "WEB Server-TO-Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

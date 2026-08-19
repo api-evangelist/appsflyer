@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Audit Public API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audit logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get audit logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/audit/v1.0/logs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "number of results on the page\n"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset to start reading from\n"
+              },
+              {
+                "name": "services",
+                "value": "",
+                "type": "query",
+                "description": "List of all services to read logs. Case insensitive.\n"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query",
+                "description": "Show logs starting from this date. If not set, use the current date. \nIf `to_date` was set, this field must have a valid value.\nExpects `YYYY-MM-DD` format\nrequired: false\n"
+              },
+              {
+                "name": "to_date",
+                "value": "2023-11-06",
+                "type": "query",
+                "description": "Show logs end date. If not set, use the current date. if `from_date` was set, this field must have a valid value.\nExpects `YYYY-MM-DD` format\"\n"
+              }
+            ]
+          },
+          "docs": "Get audit logs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

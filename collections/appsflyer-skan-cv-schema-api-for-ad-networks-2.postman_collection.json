@@ -1,0 +1,657 @@
+{
+  "item": [
+    {
+      "id": "b32fca34-24fe-4e7e-be0f-9eb27b29dd54",
+      "name": "SKAN CV schema API for ad networks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb367060-f459-4052-9712-bffd0b376526",
+          "name": "Get SKAN 3 CV schema",
+          "request": {
+            "name": "Get SKAN 3 CV schema",
+            "description": {
+              "content": "Specify one or more apps using the app ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "795773c8-5bc8-4cba-a9a3-572993bcb92d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"app_id\": \"id12345678\",\n      \"configuration_mode\": \"custom_decode\",\n      \"measurement_window\": 24,\n      \"last_config_change\": \"2021-02-03 09:32:07.362\",\n      \"conversion_value_mapping\": [\n        {\n          \"conversion_value\": 1,\n          \"events\": [\n            {\n              \"event_name\": \"af_purchase\",\n              \"mapped_event_name\": \"af_purchase\",\n              \"conversion_event\": false,\n              \"event_counter\": 3,\n              \"event_revenue\": 5,\n              \"min_event_counter\": 3,\n              \"max_event_counter\": 6,\n              \"min_event_revenue\": 4.001,\n              \"max_event_revenue\": 5,\n              \"event_currency\": \"USD\",\n              \"event_revenue_usd\": 5\n            }\n          ],\n          \"min_time_post_install\": 6,\n          \"max_time_post_install\": 12\n        },\n        {\n          \"conversion_value\": 34,\n          \"events\": [\n            {\n              \"event_name\": \"NewDevice\",\n              \"mapped_event_name\": \"NewDevice\",\n              \"conversion_event\": true,\n              \"event_counter\": 5,\n              \"event_revenue\": 6,\n              \"min_event_revenue\": 5.001,\n              \"max_event_revenue\": 6,\n              \"event_currency\": \"USD\",\n              \"event_revenue_usd\": 6\n            },\n            {\n              \"event_name\": \"AchievedLevel1\",\n              \"mapped_event_name\": \"AchievedLevel1\",\n              \"conversion_event\": false,\n              \"event_counter\": 6\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e80d7aeb-9d67-49fa-9df6-868fc87a7793",
+              "name": "Request is malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ad80e52-dc93-4b01-9e41-a0810c3260fb",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29b74f04-8fe1-458e-8ec9-a69209b88b04",
+              "name": "Server error or resource temporarily not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39de6143-6a3c-484f-8dac-bc06cdf7dd12",
+              "name": "Exceeded rate limitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Exceeded rate limitation",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9458055-0f78-4c05-8f41-dedd45cabdd2",
+          "name": "Get SKAN 4 CV schema",
+          "request": {
+            "name": "Get SKAN 4 CV schema",
+            "description": {
+              "content": "Specify one or more apps using the app ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb7e196f-8e92-4991-9489-f11da0aa1a44",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"app_id\": \"id12345678\",\n    \"last_config_change\": \"2022-11-07 09:32:07.362\",\n    \"configuration_mode\": \"skan4\",\n    \"postbacks\": [\n      {\n        \"postback_sequence_index\": 0,\n        \"measurement_window\": 48,\n        \"lock_window_type\": \"in-app\",\n        \"lock_window_event\": \"af_purchase\",\n        \"conversion_value_mapping\": {\n          \"fine\": [\n            {\n              \"conversion_value\": 0,\n              \"min_time_post_install\": 0,\n              \"max_time_post_install\": 48,\n              \"events\": []\n            },\n            {\n              \"conversion_value\": 5,\n              \"min_time_post_install\": 0,\n              \"max_time_post_install\": 48,\n              \"events\": [\n                {\n                  \"event_name\": \"af_trial_purchase\",\n                  \"mapped_event_name\": \"mobile_add_to_cart\",\n                  \"conversion_event\": false,\n                  \"event_counter\": 1,\n                  \"min_event_counter\": 0,\n                  \"max_event_counter\": 1\n                }\n              ]\n            }\n          ],\n          \"coarse\": [\n            {\n              \"conversion_value\": \"low\",\n              \"min_time_post_install\": 0,\n              \"max_time_post_install\": 48,\n              \"events\": [\n                {\n                  \"event_name\": \"af_app_opened\",\n                  \"mapped_event_name\": \"mobile_active_app\",\n                  \"conversion_event\": false,\n                  \"event_counter\": 1,\n                  \"min_event_counter\": 0,\n                  \"max_event_counter\": 1,\n                  \"min_event_revenue\": 4.001,\n                  \"max_event_revenue\": 5,\n                  \"event_currency\": \"USD\",\n                  \"event_revenue_usd\": 4.5\n                }\n              ]\n            }\n          ]\n        }\n      },\n      {\n        \"postback_sequence_index\": 1,\n        \"measurement_window\": 168,\n        \"lock_window_type\": \"in-app\",\n        \"lock_window_event\": \"af_purchase\",\n        \"conversion_value_mapping\": {\n          \"coarse\": [\n            {\n              \"conversion_value\": \"medium\",\n              \"measurement_window\": 168,\n              \"min_time_post_install\": 48,\n              \"max_time_post_install\": 168,\n              \"events\": [\n                {\n                  \"event_name\": \"af_app_opened\",\n                  \"mapped_event_name\": \"mobile_active_app\",\n                  \"conversion_event\": false,\n                  \"event_counter\": 1,\n                  \"min_event_counter\": 0,\n                  \"max_event_counter\": 1,\n                  \"min_event_revenue\": 4.001,\n                  \"max_event_revenue\": 5,\n                  \"event_currency\": \"USD\",\n                  \"event_revenue_usd\": 4.5\n                }\n              ]\n            }\n          ]\n        }\n      },\n      {\n        \"postback_sequence_index\": 2,\n        \"measurement_window\": 840,\n        \"lock_window_type\": \"high-coarse\",\n        \"conversion_value_mapping\": {\n          \"coarse\": [\n            {\n              \"conversion_value\": \"high\",\n              \"measurement_window\": 840,\n              \"min_time_post_install\": 168,\n              \"max_time_post_install\": 840,\n              \"events\": [\n                {\n                  \"event_name\": \"rv_10\",\n                  \"mapped_event_name\": \"mobile_add_to_cart\",\n                  \"conversion_event\": false,\n                  \"event_counter\": 1,\n                  \"min_event_counter\": 0,\n                  \"max_event_counter\": 1,\n                  \"min_event_revenue\": 4.001,\n                  \"max_event_revenue\": 5,\n                  \"event_currency\": \"USD\",\n                  \"event_revenue_usd\": 4.5\n                }\n              ]\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "189fdca5-547c-4e1b-8cac-25fcaf20507c",
+              "name": "Request is malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69551810-4094-44d2-9f1d-56790ea33f0e",
+              "name": "Authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4062de1-ed52-42f6-b882-4f0fde505273",
+              "name": "Server error or resource temporarily not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a2fff2a-12c3-4988-b6af-a3aea41f7ce9",
+              "name": "Exceeded rate limitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Exceeded rate limitation",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/skad/conversion_schema",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a26fe5e2-6afd-4f2d-9fd1-061eddde4d84",
+    "name": "SKAN CV schema API for ad networks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

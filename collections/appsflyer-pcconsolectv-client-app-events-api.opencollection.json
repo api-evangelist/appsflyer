@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PC/Console/CTV Client-app Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "authorization",
+      "value": "{{authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Measure in-app events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Measure in-app events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.appsflyer.com/v1.0/c2s/inapp/app/:platform/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "Application ID\n"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The CTV platform of the measured app\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ℹ️ This is  API is used to to report events directly from your application's client. If you need Server-to-Server please see [this section](https://dev.appsflyer.com/hc/reference/post_inapp-app-platform-app-id)         \nThis AppsFlyer API integration allows advertisers to measure any\npost-install in-app event and attribute it to a media source and campaign\n\n> 📘 Note\n>\n> ### Generate the authentication signature\n>\n> To authenticate the API request, generate a Hash-Based Message Authentication "
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Measure sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Measure sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://events.appsflyer.com/v1.0/c2s/session/app/:platform/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "",
+                "type": "path",
+                "description": "Application ID\n"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The CTV platform of the measured app\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ℹ️ This is  API is used to to report events directly from your application's client. If you need Server-to-Server please see [this section](https://dev.appsflyer.com/hc/reference/post_session-app-platform-app-id)         \n\nThis AppsFlyer API integration provide advertisers with the ability\nto measure post-install sessions and attribute it to a media source and campaign\n\n> 📘 Note\n>\n> ### Generate the authentication signature\n>\n> To authenticate the API request, generate a Hash-Based Message Au"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

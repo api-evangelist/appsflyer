@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "0eab6d0a-fe2c-4dcd-91f1-2866c1f2ae74",
+      "name": "Account Integration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20926675-681b-464a-9598-6212c3e6fdfd",
+          "name": "List integrations",
+          "request": {
+            "name": "List integrations",
+            "description": {},
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18360a99-4d0b-441a-b94a-c871e689913c",
+              "name": "Integration returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"app_id\": \"string\",\n    \"network\": \"adcolony_int\",\n    \"credentials\": {\n      \"app_id\": \"string\",\n      \"user_credentials\": \"string\"\n    },\n    \"products\": [\n      {\n        \"name\": \"attribution_app_level\",\n        \"enabled\": \"false\",\n        \"source_event\": \"string\"\n      },\n      {\n        \"name\": \"attribution_app_level\",\n        \"enabled\": \"true\",\n        \"source_event\": \"string\"\n      }\n    ],\n    \"event_name\": \"string\"\n  },\n  {\n    \"app_id\": \"string\",\n    \"network\": \"adcolony_int\",\n    \"credentials\": {\n      \"app_id\": \"string\",\n      \"user_credentials\": \"string\"\n    },\n    \"products\": [\n      {\n        \"name\": \"attribution_app_level\",\n        \"enabled\": \"true\",\n        \"source_event\": \"string\"\n      },\n      {\n        \"name\": \"attribution_app_level\",\n        \"enabled\": \"true\",\n        \"source_event\": \"string\"\n      }\n    ],\n    \"event_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "885aa64b-69ac-48de-88a0-778a1a09f08e",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing authorization header\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0974d28-bba0-43cc-81b7-a76745abe7da",
+          "name": "Set integration",
+          "request": {
+            "name": "Set integration",
+            "description": {},
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrations\": [\n    {\n      \"app_id\": \"<string>\",\n      \"network\": \"<string>\",\n      \"credentials\": {\n        \"app_id\": \"<string>\",\n        \"user_credentials\": \"<string>\"\n      },\n      \"products\": [\n        {\n          \"name\": \"<string>\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        }\n      ],\n      \"event_name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44baba90-3355-4a0b-84bc-296bdc4c70e6",
+              "name": "Valid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": [\n    {\n      \"app_id\": \"<string>\",\n      \"network\": \"adcolony_int\",\n      \"credentials\": {\n        \"app_id\": \"<string>\",\n        \"user_credentials\": \"<string>\"\n      },\n      \"products\": [\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        },\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        }\n      ],\n      \"event_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Successfully processed 1 integration updates\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad2e2421-7ef3-4b61-a259-6e2edccab7ff",
+              "name": "Various errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": [\n    {\n      \"app_id\": \"<string>\",\n      \"network\": \"adcolony_int\",\n      \"credentials\": {\n        \"app_id\": \"<string>\",\n        \"user_credentials\": \"<string>\"\n      },\n      \"products\": [\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        },\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        }\n      ],\n      \"event_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Incorrect JSON format. Please verify and resubmit\",\n  \"request_id\": \"f1c0af47-bb7a-4e25-a261-d94d07689bb8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f660e2c4-da05-4304-9cab-c2c7069d8905",
+              "name": "Missing authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": [\n    {\n      \"app_id\": \"<string>\",\n      \"network\": \"adcolony_int\",\n      \"credentials\": {\n        \"app_id\": \"<string>\",\n        \"user_credentials\": \"<string>\"\n      },\n      \"products\": [\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        },\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        }\n      ],\n      \"event_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Missing authorization header\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af526609-3617-456e-a2e3-966f0947f93d",
+              "name": "app_id is not under the account linked to the authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": [\n    {\n      \"app_id\": \"<string>\",\n      \"network\": \"adcolony_int\",\n      \"credentials\": {\n        \"app_id\": \"<string>\",\n        \"user_credentials\": \"<string>\"\n      },\n      \"products\": [\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        },\n        {\n          \"name\": \"attribution_app_level\",\n          \"enabled\": \"<string>\",\n          \"source_event\": \"<string>\"\n        }\n      ],\n      \"event_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/adrevenue/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ea1a3918-8c2e-4253-b4de-f1ad39520a67",
+    "name": "AdRevenue Account Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for configuring or changing partner integrations.",
+      "type": "text/plain"
+    }
+  }
+}

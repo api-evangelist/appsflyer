@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenDSR API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Production",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get OpenDSR request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/opendsr_requests/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Returns the latest status payload for the supplied `subject_request_id`."
+        },
+        {
+          "info": {
+            "name": "Cancel a OpenDSR request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/opendsr_requests/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Cancels an existing OpenDSR request, the request must be in the pending state to be canceled."
+        },
+        {
+          "info": {
+            "name": "Submit a batch of OpenDSR requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/opendsr_requests/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates multiple OpenDSR requests in a single operation."
+        },
+        {
+          "info": {
+            "name": "Submit a OpenDSR request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/opendsr_requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new OpenDSR request."
+        },
+        {
+          "info": {
+            "name": "Discovery metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/discovery"
+          },
+          "docs": "Exposes the API version, supported subject identity types, supported request types, and the processor certificate endpoint."
+        },
+        {
+          "info": {
+            "name": "Download request report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/download/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Downloads report that was generated for the specified `subject_request_id`. once an access or portability request has been completed"
+        },
+        {
+          "info": {
+            "name": "Get the statuses of requests in a batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/opendsr_requests/batch/:batch_id",
+            "params": [
+              {
+                "name": "batch_id",
+                "value": "",
+                "type": "path",
+                "description": "Batch identifier"
+              }
+            ]
+          },
+          "docs": "Fetches the status payloads for every request that belongs to the specified `batch_id`."
+        },
+        {
+          "info": {
+            "name": "Download signed certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/certificate"
+          },
+          "docs": "Returns the public processor certificate used to sign OpenDSR responses."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stub & Testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get stub OpenDSR request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Returns the status payload for a stub submission matching the provided `subject_request_id`."
+        },
+        {
+          "info": {
+            "name": "Cancel a stub OpenDSR request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Cancels a stub submission identified by its `subject_request_id`."
+        },
+        {
+          "info": {
+            "name": "Submit a stub batch of OpenDSR requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Same contract as the production batch endpoint but processed in stub mode for integration testing."
+        },
+        {
+          "info": {
+            "name": "Submit a stub OpenDSR request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mirrors the production create endpoint but processes the payload in stub mode."
+        },
+        {
+          "info": {
+            "name": "Download stub request report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/download/:subject_request_id",
+            "params": [
+              {
+                "name": "subject_request_id",
+                "value": "",
+                "type": "path",
+                "description": "Subject request identifier"
+              }
+            ]
+          },
+          "docs": "Downloads report generated for the specified stub `subject_request_id`."
+        },
+        {
+          "info": {
+            "name": "Get the statuses of requests in a batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/batch/:batch_id",
+            "params": [
+              {
+                "name": "batch_id",
+                "value": "",
+                "type": "path",
+                "description": "Batch identifier"
+              }
+            ]
+          },
+          "docs": "Returns the status payloads for every stub request within the specified `batch_id`."
+        },
+        {
+          "info": {
+            "name": "Download signed certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/certificate"
+          },
+          "docs": "Returns the public processor certificate used to sign OpenDSR responses."
+        },
+        {
+          "info": {
+            "name": "Discovery metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/gdpr/v1/stub/discovery"
+          },
+          "docs": "Exposes the API version, supported subject identity types, supported request types, and the processor certificate endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

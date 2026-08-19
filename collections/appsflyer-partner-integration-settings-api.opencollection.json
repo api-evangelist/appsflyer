@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Partner integration settings API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Active integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get active integration parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/v1/integrations/:appid",
+            "params": [
+              {
+                "name": "appid",
+                "value": "com.publisher.name",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters under the integration tab.\n"
+        },
+        {
+          "info": {
+            "name": "Get active integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/v1/integrations"
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of the active integrations with your partners arranged by app. An integration is considered active if one of the following is enabled:\n- Activate partner\n- Cost\n- Ad revenue\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unique partner integration parameters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of unique parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/v1/partner-params/:pid/:platform",
+            "params": [
+              {
+                "name": "pid",
+                "value": "facebook_int",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nGet a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a successful message is recieved with no data.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Integration settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deprecated - Copy partner integration settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/copy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        },
+        {
+          "info": {
+            "name": "Copy partner integration settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/v1/copy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nCopy the integration settings from one app to another. Copying the parameters can be done only for apps on the same platform. To retrieve the partner's unique parameters needed for the integration, use the [GET request](https://dev"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Google Play install referrer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Set install referrer decryption key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/app-integrations/v1/integration-params",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nSet the Google Play install referrer decryption key for each app as recieved by Facebook.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

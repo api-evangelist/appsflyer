@@ -87,6 +87,14 @@ Authentication for most REST APIs is an API V2 token (a JWT) sent as `Authorizat
 - Pagination: `limit` / `offset` on list endpoints (App list caps at 1,000 records per page). Report endpoints are unpaginated and return up to 1,000,000 rows.
 - Versioning: URI path (`/v2.0`, `/v5`, `/v3`). No Sunset or Deprecation headers.
 - Idempotency: not supported — no idempotency key header or parameter exists in any published operation.
-- Rate limiting: HTTP 429 on 17 operations; report-generation quotas are per report, per app, per day. OpenDSR is limited to 350 requests/minute. No rate-limit response headers are documented.
+- Rate limiting: HTTP 429 on 17 operations. Two separate mechanisms — per-calendar-day report-generation quotas (reset 00:00 UTC) and conventional per-second/per-minute limits. Published figures: OneLink 7,500,000 requests/month and 500 requests/second per account; Cohort API 60 calls/minute per account; SKAN aggregate 10 calls/minute per account; Master API unlimited; Pull API aggregate 1 call/minute per app per report for date ranges up to 2 days, or 120 calls/day per account and 24 calls/day per app for 3+ day ranges; OpenDSR 350 requests/minute (504,000/day). Advertiser raw-data quotas vary by subscription and are not published. NO rate-limit response headers exist anywhere (no `X-RateLimit-*`, no `RateLimit-*`, no `Retry-After`) — the only machine-readable budget signal is `GET /shortlinks-quota/{account-id}` on the OneLink API, which returns `remaining_api_calls` and is badged Premium.
 - Sandbox: `sandbox-events.appsflyer.com` and `sandbox-engagements.appsflyer.com` mirror the event ingestion hosts; the OpenDSR API has eight `stub` operations mirroring production one-for-one.
+
+## Plans and access
+- Three published tiers: **Zero** (free), **Growth** (pay-as-you-go, `$0.07` per conversion after the Welcome Package) and **Enterprise** (custom pricing, sales-gated). Billing is per *conversion* — a measured install or user action — not per API call or per seat.
+- The Welcome Package grants 12,000 free conversions in the first 12 months plus a 30-day trial of premium add-ons.
+- API access is not a baseline entitlement: **Raw Data API Access** and the **API Analytics Suite** are named premium add-ons, and several OneLink operations are badged `Premium` inside AppsFlyer's own OpenAPI. No add-on prices are published.
+
+## Undocumented / partially documented surfaces
+- [Creative External API](https://dev.appsflyer.com/hc/reference/creative-external-api-overview): base `https://hq1.appsflyer.com/creative-dashboard/api`, bearer API V2 token. Uploads creatives and publishes ads to ad networks (Meta today). Asynchronous: `POST /creative/v1.0/upload/batch` returns a batch id, then `GET /creative/v1.0/upload/status/{batch_id}` is polled (start at 5s, exponential backoff to 60s). Documented as a narrative guide only — it is the one AppsFlyer API with no OAS-backed reference, so there is no OpenAPI to fetch.
 

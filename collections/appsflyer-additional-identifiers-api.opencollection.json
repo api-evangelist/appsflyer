@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Additional Identifiers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Additional Identifiers Handling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add, Modify or Remove",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://hq1.appsflyer.com/api/audience-bulk-api/v1/additional-identifiers/app/:app-id",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

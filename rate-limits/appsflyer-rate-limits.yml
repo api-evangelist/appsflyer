@@ -1,0 +1,170 @@
+generated: '2026-08-13'
+method: searched
+source: https://dev.appsflyer.com/hc/reference/overview-3 + https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+  + https://support.appsflyer.com/hc/en-us/articles/11332840660625-OpenDSR-API + openapi/*.yml
+docs:
+- https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- https://support.appsflyer.com/hc/en-us/articles/11332840660625-OpenDSR-API
+- https://dev.appsflyer.com/hc/reference/overview-3
+limit_count: 11
+model: 'AppsFlyer does not run one global throttle. It runs two different mechanisms: a report-generation
+  QUOTA counted per report type, per app and per account per calendar day (Pull API and the export pages),
+  and conventional per-second/per-minute rate limits on the transactional APIs (OneLink, Cohort, SKAN,
+  OpenDSR). Quotas reset at 00:00 UTC. Advertiser quotas vary by subscription plan and are not fully published.'
+headers:
+  published: false
+  x_ratelimit: false
+  ratelimit_rfc9331: false
+  retry_after: false
+  note: 'This is the significant gap for an agent. AppsFlyer declares NO rate-limit response headers anywhere
+    — not in any of the 36 harvested OpenAPI documents and not in the Help Center. A client cannot read
+    its remaining budget from a response; it can only observe the 429 after the fact. The one machine-readable
+    budget signal AppsFlyer publishes is a dedicated endpoint, not a header: GET /shortlinks-quota/{account-id}
+    on the OneLink API (operationId get-onelink-v2-link-quota) returns {"remaining_api_calls": <int>},
+    and it is badged Premium.'
+  quota_endpoint:
+    api: OneLink API v2.0
+    operationId: get-onelink-v2-link-quota
+    path: /shortlinks-quota/{account-id}
+    returns: remaining_api_calls
+    entitlement: Premium
+exhaustion:
+  status: 429
+  observed_in_specs: 17 operations across 8 of the 36 harvested OpenAPI documents
+  envelope: '{status, code, message, request_id}'
+  messages_published:
+  - Monthly quota exceeded
+  - Rate limit exceeded
+  - Too many requests - Exceeded rate limitation
+  - Exceeded rate limitation
+  - The rate limit is XXX requests per minute, please try again later
+  note: 'The ROI360 net-revenue spec ships the literal placeholder "The rate limit is XXX requests per
+    minute, please try again later" as its published 429 example — AppsFlyer has not filled in the number
+    in its own contract. request_id is returned on error payloads and should be quoted in support tickets.'
+limits:
+- api: OneLink API v2.0
+  scope: per-account
+  window: month
+  limit: 7500000
+  unit: requests
+  status: 429
+  message: Monthly quota exceeded
+  note: Requests made after the monthly quota is exhausted are not served and no links are created. Failed
+    creations caused by a duplicate URL ID return 400 and still count against this quota.
+  source: https://dev.appsflyer.com/hc/reference/overview-3
+- api: OneLink API v2.0
+  scope: per-account
+  window: second
+  limit: 500
+  unit: requests
+  burst: null
+  equivalent_per_minute: 30000
+  status: 429
+  message: Rate limit exceeded
+  source: https://dev.appsflyer.com/hc/reference/overview-3
+- api: Pull API (aggregate reports)
+  scope: per-app, per-report
+  window: minute
+  limit: 1
+  unit: calls
+  condition: date range of up to 2 days
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Pull API (aggregate reports)
+  scope: per-account, per-report
+  window: day
+  limit: 120
+  unit: calls
+  condition: date range of 3 or more days
+  reset: 00:00 UTC
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Pull API (aggregate reports)
+  scope: per-app, per-report
+  window: day
+  limit: 24
+  unit: calls
+  condition: date range of 3 or more days
+  reset: 00:00 UTC
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Cohort API
+  scope: per-account
+  window: minute
+  limit: 60
+  unit: calls
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: SKAN aggregate reports
+  scope: per-account
+  window: minute
+  limit: 10
+  unit: calls
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Master API
+  scope: per-account
+  window: day
+  limit: null
+  unit: calls
+  note: Published as "Unlimited".
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Pull API (ad network postback reports — installs, retargeting conversions)
+  scope: per-app / per-account, per-report
+  window: day
+  limit: 24
+  account_limit: 120
+  unit: reports
+  audience: ad networks
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: Pull API (ad network postback reports — in-app events, in-app events retargeting)
+  scope: per-app / per-account, per-report
+  window: day
+  limit: 12
+  account_limit: 60
+  unit: reports
+  audience: ad networks
+  source: https://support.appsflyer.com/hc/en-us/articles/207034366-Report-generation-quotas-rate-limitations
+- api: OpenDSR API
+  scope: per-account
+  window: minute
+  limit: 350
+  unit: requests
+  equivalent_per_day: 504000
+  source: https://support.appsflyer.com/hc/en-us/articles/11332840660625-OpenDSR-API
+undocumented:
+- api: Raw data Pull API (advertisers)
+  note: 'Quotas are stated to depend on the AppsFlyer subscription plan and the per-plan numbers are not
+    published; only the ad-network postback table carries figures. AppsFlyer directs customers to their
+    Account Executive.'
+- api: App management API v2.0
+  note: Declares 429 "Too many requests - Exceeded rate limitation" on three operations but publishes
+    no number.
+- api: ROI360 net-revenue API v2.0
+  note: Declares 429 with an unfilled "XXX requests per minute" placeholder.
+- api: SKAN CV schema API for ad networks
+  note: Declares 429 "Exceeded rate limitation" with no number.
+payload_limits:
+- api: OneLink API v2.0
+  limit: 2048
+  unit: characters
+  applies_to: query string
+- api: Push API (postback destinations)
+  limit: 2048
+  unit: characters
+  applies_to: webhook destination URL
+- api: Raw data Pull API
+  limit: 1000000
+  unit: rows
+  applies_to: single report response
+- api: App list API
+  limit: 1000
+  unit: records
+  applies_to: page size
+separation_rules:
+- Quotas are counted separately per reporting tool — the Pull API and the raw-data export page each get
+  their own budget for the same report.
+- Quotas are counted separately per report type.
+- Agencies and advertisers hold separate Pull API quotas; agency-generated reports do not count against
+  the advertiser quota, UNLESS the agency authenticates with the advertiser's own API token, in which
+  case the calls are indistinguishable and are charged to the advertiser.
+- Ad-network-generated reports never count against the advertiser quota.
+cross_links:
+  conventions: conventions/appsflyer-conventions.yml
+  errors: errors/appsflyer-problem-types.yml
+  plans: plans/appsflyer-plans-pricing.yml

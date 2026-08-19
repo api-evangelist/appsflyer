@@ -1,0 +1,406 @@
+{
+  "item": [
+    {
+      "id": "d7c14e17-0de2-43d5-b49d-387cc92c6fa2",
+      "name": "Inapp Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a895c61c-767f-40b5-b33e-0e31d8ca0618",
+          "name": "Send Event",
+          "request": {
+            "name": "Send Event",
+            "description": {
+              "content": "Use this API to send mobile events that occur outside the app from your servers to AppsFlyer.\n> ⚠️ \n> **JSON payload limitation** JSON payload size: up to 1KB\n\n> ⚠️ \n> This API requires **TLS v1.2** or higher\n\n> 📘 \n> **Encode URLs** - [Encode (percent) code reserved characters](https://tools.ietf.org/html/rfc3986#section-2.1) before forming the method URL. \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inappevent",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"<json>\",\n  \"advertising_id\": \"<string>\",\n  \"oaid\": \"<string>\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"<string>\",\n  \"customer_user_id\": \"<string>\",\n  \"email_hashed\": \"<string>\",\n  \"phone_number_hashed\": \"<string>\",\n  \"phone_number_e164_hashed\": \"<string>\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"<string>\",\n  \"ip\": \"<string>\",\n  \"app_version_name\": \"<string>\",\n  \"app_store\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"<string>\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"<json>\",\n  \"os\": \"<string>\",\n  \"ua\": \"<string>\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"<UUID>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23d46ad2-6bbb-4102-97e5-a00758b00118",
+              "name": "On receipt of a message, minimum data validation is performed. As such, you can get an OK response even though the event may not completely record in AppsFlyer\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inappevent",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"{ \\\"af_revenue\\\": \\\"6\\\", \\\"af_content_type\\\": \\\"wallets\\\", \\\"af_content_id\\\": \\\"15854\\\", \\\"your_custom_attribute\\\" :\\\"456.123\\\" }\",\n  \"advertising_id\": \"9c9a82fb-d5de-4cd1-90c3-527441c11828\",\n  \"oaid\": \"1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"AA-BBBBBB-CCCCCC-D\",\n  \"customer_user_id\": \"customer_user_id\",\n  \"email_hashed\": \"62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f\",\n  \"phone_number_hashed\": \"e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176\",\n  \"phone_number_e164_hashed\": \"9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"10293847561029384\",\n  \"ip\": \"192.0.2.1\",\n  \"app_version_name\": \"my_app_version\",\n  \"app_store\": \"my_android_store_is_best\",\n  \"eventTime\": \"2019-05-15 12:17:01.123\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"com.myapp\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"{\\\"key_group\\\" : { \\\"key_a1\\\" : \\\"value a1\\\", \\\"key_a2\\\" : \\\"value a2\\\" }, \\\"key_b\\\" : \\\"value b\\\"}\",\n  \"os\": \"14.5.1\",\n  \"ua\": \"Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"OK\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdbb475d-39fb-4470-9833-ae82cdaa684d",
+              "name": "|Message|How to handle|\n|--- |--- |--- |\n|Failed to Authenticate|Ensure that the authentication key is correct|\n|appsflyer_id is a mandatory field|<ul><li>Make sure you pass the correct AppsFlyer ID in the JSON</li><li>JSON is `stringified()` and formatted correctly</li></ul>|\n|Bad request|When the request failed at least one of the validation criteria|\n|Payload is missing or failed to parse|<ul><li>Make sure that the JSON is stringified and formatted correctly</li><li>If more than one event is included in the JSON payload. Make sure to send one event per request.</li></ul>\n|app_id|<ul><li>`app_id` doesn't match the authentcation token</li><li>Make sure that the app_id is correct.</li></ul>\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inappevent",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"{ \\\"af_revenue\\\": \\\"6\\\", \\\"af_content_type\\\": \\\"wallets\\\", \\\"af_content_id\\\": \\\"15854\\\", \\\"your_custom_attribute\\\" :\\\"456.123\\\" }\",\n  \"advertising_id\": \"9c9a82fb-d5de-4cd1-90c3-527441c11828\",\n  \"oaid\": \"1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"AA-BBBBBB-CCCCCC-D\",\n  \"customer_user_id\": \"customer_user_id\",\n  \"email_hashed\": \"62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f\",\n  \"phone_number_hashed\": \"e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176\",\n  \"phone_number_e164_hashed\": \"9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"10293847561029384\",\n  \"ip\": \"192.0.2.1\",\n  \"app_version_name\": \"my_app_version\",\n  \"app_store\": \"my_android_store_is_best\",\n  \"eventTime\": \"2019-05-15 12:17:01.123\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"com.myapp\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"{\\\"key_group\\\" : { \\\"key_a1\\\" : \\\"value a1\\\", \\\"key_a2\\\" : \\\"value a2\\\" }, \\\"key_b\\\" : \\\"value b\\\"}\",\n  \"os\": \"14.5.1\",\n  \"ua\": \"Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Failed to Authenticate\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e51279d3-7c1e-4c86-8ade-3f0181b9af34",
+              "name": "|Message|How to handle|\n|--- |--- |--- |\n|Unauthorized|When the key provided in the authentication header is not the `<S2S_key>` for this app|\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inappevent",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"{ \\\"af_revenue\\\": \\\"6\\\", \\\"af_content_type\\\": \\\"wallets\\\", \\\"af_content_id\\\": \\\"15854\\\", \\\"your_custom_attribute\\\" :\\\"456.123\\\" }\",\n  \"advertising_id\": \"9c9a82fb-d5de-4cd1-90c3-527441c11828\",\n  \"oaid\": \"1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"AA-BBBBBB-CCCCCC-D\",\n  \"customer_user_id\": \"customer_user_id\",\n  \"email_hashed\": \"62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f\",\n  \"phone_number_hashed\": \"e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176\",\n  \"phone_number_e164_hashed\": \"9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"10293847561029384\",\n  \"ip\": \"192.0.2.1\",\n  \"app_version_name\": \"my_app_version\",\n  \"app_store\": \"my_android_store_is_best\",\n  \"eventTime\": \"2019-05-15 12:17:01.123\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"com.myapp\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"{\\\"key_group\\\" : { \\\"key_a1\\\" : \\\"value a1\\\", \\\"key_a2\\\" : \\\"value a2\\\" }, \\\"key_b\\\" : \\\"value b\\\"}\",\n  \"os\": \"14.5.1\",\n  \"ua\": \"Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Unauthorized\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8643e01d-086a-48fd-931d-cfa5e35e38ca",
+              "name": "|Message|How to handle|\n|--- |--- |--- |\n|Forbidden|\"Zero Package\" does not accept attribution events|\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inappevent",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"{ \\\"af_revenue\\\": \\\"6\\\", \\\"af_content_type\\\": \\\"wallets\\\", \\\"af_content_id\\\": \\\"15854\\\", \\\"your_custom_attribute\\\" :\\\"456.123\\\" }\",\n  \"advertising_id\": \"9c9a82fb-d5de-4cd1-90c3-527441c11828\",\n  \"oaid\": \"1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"AA-BBBBBB-CCCCCC-D\",\n  \"customer_user_id\": \"customer_user_id\",\n  \"email_hashed\": \"62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f\",\n  \"phone_number_hashed\": \"e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176\",\n  \"phone_number_e164_hashed\": \"9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"10293847561029384\",\n  \"ip\": \"192.0.2.1\",\n  \"app_version_name\": \"my_app_version\",\n  \"app_store\": \"my_android_store_is_best\",\n  \"eventTime\": \"2019-05-15 12:17:01.123\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"com.myapp\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"{\\\"key_group\\\" : { \\\"key_a1\\\" : \\\"value a1\\\", \\\"key_a2\\\" : \\\"value a2\\\" }, \\\"key_b\\\" : \\\"value b\\\"}\",\n  \"os\": \"14.5.1\",\n  \"ua\": \"Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Forbidden\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cab2249-7a7a-4ffb-88e1-3b37dac12399",
+              "name": "|Message|How to handle|\n|--- |--- |--- |\n|Internal Server Error|Verify that the JSON is `stringified()` and formatted correctly|\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inappevent",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appsflyer_id\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventValue\": \"{ \\\"af_revenue\\\": \\\"6\\\", \\\"af_content_type\\\": \\\"wallets\\\", \\\"af_content_id\\\": \\\"15854\\\", \\\"your_custom_attribute\\\" :\\\"456.123\\\" }\",\n  \"advertising_id\": \"9c9a82fb-d5de-4cd1-90c3-527441c11828\",\n  \"oaid\": \"1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5\",\n  \"amazon_aid\": \"<string>\",\n  \"imei\": \"AA-BBBBBB-CCCCCC-D\",\n  \"customer_user_id\": \"customer_user_id\",\n  \"email_hashed\": \"62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f\",\n  \"phone_number_hashed\": \"e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176\",\n  \"phone_number_e164_hashed\": \"9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd\",\n  \"first_name_hashed\": \"<string>\",\n  \"last_name_hashed\": \"<string>\",\n  \"fb_login_id\": \"10293847561029384\",\n  \"ip\": \"192.0.2.1\",\n  \"app_version_name\": \"my_app_version\",\n  \"app_store\": \"my_android_store_is_best\",\n  \"eventTime\": \"2019-05-15 12:17:01.123\",\n  \"eventCurrency\": \"<string>\",\n  \"bundleIdentifier\": \"com.myapp\",\n  \"sharing_filter\": [\n    \"<string>\"\n  ],\n  \"custom_dimension\": \"<string>\",\n  \"app_type\": \"<string>\",\n  \"custom_data\": \"{\\\"key_group\\\" : { \\\"key_a1\\\" : \\\"value a1\\\", \\\"key_a2\\\" : \\\"value a2\\\" }, \\\"key_b\\\" : \\\"value b\\\"}\",\n  \"os\": \"14.5.1\",\n  \"ua\": \"Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64\",\n  \"aie\": \"<boolean>\",\n  \"consent_data\": {\n    \"tcf\": {\n      \"policy_version\": \"<integer>\",\n      \"gdpr_applies\": \"<integer>\",\n      \"cmp_sdk_id\": \"<integer>\",\n      \"cmp_sdk_version\": \"<integer>\",\n      \"tcstring\": \"<string>\"\n    }\n  },\n  \"app_set_id\": {\n    \"scope\": \"<integer>\",\n    \"id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Internal Server Error\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api3.appsflyer.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "19a74698-8447-4d3b-a72a-b504b15b5fe8",
+    "name": "Server-to-server events API (for mobile)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppsFlyer platform attributes and records mobile app events sent by the AppsFlyer SDK and by APIs. Use the S2S API to report events that take place outside the app; for example, a user renews their subscription using your web interface. S2S events, once recorded, are available across the platform, including dashboards, raw data, and analytics. \nAppsFlyer populates S2S events with:\n\n- Values sent in the S2S message\n- Some AppsFlyer install attribution values like, install time and media source. \n",
+      "type": "text/plain"
+    }
+  }
+}

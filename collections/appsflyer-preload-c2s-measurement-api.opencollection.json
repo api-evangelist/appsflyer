@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Preload C2S Measurement API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "authorization",
+      "value": "{{authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Download Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://engagements.appsflyer.com/v1.0/c2s/download/app/android/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Download event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

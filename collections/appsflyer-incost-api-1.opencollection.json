@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "InCost API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InCost job status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/incost-jobstatus/v1/data/app/:app_id/job/:job_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id123456789",
+                "type": "path",
+                "description": "the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+              },
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The job identifier returned by the send cost data call. \n      \n"
+              }
+            ]
+          },
+          "docs": "Get job status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "InCost uploader",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload cost data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/incost-uploader/v1/data/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id123456789",
+                "type": "path",
+                "description": "the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.\nEnsure to prefix iOS apps with **id**.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload cost data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

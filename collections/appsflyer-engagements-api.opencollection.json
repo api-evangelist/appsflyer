@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagements API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Click Engagement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Click Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://engagements.appsflyer.com/v1.0/s2s/click/app/:platform/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The application platform"
+              },
+              {
+                "name": "af_media_source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_request_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_adset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_adset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_prt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_siteid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_sub_siteid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_click_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_lookback_window",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_placement",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_channel",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom1",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom2",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom3",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom4",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom5",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_model",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_os_version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_device_id_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_device_id_value",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_user_agent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Click Engagement"
+        },
+        {
+          "info": {
+            "name": "Click Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://engagements.appsflyer.com/v1.0/s2s/click/app/:platform/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The application platform"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Click Engagement"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Impression Engagement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Impression Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://engagements.appsflyer.com/v1.0/s2s/impression/app/:platform/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The application platform"
+              },
+              {
+                "name": "af_media_source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_request_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_adset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_adset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_campaign_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_prt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_siteid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_sub_siteid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_click_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_lookback_window",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_placement",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ad_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_channel",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom1",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom2",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom3",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom4",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_custom5",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_model",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_os_version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_device_id_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_device_id_value",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_ip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "af_user_agent",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Impression Engagement"
+        },
+        {
+          "info": {
+            "name": "Impression Engagement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://engagements.appsflyer.com/v1.0/s2s/impression/app/:platform/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path",
+                "description": "The application platform"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Impression Engagement"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

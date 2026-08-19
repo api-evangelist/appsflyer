@@ -1,0 +1,955 @@
+{
+  "item": [
+    {
+      "id": "46182ccc-af21-4c8d-8f7a-ffb66b4af048",
+      "name": "Ad Revenue raw data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ac03d26-f881-456d-be05-d0ef97a358a2",
+          "name": "Organic ad revenue",
+          "request": {
+            "name": "Organic ad revenue",
+            "description": {
+              "content": "Records ad revenue for users not attributed to a media source.\nData freshness: Daily\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "ad_revenue_organic_raw",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "geo",
+                  "value": "<string>",
+                  "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximum_rows",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additional_fields",
+                  "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d1160f1-6533-4416-b94f-a3c68f6ac65e",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_organic_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87cc4425-2ccb-4873-a6fc-604a92d482b8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_organic_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35b31810-854c-4bde-98d9-06a866c3aa3d",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_organic_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9211ea6c-c444-413e-a06f-6d3a31c73c26",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_organic_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcd14943-3641-4539-825a-06ffe599cbb4",
+          "name": "Attributed ad revenue",
+          "request": {
+            "name": "Attributed ad revenue",
+            "description": {
+              "content": "Records ad revenue for users attributed to a media source. \nData freshness: Daily\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":app-id",
+                "ad_revenue_raw",
+                "v5"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<date>",
+                  "description": "(Required) From date (report start date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<date>",
+                  "description": "(Required) To date (report end date)"
+                },
+                {
+                  "disabled": false,
+                  "key": "media_source",
+                  "value": "<string>",
+                  "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "reattr",
+                  "value": "false",
+                  "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "geo",
+                  "value": "<string>",
+                  "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximum_rows",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "additional_fields",
+                  "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app-id",
+                  "description": "(Required) Application ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39598852-73b1-4d79-8b90-8c7be9fa6cff",
+              "name": "Reports returned in CSV format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "false"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab5fcdf6-c796-4541-8a76-0a17e8a7f319",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "false"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Your API call limit has been reached for the given report type\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2652424a-8f7f-48c4-be8d-85e82d4f1505",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "false"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52589172-c87b-48f3-8c9d-0848863a82fb",
+              "name": "App ID wasn't found.\n- Ensure that the app ID is correct. iOS apps must start with ID.\n- The token doesn't match the app. Are you using the correct token?\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":app-id",
+                    "ad_revenue_raw",
+                    "v5"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "media_source",
+                      "value": "facebook"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reattr",
+                      "value": "false"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maximum_rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "additional_fields",
+                      "value": "store_reinstall,impressions,contributor3_match_type,gp_click_time,match_type,mediation_network,oaid,deeplink_url,blocked_reason,blocked_sub_reason,gp_broadcast_referrer,gp_install_begin,custom_data,rejected_reason,device_download_time,keyword_match_type,contributor1_match_type,contributor2_match_type,device_model,monetization_network,segment,is_lat,gp_referrer,blocked_reason_value,store_product_page,device_category,rejected_reason_value,ad_unit,keyword_id,placement,network_account_id,install_app_store,amazon_aid,engagement_destination"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app-id",
+                      "description": "(Required) Application ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"AppsFlyer 404 error message page displays\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq.appsflyer.com/export/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "36d7d608-0208-48a5-9c0d-d8869541b490",
+    "name": "Raw Data Pull API V1 Token",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "> It is recommended to use the v2 version based on Bearer authentication.\n",
+      "type": "text/plain"
+    }
+  }
+}

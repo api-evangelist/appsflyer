@@ -1,7 +1,19 @@
-generated: '2026-07-31'
+generated: '2026-08-13'
 method: searched
-source: npm, Maven Central, NuGet, pub.dev, CocoaPods, and https://dev.appsflyer.com/hc/docs/getting-started
+source: registry.npmjs.org, repo1.maven.org (maven-metadata.xml), api.nuget.org, pub.dev API, trunk.cocoapods.org,
+  api.github.com, and https://dev.appsflyer.com/hc/docs/getting-started
 notes: First-party AppsFlyer SDKs and plugins. All repositories live under https://github.com/AppsFlyerSDK.
+  Every `version:` + `published:` pair below was read from the registry metadata endpoint on 2026-08-13,
+  not from the docs.
+currency_checked: '2026-08-13'
+currency_summary:
+  total: 18
+  current: 15
+  stale: 3
+  note: 'AppsFlyer shipped a major SDK 7.x on 2026-07-23 (native iOS + Android). The cross-platform plugins
+    are still on 6.18.x, so a Flutter/React Native/Unity/Capacitor consumer is one major behind the native
+    SDK. Three packages are genuinely abandoned: nativescript-plugin-appsflyer (last release 2024-05-07),
+    appsflyer-roku-sample-app (2023-12-25) and appsflyer-web-sdk (2022-10-06).'
 packages:
 - language: swift
   registry: cocoapods
@@ -10,28 +22,43 @@ packages:
   install: pod 'AppsFlyerFramework'
   official: true
   repo: https://github.com/AppsFlyerSDK/AppsFlyerFramework
+  version: 7.0.1
+  published: '2026-07-23'
 - language: java
   registry: maven
   name: com.appsflyer:af-android-sdk
   url: https://central.sonatype.com/artifact/com.appsflyer/af-android-sdk
-  install: implementation 'com.appsflyer:af-android-sdk:6.17.0'
+  install: implementation 'com.appsflyer:af-android-sdk:7.0.1'
   official: true
+  version: 7.0.1
+  published: '2026-07-23'
+  note: Date read from maven-metadata.xml lastUpdated.
 - language: java
   registry: maven
   name: com.appsflyer:purchase-connector
   url: https://central.sonatype.com/artifact/com.appsflyer/purchase-connector
-  install: implementation 'com.appsflyer:purchase-connector:2.1.1'
+  install: implementation 'com.appsflyer:purchase-connector:2.3.0'
   official: true
+  version: 2.3.0
+  published: '2026-06-04'
+  note: Date read from maven-metadata.xml lastUpdated.
 - language: java
   registry: maven
   name: com.appsflyer:unity-wrapper
   url: https://central.sonatype.com/artifact/com.appsflyer/unity-wrapper
   official: true
+  version: 7.0.13
+  published: '2026-07-27'
+  note: Date read from maven-metadata.xml lastUpdated.
 - language: java
   registry: maven
   name: com.appsflyer:appsflyer-adobe-aep-sdk-extension
   url: https://central.sonatype.com/artifact/com.appsflyer/appsflyer-adobe-aep-sdk-extension
   official: true
+  version: 6.17.51
+  published: '2026-01-08'
+  note: Date read from maven-metadata.xml lastUpdated. Seven months without a release while the core Android
+    SDK moved to 7.x.
 - language: javascript
   registry: npm
   name: react-native-appsflyer
@@ -39,6 +66,8 @@ packages:
   install: npm install react-native-appsflyer
   official: true
   repo: https://github.com/AppsFlyerSDK/appsflyer-react-native-plugin
+  version: 6.18.0
+  published: '2026-05-19'
 - language: javascript
   registry: npm
   name: appsflyer-capacitor-plugin
@@ -46,6 +75,8 @@ packages:
   install: npm install appsflyer-capacitor-plugin
   official: true
   repo: https://github.com/AppsFlyerSDK/appsflyer-capacitor-plugin
+  version: 6.18.0
+  published: '2026-05-18'
 - language: javascript
   registry: npm
   name: cordova-plugin-appsflyer-sdk
@@ -53,6 +84,8 @@ packages:
   install: cordova plugin add cordova-plugin-appsflyer-sdk
   official: true
   repo: https://github.com/AppsFlyerSDK/appsflyer-cordova-plugin
+  version: 6.18.1
+  published: '2026-06-30'
 - language: javascript
   registry: npm
   name: nativescript-plugin-appsflyer
@@ -60,20 +93,43 @@ packages:
   install: npm install nativescript-plugin-appsflyer
   official: true
   repo: https://github.com/AppsFlyerSDK/nativescript-plugin-appsflyer
+  version: 6.14.3
+  published: '2024-05-07'
+  stale: true
+  note: Over two years without a release. Four minor versions behind the other cross-platform plugins and
+    a full major behind the native SDKs.
 - language: javascript
   registry: npm
   name: appsflyer-html5-ctv-sdk
   url: https://www.npmjs.com/package/appsflyer-html5-ctv-sdk
   install: npm install appsflyer-html5-ctv-sdk
   official: true
+  version: 0.0.5
+  published: '2026-02-02'
+  note: Still pre-1.0 despite being the shipping HTML5/CTV integration path.
+- language: javascript
+  registry: npm
+  name: appsflyer-web-sdk
+  url: https://www.npmjs.com/package/appsflyer-web-sdk
+  official: true
+  version: 0.0.1
+  published: '2022-10-06'
+  stale: true
+  repo: git@gitlab.appsflyer.com:mobile/appsflyer-web-sdk.git
+  note: 'Published by the same npm account as the other first-party plugins (gm-appsflyer) and pointing
+    at AppsFlyer''s internal GitLab, described as "AppsFlyer web SDK for TV web application". Never moved
+    past 0.0.1 and superseded in practice by appsflyer-html5-ctv-sdk. Recorded because it is still installable
+    and a consumer searching npm for an AppsFlyer web SDK will find it first.'
 - language: javascript
   registry: npm
   name: '@appsflyer/sdk-mcp-server'
   url: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
-  install: npm install @appsflyer/sdk-mcp-server
+  install: npx -y @appsflyer/sdk-mcp-server
   official: true
   kind: mcp-server
   repo: https://github.com/AppsFlyerKnowledge/appsflyer-sdk-mcp-server
+  version: 1.5.2
+  published: '2026-05-14'
 - language: dart
   registry: pub.dev
   name: appsflyer_sdk
@@ -81,6 +137,8 @@ packages:
   install: flutter pub add appsflyer_sdk
   official: true
   repo: https://github.com/AppsFlyerSDK/appsflyer-flutter-plugin
+  version: 6.18.1
+  published: '2026-07-27'
 - language: csharp
   registry: nuget
   name: AppsFlyerXamarinBinding
@@ -88,6 +146,8 @@ packages:
   install: dotnet add package AppsFlyerXamarinBinding
   official: true
   repo: https://github.com/AppsFlyerSDK/XamariniOSBinding
+  version: 6.18.1
+  published: '2026-07-21'
 - language: csharp
   registry: nuget
   name: AppsFlyerXamarinBindingAndroid
@@ -95,27 +155,49 @@ packages:
   install: dotnet add package AppsFlyerXamarinBindingAndroid
   official: true
   repo: https://github.com/AppsFlyerSDK/XamarinAndroidBinding
+  version: 6.18.1
+  published: '2026-07-21'
 - language: csharp
-  registry: unity
+  registry: github
   name: appsflyer-unity-plugin
   url: https://github.com/AppsFlyerSDK/appsflyer-unity-plugin
   official: true
-  note: Distributed as a Unity package from GitHub releases, not a public registry.
+  version: v6.18.1
+  published: '2026-06-07'
+  note: 'No package registry: distributed as a Unity package from the GitHub repo. Version and date read
+    from the latest git tag and its commit date, because the repo publishes tags but cuts no GitHub Releases.'
 - language: cpp
   registry: github
   name: appsflyer-unreal-plugin
   url: https://github.com/AppsFlyerSDK/appsflyer-unreal-plugin
   official: true
+  version: v6.18.0
+  published: '2026-06-01'
+  note: 'No package registry: distributed as source from the GitHub repo. Version and date read from the
+    latest git tag and its commit date.'
 - language: brightscript
   registry: github
   name: appsflyer-roku-sample-app
   url: https://github.com/AppsFlyerSDK/appsflyer-roku-sample-app
   official: true
-  note: Roku/CTV integration is distributed as source in the sample app repo.
+  version: 2.1.0-beta
+  published: '2023-12-25'
+  stale: true
+  note: 'Roku/CTV integration is distributed as source in the sample-app repo — there is no packaged Roku
+    SDK. Latest tag is still a beta from December 2023, so the only published Roku integration path is
+    nearly three years old and has never shipped a stable version.'
 unofficial_noted:
 - language: python
   registry: pypi
   name: appsflyer
   url: https://pypi.org/project/appsflyer/
   official: false
+  version: null
+  published: null
   note: Community S2S events client by Frederico Jordan; AppsFlyer publishes no first-party Python SDK.
+    Version not recorded because the package is not first-party and its currency says nothing about AppsFlyer.
+gaps:
+- 'No first-party server-side SDK in any language. AppsFlyer ships 18 client/mobile packages and zero
+  backend clients, so every one of the 36 published REST APIs — the entire Pull, Master, Cohort, audience,
+  management and SKAN estate — has to be called with a hand-rolled HTTP client.'
+- No CLI is published in any registry.

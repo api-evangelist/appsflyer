@@ -28,8 +28,8 @@ servers:
     - client_secret_post
     dynamic_client_registration: true
     scopes_supported: null
-    alternative: Bearer-token auth is documented for non-interactive clients (automations, scheduled tasks, background
-      agents).
+    alternative: Bearer-token auth is documented for non-interactive clients (automations, scheduled tasks,
+      background agents).
   tools_list_probe:
     attempted: true
     result: gated
@@ -51,9 +51,9 @@ servers:
     - /api/mcp
     - /mcp/v1
     http_status: 404
-    note: No anonymous tools/list route is publicly discoverable; the connector URL is issued to the customer at
-      setup time. The OAuth endpoints above ARE live (GET /authorize returns a 400 invalid_request naming client_id/response_type/code_challenge).
-      Tool input schemas require an authenticated introspection.
+    note: No anonymous tools/list route is publicly discoverable; the connector URL is issued to the customer
+      at setup time. The OAuth endpoints above ARE live (GET /authorize returns a 400 invalid_request
+      naming client_id/response_type/code_challenge). Tool input schemas require an authenticated introspection.
   capabilities_documented:
   - Campaign performance metrics and ROAS
   - SKAN data and SSOT metrics
@@ -78,19 +78,20 @@ servers:
   version: 1.5.2
   url: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
   repository: https://github.com/AppsFlyerKnowledge/appsflyer-sdk-mcp-server
-  scope: SDK integration, logcat/Xcode log analysis, event and deep-link validation — developer-side, not marketing
-    data.
+  scope: SDK integration, logcat/Xcode log analysis, event and deep-link validation — developer-side,
+    not marketing data.
   config_env:
   - DEV_KEY
   - APP_ID
   tools:
   - name: integrateAppsFlyerSdk
     category: sdk-integration
-    description: Guides AppsFlyer SDK integration for Android or iOS, with platform-specific setup options and code
-      instructions.
+    description: Guides AppsFlyer SDK integration for Android or iOS, with platform-specific setup options
+      and code instructions.
   - name: getAppsFlyerInAppEventRecommendations
     category: sdk-integration
-    description: Shows vertical-specific recommended AppsFlyer in-app events and parameters from the built-in catalog.
+    description: Shows vertical-specific recommended AppsFlyer in-app events and parameters from the built-in
+      catalog.
   - name: createAppsFlyerLogEvent
     category: sdk-integration
     description: Generates Android Java code instructions for logging an in-app event with AppsFlyer.
@@ -117,33 +118,35 @@ servers:
     description: Scans Android logcat for common AppsFlyer SDK errors and exceptions.
   - name: verifyAppsFlyerSdk
     category: testing-validation
-    description: Validates Android SDK integration by querying install data using appId, devKey, and device ID from
-      logcat.
+    description: Validates Android SDK integration by querying install data using appId, devKey, and device
+      ID from logcat.
   - name: verifyAppsFlyerIosSdk
     category: testing-validation
     description: Validates iOS SDK integration using pasted Xcode logs and AppsFlyer install data.
   - name: verifyInAppEvent
     category: testing-validation
-    description: Validates that a specific Android in-app event was triggered and sent by checking recent AppsFlyer
-      logcat.
+    description: Validates that a specific Android in-app event was triggered and sent by checking recent
+      AppsFlyer logcat.
   - name: verifyIosInAppEvent
     category: testing-validation
-    description: Validates that a specific iOS in-app event was triggered and sent using pasted Xcode logs.
+    description: Validates that a specific iOS in-app event was triggered and sent using pasted Xcode
+      logs.
   - name: createDeepLink
     category: deep-linking
-    description: Guides Android AppsFlyer OneLink deep-link setup, including required manifest, URI scheme, and
-      code steps.
+    description: Guides Android AppsFlyer OneLink deep-link setup, including required manifest, URI scheme,
+      and code steps.
   - name: createIosDeepLink
     category: deep-linking
-    description: Guides iOS AppsFlyer OneLink deep-link setup, including Associated Domains, URL schemes, and Swift
-      delegate steps.
+    description: Guides iOS AppsFlyer OneLink deep-link setup, including Associated Domains, URL schemes,
+      and Swift delegate steps.
   - name: guideDeepLinkTesting
     category: deep-linking
-    description: Provides Android or iOS step-by-step testing instructions for deferred or direct deep links based
-      on setup context.
+    description: Provides Android or iOS step-by-step testing instructions for deferred or direct deep
+      links based on setup context.
   - name: verifyDeepLink
     category: deep-linking
-    description: Validates Android deep-link handling from recent AppsFlyer logcat logs and confirms callback status.
+    description: Validates Android deep-link handling from recent AppsFlyer logcat logs and confirms callback
+      status.
   - name: verifyIosDeepLink
     category: deep-linking
     description: Validates iOS deep-link handling from pasted Xcode logs saved in ios-deeplink-logs.txt.
@@ -160,3 +163,31 @@ x-evidence:
   npm:
     url: https://registry.npmjs.org/@appsflyer/sdk-mcp-server
     http_status: 200
+deployment:
+  mode: both
+  endpoint: https://mcp.appsflyer.com/
+  install: npx -y @appsflyer/sdk-mcp-server
+  package: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
+  auth: oauth
+  verified: probed
+  checked: '2026-08-13'
+  endpoint_status: gated
+  endpoint_note: 'The remote server is real but its callable route is not publicly discoverable. Re-probed
+    2026-08-13: https://mcp.appsflyer.com/.well-known/oauth-authorization-server returns 200 with a valid
+    RFC 8414 document whose issuer is https://mcp.appsflyer.com/, and GET /authorize returns 400 invalid_request
+    — both prove a live server on that host. But /, /mcp and /sse all return 404 to an anonymous client,
+    because the beta issues a per-customer connector URL at setup time. Treat the endpoint above as the
+    authorization issuer, NOT as a URL an agent can POST tools/list to today.'
+  stdio_note: 'The local-stdio half is unambiguous and fully verified: @appsflyer/sdk-mcp-server v1.5.2
+    (published 2026-05-14) is public on npm with 19 documented tools. Note the two halves are different
+    products — the stdio server covers SDK integration, log analysis and deep-link validation for developers,
+    while the hosted remote covers marketing data (campaign performance, ROAS, SKAN, audiences, OneLink).
+    Neither substitutes for the other.'
+  auth_note: OAuth 2.1 authorization-code + PKCE (S256) with dynamic client registration for the remote;
+    the stdio server authenticates with DEV_KEY and APP_ID environment variables instead.
+  history:
+  - checked: '2026-08-12'
+    source: catalog MCP census
+    recorded: 'mode: none (probe dead)'
+    correction: 'Superseded. The census probed the endpoint path only and read the 404 as a dead server,
+      which missed both the live OAuth metadata on the same host and the published npm stdio package.'

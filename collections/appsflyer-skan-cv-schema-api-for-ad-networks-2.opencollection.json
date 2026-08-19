@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SKAN CV schema API for ad networks",
+    "version": "0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKAN CV schema API for ad networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SKAN 3 CV schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/skad/conversion_schema/v1",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query",
+                "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+              }
+            ]
+          },
+          "docs": "Specify one or more apps using the app ID"
+        },
+        {
+          "info": {
+            "name": "Get SKAN 4 CV schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/skad/conversion_schema/v2",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query",
+                "description": "Set 0-many app IDs. If no app ID is set, the schema of all apps returns. In all other cases, the schema of the specified app IDs returns."
+              }
+            ]
+          },
+          "docs": "Specify one or more apps using the app ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

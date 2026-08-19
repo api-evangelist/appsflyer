@@ -1,0 +1,338 @@
+{
+  "item": [
+    {
+      "id": "7bf16032-8605-44a4-af08-3c5fb907a26b",
+      "name": "Import audience",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07f5b40a-b0e6-457d-8442-9f62f64c7a46",
+          "name": "Import a new audience",
+          "request": {
+            "name": "Import a new audience",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                ":action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action",
+                  "description": "(Required) - To add devices: `add`\n- To remove devices: `remove`\n- To overwrite devices: `overwrite`\n> ⚠️ **Warning**\n> Using the `overwrite` action incorrectly can result in unintentional data loss\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"import_key\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"devices\": [\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    },\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecc8c450-e82b-46d8-839b-7f96d3c8a47a",
+              "name": "Created audience successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) - To add devices: `add`\n- To remove devices: `remove`\n- To overwrite devices: `overwrite`\n> ⚠️ **Warning**\n> Using the `overwrite` action incorrectly can result in unintentional data loss\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"import_key\": \"EKFH2UMC5PPCU8J7M5QQCBPKIH89E6NCOB7XQFWMC\",\n  \"platform\": \"<string>\",\n  \"devices\": [\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    },\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The request was successful\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e4a286b-dfce-42ff-a126-1d73ec9d5056",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) - To add devices: `add`\n- To remove devices: `remove`\n- To overwrite devices: `overwrite`\n> ⚠️ **Warning**\n> Using the `overwrite` action incorrectly can result in unintentional data loss\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"import_key\": \"EKFH2UMC5PPCU8J7M5QQCBPKIH89E6NCOB7XQFWMC\",\n  \"platform\": \"<string>\",\n  \"devices\": [\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    },\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messege\": \"Invalid audience platform, this audience is already configured for Android/iOS. To use a different platform, please create a new audience in the UI\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a747e600-ac71-4907-ae03-4f5a7243b5ac",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) - To add devices: `add`\n- To remove devices: `remove`\n- To overwrite devices: `overwrite`\n> ⚠️ **Warning**\n> Using the `overwrite` action incorrectly can result in unintentional data loss\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"import_key\": \"EKFH2UMC5PPCU8J7M5QQCBPKIH89E6NCOB7XQFWMC\",\n  \"platform\": \"<string>\",\n  \"devices\": [\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    },\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38a2a19b-0dfc-4ab8-bc6b-8de84083b48d",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) - To add devices: `add`\n- To remove devices: `remove`\n- To overwrite devices: `overwrite`\n> ⚠️ **Warning**\n> Using the `overwrite` action incorrectly can result in unintentional data loss\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"import_key\": \"EKFH2UMC5PPCU8J7M5QQCBPKIH89E6NCOB7XQFWMC\",\n  \"platform\": \"<string>\",\n  \"devices\": [\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    },\n    {\n      \"app_id\": \"<string>\",\n      \"idfv\": \"<string>\",\n      \"idfa\": \"<string>\",\n      \"gaid\": \"<string>\",\n      \"oaid\": \"<string>\",\n      \"imei\": \"<string>\",\n      \"cuid\": \"<string>\",\n      \"emails\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"phone_e164\": \"<string>\",\n      \"braze_id\": \"<string>\",\n      \"amplitude_id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/audiences-import-api/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8bb676b-ea0c-43ac-be20-cc403c787580",
+    "name": "Audience Import API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

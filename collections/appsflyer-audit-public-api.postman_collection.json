@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "3ef5b2cb-1469-4fb0-8be0-156ed02b9bff",
+      "name": "Audit logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc18c775-bf77-4762-a9e0-7199e02daa23",
+          "name": "Get audit logs",
+          "request": {
+            "name": "Get audit logs",
+            "description": {},
+            "url": {
+              "path": [
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "(Required) number of results on the page\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "(Required) The offset to start reading from\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "services",
+                  "value": "<string>",
+                  "description": "List of all services to read logs. Case insensitive.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "services",
+                  "value": "<string>",
+                  "description": "List of all services to read logs. Case insensitive.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<string>",
+                  "description": "Show logs starting from this date. If not set, use the current date. \nIf `to_date` was set, this field must have a valid value.\nExpects `YYYY-MM-DD` format\nrequired: false\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<string>",
+                  "description": "(Required) Show logs end date. If not set, use the current date. if `from_date` was set, this field must have a valid value.\nExpects `YYYY-MM-DD` format\"\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13d679d4-c427-4b01-b5aa-8b618706117c",
+              "name": "Valid data returned (CSV)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "2023-11-06"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination_metadata\": {\n    \"total_pages\": 4,\n    \"total_results\": 8,\n    \"current_page\": 1\n  },\n  \"pagination_links\": {\n    \"next\": \"http://.../audit/public/api/v1.0/logs?offset=101&limit=100&...\",\n    \"last\": \"http://.../audit/public/api/v1.0/logs?offset=201&limit=100&...\"\n  },\n  \"logs\": [\n    {\n      \"date_time\": \"2024-09-26 01:25:32\",\n      \"entity_type\": \"Account\",\n      \"user\": \"abc@def.com\",\n      \"service\": \"System access\",\n      \"action\": \"Login\",\n      \"details\": \"this is the details message..\"\n    },\n    {\n      \"date_time\": \"2024-09-26 01:25:32\",\n      \"entity_type\": \"Account\",\n      \"user\": \"abc@def.com\",\n      \"service\": \"System access\",\n      \"action\": \"Login\",\n      \"details\": \"this is the details message..\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f65fde72-049c-40af-bba2-57ed5b955a59",
+              "name": "Bad request - Missing or invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "2023-11-06"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"offset parameter is required\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf92ce6b-2b4d-438d-a20e-0595597cfb94",
+              "name": "Account has no permissions (account is not premium)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "services",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "2023-11-06"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access Denied: Account does not have required permissions to access this page\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/audit/v1.0/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3903ccc6-50c2-42fd-95e9-92103c78561c",
+    "name": "Audit Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

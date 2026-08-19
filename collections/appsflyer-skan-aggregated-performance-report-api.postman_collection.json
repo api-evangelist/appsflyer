@@ -1,0 +1,487 @@
+{
+  "item": [
+    {
+      "id": "9d9a80b8-60db-426f-a9b8-84b71e79efec",
+      "name": "SKAN performance report",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd06bfe6-8c5c-4a87-876c-3af281f7e7c9",
+          "name": "Get performance report",
+          "request": {
+            "name": "Get performance report",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\n> ℹ️ For the base URL (on the right), select either /v2/ for SKAN V3 or /v3/ for SKAN V4.\n> If you select SKAN V4, but results are for SKAN V3 postbacks, the SKAN V4 fields return `null`. \n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_type",
+                  "value": "<string>",
+                  "description": "The date type used in the date range bounded by `start_date` and `end_date`\nOptions: \n- [Default] `install`: The install date derived by AppsFlyer using the postback arrival time and after considering the measurement period.\n- `arrival`: The postback arrival time. Note: Organic install metrics have the value N/A. \nGoogle Ads data: The install and arrival dates are the same due to the Google Ads reporting methodology.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The install date range is bounded by `start_date` and `end_date`. \nNote! The install date differs from the postback arrival date.\n- Earliest install date having format YYYY-MM-DD \n- Earliest date permitted: 2020-11-01\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) - Most recent install date having format YYYY-MM-DD \n- Maximum number of days per report call: 90 days\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "view_type",
+                  "value": "<string>",
+                  "description": "Filter the installs by type as follows: \n\n- `acquisition`: Installs \n- `retargeting`: Redownloads\n- `unified`: Acquisition and redownloads combined.\n- [Default] `unified`\n- Cost, click, and impression metrics return when `view_type=unified`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "modeled_conversion_values",
+                  "value": "<boolean>",
+                  "description": "- Only supported from V2\n- If `true`, the postback includes the modeled data when populating the decoded metric columns.  [See available field](https://support.appsflyer.com/hc/en-us/articles/360014104157-SKAN-aggregated-performance-report-API#report-structure-and-example)\n- If `false`, the postback presents decoded data as received by raw SKAN postbacks, without modeled data.\n- Default value is `false`.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) The ID of the app"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bf8ef4b-9ac1-4dbb-9c85-6f4f96e29772",
+              "name": "Valid data returned. Contents of CSV file described [here](https://support.appsflyer.com/hc/en-us/articles/360014104157-SKAN-aggregated-performance-report-API#report-structure-and-example)\n*Empty report* - no data found for the specified date range (CSV, only column names are returned).\n  - In the SKAdNetwork dashboard, verify that data is available for the specified date range.\n  - Verify that `start_date` is a date earlier than yesterday. The earliest recommended date is the current date UTC time, less 3 days. For example: If the current date UTC timezone is March 31, the earliest date you should use is March 28. \n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2020-11-12"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2020-12-12"
+                    },
+                    {
+                      "key": "view_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modeled_conversion_values",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc421c99-52a2-4119-98a1-059e9273d513",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2020-11-12"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2020-12-12"
+                    },
+                    {
+                      "key": "view_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modeled_conversion_values",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Bad request\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3d54043-6964-449d-8b85-da24cbb06571",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2020-11-12"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2020-12-12"
+                    },
+                    {
+                      "key": "view_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modeled_conversion_values",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Unauthorized\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94489ad3-a29a-4021-85c2-a60ddf31191e",
+              "name": "You don't have permission to access this report. If you are an analytics partner ask the advertiser to give you permission. \n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2020-11-12"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2020-12-12"
+                    },
+                    {
+                      "key": "view_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modeled_conversion_values",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"No permission\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca026f1b-6d8d-421d-98c9-070016538515",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2020-11-12"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2020-12-12"
+                    },
+                    {
+                      "key": "view_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modeled_conversion_values",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Not found\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/skadnetworks/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31cb1902-9f74-43d7-976e-85d0200ece15",
+    "name": "SKAN aggregated performance report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

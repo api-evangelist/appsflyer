@@ -1,0 +1,2502 @@
+{
+  "item": [
+    {
+      "id": "86e6d8cd-4e0e-48aa-b63a-0d9bb22f8a23",
+      "name": "Production",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b9ed148-1d1c-4362-8a5e-90869b77c53e",
+          "name": "Cancel a OpenDSR request",
+          "request": {
+            "name": "Cancel a OpenDSR request",
+            "description": {
+              "content": "Cancels an existing OpenDSR request, the request must be in the pending state to be canceled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "opendsr_requests",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b727e092-c903-4b6d-b2dc-2f49c39c4085",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "904590fa-cfab-4455-844a-b0543d7c9c8c",
+              "name": "Request not found or cannot be canceled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3be1a62f-cf7f-4d00-9e6d-007151771f3a",
+          "name": "Get OpenDSR request status",
+          "request": {
+            "name": "Get OpenDSR request status",
+            "description": {
+              "content": "Returns the latest status payload for the supplied `subject_request_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "opendsr_requests",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcbf7995-5c7d-4105-9357-74924cb682dc",
+              "name": "Request status payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subject_request_id\": \"string\",\n  \"controller_id\": \"string\",\n  \"expected_completion_time\": \"string\",\n  \"request_status\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f1ebc07-10ef-4a6a-9421-861c8722bad0",
+              "name": "Request not found or inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83d498a9-be05-471d-ba93-a3402ad333a6",
+          "name": "Submit a batch of OpenDSR requests",
+          "request": {
+            "name": "Submit a batch of OpenDSR requests",
+            "description": {
+              "content": "Creates multiple OpenDSR requests in a single operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "opendsr_requests",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"<string>\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"<string>\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28586a5a-5634-4c34-acea-5881b58c75fb",
+              "name": "Batch submission result (batch_id, encoded_request, responses, errors), encoded_request will be provided only in the root of the response body, not in the responses array.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batch_id\": \"string\",\n  \"encoded_request\": \"string\",\n  \"responses\": [\n    {\n      \"subject_request_id\": \"string\",\n      \"original_request_id\": \"string\",\n      \"expected_completion_time\": \"string\",\n      \"received_time\": \"string\",\n      \"encoded_request\": \"string\",\n      \"info\": \"string\"\n    },\n    {\n      \"subject_request_id\": \"string\",\n      \"original_request_id\": \"string\",\n      \"expected_completion_time\": \"string\",\n      \"received_time\": \"string\",\n      \"encoded_request\": \"string\",\n      \"info\": \"string\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"subject_request_id\": \"string\",\n      \"error\": {\n        \"code\": 400,\n        \"message\": \"Invalid subject_request_id\",\n        \"af_gdpr_code\": \"e313\"\n      }\n    },\n    {\n      \"subject_request_id\": \"string\",\n      \"error\": {\n        \"code\": 400,\n        \"message\": \"Invalid subject_request_id\",\n        \"af_gdpr_code\": \"e313\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9488008a-3230-48d6-9cf1-fa380ff34439",
+              "name": "Validation or authorization failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58976b47-ed5f-48ef-9b69-d4d642353edb",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ced192d-fbfe-4d9b-8155-d1c3febb916a",
+          "name": "Submit a OpenDSR request",
+          "request": {
+            "name": "Submit a OpenDSR request",
+            "description": {
+              "content": "Creates a new OpenDSR request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "opendsr_requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"<string>\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"<string>\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"<string>\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "401243ff-ca1b-4cce-9b62-8b199c872359",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"access\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subject_request_id\": \"string\",\n  \"original_request_id\": \"string\",\n  \"expected_completion_time\": \"string\",\n  \"received_time\": \"string\",\n  \"encoded_request\": \"string\",\n  \"info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97860aca-760a-4f97-8143-0d9ea72cbe85",
+              "name": "Validation or authorization failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"access\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cf1b16d-3fb7-445d-9f32-a6973b6e2c36",
+          "name": "Discovery metadata",
+          "request": {
+            "name": "Discovery metadata",
+            "description": {
+              "content": "Exposes the API version, supported subject identity types, supported request types, and the processor certificate endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "discovery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "362d695f-a034-4b19-a809-5f507a7f25b3",
+              "name": "Discovery payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "discovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api_version\": \"string\",\n  \"supported_subject_request_types\": \"string\",\n  \"supported_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_format\": \"string\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_format\": \"string\"\n    }\n  ],\n  \"processor_certificate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d058f26-c980-49f7-a3c3-9a75cb14f515",
+          "name": "Download request report",
+          "request": {
+            "name": "Download request report",
+            "description": {
+              "content": "Downloads report that was generated for the specified `subject_request_id`. once an access or portability request has been completed",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "download",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d79ef2c2-cc3e-405e-8eff-cec3768bf0c9",
+              "name": "Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "download",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd6e510f-a246-4b82-805c-09835c6db017",
+              "name": "Unable to generate or locate report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "download",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5d3725d-09e2-43e6-9bdc-637d7b158260",
+          "name": "Get the statuses of requests in a batch",
+          "request": {
+            "name": "Get the statuses of requests in a batch",
+            "description": {
+              "content": "Fetches the status payloads for every request that belongs to the specified `batch_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "opendsr_requests",
+                "batch",
+                ":batch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batch_id",
+                  "description": "(Required) Batch identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cee7d791-d2b9-439f-a9cd-ce77acb8a4e1",
+              "name": "Batch status payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    "batch",
+                    ":batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) Batch identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"subject_request_id\": \"string\",\n    \"controller_id\": \"string\",\n    \"expected_completion_time\": \"string\",\n    \"request_status\": \"pending\"\n  },\n  {\n    \"subject_request_id\": \"string\",\n    \"controller_id\": \"string\",\n    \"expected_completion_time\": \"string\",\n    \"request_status\": \"pending\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cd30f9c-6a4c-4614-bc05-0a75d619de41",
+              "name": "Batch not found or inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "opendsr_requests",
+                    "batch",
+                    ":batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) Batch identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b1303d1-119e-4cfe-888b-b4243a13f5b5",
+          "name": "Download signed certificate",
+          "request": {
+            "name": "Download signed certificate",
+            "description": {
+              "content": "Returns the public processor certificate used to sign OpenDSR responses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "certificate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca493876-7754-451f-8660-cbfc357a7d76",
+              "name": "Certificate file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76552fbd-818e-4468-bba7-79fe96e1cb42",
+              "name": "Unable to fetch certificate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "83afd787-a823-4885-8f6e-81b07549d328",
+      "name": "Stub & Testing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f48b812-0edf-4ab3-aab8-375d54da71bd",
+          "name": "Cancel a stub OpenDSR request",
+          "request": {
+            "name": "Cancel a stub OpenDSR request",
+            "description": {
+              "content": "Cancels a stub submission identified by its `subject_request_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a8cf8c6-c513-47a5-b7cb-40b41994dc66",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b06731f-50d1-4320-9b36-b8a795eb2119",
+              "name": "Request not found or cannot be canceled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc1085f2-54a2-4f02-84bc-930b73f674a9",
+          "name": "Get stub OpenDSR request status",
+          "request": {
+            "name": "Get stub OpenDSR request status",
+            "description": {
+              "content": "Returns the status payload for a stub submission matching the provided `subject_request_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eef95d30-a223-4738-ae0c-f0548e7132a0",
+              "name": "Stub request status payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subject_request_id\": \"string\",\n  \"controller_id\": \"string\",\n  \"expected_completion_time\": \"string\",\n  \"request_status\": \"pending\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a69e5f99-4c4e-4a75-9689-88df48c5940b",
+              "name": "Request not found or inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3255b511-c7d4-46d0-ad2c-deb4236078ed",
+          "name": "Submit a stub batch of OpenDSR requests",
+          "request": {
+            "name": "Submit a stub batch of OpenDSR requests",
+            "description": {
+              "content": "Same contract as the production batch endpoint but processed in stub mode for integration testing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"<string>\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"<string>\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"<string>\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67980a5e-b846-4d40-a55f-82384f30c53e",
+              "name": "Batch submission result (batch_id, encoded_request, responses, errors), encoded_request will be provided only in the root of the response body, not in the responses array.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batch_id\": \"string\",\n  \"encoded_request\": \"string\",\n  \"responses\": [\n    {\n      \"subject_request_id\": \"string\",\n      \"original_request_id\": \"string\",\n      \"expected_completion_time\": \"string\",\n      \"received_time\": \"string\",\n      \"encoded_request\": \"string\",\n      \"info\": \"string\"\n    },\n    {\n      \"subject_request_id\": \"string\",\n      \"original_request_id\": \"string\",\n      \"expected_completion_time\": \"string\",\n      \"received_time\": \"string\",\n      \"encoded_request\": \"string\",\n      \"info\": \"string\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"subject_request_id\": \"string\",\n      \"error\": {\n        \"code\": 400,\n        \"message\": \"Invalid subject_request_id\",\n        \"af_gdpr_code\": \"e313\"\n      }\n    },\n    {\n      \"subject_request_id\": \"string\",\n      \"error\": {\n        \"code\": 400,\n        \"message\": \"Invalid subject_request_id\",\n        \"af_gdpr_code\": \"e313\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0737a386-7d74-4800-b3cb-0928ebcd4474",
+              "name": "Validation or authorization failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab5612f4-e499-4611-9d31-301b12d3ad6a",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"api_version\": \"<string>\",\n    \"property_id\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"status_callback_urls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"submitted_time\": \"<string>\"\n  },\n  \"requests\": [\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    },\n    {\n      \"subject_request_id\": \"<string>\",\n      \"subject_request_type\": \"access\",\n      \"submitted_time\": \"<string>\",\n      \"api_version\": \"<string>\",\n      \"subject_identities\": [\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        },\n        {\n          \"identity_type\": \"android_advertising_id\",\n          \"identity_value\": \"<string>\",\n          \"identity_format\": \"<string>\"\n        }\n      ],\n      \"status_callback_urls\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"property_id\": \"<string>\",\n      \"platform\": \"<string>\",\n      \"requester\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c6dd1d2-be9b-4f45-a04b-236dd9c2ff32",
+          "name": "Submit a stub OpenDSR request",
+          "request": {
+            "name": "Submit a stub OpenDSR request",
+            "description": {
+              "content": "Mirrors the production create endpoint but processes the payload in stub mode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"<string>\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"<string>\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"<string>\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d41636d0-79ac-498b-96a3-ae6ac850b5b8",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"access\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subject_request_id\": \"string\",\n  \"original_request_id\": \"string\",\n  \"expected_completion_time\": \"string\",\n  \"received_time\": \"string\",\n  \"encoded_request\": \"string\",\n  \"info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dd8a32a-0011-4d3a-a776-e8a68915fd5d",
+              "name": "Validation or authorization failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject_request_id\": \"<string>\",\n  \"subject_request_type\": \"access\",\n  \"submitted_time\": \"<string>\",\n  \"api_version\": \"<string>\",\n  \"subject_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_value\": \"<string>\",\n      \"identity_format\": \"<string>\"\n    }\n  ],\n  \"status_callback_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"property_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"requester\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d467e119-ab08-4865-be83-d0950cc6fc0c",
+          "name": "Download stub request report",
+          "request": {
+            "name": "Download stub request report",
+            "description": {
+              "content": "Downloads report generated for the specified stub `subject_request_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                "download",
+                ":subject_request_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subject_request_id",
+                  "description": "(Required) Subject request identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33a2304b-4268-49bb-b425-bdc1f303233d",
+              "name": "Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "download",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5193d920-f798-47d7-83c1-25a680bcdd14",
+              "name": "Unable to generate or locate report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "download",
+                    ":subject_request_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subject_request_id",
+                      "description": "(Required) Subject request identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid subject_request_id\",\n    \"af_gdpr_code\": \"e313\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38479059-f67e-461e-a873-f91d5618759e",
+          "name": "Get the statuses of requests in a batch",
+          "request": {
+            "name": "Get the statuses of requests in a batch",
+            "description": {
+              "content": "Returns the status payloads for every stub request within the specified `batch_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                "batch",
+                ":batch_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "batch_id",
+                  "description": "(Required) Batch identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c15278f5-1f2c-4251-a0b1-bf161e29e2cf",
+              "name": "Stub batch status payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "batch",
+                    ":batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) Batch identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"subject_request_id\": \"string\",\n    \"controller_id\": \"string\",\n    \"expected_completion_time\": \"string\",\n    \"request_status\": \"pending\"\n  },\n  {\n    \"subject_request_id\": \"string\",\n    \"controller_id\": \"string\",\n    \"expected_completion_time\": \"string\",\n    \"request_status\": \"pending\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "082015f7-40b3-4ca6-abae-eca85c947acd",
+              "name": "Batch not found or inaccessible",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "batch",
+                    ":batch_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "batch_id",
+                      "description": "(Required) Batch identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4584074-31b9-4d54-9640-9b22abfa0865",
+          "name": "Download signed certificate",
+          "request": {
+            "name": "Download signed certificate",
+            "description": {
+              "content": "Returns the public processor certificate used to sign OpenDSR responses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                "certificate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a449dd38-15ec-422f-8e07-dc91c71f2df9",
+              "name": "Certificate file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff318427-7270-486f-be1d-f80df25dc03c",
+              "name": "Unable to fetch certificate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Invalid subject_request_id\",\n  \"af_gdpr_code\": \"e313\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a32a2c4e-89c9-4243-a94a-65090b2b7e5a",
+          "name": "Discovery metadata",
+          "request": {
+            "name": "Discovery metadata",
+            "description": {
+              "content": "Exposes the API version, supported subject identity types, supported request types, and the processor certificate endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "gdpr",
+                "v1",
+                "stub",
+                "discovery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa870ab2-db7e-4c64-aaeb-b1ddb997cd3d",
+              "name": "Discovery payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "gdpr",
+                    "v1",
+                    "stub",
+                    "discovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"api_version\": \"string\",\n  \"supported_subject_request_types\": \"string\",\n  \"supported_identities\": [\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_format\": \"string\"\n    },\n    {\n      \"identity_type\": \"android_advertising_id\",\n      \"identity_format\": \"string\"\n    }\n  ],\n  \"processor_certificate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f6cff787-8c98-4be5-83b6-ab0dd093adab",
+    "name": "OpenDSR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AppsFlyer OpenDSR Requests API\n\nUse the OpenDSR Requests API as described in this section to implement DSR compliance. \n\n- **OpenDSR Request**: Perform one of the above request types: access, portability, erasure, rectification.\n- **Status Request**: Query the current status of an OpenDSR request.\n- **Discovery Request**: Inquire as to the supported API version and Data Format.\n- **Cancellation**: Cancel an OpenDSR request during its pending phase\n",
+      "type": "text/plain"
+    }
+  }
+}

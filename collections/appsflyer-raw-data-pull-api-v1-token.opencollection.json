@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Raw Data Pull API V1 Token",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_token",
+      "value": "{{api_token}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ad Revenue raw data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Organic ad revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq.appsflyer.com/export/:app-id/ad_revenue_organic_raw/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Records ad revenue for users not attributed to a media source.\nData freshness: Daily\n"
+        },
+        {
+          "info": {
+            "name": "Attributed ad revenue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq.appsflyer.com/export/:app-id/ad_revenue_raw/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              },
+              {
+                "name": "geo",
+                "value": "",
+                "type": "query",
+                "description": "Filter the data by country code.\nLimitation: You can set only one country code filter per API call.\n"
+              },
+              {
+                "name": "maximum_rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "additional_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Records ad revenue for users attributed to a media source. \nData freshness: Daily\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

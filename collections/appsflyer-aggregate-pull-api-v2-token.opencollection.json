@@ -1,0 +1,359 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aggregate Pull API V2 Token",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aggregate (user acquisition and retargeting)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Daily",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/agg-data/export/app/:app-id/daily_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+              },
+              {
+                "name": "attribution_touch_type",
+                "value": "",
+                "type": "query",
+                "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, media source, and campaign, and excludes in-app events.\nData type: LTV\n"
+        },
+        {
+          "info": {
+            "name": "Geo daily",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/agg-data/export/app/:app-id/geo_by_date_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+              },
+              {
+                "name": "attribution_touch_type",
+                "value": "",
+                "type": "query",
+                "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, geo, media source, and campaign.\nData type: LTV\n"
+        },
+        {
+          "info": {
+            "name": "Geo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/agg-data/export/app/:app-id/geo_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+              },
+              {
+                "name": "attribution_touch_type",
+                "value": "",
+                "type": "query",
+                "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by geo, media source, and campaign.\nData type: LTV\n"
+        },
+        {
+          "info": {
+            "name": "Partners daily",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/agg-data/export/app/:app-id/partners_by_date_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+              },
+              {
+                "name": "attribution_touch_type",
+                "value": "",
+                "type": "query",
+                "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by date, media source, and campaign.\nData type: LTV\n"
+        },
+        {
+          "info": {
+            "name": "Partners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/agg-data/export/app/:app-id/partners_report/v5",
+            "params": [
+              {
+                "name": "app-id",
+                "value": "id121244",
+                "type": "path",
+                "description": "Application ID"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "From date (report start date)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "To date (report end date)"
+              },
+              {
+                "name": "media_source",
+                "value": "facebook",
+                "type": "query",
+                "description": "Use to filter by a specific media source\nSet both the `category` and `media_source` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "- `facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `organic`: Get only organic data without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n- `standard` (default):\n  - `media_source`: Get data only for the specified `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - `media_source=facebook`: Get only facebook data with the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n  - without `media_source` or `media_source=all`: Get all `media_source` without the following groupings: `campaign_id`, `adset`, `adset_id`, `adgroup`, `adgroup_id`\n"
+              },
+              {
+                "name": "attribution_touch_type",
+                "value": "",
+                "type": "query",
+                "description": "Set this parameter as shown in the example to get view-through attribution (VTA) KPIs."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency of revenue and cost.\nAggregate Pull API reports always use the app-specific currency.\n"
+              },
+              {
+                "name": "reattr",
+                "value": "",
+                "type": "query",
+                "description": "Get retargeting conversions data.\n**[Default]** is false - user acquisition data (UA) campaigns returns.\nIf true, retargeting conversion returns.\n"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "- **[Default]** If the parameter is not sent, data returns using UTC.\n- Data returns using the app-specific time zone.\n- Time zone format takes into account daylight saving time.\n- The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.\n- Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.\n"
+              }
+            ]
+          },
+          "docs": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nData is grouped by media source and campaign.\nData type: LTV\nFor details, see [KB link](https://support.appsflyer.com/hc/en-us/articles/360007530258-Using-Pull-API-raw-data)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,867 @@
+{
+  "item": [
+    {
+      "id": "4b01907f-cea7-494b-9f0a-07dee537ea46",
+      "name": "Master Report",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "465a07c3-1f68-4be1-8b74-9487dc5da066",
+          "name": "Get Master Report",
+          "request": {
+            "name": "Get Master Report",
+            "description": {
+              "content": "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "groupings",
+                  "value": "<string>,<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "kpis",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "<string>",
+                  "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "<string>",
+                  "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "<string>",
+                  "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_3",
+                  "value": "<string>",
+                  "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "key_4",
+                  "value": "<string>",
+                  "description": "you can add calculated KPIs to your master API reports. This enables you to have your own calculated reports included in your Master API reports.\nYou can insert any number of built-in KPIs in the calculated KPI formulas.\nStandard arithmetic operators are supported: addition (+) encoded as `%2b`, subtraction (-), multiplication (*), division (/) encoded as `%2f`.\nCalculated KPI field names must start with `calculated_kpi_`, followed by any valid string, such as, `calculated_kpi_purchaserate`.\n\n** Examples:**\n*First three days combined retention*\n`calculated_kpi_3days_retention=retention_day_1%2Bretention_day_2%2Bretention_day_3`\n\n*Average revenue per impression*\n`calculated_kpi_rev_per_impression=revenue%2Fimpression`\n\n*Cohort day 7 ROI*\n`calculated_kpi_roi_day_7=(cohort_day_7_total_revenue_per_user-average_ecpi)%2Faverage_ecpi`\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pid",
+                  "value": "<string>,<string>",
+                  "description": "Used for selecting the rows, which the specified media source/s are displayed in. Comma-separated multiple selection is supported"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<string>",
+                  "description": "Filtering by campaign name"
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<string>",
+                  "description": "Filtering by campaign name"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_prt",
+                  "value": "<string>",
+                  "description": "Filtering by agency name"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_prt",
+                  "value": "<string>",
+                  "description": "Filtering by agency name"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_channel",
+                  "value": "<string>",
+                  "description": "Filtering by channel name"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_channel",
+                  "value": "<string>",
+                  "description": "Filtering by channel name"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_siteid",
+                  "value": "<string>",
+                  "description": "Filtering by publisher id"
+                },
+                {
+                  "disabled": false,
+                  "key": "af_siteid",
+                  "value": "<string>",
+                  "description": "Filtering by publisher id"
+                },
+                {
+                  "disabled": false,
+                  "key": "geo",
+                  "value": "<string>",
+                  "description": "Filtering by country"
+                },
+                {
+                  "disabled": false,
+                  "key": "geo",
+                  "value": "<string>",
+                  "description": "Filtering by country"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "By default, the response data is received in CSV file format. If you prefer to get the data in JSON format append `format=json` to the URI\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "app_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ea0787f-05a9-4404-b6c4-c2bcd9db7a41",
+              "name": "Request successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "groupings",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "kpis",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calculated_kpi_3days_retention",
+                      "value": "retention_day_1%2Bretention_day_2%2Bretention_day_3"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b17165a8-2053-4b25-b2b9-2665eca981fb",
+              "name": "Account may be suspended. Log in to the dashboard and check the account status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "groupings",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "kpis",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calculated_kpi_3days_retention",
+                      "value": "retention_day_1%2Bretention_day_2%2Bretention_day_3"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The supplied API token is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c2a699f-2488-40df-9c27-86dcc045c378",
+              "name": "Invalid format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "groupings",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "kpis",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calculated_kpi_3days_retention",
+                      "value": "retention_day_1%2Bretention_day_2%2Bretention_day_3"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Unrecognized date format.\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24201753-bb1a-4326-b419-391a5ec4bfac",
+              "name": "- There is a networking problem\n- Master API is not part of your subscription plan\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "groupings",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "kpis",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calculated_kpi_3days_retention",
+                      "value": "retention_day_1%2Bretention_day_2%2Bretention_day_3"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Not found\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62b657a8-fa45-49d1-a256-df5e0fe5be88",
+              "name": "TBA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2022-04-22"
+                    },
+                    {
+                      "key": "groupings",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "kpis",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "calculated_kpi_3days_retention",
+                      "value": "retention_day_1%2Bretention_day_2%2Bretention_day_3"
+                    },
+                    {
+                      "key": "pid",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_prt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "af_siteid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "app_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Requested Range Not Satisfiable",
+              "code": 416,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"No Groupings Selected\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hq1.appsflyer.com/api/master-agg-data/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d7ea7ef8-3b10-484c-9ac0-4827b3cd5289",
+    "name": "Master API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

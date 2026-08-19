@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ROI360 Net Revenue API (v2.0)",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Store commission rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get store commission rates for specific apps or all apps in account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/net-revenue/v2.0/store_commission_rates/app/:app_ids",
+            "params": [
+              {
+                "name": "app_ids",
+                "value": "id123456789,id987654321",
+                "type": "path",
+                "description": "Comma-separated app IDs or 'all' to get all apps in the account"
+              }
+            ]
+          },
+          "docs": "Retrieve store commission rates for one or more apps. Use comma-separated app IDs or 'all' to get all apps in the account."
+        },
+        {
+          "info": {
+            "name": "Delete store commission rates for specific apps or all apps in account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hq1.appsflyer.com/api/net-revenue/v2.0/store_commission_rates/app/:app_ids",
+            "params": [
+              {
+                "name": "app_ids",
+                "value": "id123456789,id987654321",
+                "type": "path",
+                "description": "Comma-separated app IDs or 'all' to delete all apps in the account"
+              }
+            ]
+          },
+          "docs": "Delete custom store commission rates to restore default values for one or more apps. Use comma-separated app IDs or 'all' to delete all apps in the account."
+        },
+        {
+          "info": {
+            "name": "Create or update store commission rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/net-revenue/v2.0/store_commission_rates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update store commission rates for one or more apps. Each app can have a specific commission rate based on various store programs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tax rate rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a filtered list of taxes or the entire tax catalog if no filters are provided",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hq1.appsflyer.com/api/net-revenue/v2.0/tax_rates/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id123456789",
+                "type": "path",
+                "description": "App ID of the app for which you are getting tax rate rule catalog"
+              },
+              {
+                "name": "format",
+                "value": "json",
+                "type": "query",
+                "description": "The output format of the tax catalog data. Defaults to 'json'."
+              },
+              {
+                "name": "tax_name",
+                "value": "Sales",
+                "type": "query",
+                "description": "Filter catalog by the name appearing in the customer invoice that describes the specific type of tax, such as sales, VAT, GST."
+              },
+              {
+                "name": "tax_rate",
+                "value": "7.25",
+                "type": "query",
+                "description": "Filter catalog by the percentage rate of the tax, specified up to 4 decimal places."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter catalog by the two-letter ISO country code where the tax is applied."
+              },
+              {
+                "name": "subdivision",
+                "value": "US-CA",
+                "type": "query",
+                "description": "Filter catalog by the ISO 3166-2 subdivision code within the specified country."
+              },
+              {
+                "name": "postal_code",
+                "value": "L4J8E3",
+                "type": "query",
+                "description": "Filter catalog by postal code to identify area-specific tax rates."
+              },
+              {
+                "name": "tax_exclusive",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the tax is exclusive of the price. False means tax is included in the overall revenue. True means tax is in addition to the overall stated revenue. For example, in the USA or Canada, where the sticker price doesn't include sales tax."
+              },
+              {
+                "name": "deduction_order",
+                "value": "",
+                "type": "query",
+                "description": "Filter catalog by the order deductions are applied against gross revenue.  The deduction_order is an enum that can be set to one of 0, 1, or 2. - 0: Store commission is deducted first from the gross revenue and tax is deducted from the remaining amount. - 1: Tax is deducted first from the gross revenue and store commission is deducted from the remaining amount. - 2: Both tax and store commission are deducted from the total revenue.\n"
+              }
+            ]
+          },
+          "docs": "Obtain tax catalog data for all available taxes or apply filters to narrow down the search based on specific tax attributes."
+        },
+        {
+          "info": {
+            "name": "Create tax rate rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hq1.appsflyer.com/api/net-revenue/v2.0/tax_rates/app/:app_id",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "id123456789",
+                "type": "path",
+                "description": "App ID of the app for which you are setting the tax rate rule"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create custom tax rate rules for a specific app.\n\n> ⚠️\n> **Note:** After you set a tax rate for a specific app + country, ROI360 stops applying default tax updates for that combination.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
