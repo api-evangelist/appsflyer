@@ -39,6 +39,14 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - Reporting
+  - Analytics
+  - Raw Data
+  - cohort
+  - Attribution
+  - Export
+  - Mobile Measurement
+  tags_raw:
   - reporting
   - analytics
   - raw-data
@@ -92,6 +100,14 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://api3.appsflyer.com/
   tags:
+  - Event
+  - Server-to-Server
+  - Ingestion
+  - Engagement
+  - Deep Linking
+  - CTV
+  - preload
+  tags_raw:
   - events
   - server-to-server
   - ingestion
@@ -159,6 +175,14 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - Management
+  - Provisioning
+  - User Management
+  - Audit
+  - Integration
+  - Cost
+  - Webhook
+  tags_raw:
   - management
   - provisioning
   - user-management
@@ -221,6 +245,13 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/audiences-external-api
   tags:
+  - Audiences
+  - Segmentation
+  - Activation
+  - Identity
+  - Import
+  - MarTech
+  tags_raw:
   - audiences
   - segmentation
   - activation
@@ -259,6 +290,12 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://onelink.appsflyer.com/api/v2.0/
   tags:
+  - Deep Linking
+  - onelink
+  - attribution-links
+  - URL Shortener
+  - Mobile
+  tags_raw:
   - deep-linking
   - onelink
   - attribution-links
@@ -284,6 +321,13 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - SKAdNetwork
+  - skan
+  - iOS
+  - Privacy
+  - conversion-value
+  - Measurements
+  tags_raw:
   - skadnetwork
   - skan
   - ios
@@ -326,6 +370,13 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/
   tags:
+  - Privacy
+  - GDPR
+  - CCPA
+  - OpenDSR
+  - data-subject-request
+  - Compliance
+  tags_raw:
   - privacy
   - gdpr
   - ccpa
@@ -354,6 +405,12 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/p360-click-signing/v2.0
   tags:
+  - Fraud Prevention
+  - protect360
+  - click-signing
+  - Security
+  - Ad Fraud
+  tags_raw:
   - fraud-prevention
   - protect360
   - click-signing
@@ -379,6 +436,12 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/net-revenue/v2.0/
   tags:
+  - Revenue
+  - roi360
+  - ROAS
+  - Monetization
+  - Finance
+  tags_raw:
   - revenue
   - roi360
   - roas
@@ -407,6 +470,13 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
   baseURL: https://hq1.appsflyer.com/creative-dashboard/api
   tags:
+  - Creatives
+  - ad-networks
+  - Creative Management
+  - Advertising
+  - Asynchronous
+  - Meta
+  tags_raw:
   - creatives
   - ad-networks
   - creative-management
@@ -434,6 +504,12 @@ apis:
   humanURL: https://www.appsflyer.com/products/agentic-ai/mcp/
   baseURL: https://mcp.appsflyer.com/
   tags:
+  - MCP
+  - Agentic AI
+  - LLM
+  - agent-native
+  - Marketing Analytics
+  tags_raw:
   - mcp
   - agentic-ai
   - llm
