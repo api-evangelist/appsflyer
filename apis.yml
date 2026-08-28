@@ -9,6 +9,18 @@ description: 'AppsFlyer is a mobile marketing analytics and attribution platform
   and postback APIs, app and user management APIs, the Protect360 click-signing anti-fraud API, the ROI360
   net-revenue API, and an OpenDSR privacy-request API. AppsFlyer also runs a Push API webhook surface
   for real-time postbacks and a hosted Model Context Protocol (MCP) server for agent access.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.appsflyer.com/wp-content/uploads/2020/08/appsflyer-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/apis.yml
 x-type: company
