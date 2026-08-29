@@ -1680,6 +1680,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/appsflyer-capability-edges.yml
+  name: AppsFlyer Business Capability Map
 - type: Overlay
   url: overlays/appsflyer-raw-data-pull-api-v2-token-overlay.yaml
 - type: Overlay

@@ -1,0 +1,55 @@
+slug: appsflyer
+provider: AppsFlyer
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Production
+  spec_file: appsflyer-production-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.85
+  evidence: '"Use the OpenDSR Requests API as described in this section to implement DSR compliance";
+    operations "Submit a OpenDSR request", "Get OpenDSR request status" under /api/gdpr/v1/'
+  reason: Despite the opaque tag 'Production', the operations handle GDPR data-subject requests (access,
+    portability, erasure, rectification) and their status/certificates — squarely privacy & data protection
+    / data subject rights handling.
+- tag: Impression Engagement
+  spec_file: appsflyer-impression-engagement-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET/POST /impression/app/{platform}/{app_id}  Impression Engagement; schemas AfMediaSource,
+    AfCampaign, AfAdSet, AfAdPlacement, AflookbackWindow
+  reason: Records paid-media ad impressions with media source, campaign, ad set and placement for attribution
+    lookback — squarely paid-media/digital marketing measurement rather than generic product telemetry.
+- tag: Managing users in bulk
+  spec_file: appsflyer-managing-users-in-bulk-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /users bulk-users-post Create bulk users; DELETE /users/{userIds} Delete users
+  reason: Create/read/delete of platform user accounts under "User management" is joiner-mover-leaver
+    style account administration, i.e. Identity & Access Management. Not customer data management — these
+    are console users, not end customers.
+- tag: SKAN performance report
+  spec_file: appsflyer-skan-performance-report-api-openapi.yml
+  capability_id: BC-400.50
+  capability_id_l1: BC-400
+  capability_name: Marketing Operations Management
+  confidence: 0.7
+  evidence: skan-agg-performance-report-api-get "Get performance report" on SKAN aggregated performance
+    report
+  reason: Aggregated SKAdNetwork campaign performance reporting is marketing performance measurement/analytics.
