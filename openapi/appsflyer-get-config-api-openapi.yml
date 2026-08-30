@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Click Signing Get config API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/p360-click-signing/v2.0
+security:
+- bearerAuth: []
+tags:
+- name: Get config
+paths:
+  /config:
+    get:
+      tags:
+      - Get config
+      summary: Get click signing config
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: click-signing-config-get
+      responses:
+        '200':
+          description: Config returned successfully
+          content:
+            application/json:
+              schema:
+                required:
+                - modes
+                - active-key-ids
+                - excluded-apps
+                - circuit-breaker-config
+                type: object
+                properties:
+                  modes:
+                    description: A list of signature versions, and their mode
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        signature_version:
+                          description: The signature-version
+                          type: string
+                          enum:
+                          - v1
+                          - v2
+                        mode:
+                          description: 'The mode of the signature version. Indicating whether the system is expecting signatures with this version and enforcing verification or not.
+
+                            '
+                          type: string
+                          enum:
+                          - enabled
+                          - disabled
+                          - report-only
+                  active-key-ids:
+                    description: A list of active-keys and their expiration
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        secret-key-id:
+                          type: string
+                        expiration:
+                          type: number
+                          format: integer
+                  excluded-apps:
+                    description: A list of app-ids to be excluded from click signature verification
+                    type: array
+                    items:
+                      type: string
+                  circuit-breaker-config:
+                    type: object
+                    properties:
+                      status:
+                        description: when the circuit-breaker is enabled, the system will automatically set the mode from enabled to report-only in case there is a very high rate of clicks with invalid signature, indicating a possible mis-configuration on the ad-network side.
+                        type: string
+                        enum:
+                        - enabled
+                        - disabled
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    error_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Token required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.
+
+        '

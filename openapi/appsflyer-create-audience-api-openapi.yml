@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  title: Audience External Create audience API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Create audience
+paths:
+  /audience:
+    post:
+      tags:
+      - Create audience
+      summary: Create new imported audience
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - audience_name
+              - platform
+              type: object
+              properties:
+                audience_name:
+                  minimum: 2
+                  maximum: 100
+                  type: string
+                  example: test-audience
+                ignore_account_identifiers_policy:
+                  type: boolean
+                platform:
+                  $ref: '#/components/schemas/platform'
+                connections:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/connection'
+            examples:
+              Create unconnected audience:
+                value:
+                  audience_name: unconnected test audience
+                  platform: android
+                  connections: []
+              Create 2 partners audience:
+                value:
+                  audience_name: 2 partners test audience
+                  platform: android
+                  connections:
+                  - integration_id: 1234
+                  - integration_id: 5678
+              Create 2 partners split audience:
+                value:
+                  audience_name: 2 partners split test audience
+                  platform: android
+                  connections:
+                  - integration_id: 1234
+                    split_ratio: 40
+                  - integration_id: 5678
+                    split_ratio: 60
+              Create 2 partners cg split audience:
+                value:
+                  audience_name: 2 partners split cg test audience
+                  platform: android
+                  connections:
+                  - integration_id: control_group
+                    split_ratio: 40
+                  - integration_id: 5678
+                    split_ratio: 60
+        required: true
+      responses:
+        '200':
+          description: Created audience successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_response'
+              example:
+                message:
+                  audience_id: 123
+                  import_key: WERWER1234
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience exists:
+                  value:
+                    error_code: 1001
+                    messege: Audience already exists under your account
+                Invalid type:
+                  value:
+                    error_code: 1000
+                    message:
+                      errors:
+                        platform: must be android or ios
+                Invalid integrations:
+                  value:
+                    error_code: 1003
+                    message: 'The following integrations are invalid: 12, 34'
+                Creation limit:
+                  value:
+                    error_code: 1004
+                    message: Creation is no longer allowed for this account
+                Internal error:
+                  value:
+                    error_code: 1020
+                    message: Internal error occurred
+components:
+  schemas:
+    integration_id:
+      type: integer
+      example: 1234
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    platform:
+      type: string
+      description: 'Android, iOS
+
+        '
+      enum:
+      - android
+      - ios
+      example: android
+    connection:
+      required:
+      - integration_id
+      type: object
+      properties:
+        integration_id:
+          $ref: '#/components/schemas/integration_id'
+        split_ratio:
+          type: integer
+          example: 50
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

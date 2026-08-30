@@ -1,0 +1,88 @@
+openapi: 3.2.0
+info:
+  title: Audience External Audience upload API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Audience upload
+paths:
+  /audience/{audience_id}/upload_now:
+    post:
+      tags:
+      - Audience upload
+      summary: Upload audience to partners now
+      parameters:
+      - name: audience_id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          description: Upload was initiated and will start in the next few minutes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_response'
+              example:
+                message: 'Successfully initiated upload on audience id: 123'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience does not exist:
+                  value:
+                    error_code: 1002
+                    message: Audience does not exist under your account
+                No connected partners:
+                  value:
+                    error_code: 1006
+                    message: There are no partners connected, upload is not possible
+                Internal error:
+                  value:
+                    error_code: 1020
+                    message: Internal error occurred
+components:
+  schemas:
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

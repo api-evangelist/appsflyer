@@ -1,0 +1,237 @@
+openapi: 3.2.0
+info:
+  title: Test Console Events API
+  version: '1.0'
+servers:
+- url: https://hq1.appsflyer.com/api/test-console/v1.0/app
+  description: Production server
+security:
+- Bearer-Authentication: []
+tags:
+- name: Events
+paths:
+  /{app-id}/events:
+    get:
+      tags:
+      - Events
+      summary: Retrieve events
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: test-console-api-get
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      - $ref: '#/components/parameters/DeviceId'
+      - $ref: '#/components/parameters/StartTime'
+      - $ref: '#/components/parameters/EndTime'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  app_id:
+                    type: string
+                  device_id:
+                    type: string
+                  max_results:
+                    type: integer
+                  total:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - sdk_timestamp
+                      - event_type
+                      - appsflyer_id
+                      properties:
+                        sdk_timestamp:
+                          type: string
+                          description: UTC timestamp in ISO 8601 format. Non-nullable.
+                        event_type:
+                          type: string
+                          description: Type of event - "Session" / "In-App". Non-nullable.
+                        appsflyer_id:
+                          type: string
+                          description: Unique installation ID. Created for every new app install. Non-nullable.
+                        sdk_version:
+                          type:
+                          - string
+                          - 'null'
+                          description: The SDK version used by the app. Nullable.
+                        app_version:
+                          type:
+                          - string
+                          - 'null'
+                          description: App version. Nullable.
+                        event_name:
+                          type:
+                          - string
+                          - 'null'
+                          description: In-App event name. Null if event type is "Session".
+                        event_value:
+                          type:
+                          - string
+                          - 'null'
+                          description: In-App event value. Null if event type is "Session".
+                        customer_user_id:
+                          type:
+                          - string
+                          - 'null'
+                          description: Customer User ID. Assigned by the app. Defaults to null if the app does not provide a value.
+                        idfa:
+                          type:
+                          - string
+                          - 'null'
+                          description: The device IDFA. Set to null when not collected. Always null on Android devices.
+                        idfv:
+                          type:
+                          - string
+                          - 'null'
+                          description: Device IDFV. Set to null when not collected. Always null on Android devices.
+                        gaid:
+                          type:
+                          - string
+                          - 'null'
+                          description: Android Advertising ID. Always null on iOS.
+                        android_id:
+                          type:
+                          - string
+                          - 'null'
+                          description: The device android_id. Set to null when not collected. Always null on iOS devices.
+                        imei:
+                          type:
+                          - string
+                          - 'null'
+                          description: The device IMEI. Set to null when not collected. Always null on iOS devices.
+                        oaid:
+                          type:
+                          - string
+                          - 'null'
+                          description: The device OAID. Set to null when not collected. Always null on iOS devices.
+                        amazon_aid:
+                          type:
+                          - string
+                          - 'null'
+                          description: The device Amazon Advertising ID. Set to null when not collected. Always null on iOS devices.
+                  response_time:
+                    type: string
+        '400':
+          description: Bad request
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Unauthorized
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          description: Forbidden
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: Not found
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict
+          $ref: '#/components/responses/Conflict'
+        '500':
+          description: Internal Server Error
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    NotFound:
+      description: The specified App ID does not exist within the account.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: app_id not found
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: authentication error
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: forbidden
+    BadRequest:
+      description: The request has invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: cannot parse body
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: You have added the maximum number of devices allowed by the Devices API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: device limit reached
+  parameters:
+    AppId:
+      name: app-id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
+        example: com.example.testapp
+    EndTime:
+      name: end_time
+      in: query
+      required: false
+      schema:
+        type: string
+        description: Date and Time in UTC ISO 8601 format
+      example: '2023-07-12T09:02:26Z'
+    DeviceId:
+      name: device_id
+      in: query
+      required: true
+      schema:
+        type: string
+        description: The ID of the device registered for testing
+        pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+      example: 09ad6f30-a39c-4c6c-8862-636eabd54709
+    StartTime:
+      name: start_time
+      in: query
+      required: true
+      schema:
+        type: string
+        description: The Date and Time in UTC ISO 8601 format. The start time must be within the past 2 hours
+      example: '2023-07-12T09:02:26Z'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+  securitySchemes:
+    Bearer-Authentication:
+      type: http
+      scheme: bearer
+      description: "**Important: API V2 Token Revocation**\n\nAll API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nAuthorization HTTP header containing API V2 token (bearer token) is required.\n\n [An admin can retrieve the V2 token from AppsFlyer](https://support.appsflyer.com/hc/en-us/articles/360004562377)"

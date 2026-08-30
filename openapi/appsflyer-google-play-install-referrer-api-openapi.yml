@@ -1,0 +1,217 @@
+openapi: 3.2.0
+info:
+  title: Partner integration settings Google Play install referrer API
+  description: Public API for managing partner integrations
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/app-integrations/
+  description: api server - production
+security:
+- bearerAuth: []
+tags:
+- name: Google Play install referrer
+paths:
+  /v1/integration-params:
+    post:
+      tags:
+      - Google Play install referrer
+      summary: Set install referrer decryption key
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Set the Google Play install referrer decryption key for each app as recieved by Facebook.
+
+        '
+      requestBody:
+        description: 'Use these examples as a template for your request body:'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setFacebook'
+            examples:
+              Facebook:
+                value:
+                  pid: facebook_int
+                  app_id: com.publisher.name
+                  general_params:
+                    gp_referrer_decryption_key: 7924423F4528482B4D6251655468576D5A7134743777217A25432A46294A4044
+        required: true
+      responses:
+        '200':
+          description: Integration params saved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+                - $ref: '#/components/schemas/UnauthorizedAppError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+                appError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: App <app id> is not owned by the user
+        '422':
+          description: Missing/invalid input params
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/InvalidValueError'
+                - $ref: '#/components/schemas/MissingParamError'
+                - $ref: '#/components/schemas/GeneralFailureError'
+                - $ref: '#/components/schemas/IntegrationNotEnabledError'
+              examples:
+                invalidValueError:
+                  value:
+                    status: INVALID_VALUE
+                    message: <param> value is invalid.
+                missingParamError:
+                  value:
+                    status: MISSING_PARAMETER
+                    message: <param> is missing
+                generalFailureError:
+                  value:
+                    status: GENERAL_FAILURE
+                    message: At this time the integration can not be activated. Contact your CSM or support@appsflyer.com with a copy of this message
+                integrationNotEnabledError:
+                  value:
+                    status: INACTIVE_INTEGRATION
+                    message: Integration for app <app id> with <pid> is not enabled
+        '500':
+          description: Internal server error - please try again
+components:
+  schemas:
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    setFacebook:
+      title: Facebook Ads
+      required:
+      - pid
+      - app_id
+      - gp_referrer_decryption_key
+      type: object
+      properties:
+        pid:
+          $ref: '#/components/schemas/pid'
+        app_id:
+          $ref: '#/components/schemas/app_id'
+        general_params:
+          type: object
+          properties:
+            gp_referrer_decryption_key:
+              type: string
+              description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
+
+                '
+    app_id:
+      type: string
+      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
+
+        Example values:
+
+        - **Android:** com.publisher.name
+
+        '
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    UnauthorizedAppError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    Response:
+      properties:
+        general_params:
+          properties:
+            Click Attribution Lookback Window:
+              type: string
+            Enable Advanced Privacy:
+              type: string
+            Ignore active users for retargeting:
+              type: string
+            Install Re-engagement Click Lookback Window:
+              type: string
+            Re-engagement attribution Enabled:
+              type: string
+            Re-engagement click-through lookback window:
+              type: string
+            Re-engagement view-through attribution:
+              type: string
+            Re-engagement window:
+              type: string
+            Time window for users to be considered inactive:
+              type: string
+            View-Through Attribution lookback window:
+              type: string
+        in_app_postbacks_params:
+          properties:
+            mapped-in-app-events:
+              type: object
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        HTTP header containing the API token (bearer token) is required. Ask your account admin to [obtain the V2.0 token](https://support.appsflyer.com/hc/en-us/articles/360004562377) from the AppsFlyer dashboard.
+
+        '

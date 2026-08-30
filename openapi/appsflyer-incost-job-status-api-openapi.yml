@@ -1,0 +1,140 @@
+openapi: 3.2.0
+info:
+  title: InCost job status API
+  description: 'InCost API, part of AppsFlyer ROI360, lets ad network partners programmatically send advertising cost data to AppsFlyer. Doing so provides advertisers with aggregate cost data from all their ad networks in one place.
+
+    '
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/
+security:
+- bearerAuth: []
+tags:
+- name: InCost job status
+paths:
+  /incost-jobstatus/v1/data/app/{app_id}/job/{job_id}:
+    get:
+      tags:
+      - InCost job status
+      summary: Get job status
+      operationId: incost-jobstatus-get
+      parameters:
+      - name: app_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: 'the app identifier as found in the AppsFlyer dashboard. Insert it exactly as it appears in the dashboard.
+
+          Ensure to prefix iOS apps with **id**.
+
+          '
+        example: id123456789
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: "The job identifier returned by the send cost data call. \n      \n"
+      responses:
+        '200':
+          description: 'This response signals that the request arrived and processed, but it doesn''t necessarily means the request was accepted as a success.
+
+            Check `status` and the existence of the field `error`
+
+            '
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  app_id:
+                    type: string
+                  status:
+                    type: string
+                  uploaded_request_url:
+                    type: string
+                  error:
+                    $ref: '#/components/schemas/Error'
+                  date_from:
+                    type: string
+                  date_to:
+                    type: string
+                  matched_records_percentage:
+                    type: string
+                  agency:
+                    type: string
+              examples:
+                Success:
+                  value:
+                    date_from: '2023-12-07'
+                    date_to: '2023-12-07'
+                    matched_records_percentage: '0.00'
+                    app_id: id888123456
+                    agency: ''
+                    status: Applied
+                    Uploaded_request_url: https://af-eu-west-1-prod-xpend-incost.s3.eu-west-1.amazonaws.com/-1693396491/MjAyMy……….json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231225T174454Z&X-Amz-SignedHeaders=host&X-Amz-Expires=7199&X-Amz-Credential=AKIAS25E……………...&X-Amz-Signature=07ce………………..
+                Error:
+                  value:
+                    app_id: id888123456
+                    status: Validation error
+                    Uploaded_request_url: https://af-eu-west-1-prod-xpend-incost.s3.eu-west-1.amazonaws.com/-1693396491/MjAy…………………..json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231225T174204Z&X-Amz-SignedHeaders=host&X-Amz-Expires=7199&X-Amz-Credential=AKI………………&X-Amz-Signature=f2………………
+                    error:
+                      af_error_code: ic232
+                      error_message: Request included data older than 3 months. Only 3 months back are allowed.
+        '401':
+          description: Job ID doesn't match app ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                JobIdNotMatchAppId:
+                  summary: Job ID doesn't match app ID
+                  value:
+                    error:
+                      af_error_code: ic415
+                      error_message: Job ID does not match to the app ID sent in the request. Change the job ID or app ID and try again.
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Not found:
+                  summary: Not found
+                  description: Invalid json
+                  value: not-found
+        '422':
+          description: Job ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                JobIdNotFound:
+                  summary: Job ID not found
+                  value:
+                    error:
+                      af_error_code: ic224
+                      error_message: General error occurred. Retry invoking the API in 10 minutes.
+components:
+  schemas:
+    Error:
+      properties:
+        error:
+          type: object
+          properties:
+            af_error_code:
+              type: string
+            error_message:
+              type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'To call the API, get the API V2 authorization token from your AppsFlyer admin. They can retrieve it from the AppsFlyer platform (HQ)
+
+        '

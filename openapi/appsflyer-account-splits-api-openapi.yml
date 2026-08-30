@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: Audience External Account splits API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Account splits
+paths:
+  /split_syncs:
+    get:
+      tags:
+      - Account splits
+      summary: Get split percentages for account
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - message
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      connections:
+                        $ref: '#/components/schemas/integrations_response'
+components:
+  schemas:
+    integration_id:
+      type: integer
+      example: 1234
+    integration_name:
+      type: string
+      example: Integration 123
+    integrations_response:
+      type: array
+      items:
+        required:
+        - integration_id
+        - integration_name
+        - partner_id
+        type: object
+        properties:
+          integration_id:
+            $ref: '#/components/schemas/integration_id'
+          partner_id:
+            $ref: '#/components/schemas/partner_id'
+          integration_name:
+            $ref: '#/components/schemas/integration_name'
+    partner_id:
+      type: string
+      example: amazon_int
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

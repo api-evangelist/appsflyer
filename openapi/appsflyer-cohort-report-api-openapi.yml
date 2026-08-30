@@ -1,0 +1,578 @@
+openapi: 3.2.0
+info:
+  title: Cohort Report API
+  version: '1.0'
+servers:
+- url: https://hq1.appsflyer.com/api/cohorts/v1/data/app/
+  description: Production server
+security:
+- HeaderApiKeyAuth: []
+tags:
+- name: Cohort Report
+paths:
+  /{app_id}:
+    post:
+      tags:
+      - Cohort Report
+      summary: Create Cohort Report
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      security:
+      - BearerAuth: []
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      requestBody:
+        $ref: '#/components/requestBodies/createReportBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+components:
+  requestBodies:
+    createReportBody:
+      description: Body for create report request
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+            - cohort_type
+            - from
+            - to
+            - groupings
+            - kpis
+            - aggregation_type
+            type: object
+            properties:
+              cohort_type:
+                type: string
+                enum:
+                - user_acquisition
+                - retargeting
+                - unified
+                description: '- `unified` combines the performance of user acquisition and retargeting campaigns.
+
+                  - If an event is attributed to both retargeting and user acquisition campaigns, only the retargeting event is included in KPIs returned, meaning `is_primary=true`.
+
+                  '
+              from:
+                type: string
+                pattern: ^\d{4}\-\d{2}\-\d{2}\s*(?:\d{2}:\d{2}(?::\d{2})?)?$
+                description: 'Lower bound of the LTV attribution date range. The earliest date supported is 720 days before the current date.
+
+                  Hour is used when `granularity=hour`
+
+                  '
+                example: 2022-04-22 21:45
+              to:
+                type: string
+                pattern: ^\d{4}\-\d{2}\-\d{2}\s*(?:\d{2}:\d{2}(?::\d{2})?)?$
+                description: 'Higher bound of the LTV attribution date range.
+
+                  For a single day: `from` and `to values are identical.
+
+                  Hour is used when `granularity=hour`
+
+                  '
+                example: 2022-04-22 21:45
+              kpis:
+                type: array
+                minItems: 1
+                maxItems: 1
+                items:
+                  type: string
+                  enum:
+                  - users
+                  - ecpi
+                  - cost
+                  - event_name
+                  - revenue
+                  - roas
+                  - roi
+                  - sessions
+                  - uninstalls
+              aggregation_type:
+                type: string
+                enum:
+                - cumulative
+                - on_day
+              groupings:
+                type: array
+                minItems: 1
+                maxItems: 7
+                items:
+                  type: string
+                  enum:
+                  - af_ad
+                  - af_ad_id
+                  - c
+                  - af_c_id
+                  - af_channel
+                  - pid
+                  - af_sub1
+                  - af_keywords
+                  - af_prt
+                  - cohort_type
+                  - site_id
+                  - attributed_touch_type
+                  - af_adset
+                  - af_adset_id
+                  - geo
+                  - date
+              min_cohort_size:
+                type: integer
+                minimum: 1
+                description: 'Minimum cohort size is used to reduce the number of records returned by excluding cohorts having few users. This means that the *users* KPI has a value equal or greater to that specified.
+
+                  *Default*: 1
+
+                  '
+              granularity:
+                type: string
+                enum:
+                - hour
+                - day
+                description: 'Hourly granularity for the previous 72 hours by setting `granularity=hour` and setting the `from` and `to` range to include the time of day.
+
+                  '
+              partial_data:
+                type: boolean
+                description: "To avoid data distortion and misinterpretation Cohort returns data of complete days. However, the data of partial days can be useful. \nThe number of complete cohort days for a query is calculated as the difference between today's date and the to date.\n*Default* If `false`, complete days return.\nIf `true`, up to 180 cohort days return, including days having incomplete data. \n**Example**: On May 10, the number of complete cohort days for users converting during April 1-30, is 10. \nIf false [default], cohort days 0-9, return. This is the number of days (10) between the last conversion date and today. \nIf true, cohort days 1-40 return. Days 11-40 contain partial data and do not return. For example, since April 20, only 20 days have elapsed, and so on.\n**Note**: Partial data is only allowed when the aggregation type is cumulative.\n"
+              filters:
+                $ref: '#/components/schemas/Filters'
+              preferred_currency:
+                type: boolean
+                description: "- If true, revenue is returned using the app-specific currency set in the platform. \n- *Default* If false, results return in USD.\n"
+              preferred_timezone:
+                type: boolean
+                description: '- If true, times are expressed using the app-specific time zone set in the platform.
+
+                  - *Default* If false, times are expressed using UTC time zone.
+
+                  '
+              per_user:
+                type: boolean
+                description: 'Divide the KPI function by the number of app users. Applies only to relevant KPIs.
+
+                  - If true, KPI values are divided by the number of users in the cohort.
+
+                  - If false, KPI values are not divided by the number of users.
+
+                  '
+  responses:
+    Unauthorized:
+      description: Authentication failed.
+      content:
+        application/json:
+          schema:
+            type: string
+          example: Authentication error
+    Success:
+      description: Request successful.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: {}
+        text/csv: {}
+    UnprocessableEntity:
+      description: Unprocessable entity.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              expose:
+                type: string
+          example:
+            error: 'Invalid value: days for key: granularity. Expected one of: hour, week, month, day'
+            expose: false
+    RateLimitError:
+      description: Rate Limit Error.
+      content:
+        application/json:
+          schema:
+            type: string
+  schemas:
+    Filters:
+      type: object
+      properties:
+        af_ad:
+          type: array
+          items:
+            type: string
+          description: Ad
+        af_ad_id:
+          type: array
+          items:
+            type: string
+          description: Ad ID
+        c:
+          type: array
+          items:
+            type: string
+          description: Campaign
+        af_c_id:
+          type: array
+          items:
+            type: string
+          description: Campaign ID
+        af_channel:
+          type: array
+          items:
+            type: string
+          description: Channel
+        pid:
+          type: array
+          items:
+            type: string
+          description: Media Source
+        af_sub1:
+          type: array
+          items:
+            type: string
+          description: Sub Param 1
+        af_keywords:
+          type: array
+          items:
+            type: string
+          description: Keywords
+        af_prt:
+          type: array
+          items:
+            type: string
+          description: Agency
+        cohort_type:
+          type: array
+          items:
+            type: string
+            enum:
+            - user_acquisition
+            - retargeting
+            - unified
+          description: Conversion Type
+        site_id:
+          type: array
+          items:
+            type: string
+          description: Site ID
+        revenue_type:
+          type: array
+          items:
+            type: string
+            enum:
+            - regular
+            - ad_monetization
+            description: Revenue Type
+            minimum: 0
+            maximum: 1
+        attributed_touch_type:
+          type: array
+          items:
+            type: string
+            enum:
+            - click
+            - impression
+            - TV
+            - pre-installed
+          description: Attributed Touch Type
+        af_adset:
+          type: array
+          items:
+            type: string
+          description: Adset
+        af_adset_id:
+          type: array
+          items:
+            type: string
+          description: Adset ID
+        geo:
+          type: array
+          items:
+            type: string
+            enum:
+            - AF
+            - AX
+            - AL
+            - DZ
+            - AS
+            - AD
+            - AO
+            - AI
+            - AQ
+            - AG
+            - AR
+            - AM
+            - AW
+            - AU
+            - AT
+            - AZ
+            - BS
+            - BH
+            - BD
+            - BB
+            - BY
+            - BE
+            - BZ
+            - BJ
+            - BM
+            - BT
+            - BO
+            - BA
+            - BW
+            - BV
+            - BR
+            - IO
+            - BN
+            - BG
+            - BF
+            - BI
+            - KH
+            - CM
+            - CA
+            - CV
+            - KY
+            - CF
+            - TD
+            - CL
+            - CN
+            - CX
+            - CC
+            - CO
+            - KM
+            - CG
+            - CD
+            - CK
+            - CR
+            - CI
+            - HR
+            - CU
+            - CY
+            - CZ
+            - DK
+            - DJ
+            - DM
+            - DO
+            - EC
+            - EG
+            - SV
+            - GQ
+            - ER
+            - EE
+            - ET
+            - FK
+            - FO
+            - FJ
+            - FI
+            - FR
+            - GF
+            - PF
+            - TF
+            - GA
+            - GM
+            - GE
+            - DE
+            - GH
+            - GI
+            - GR
+            - GL
+            - GD
+            - GP
+            - GU
+            - GT
+            - GG
+            - GN
+            - GW
+            - GY
+            - HT
+            - HM
+            - VA
+            - HN
+            - HK
+            - HU
+            - IS
+            - IN
+            - ID
+            - IR
+            - IQ
+            - IE
+            - IM
+            - IL
+            - IT
+            - JM
+            - JP
+            - JE
+            - JO
+            - KZ
+            - KE
+            - KI
+            - KR
+            - KP
+            - KW
+            - KG
+            - LA
+            - LV
+            - LB
+            - LS
+            - LR
+            - LY
+            - LI
+            - LT
+            - LU
+            - MO
+            - MK
+            - MG
+            - MW
+            - MY
+            - MV
+            - ML
+            - MT
+            - MH
+            - MQ
+            - MR
+            - MU
+            - YT
+            - MX
+            - FM
+            - MD
+            - MC
+            - MN
+            - ME
+            - MS
+            - MA
+            - MZ
+            - MM
+            - NA
+            - NR
+            - NP
+            - NL
+            - AN
+            - NC
+            - NZ
+            - NI
+            - NE
+            - NG
+            - NU
+            - NF
+            - MP
+            - 'NO'
+            - OM
+            - PK
+            - PW
+            - PS
+            - PA
+            - PG
+            - PY
+            - PE
+            - PH
+            - PN
+            - PL
+            - PT
+            - PR
+            - QA
+            - RE
+            - RO
+            - RU
+            - RW
+            - BL
+            - SH
+            - KN
+            - LC
+            - MF
+            - PM
+            - VC
+            - WS
+            - SM
+            - ST
+            - SA
+            - SN
+            - RS
+            - SC
+            - SL
+            - SG
+            - SK
+            - SI
+            - SB
+            - SO
+            - ZA
+            - GS
+            - ES
+            - LK
+            - SD
+            - SR
+            - SJ
+            - SZ
+            - SE
+            - CH
+            - SY
+            - TW
+            - TJ
+            - TZ
+            - TH
+            - TL
+            - TG
+            - TK
+            - TO
+            - TT
+            - TN
+            - TR
+            - TM
+            - TC
+            - TV
+            - UG
+            - UA
+            - AE
+            - GB
+            - US
+            - UM
+            - UY
+            - UZ
+            - VU
+            - VE
+            - VN
+            - VG
+            - VI
+            - WF
+            - EH
+            - YE
+            - ZM
+            - ZW
+          description: Country
+        period:
+          type: integer
+          minimum: 0
+          maximum: 180
+          description: "Period refers to the day post-attribution, where period 0 is the attribution day. \nFor example, a user installs the app on January 1. This is the attribution day. A purchase made on period 0 means it was made on January 1.\nA purchase made on period 3 means it was made on January 4. \nSimilarly, a user who installs on January 11, this is period 0. A purchase made on January 14 would be period 3.\nMore information you can find [here](https://support.appsflyer.com/hc/en-us/articles/360004799057#using-period-filters).\n"
+  parameters:
+    AppId:
+      name: app_id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: App ID of the app for which you get the report
+        example: com.example.testapp
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: '**Important: API V2 Token Revocation**
+
+        All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Reach out to your CSM to enable Cohort API and then [get the token in the dashboard](https://support.appsflyer.com/hc/en-us/articles/360004562377)
+
+        '

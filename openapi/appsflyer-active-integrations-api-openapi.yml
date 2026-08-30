@@ -1,0 +1,161 @@
+openapi: 3.2.0
+info:
+  title: Partner integration settings Active integrations API
+  description: Public API for managing partner integrations
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/app-integrations/
+  description: api server - production
+security:
+- bearerAuth: []
+tags:
+- name: Active integrations
+paths:
+  /v1/integrations/{appid}:
+    get:
+      parameters:
+      - name: appid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/pid'
+        example: com.publisher.name
+      tags:
+      - Active integrations
+      summary: Get active integration parameters
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters under the integration tab.
+
+        '
+      responses:
+        '200':
+          description: Retrieved app active integrations parameters successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppIntegrationsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+  /v1/integrations:
+    get:
+      tags:
+      - Active integrations
+      summary: Get active integrations
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of the active integrations with your partners arranged by app. An integration is considered active if one of the following is enabled:
+
+        - Activate partner
+
+        - Cost
+
+        - Ad revenue
+
+        '
+      responses:
+        '200':
+          description: Retrieved active integrations successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActiveIntegrationsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+components:
+  schemas:
+    ActiveIntegrationsResponse:
+      type: object
+      properties:
+        account_id:
+          type: string
+        applications:
+          type: array
+          items:
+            type: object
+            properties:
+              app_id:
+                type: string
+              active_integrations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    media_source_name:
+                      type: string
+                    is_integration_active:
+                      type: boolean
+                    is_cost_active:
+                      type: boolean
+                    is_adrevenue_active:
+                      type: boolean
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    AppIntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          general_params:
+            type: object
+          in_app_postbacks_params:
+            type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        HTTP header containing the API token (bearer token) is required. Ask your account admin to [obtain the V2.0 token](https://support.appsflyer.com/hc/en-us/articles/360004562377) from the AppsFlyer dashboard.
+
+        '

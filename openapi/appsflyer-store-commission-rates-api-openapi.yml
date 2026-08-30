@@ -1,0 +1,445 @@
+openapi: 3.2.0
+info:
+  title: ROI360 Net Revenue API (v2.0) Store commission rates API
+  description: 'ROI360 automatically calculates net in-app-purchase (IAP) and subscription revenue by deducting store commissions and local taxes from the gross amount.
+
+
+    The default settings cover standard App Store and Google Play fees and taxes. If your store commission differs (e.g. Apple Small Business Program at 15%) or you operate in a country with special tax treatment, use the Net Revenue API to override the defaults.
+
+
+    ROI360 applies the following default store commissions:
+
+    - **IAP (one-time purchases):** 30% on both iOS and Android.
+
+    - **Subscriptions:** 30% on iOS during the first 12 months, dropping to 15% thereafter; 15% on Android from day one.
+
+
+    Default tax rates can be found [here](https://docs.google.com/document/d/e/2PACX-1vSl3DwlK2Gt2aa5gmDzD3-K3CtnIM85oMNrqx3PCTamwCERWYU48GugNpD31BFjA2PJjZnqaXIVe2Hx/pub).
+
+
+    > ⚠️
+
+    >  **Deprecation Notice:** API v1.0 (`/api/stores-taxes/v1.0/`) is deprecated. Please migrate to v2.0 (`/api/net-revenue/v2.0/`).
+
+    '
+  version: 2.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/net-revenue/v2.0/
+  description: v2.0 - use this for all integrations
+- url: https://hq1.appsflyer.com/api/stores-taxes/v1.0/
+  description: v1.0 (deprecated, will be removed in a future release)
+security:
+- bearerAuth: []
+tags:
+- name: Store commission rates
+paths:
+  /store_commission_rates/app/{app_ids}:
+    delete:
+      tags:
+      - Store commission rates
+      summary: Delete store commission rates for specific apps or all apps in account
+      description: Delete custom store commission rates to restore default values for one or more apps. Use comma-separated app IDs or 'all' to delete all apps in the account.
+      parameters:
+      - name: app_ids
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated app IDs or 'all' to delete all apps in the account
+        example: id123456789,id987654321
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MissingAppIds:
+                  summary: Missing app_ids parameter
+                  description: No app_ids specified in the path parameter
+                  value:
+                    message: Invalid request - No app_ids specified
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '401':
+          description: Missing authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MissingAuthorizationToken:
+                  summary: Missing authorization token
+                  value:
+                    message: Get the API V2 token from your AppsFlyer admin
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '404':
+          description: Token unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                TokenUnauthorized:
+                  summary: Method not allowed
+                  value:
+                    message: Method not allowed
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MethodNotAllowed:
+                  summary: Token unauthorized
+                  value:
+                    message: Token unauthorized
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                RateLimitExceeded:
+                  summary: Rate limit exceeded
+                  value:
+                    message: The rate limit is XXX requests per minute, please try again later
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                InternalError:
+                  summary: Internal server error
+                  value:
+                    message: Internal error. please try again later.
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    get:
+      tags:
+      - Store commission rates
+      summary: Get store commission rates for specific apps or all apps in account
+      description: Retrieve store commission rates for one or more apps. Use comma-separated app IDs or 'all' to get all apps in the account.
+      parameters:
+      - name: app_ids
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated app IDs or 'all' to get all apps in the account
+        example: id123456789,id987654321
+      responses:
+        '200':
+          description: Store commission rates returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoreCommission'
+              example:
+              - app_id: id123456789
+                store_commission_rate: 15
+                store_commission_reason: google_15pct_tier_first_1m
+              - app_id: id987654321
+                store_commission_rate: 15
+                store_commission_reason: apple_sbp
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MissingAppIds:
+                  summary: Missing app_ids parameter
+                  description: No app_ids specified in the path parameter
+                  value:
+                    message: Invalid request - No app_ids specified
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '401':
+          description: Missing authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MissingAuthorizationToken:
+                  summary: Missing authorization token
+                  value:
+                    message: Get the API V2 token from your AppsFlyer admin
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '404':
+          description: Token unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                TokenUnauthorized:
+                  summary: Method not allowed
+                  value:
+                    message: Method not allowed
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MethodNotAllowed:
+                  summary: Token unauthorized
+                  value:
+                    message: Token unauthorized
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                RateLimitExceeded:
+                  summary: Rate limit exceeded
+                  value:
+                    message: The rate limit is XXX requests per minute, please try again later
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                InternalError:
+                  summary: Internal server error
+                  value:
+                    message: Internal error. please try again later.
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+  /store_commission_rates:
+    post:
+      tags:
+      - Store commission rates
+      summary: Create or update store commission rates
+      description: Create or update store commission rates for one or more apps. Each app can have a specific commission rate based on various store programs.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/StoreCommission'
+              example:
+              - app_id: id123456789
+                store_commission_rate: 15
+                store_commission_reason: google_15pct_tier_first_1m
+              - app_id: id987654321
+                store_commission_rate: 15
+                store_commission_reason: apple_sbp
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '400':
+          description: Various errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                InvalidJson:
+                  summary: Invalid JSON
+                  description: Request body is not valid JSON
+                  value:
+                    message: Incorrect JSON format. Please verify and resubmit
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                EmptyRequest:
+                  summary: Empty request
+                  description: No store commissions provided in request
+                  value:
+                    message: 'Bad Request: At least one store commission is required'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                MissingAppId:
+                  summary: Missing app_id
+                  description: The app_id field is missing for a store commission
+                  value:
+                    message: 'Bad Request: the parameter app_id is missing'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                MissingCommissionRate:
+                  summary: Missing store_commission_rate
+                  description: The store_commission_rate field is missing
+                  value:
+                    message: 'Bad Request: For app_id id123456789, the parameter store_commission_rate is missing'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                InvalidCommissionRateTooLow:
+                  summary: Commission rate too low
+                  description: Commission rate must be greater than or equal to 1%
+                  value:
+                    message: 'Bad Request: For app_id id123456789, the input value provided for the store_commission_rate is out of range. expected value should be greater than or equal to 1'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                InvalidCommissionRateTooHigh:
+                  summary: Commission rate too high
+                  description: Commission rate exceeds maximum of 30%
+                  value:
+                    message: 'Bad Request: For app_id id123456789, the input value provided for the store_commission_rate is out of range. expected value should be less than or equal to 30'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                MissingCommissionReason:
+                  summary: Missing store_commission_reason
+                  description: The store_commission_reason field is missing
+                  value:
+                    message: 'Bad Request: For app_id id123456789, the parameter store_commission_reason is missing'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                InvalidCommissionReason:
+                  summary: Invalid commission reason
+                  description: Commission reason not in allowed enum values
+                  value:
+                    message: 'Bad Request: For app_id id123456789, store_commission_reason must be one of [apple_sbp google_15pct_tier_first_1m google_media_experience other]'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+                AppNotInAccount:
+                  summary: App does not belong to account
+                  description: The specified app_id does not belong to the authenticated account
+                  value:
+                    message: 'Bad Request: app id123456789 does not belong to your account'
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '401':
+          description: Missing authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MissingAuthorizationToken:
+                  summary: Missing authorization token
+                  value:
+                    message: Get the API V2 token from your AppsFlyer admin
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '404':
+          description: Token unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                TokenUnauthorized:
+                  summary: Method not allowed
+                  value:
+                    message: Method not allowed
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '405':
+          description: Method not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MethodNotAllowed:
+                  summary: Token unauthorized
+                  value:
+                    message: Token unauthorized
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                RateLimitExceeded:
+                  summary: Rate limit exceeded
+                  value:
+                    message: The rate limit is XXX requests per minute, please try again later
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                InternalError:
+                  summary: Internal server error
+                  value:
+                    message: Internal error. please try again later.
+                    request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+components:
+  schemas:
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
+    StoreCommission:
+      type: object
+      required:
+      - app_id
+      - store_commission_rate
+      - store_commission_reason
+      properties:
+        app_id:
+          type: string
+          description: 'The app ID for which the store commission rate is being set
+
+            '
+          example: id123456789
+        store_commission_rate:
+          type: number
+          format: float
+          maximum: 30
+          minimum: 1
+          description: 'The store commission rate percentage. Valid range: 1% to 30%
+
+            '
+          example: 15
+        store_commission_reason:
+          type: string
+          enum:
+          - apple_sbp
+          - google_15pct_tier_first_1m
+          - google_media_experience
+          - other
+          description: 'The reason for the store commission rate:
+
+            - apple_sbp: Apple Small Business Program (15% commission)
+
+            - google_15pct_tier_first_1m: Google''s 15% tier for first $1M in revenue
+
+            - google_media_experience: Google Play Media Experience Program
+
+            - other: Custom or other store commission arrangements
+
+            '
+          example: google_15pct_tier_first_1m
+  responses:
+    Success:
+      description: Valid request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              request_id:
+                type: string
+            example:
+              message: Successfully processed
+              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'To call the API, get the API V2 authorization token from your AppsFlyer admin. They can retrieve it from the AppsFlyer platform (HQ)
+
+        '

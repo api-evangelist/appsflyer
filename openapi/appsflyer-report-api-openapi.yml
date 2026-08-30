@@ -1,0 +1,131 @@
+openapi: 3.2.0
+info:
+  title: Click Signing Report API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/p360-click-signing/v2.0
+security:
+- bearerAuth: []
+tags:
+- name: Report
+paths:
+  /report:
+    get:
+      tags:
+      - Report
+      summary: Report
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: click-signing-report-get
+      parameters:
+      - name: signature-version
+        in: query
+        schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        required: true
+      - name: start-date
+        in: query
+        description: start time for the report in the format yyyy-mm-ddThh
+        schema:
+          type: string
+          pattern: ^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T(0\d|1\d|2[0-3])$
+        required: true
+      - name: end-date
+        in: query
+        description: end time for the report in the format yyyy-mm-ddThh
+        schema:
+          type: string
+          pattern: ^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T(0\d|1\d|2[0-3])$
+        required: true
+      responses:
+        '200':
+          description: 'A CSV with the following columns:
+
+
+            | Column | Description |
+
+            | --- | --- |
+
+            | time | an hour in the format: yyyy-MM-ddTHH (example: 2024-01-17T07) |
+
+            | app_id | the app_id from the click |
+
+            | partner | the agency (af_prt) from the click |
+
+            | total_clicks | the number of total clicks received during this hour |
+
+            | valid_clicks | the number of valid clicks |
+
+            | missing_signature | the number of clicks with no signature |
+
+            | expired_clicks | the number of expired clicks |
+
+            | invalid_signature | the number of clicks with an invalid signature |
+
+            | no_active_secrets | the number of clicks received during a period of time when there were no active secrets configured to validate the sugnature |
+
+            | missing_mandatory_params | the number of clicks with a signature which is missing a mandatory param |
+
+            '
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Invalid parameter:
+                  summary: Invalid parameter
+                  value:
+                    messege: One or more of the required parameters appear in a wrong format
+                Invalid signature version:
+                  summary: Invalid signature version
+                  value:
+                    message: Invalid signature-version param. must be v1 or v2
+        '401':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    error_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Token required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.
+
+        '

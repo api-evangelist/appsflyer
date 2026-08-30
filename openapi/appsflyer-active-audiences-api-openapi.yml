@@ -1,0 +1,104 @@
+openapi: 3.2.0
+info:
+  title: Audience External Active audiences API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Active audiences
+paths:
+  /active-audiences:
+    get:
+      tags:
+      - Active audiences
+      operationId: audience-external-active-audiences
+      summary: Get active audiences for account
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - message
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      results:
+                        $ref: '#/components/schemas/active_audiences_response'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+    active_audiences_response:
+      type: array
+      items:
+        required:
+        - audience_id
+        - name
+        - updating_user
+        type: object
+        properties:
+          audience_id:
+            type: string
+          name:
+            type: string
+          updating_user:
+            type: string
+          audience_last_upload_status:
+            type: string
+          audience_last_upload_time:
+            type: string
+            format: timestamp
+          audience_last_successful_upload_time_in_last_7_days:
+            type: string
+          audience_size:
+            type: integer
+          audience_upload_size:
+            type: integer
+          app_id:
+            type: string
+          count_failed_connections:
+            type: integer
+          count_total_connections:
+            type: integer
+          count_total_partners:
+            type: integer
+          count_campaigns:
+            type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

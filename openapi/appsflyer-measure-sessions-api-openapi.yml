@@ -1,0 +1,274 @@
+openapi: 3.2.0
+info:
+  title: Appsflyer Measure sessions API
+  version: 1.0.0
+  description: 'Operations tagged Measure sessions across 2 of this provider''s published API definitions: appsflyer-pcconsolectv-client-app-events-api-openapi.yml, appsflyer-pcconsolectv-events-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://events.appsflyer.com/v1.0/c2s/
+  description: Production server
+- url: https://sandbox-events.appsflyer.com/v1.0/c2s/
+  description: Sandbox server
+- url: https://events.appsflyer.com/v1.0/s2s/
+  description: Production server
+- url: https://sandbox-events.appsflyer.com/v1.0/s2s/
+  description: Sandbox server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Measure sessions
+paths:
+  /session/app/{platform}/{app-id}:
+    post:
+      tags:
+      - Measure sessions
+      summary: Measure sessions
+      description: "> ℹ️ This is  API is used to to report events directly from your application's client. If you need Server-to-Server please see [this section](https://dev.appsflyer.com/hc/reference/post_session-app-platform-app-id)         \n\nThis AppsFlyer API integration provide advertisers with the ability\nto measure post-install sessions and attribute it to a media source and campaign\n\n> \U0001F4D8 Note\n>\n> ### Generate the authentication signature\n>\n> To authenticate the API request, generate a Hash-Based Message Authentication Code (HMAC) signature by hashing the entire raw message using SHA-256 and the Devkey as the secret key. Place the resulting signature in the request authentication header.\n>\n> For example, if the raw message is:\n> `{\"timestamp\": 1604503583337, \"ip\": \"127.0.0.1\", \"user_agent\": \"Roku/DVP-9.21 (AE9.21E04090A)\", \"device_os_version\": \"9.3.0\", \"device_model\": \"3920X\", \"device_ids\": [{\"type\": \"rida\", \"value\": \"fa73d67d-f55c-5af3-883a-726253dc7d0e\"}], \"limit_ad_tracking\": false}`\n>\n> The Devkey is:\n> `w8sZzy8EaPaxFKfaoTqU16`\n>\n> The signature is:\n> 715b133d5a327b77beb898688a3ad438da0f78071cd3df70e8ec5ecf60751972\n"
+      operationId: ctv-c2s-events-sessions-post
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      - $ref: '#/components/parameters/Platform'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - request_id
+              - device_ids
+              - device_model
+              - device_os_version
+              - limit_ad_tracking
+              - app_version
+              type: object
+              properties:
+                request_id:
+                  maxLength: 36
+                  minLength: 36
+                  type: string
+                  description: Unique identifier per request
+                  example: 71dad7da-7926-40d8-9b15-b94a6d46e15a
+                device_os_version:
+                  maxLength: 12
+                  minLength: 1
+                  type: string
+                  pattern: ^[0-9.\-]+$
+                  description: The device OS version
+                  example: 9.3.0
+                device_model:
+                  maxLength: 50
+                  minLength: 1
+                  type: string
+                  pattern: ^[A-Za-z0-9.\(\)\- ]+$
+                  description: The device model
+                  example: 3920X
+                device_ids:
+                  $ref: '#/components/schemas/DeviceIds'
+                limit_ad_tracking:
+                  type: boolean
+                  description: Limit Ad Tracking flag. Use this flag to mark whether or not the user has advertiser ID
+                  example: true
+                customer_user_id:
+                  maxLength: 64
+                  minLength: 1
+                  type: string
+                  description: Customer user ID, as set by the developer. This is used as the user identifier in the advertiser's system
+                  example: 15667737-366d-4994-ac8b-653fe6b2be4a
+                app_version:
+                  maxLength: 24
+                  minLength: 1
+                  type: string
+                  pattern: ^[0-9.\-]+$
+                  description: The release or version number of the app
+                  example: 1.0.5
+        required: true
+      responses:
+        '202':
+          description: The request was accepted
+          content: {}
+        '400':
+          description: The authentication succeeded, but mandatory fields in the message body are missing, or fields are invalid
+          content: {}
+        '401':
+          description: The app doesn't exist or the authentication failed
+          content: {}
+        '403':
+          description: App traffic blocked due to Zero package limit
+          content: {}
+        '500':
+          description: Internal server error
+          content: {}
+      x-codegen-request-body-name: body
+    servers:
+    - url: https://events.appsflyer.com/v1.0/c2s/
+      description: Production server
+    - url: https://sandbox-events.appsflyer.com/v1.0/c2s/
+      description: Sandbox server
+components:
+  schemas:
+    DeviceIds:
+      type: array
+      description: A vector of the different device IDs. Can be either advertising ID or a custom ID. The custom device ID is mapped to `appsflyer_id`in raw data reports. in raw data reports
+      example:
+      - type: rida
+        value: fa73d67d-f55c-5af3-883a-726253dc7d0e
+      - type: custom
+        value: 045f4137-57b7-45e6-8a45-c303101a086a
+      items:
+        required:
+        - type
+        - value
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - custom
+            - rida
+            - vida
+            - tifa
+            - lgudid
+            - vidaaid
+            - steamid
+            - epicid
+            - psid
+            description: '`custom` format is GUID
+
+              '
+          value:
+            type: string
+            pattern: ^[A-Za-z0-9\-]+$
+    DeviceIds_2:
+      type: array
+      description: A vector of the different device IDs. Can be either advertising ID or a custom ID. The custom device ID is mapped to `appsflyer_id`in raw data reports.
+      example:
+      - type: rida
+        value: fa73d67d-f55c-5af3-883a-726253dc7d0e
+      - type: custom
+        value: 045f4137-57b7-45e6-8a45-c303101a086a
+      items:
+        required:
+        - type
+        - value
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - custom
+            - rida
+            - vida
+            - tifa
+            - lgudid
+            - vidaaid
+            - steamid
+            - epicid
+            - psid
+            - vegaid
+            description: '`custom` format is GUID
+
+              '
+          value:
+            type: string
+            pattern: ^[A-Za-z0-9\-_]+$
+    SharingFilter:
+      description: "The sharing filter blocks the sharing of events via postbacks/API with integrated partners and other third-party integrations.\nUse the filter to fulfill regulatory requirements like GDPR and CCPA, to comply with user opt-out mechanisms, and for other business logic reasons. \n\nThe `sharing_filter` has the following options:\n\n- `all`: All partners are blocked. Don't share the event with anyone. Example: \"sharing_filter\": \"all\"\n- List of partner ids in an array. \n\n**Note:** \n  To find out the required partner IDs:\n  1. Run the [Get active integrations API](https://dev.appsflyer.com/hc/reference/get_v1-integrations) for a list of all active integrations\n  2. Use the `media_source_name` values from the [API response](https://dev.appsflyer.com/hc/reference/get_v1-integrations) as input values to the method `partners` array. \n"
+      type: array
+      items:
+        type: string
+        minLength: 1
+      minItems: 1
+      oneOf:
+      - type: array
+        items:
+          type: string
+          minLength: 1
+        minItems: 1
+        title: list partners blocked
+      - type: array
+        items:
+          type: string
+          enum:
+          - all
+        minItems: 1
+        maxItems: 1
+        title: all partners blocked
+  parameters:
+    AppId:
+      name: app-id
+      in: path
+      schema:
+        type: string
+        pattern: ^[A-Za-z0-9.\-]+$
+      required: true
+      description: 'Application ID
+
+        '
+    Platform:
+      name: platform
+      in: path
+      schema:
+        type: string
+        enum:
+        - ''
+        - roku
+        - smartcast
+        - tizen
+        - webos
+        - playstation
+        - vidaa
+        - steam
+        - quest
+        - battlenet
+        - epic
+        - switch
+        - xbox
+        - nativepc
+      required: true
+      description: 'The CTV platform of the measured app
+
+        '
+    Platform_2:
+      name: platform
+      in: path
+      schema:
+        type: string
+        enum:
+        - ''
+        - roku
+        - smartcast
+        - tizen
+        - webos
+        - playstation
+        - vidaa
+        - steam
+        - quest
+        - battlenet
+        - epic
+        - switch
+        - xbox
+        - nativepc
+        - vega
+      required: true
+      description: 'The CTV platform of the measured app
+
+        '
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: 'Create an HMAC signature by hashing the entire raw message.
+
+        The HMAC is generated using SHA256 and uses the DevKey as the signature’s secret key.
+
+
+        For example, the raw message is: `{"timestamp":1604503583337,"ip":"127.0.0.1","user_agent":"Roku/DVP-9.21 (AE9.21E04090A)","device_os_version":"9.3.0","device_model":"3920X","device_ids":[{"type":"rida","value":"fa73d67d-f55c-5af3-883a-726253dc7d0e"}],"limit_ad_tracking":false}`
+
+
+        The DevKey is: `w8sZzy8EaPaxFKfaoTqUi6`
+
+        The result is: `715b133d5a327b77beb898688a3ad438da0f78071cd3df70e8ec5ecf60751972`
+
+        '
+      name: authorization
+      in: header
+x-refined-from:
+- appsflyer-pcconsolectv-client-app-events-api-openapi.yml
+- appsflyer-pcconsolectv-events-api-openapi.yml

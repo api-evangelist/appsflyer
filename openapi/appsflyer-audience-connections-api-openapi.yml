@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  title: Audience External Audience connections API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Audience connections
+paths:
+  /audience/{audience_id}/connections:
+    get:
+      tags:
+      - Audience connections
+      summary: List partner connections for audience
+      parameters:
+      - name: audience_id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          description: Assigned connections of an audience
+          content:
+            application/json:
+              schema:
+                required:
+                - message
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      connections:
+                        $ref: '#/components/schemas/connections_response'
+              example:
+                message:
+                  connections:
+                  - integration_id: 1234
+                    partner_id: amazon_int
+                    integration_name: Amazon Advertising
+                    split_ratio: 100
+                    integration_last_upload_status: success
+                    integration_last_upload_time: '2024-01-15T10:30:00Z'
+                    integration_last_successful_upload_time_in_last_7_days: '2024-01-15T10:30:00Z'
+                    integration_last_upload_error_message: ''
+                    integration_upload_size: 5000
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience does not exist:
+                  value:
+                    error_code: 1002
+                    messege: Audience does not exist under your account
+    put:
+      tags:
+      - Audience connections
+      summary: Connect audience to existing partners
+      parameters:
+      - name: audience_id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connections:
+                  type: array
+                  items:
+                    required:
+                    - integration_id
+                    type: object
+                    properties:
+                      integration_id:
+                        $ref: '#/components/schemas/integration_id'
+                      split_ratio:
+                        $ref: '#/components/schemas/split_ratio'
+            examples:
+              Remove all connections:
+                value:
+                  connections: []
+              Connect 2 partners to an audience:
+                value:
+                  connections:
+                  - integration_id: 1234
+                  - integration_id: 5678
+              Connect 2 partners split audience:
+                value:
+                  connections:
+                  - integration_id: 1234
+                    split_ratio: 40
+                  - integration_id: 5678
+                    split_ratio: 60
+              Connect 2 partners cg split audience:
+                value:
+                  connections:
+                  - integration_id: control_group
+                    split_ratio: 40
+                  - integration_id: 5678
+                    split_ratio: 60
+        required: true
+      responses:
+        '200':
+          description: Connections were updated with the given connections array
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_response'
+              example:
+                message: Connections updated successfully
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience does not exist:
+                  value:
+                    error_code: 1002
+                    message: Audience does not exist under your account
+                Invalid integrations:
+                  value:
+                    error_code: 1003
+                    message: 'The following integrations are invalid: 12, 34'
+                Connection limit exceeded:
+                  value:
+                    error_code: 1009
+                    message: Total connections (120) exceeds the maximum limit of 115
+                Internal error:
+                  value:
+                    error_code: 1020
+                    message: Internal error occurred
+components:
+  schemas:
+    integration_id:
+      type: integer
+      example: 1234
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    connections_response:
+      type: array
+      items:
+        required:
+        - integration_id
+        - partner_id
+        - integration_name
+        - split_ratio
+        type: object
+        properties:
+          integration_id:
+            $ref: '#/components/schemas/integration_id'
+          partner_id:
+            $ref: '#/components/schemas/partner_id'
+          integration_name:
+            $ref: '#/components/schemas/integration_name'
+          split_ratio:
+            $ref: '#/components/schemas/split_ratio'
+          integration_last_upload_status:
+            type: string
+            example: success
+          integration_last_upload_time:
+            type: string
+            format: date-time
+            example: '2024-01-15T10:30:00Z'
+          integration_last_successful_upload_time_in_last_7_days:
+            type: string
+            format: date-time
+            example: '2024-01-15T10:30:00Z'
+          integration_last_upload_error_message:
+            type: string
+            example: ''
+          integration_upload_size:
+            type: integer
+            example: 5000
+    integration_name:
+      type: string
+      example: Integration 123
+    split_ratio:
+      type: object
+      x-anyOf:
+      - type: string
+        example: 'null'
+      - type: integer
+        minimum: 1
+        maximum: 99
+        example: 50
+      - type: object
+        example: null
+      example: 50
+    partner_id:
+      type: string
+      example: amazon_int
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

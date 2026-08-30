@@ -1,0 +1,78 @@
+openapi: 3.2.0
+info:
+  title: Audience External Pauses audience API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Pauses audience
+paths:
+  /pause:
+    post:
+      tags:
+      - Pauses audience
+      operationId: audience-external-pause
+      summary: Pause audience
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - audience_ids
+              type: object
+              properties:
+                audience_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Paused audiences successfully
+          content:
+            application/json:
+              schema:
+                required:
+                - message
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Successfully paused the audiences
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

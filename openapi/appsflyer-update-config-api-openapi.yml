@@ -1,0 +1,119 @@
+openapi: 3.2.0
+info:
+  title: Click Signing Update config API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/p360-click-signing/v2.0
+security:
+- bearerAuth: []
+tags:
+- name: Update config
+paths:
+  /config/signatures/{signature_version}:
+    put:
+      tags:
+      - Update config
+      summary: Update click signing config
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: click-signing-config-update-put
+      parameters:
+      - name: signature_version
+        description: The version of the signature
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1
+          - v2
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - mode
+              type: object
+              properties:
+                mode:
+                  description: The mode for the click signing verification of a given signature version
+                  type: string
+                  enum:
+                  - enabled
+                  - disabled
+                  - report-only
+        required: true
+      responses:
+        '200':
+          description: Click signing config updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_response'
+              example:
+                message: The request was successful
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Invalid mode:
+                  summary: Invalid mode
+                  value:
+                    messege: Invalid mode
+                Invalid signature version:
+                  summary: Invalid signature version
+                  value:
+                    message: Invalid signature version
+                Failed enable click signing:
+                  summary: Failed enable click signing
+                  value:
+                    message: Failed to enable click signing. Please generate secrets before enabling
+        '401':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
+    error_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Token required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.
+
+        '

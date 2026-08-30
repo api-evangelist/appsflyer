@@ -1,0 +1,111 @@
+openapi: 3.2.0
+info:
+  title: Click Signing Test API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/p360-click-signing/v2.0
+security:
+- bearerAuth: []
+tags:
+- name: Test
+paths:
+  /test:
+    post:
+      tags:
+      - Test
+      summary: Test
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: click-signing-test-post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - url
+              - signature_version
+              type: object
+              properties:
+                url:
+                  description: A click url with a signature to be tested
+                  type: string
+                signature_version:
+                  description: The version of the signature to be tested on the given url
+                  type: string
+                  enum:
+                  - v1
+                  - v2
+                  default: v2
+        required: true
+      responses:
+        '200':
+          description: Test report returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  test-status:
+                    type: string
+                    enum:
+                    - passed
+                    - failed
+                  message:
+                    type: string
+                    description: "In case of failed test - the reason for the test failure. \n"
+                    enum:
+                    - no_active_secrets
+                    - missing_signature
+                    - click_expired
+                    - invalid_signature
+                    - no_active_secrets_v2
+                    - missing_signature_v2
+                    - click_expired_v2
+                    - invalid_signature_v2
+                    - missing_mandatory_param_v2
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+components:
+  schemas:
+    error_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Token required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.
+
+        '

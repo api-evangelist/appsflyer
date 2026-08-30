@@ -1,0 +1,188 @@
+openapi: 3.2.0
+info:
+  title: Test Console Allowed devices API
+  version: '1.0'
+servers:
+- url: https://hq1.appsflyer.com/api/test-console/v1.0/app
+  description: Production server
+security:
+- Bearer-Authentication: []
+tags:
+- name: Allowed devices
+paths:
+  /{app-id}/devices/{device-id}:
+    delete:
+      summary: Delete device
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      tags:
+      - Allowed devices
+      operationId: test-console-api-delete
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      - name: device-id
+        in: path
+        required: true
+        description: The id of the device being removed.
+        schema:
+          type: string
+          example: 09ad6f30-a45c-4c6c-8862-636eabd54709
+          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+      responses:
+        '400':
+          description: Bad request
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Unauthorized
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          description: Forbidden
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: Not found
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict
+          $ref: '#/components/responses/Conflict'
+        '500':
+          description: Internal Server Error
+          $ref: '#/components/responses/InternalError'
+  /{app-id}/devices:
+    post:
+      summary: Add device
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      tags:
+      - Allowed devices
+      operationId: test-console-api-post
+      parameters:
+      - $ref: '#/components/parameters/AppId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - device_id
+              - device_id_type
+              - device_name
+              properties:
+                device_id:
+                  type: string
+                  description: The identifier of the device being registered for the test.
+                  example: 09ad6f30-a39c-4c6c-8862-636eabd54709
+                  pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                device_id_type:
+                  type: string
+                  description: The type of device ID being registered for the test.
+                  enum:
+                  - IDFA
+                  - IDFV
+                  - AID
+                  - OAID
+                  - IMEI
+                  - ANDROID ID
+                  - FIRE AID
+                  example: IDFA
+                device_name:
+                  type: string
+                  description: The name to associate with the device.
+                  example: My Device
+      responses:
+        '400':
+          description: Bad request
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Unauthorized
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          description: Forbidden
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: Not found
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict
+          $ref: '#/components/responses/Conflict'
+        '500':
+          description: Internal Server Error
+          $ref: '#/components/responses/InternalError'
+components:
+  responses:
+    NotFound:
+      description: The specified App ID does not exist within the account.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: app_id not found
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: authentication error
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: forbidden
+    BadRequest:
+      description: The request has invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: cannot parse body
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: You have added the maximum number of devices allowed by the Devices API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: device limit reached
+  parameters:
+    AppId:
+      name: app-id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
+        example: com.example.testapp
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+  securitySchemes:
+    Bearer-Authentication:
+      type: http
+      scheme: bearer
+      description: "**Important: API V2 Token Revocation**\n\nAll API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nAuthorization HTTP header containing API V2 token (bearer token) is required.\n\n [An admin can retrieve the V2 token from AppsFlyer](https://support.appsflyer.com/hc/en-us/articles/360004562377)"

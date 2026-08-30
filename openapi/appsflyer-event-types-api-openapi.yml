@@ -1,0 +1,182 @@
+openapi: 3.2.0
+info:
+  title: Push API Configuration Event Types API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/pushapi/v1.0/
+security:
+- Bearer-Authentication: []
+tags:
+- name: Event Types
+paths:
+  /event-types/{attributing-entity}:
+    get:
+      tags:
+      - Event Types
+      summary: Retrieve per attributing-entity
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Returns a list of the available event types for the specified endpoint type
+
+        '
+      parameters:
+      - name: attributing-entity
+        in: path
+        description: The endpoint type
+        required: true
+        schema:
+          type: string
+          enum:
+          - ''
+          - appsflyer
+          - skadnetwork
+      responses:
+        '200':
+          description: "Event types successfully retrieved.\nThe permitted event types are:\n- appsflyer: [\"organic-install-in-app-event\", \"install\", \"organic-install\", \"re-engagement\", \n\"re-attribution\", \"reinstall\", \"organic-reinstall\", \"install-in-app-event\", \n\"re-engagement-in-app-event\", \"re-attribution-in-app-event\" ]\n- skadnetwork: [\"in-app-event\", \"re-download\", \"install\", \"postbacks-copy\", \"postback\"]\n"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event_types:
+                    type: array
+                    items:
+                      type: string
+                  request_id:
+                    type: string
+        '401':
+          $ref: '#/components/responses/AuthenticationFailed'
+        '404':
+          $ref: '#/components/responses/VersionDoesntExist'
+        '410':
+          $ref: '#/components/responses/VersionNoLongerValid'
+        '422':
+          $ref: '#/components/responses/SchemaErrorInvalidPathParam'
+components:
+  responses:
+    SchemaErrorInvalidPathParam:
+      description: Invalid path-params. Verify the content and resubmit.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid path-params. Verify the content and resubmit.
+    VersionNoLongerValid:
+      description: The API version listed in the URL is no longer valid
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: The API version listed in the URL is no longer valid. Check the API documentation
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+  schemas:
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+  securitySchemes:
+    Bearer-Authentication:
+      type: http
+      scheme: bearer
+      description: "**Important: API V2 Token Revocation**\n\nAll API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nAuthorization HTTP header containing API V2 token (bearer token) is required.\n\n The admin [gets the V2 token in the dashboard](https://support.appsflyer.com/hc/en-us/articles/360004562377) "

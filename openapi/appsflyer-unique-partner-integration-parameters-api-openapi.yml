@@ -1,0 +1,106 @@
+openapi: 3.2.0
+info:
+  title: Partner integration settings Unique partner integration parameters API
+  description: Public API for managing partner integrations
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/app-integrations/
+  description: api server - production
+security:
+- bearerAuth: []
+tags:
+- name: Unique partner integration parameters
+paths:
+  /v1/partner-params/{pid}/{platform}:
+    get:
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/pid'
+        example: facebook_int
+      - name: platform
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/platform'
+      tags:
+      - Unique partner integration parameters
+      summary: Get a list of unique parameters
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Get a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a successful message is recieved with no data.
+
+        '
+      responses:
+        '200':
+          description: Retrieved params successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerParamsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AccountTypeError'
+              examples:
+                accountTypeError:
+                  value:
+                    status: UNAUTHORIZED
+                    message: This api is not available for your account type
+        '500':
+          description: Internal server error - please try again
+components:
+  schemas:
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    PartnerParamsResponse:
+      properties:
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    platform:
+      type: string
+      description: 'iOS/Android/Roku/Windows Phone
+
+        '
+      enum:
+      - ios
+      - android
+      - roku
+      - windowsphone
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        HTTP header containing the API token (bearer token) is required. Ask your account admin to [obtain the V2.0 token](https://support.appsflyer.com/hc/en-us/articles/360004562377) from the AppsFlyer dashboard.
+
+        '

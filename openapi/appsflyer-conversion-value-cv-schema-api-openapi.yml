@@ -1,0 +1,98 @@
+openapi: 3.2.0
+info:
+  title: SKAN CV Schema API for Advertisers Conversion value (CV) schema API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/skan-pull-cs-api/v1
+tags:
+- name: Conversion value (CV) schema
+paths:
+  /conversion-studio-schema/app/{app_id}:
+    get:
+      tags:
+      - Conversion value (CV) schema
+      summary: Get CV schema
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+        '
+      operationId: skan-pull-cs-api-get
+      parameters:
+      - name: app_id
+        in: path
+        description: The ID of the app
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Valid data returned
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                BadRequest:
+                  summary: Bad request
+                  value: Bad request
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NotFound:
+                  summary: Authorization token is missing or invalid
+                  value: Unauthorized
+                TooManyRequests:
+                  summary: Exceeded rate limitation
+                  value: Too many requests
+        '403':
+          description: "You don't have permission to access this report. If you are an analytics partner ask the advertiser to give you permission. \n"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NoPermission:
+                  summary: No permission
+                  value: No permission
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NotFound:
+                  summary: Not Found
+                  value: Not found
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    Error:
+      type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: '**Important: API V2 Token Revocation**
+
+        All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Token required for authorization. Please refer to [this link](https://support.appsflyer.com/hc/en-us/articles/360004562377) for instructions on how to obtain the token.
+
+        '

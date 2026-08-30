@@ -1,0 +1,1655 @@
+openapi: 3.2.0
+info:
+  title: Appsflyer Inapp Events API
+  version: '1.0'
+  description: 'Operations tagged Inapp Events across 2 of this provider''s published API definitions: appsflyer-legacy-server-to-server-events-api-for-mobile-openapi.yml, appsflyer-server-to-server-events-api-for-mobile-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api2.appsflyer.com/
+  description: Production server
+- url: https://api3.appsflyer.com/
+  description: Production server
+security:
+- ApiKeyAuth: []
+tags:
+- name: Inapp Events
+paths:
+  /inappevent/{app_id}:
+    post:
+      tags:
+      - Inapp Events
+      summary: Send Event
+      description: "Use this API to send mobile events that occur outside the app from your servers to AppsFlyer.\n> ⚠️ \n> **JSON payload limitation** JSON payload size: up to 1KB\n\n> \U0001F4D8 \n> **Encode URLs** - [Encode (percent) code reserved characters](https://tools.ietf.org/html/rfc3986#section-2.1) before forming the method URL. \n"
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+          description: "The app identifier used in the AppsFlyer dashboard. \nInsert it excatly as it appears on the dashboard.\n**iOS apps**: Ensure to prefix with `id`. Failure to do so results in a valid 200 OK return code; without recording the event.\n**Windows**: Get the app ID from the *Microsoft App Store*.\n"
+          example: id123456789
+      requestBody:
+        description: "> ⚠️ What if I can't send a device identifier?\n>  You may be unable to send the identifier for a reason out of your control, for example, because the user has limited ad tracking (LAT) or uses iOS 14, and did not give ATT consent. \n> Not sending an advertising ID/device identifier can result in: \n>  **Postback issues**: The media source will receive the postback but without a device identifier; consequently the media source can't associate it with a user. \n>  **Audiences segmentation** and rule failure. Audiences rulesets require [identifiers](https://support.appsflyer.com/hc/en-us/articles/115002689186#useridentifier-advanced-setting). It's always best practice to send a device ID or customer user ID according to the ID type your ruleset uses, for every S2S event. \n"
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/AndroidIds'
+              - $ref: '#/components/schemas/IosIds'
+      responses:
+        '200':
+          description: 'On receipt of a message, minimum data validation is performed. As such, you can get an OK response even though the event may not completely record in AppsFlyer
+
+            '
+          content:
+            application/json:
+              schema: {}
+              examples:
+                Success:
+                  value: OK
+        '400':
+          description: '|Message|How to handle|
+
+            |--- |--- |--- |
+
+            |Failed to Authenticate|Ensure that the authentication key is correct|
+
+            |appsflyer_id is a mandatory field|<ul><li>Make sure you pass the correct AppsFlyer ID in the JSON</li><li>JSON is `stringified()` and formatted correctly</li></ul>|
+
+            |Bad request|When the request failed at least one of the validation criteria|
+
+            |Payload is missing or failed to parse|<ul><li>Make sure that the JSON is stringified and formatted correctly</li><li>If more than one event is included in the JSON payload. Make sure to send one event per request.</li></ul>
+
+            |app_id|<ul><li>`app_id` doesn''t match the authentcation token</li><li>Make sure that the app_id is correct.</li></ul>
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Authentication Failed:
+                  value: Failed to Authenticate
+                  description: Ensure that the authentication key is correct.
+                Missing appsflyer_id:
+                  value: appsflyer_id is a mandatory field
+                Bad request:
+                  value: Bad request
+                Parsing Failed:
+                  value: Payload is missing or failed to parse
+        '401':
+          description: '|Message|How to handle|
+
+            |--- |--- |--- |
+
+            |Unauthorized|When the key provided in the authentication header is not the `<dev_key>` for this app|
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Unauthorized:
+                  value: Unauthorized
+        '403':
+          description: '|Message|How to handle|
+
+            |--- |--- |--- |
+
+            |Forbidden|"Zero Package" does not accept attribution events|
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Forbidden:
+                  value: Forbidden
+        '500':
+          description: '|Message|How to handle|
+
+            |--- |--- |--- |
+
+            |Internal Server Error|Verify that the JSON is `stringified()` and formatted correctly|
+
+            '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Internal Server Error:
+                  value: Internal Server Error
+    servers:
+    - url: https://api2.appsflyer.com/
+      description: Production server
+components:
+  schemas:
+    AndroidIds:
+      title: Android Ids
+      type: object
+      required:
+      - appsflyer_id
+      - eventName
+      - eventValue
+      properties:
+        advertising_id:
+          type: string
+          example: 9c9a82fb-d5de-4cd1-90c3-527441c11828
+          description: Where available populate with the device GAID (advertising ID)
+        oaid:
+          type: string
+          example: 1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5
+        amazon_aid:
+          type: string
+        imei:
+          type: string
+          example: AA-BBBBBB-CCCCCC-D
+        appsflyer_id:
+          type: string
+          pattern: \d{13}-\d{7}
+          description: 'A unique identifier, generated by AppsFlyer, when the app launches for the first time.
+
+            '
+          example: 1234567890123-1234567
+        customer_user_id:
+          type: string
+          example: customer_user_id
+          description: '[Customer user ID](https://support.appsflyer.com/hc/en-us/articles/207032016), a unique user identifier set by the app owner.
+
+            '
+        email_hashed:
+          type: string
+          description: 'The user''s email address, hashed using SHA-256.
+
+            Before hashing: trim leading and trailing spaces, and convert all characters to lowercase.
+
+            '
+          example: 62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f
+        phone_number_hashed:
+          type: string
+          description: 'The user''s phone number, hashed using SHA-256.
+
+            Before hashing: remove all symbols, letters, and leading zeros. The phone number must include the country code (for example, the US number (650)555-1212 becomes 16505551212).
+
+            '
+          example: e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176
+        phone_number_e164_hashed:
+          type: string
+          description: 'The user''s phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164), hashed using SHA-256.
+
+            Before hashing: normalize to E.164 format (for example, +12133734253). Include the country code prefixed with +, with no parentheses, leading zeros, spaces, letters, or symbols other than the leading +.
+
+            We recommend using [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js) for E.164 parsing.
+
+            '
+          example: 9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd
+        first_name_hashed:
+          type: string
+          description: 'The user''s first name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        last_name_hashed:
+          type: string
+          description: 'The user''s last name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        fb_login_id:
+          type: string
+          description: The user's Facebook Login ID. Send as a numeric string.
+          example: '10293847561029384'
+        ip:
+          type: string
+          description: 'The mobile device''s IP address during the event occurrence.
+
+            If sent, the IP address is used to populate geo fields.
+
+            If not sent, AppsFlyer populates the geo fields using the values from the install attribution event. The IP address isn''t populated.
+
+            '
+          example: 192.0.2.1
+          pattern: ^(([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1}))$
+          maxLength: 16
+        eventName:
+          type: string
+          description: 'Specify the event name. Ensure that the event names are aligned with the marketer''s requirements.
+
+            '
+        eventValue:
+          type: string
+          format: json
+          description: ">⚠️\n> \n> If you send an event without a value then send: `\"eventValue\":\"\"`\n- Event values must be sent without additional symbols or formatting. \n- For `af_revenue` a decimal point can be used. Negative values should be preceded by a `-`\n"
+          example: '{ "af_revenue": "6", "af_content_type": "wallets", "af_content_id": "15854", "your_custom_attribute" :"456.123" }'
+        app_version_name:
+          type: string
+          example: my_app_version
+        app_store:
+          type: string
+          example: my_android_store_is_best
+          description: 'Equivalent to `AF_STORE` in Android apps. The store from which the app was downloaded.
+
+            '
+        eventTime:
+          type: string
+          format: date-time
+          example: '2019-05-15 12:17:01.123'
+          description: "The time the event occurred using UTC timezone.\n- **Default**: If no `eventTime` is sent, the time is set to the HTTP message arrival time.\n- **Format**: string yyyy-mm-dd hh:mm:ss.sss the time needs to be in UTC timezone.\n\nTo learn how events are timestamped after arriving to AppsFlyer based on the eventTime value refer to [this KB section](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#time-stamping-s2s-events). \n"
+        eventCurrency:
+          type: string
+          enum:
+          - NZD
+          - SGD
+          - ANG
+          - MNT
+          - BIF
+          - BBD
+          - HUF
+          - ERN
+          - AZN
+          - BYN
+          - AOA
+          - PYG
+          - MYR
+          - GYD
+          - VUV
+          - SLL
+          - FKP
+          - DJF
+          - GNF
+          - MMK
+          - RSD
+          - CLF
+          - XDR
+          - ZAR
+          - TND
+          - PHP
+          - KGS
+          - XPD
+          - RON
+          - RUB
+          - KMF
+          - CHW
+          - SCR
+          - GIP
+          - XBC
+          - MXV
+          - XXX
+          - TRY
+          - UYU
+          - XCD
+          - FJD
+          - GHS
+          - MVR
+          - AWG
+          - UGX
+          - TOP
+          - CVE
+          - MKD
+          - COP
+          - CUC
+          - GTQ
+          - KZT
+          - MXN
+          - MGA
+          - AUD
+          - BDT
+          - ISK
+          - KRW
+          - DZD
+          - OMR
+          - ZMW
+          - MOP
+          - CUP
+          - JPY
+          - SHP
+          - VES
+          - LSL
+          - ETB
+          - BWP
+          - MAD
+          - AED
+          - NGN
+          - BRL
+          - XTS
+          - GEL
+          - IDR
+          - EUR
+          - GBP
+          - WST
+          - UYI
+          - XAF
+          - SZL
+          - XOF
+          - SEK
+          - UZS
+          - KES
+          - KYD
+          - ILS
+          - KWD
+          - NPR
+          - MRU
+          - BZD
+          - QAR
+          - UAH
+          - XSU
+          - BTN
+          - HTG
+          - DKK
+          - USN
+          - VND
+          - SBD
+          - SSP
+          - STN
+          - JMD
+          - IQD
+          - LBP
+          - XPT
+          - HRK
+          - HKD
+          - JOD
+          - PAB
+          - CDF
+          - XAU
+          - BAM
+          - CNY
+          - SOS
+          - XPF
+          - GMD
+          - DOP
+          - XAG
+          - KPW
+          - BOB
+          - BHD
+          - LRD
+          - BGN
+          - AMD
+          - CZK
+          - CAD
+          - LAK
+          - PLN
+          - LKR
+          - XUA
+          - UYW
+          - MWK
+          - PGK
+          - YER
+          - PEN
+          - KHR
+          - RWF
+          - BSD
+          - XBA
+          - AFN
+          - ZWL
+          - LYD
+          - TMT
+          - HNL
+          - TWD
+          - XBB
+          - IRR
+          - MUR
+          - BOV
+          - THB
+          - ALL
+          - XBD
+          - TJS
+          - SDG
+          - BMD
+          - CRC
+          - USD
+          - NOK
+          - SRD
+          - MZN
+          - CLP
+          - SYP
+          - TZS
+          - EGP
+          - COU
+          - ARS
+          - MDL
+          - INR
+          - CHE
+          - SAR
+          - PKR
+          - TTD
+          - NIO
+          - BND
+          - NAD
+          - SVC
+          - CHF
+        bundleIdentifier:
+          type: string
+          example: com.myapp
+          description: "A unique app identifier. In raw-data, the parameter populates Bundle ID. \n**Best practice** - Always populate this parameter. Many ad networks require it for campaign optimization. \n"
+        sharing_filter:
+          description: "The sharing filter blocks the sharing of S2S events via postbacks/API with integrated partners and other third-party integrations. \n\nUse the filter to fulfill regulatory requirements like GDPR and CCPA, to comply with user opt-out mechanisms, and for other business logic reasons. \n\nThe `sharing_filter` has the following options:\n\n- `all`: All partners are blocked. Don't share the event with anyone. Example: \"sharing_filter\": \"all\"\n- List of partner ids in an array. \n\n**Note:** \n  To find out the required partner IDs:\n  1. Run the [Get active integrations API](https://dev.appsflyer.com/hc/reference/get_v1-integrations) for a list of all active integrations\n  2. Use the `media_source_name` values from the [API response](https://dev.appsflyer.com/hc/reference/get_v1-integrations) as input values to the method `partners` array. \n\n  **Exceptions**:\n  - For Apple Search Ads use \"`Apple Search Ads`\" (and not \"`iossearchads_int`\").\n  - For Twitter, use \"`twitter`\" (and not \"`twitter_int`\")\n"
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+          oneOf:
+          - type: array
+            items:
+              type: string
+              minLength: 1
+            minItems: 1
+            title: list partners blocked
+          - type: string
+            enum:
+            - all
+            title: all partners blocked
+          example:
+          - googleadwords_int
+          - adcolony_int
+        custom_dimension:
+          type: string
+          description: Reserved for AppsFlyer future use
+        app_type:
+          type: string
+          enum:
+          - ''
+          - app_clip
+          description: If the user event takes place in an app_clip, send the parameter. In all other cases don't send the parameter.
+        custom_data:
+          type: string
+          format: json
+          description: "Send custom data to the AppsFlyer platform. Similar to sending data from the SDK using `setAdditionalData` \nIn raw data: populates custom_data field.\n"
+          example: '{"key_group" : { "key_a1" : "value a1", "key_a2" : "value a2" }, "key_b" : "value b"}'
+        os:
+          type: string
+          example: 14.5.1
+          description: "The device operating system version.\n\n> ⚠️\n> To enable correct data processing you **must** send this parameter. \n> For backward compatibility reasons, we don't enforce this, so it isn't marked as obligatory.\n\n> \U0001F4D8 Note \U0001F34F\n> Starting July 1, 2021, for iOS apps,  if you don't send this parameter we regard the data as having come from a device running iOS 14.5.\n"
+        aie:
+          type: boolean
+          description: "Use this flag to indicate if the user opted out of sharing their advertiser ID. \n\nUse this field for devices running Android (all versions), or iOS versions before 14. \n> \U0001F4D8 Note \n> For iOS 14.5+, use the att parameter. \n\nPopulate this field as follows: \n- `true`: if the user agreed to share the advertiser ID. \n- `false`: if the user enabled Limited Ad Tracking (LAT). \n"
+        consent_data:
+          $ref: '#/components/schemas/ConsentData'
+        app_set_id:
+          type: object
+          description: The vendor ID shared by all apps from same vendor. For more information, see [Add the app set ID SDK to your app](https://developer.android.com/identity/app-set-id#add-sdk).
+          properties:
+            scope:
+              type: integer
+              enum:
+              - 1
+              - 2
+              description: Is the app_set_id limited to this app only (1) or shared between other apps of the same developer (2).
+            id:
+              type: string
+              format: UUID
+              pattern: '[0-9a-fA-F] {8}-[0-9a-fA|-F]{43-4[0-9a-fA-F] {3}-[89abAB] [0-9a-fA-F]{33-[0-9a-fA-F]{12}$'
+              example: f47ac10b-58cc-4372-a567-0e02b2c3d479
+              description: The ID value.
+    TCFConsent:
+      type: object
+      properties:
+        tcf:
+          type: object
+          properties:
+            policy_version:
+              type: integer
+              description: Version number of the policy
+            gdpr_applies:
+              type: integer
+              enum:
+              - -1
+              - 0
+              - 1
+              description: Binary value indicating if GDPR applies
+            cmp_sdk_id:
+              type: integer
+              description: Identifier for the Consent Management Provider SDK
+            cmp_sdk_version:
+              type: integer
+              description: Version number of the CMP SDK
+            tcstring:
+              type: string
+              description: Transparency and Consent String provided by the CMP
+    ConsentData:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/TCFConsent'
+      - $ref: '#/components/schemas/ManualConsent'
+    ErrorResponse:
+      type: string
+    IosIds:
+      title: iOS Ids
+      type: object
+      required:
+      - appsflyer_id
+      - eventName
+      - eventValue
+      properties:
+        idfa:
+          type: string
+          pattern: ^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$
+          example: 9876F1AA-2983-3855-27BB-2C626772EFAB
+          description: Where available populate with the device IDFA
+        idfv:
+          type: string
+          pattern: ^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$
+          example: 95C9BD22-4A4C-41C8-9548-ED07C5C8C145
+          description: Where available populate with the device IDFV
+        appsflyer_id:
+          type: string
+          pattern: \d{13}-\d{7}
+          description: 'A unique identifier, generated by AppsFlyer, when the app launches for the first time.
+
+            '
+          example: 1234567890123-1234567
+        customer_user_id:
+          type: string
+          example: customer_user_id
+          description: '[Customer user ID](https://support.appsflyer.com/hc/en-us/articles/207032016), a unique user identifier set by the app owner.
+
+            '
+        email_hashed:
+          type: string
+          description: 'The user''s email address, hashed using SHA-256.
+
+            Before hashing: trim leading and trailing spaces, and convert all characters to lowercase.
+
+            '
+          example: 62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f
+        phone_number_hashed:
+          type: string
+          description: 'The user''s phone number, hashed using SHA-256.
+
+            Before hashing: remove all symbols, letters, and leading zeros. The phone number must include the country code (for example, the US number (650)555-1212 becomes 16505551212).
+
+            '
+          example: e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176
+        phone_number_e164_hashed:
+          type: string
+          description: 'The user''s phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164), hashed using SHA-256.
+
+            Before hashing: normalize to E.164 format (for example, +12133734253). Include the country code prefixed with +, with no parentheses, leading zeros, spaces, letters, or symbols other than the leading +.
+
+            We recommend using [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js) for E.164 parsing.
+
+            '
+          example: 9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd
+        first_name_hashed:
+          type: string
+          description: 'The user''s first name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        last_name_hashed:
+          type: string
+          description: 'The user''s last name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        fb_login_id:
+          type: string
+          description: The user's Facebook Login ID. Send as a numeric string.
+          example: '10293847561029384'
+        att:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          description: "iOS [ATTrackingManager authorization status](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/)\n\n- If the device OS version is iOS 14 or later, populate attwith ATTrackingManager.\n- The iOS values for [ATTrackingManager](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/) are:\n  - `0`: Not determined\n  - `1`: Restricted\n  - `2`: Denied\n  - `3`: Authorize\n\n> \U0001F4D8 \n>\n> We recommend that you populate `att` with the ATTrackingManager value as it impacts which identifiers are shared with partners in accordance with your [Aggregated Advanced Privacy settings](https://support.appsflyer.com/hc/en-us/articles/360018515798).\n"
+        ip:
+          type: string
+          description: 'The mobile device''s IP address during the event occurrence.
+
+            If sent, the IP address is used to populate geo fields.
+
+            If not sent, AppsFlyer populates the geo fields using the values from the install attribution event. The IP address isn''t populated.
+
+            '
+          example: 192.0.2.1
+          pattern: ^(([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1}))$
+          maxLength: 16
+        eventName:
+          type: string
+          description: 'Specify the event name. Ensure that the event names are aligned with the marketer''s requirements.
+
+            '
+        eventValue:
+          type: string
+          format: json
+          description: ">⚠️\n> \n> If you send an event without a value then send: `\"eventValue\":\"\"`\n- Event values must be sent without additional symbols or formatting. \n- For `af_revenue` a decimal point can be used. Negative values should be preceded by a `-`\n"
+          example: '{ "af_revenue": "6", "af_content_type": "wallets", "af_content_id": "15854", "your_custom_attribute" :"456.123" }'
+        app_version_name:
+          type: string
+          example: my_app_version
+        app_store:
+          type: string
+          example: my_android_store_is_best
+          description: 'Equivalent to `AF_STORE` in Android apps. The store from which the app was downloaded.
+
+            '
+        eventTime:
+          type: string
+          format: date-time
+          example: '2019-05-15 12:17:01.123'
+          description: "The time the event occurred using UTC timezone.\n- **Default**: If no `eventTime` is sent, the time is set to the HTTP message arrival time.\n- **Format**: string yyyy-mm-dd hh:mm:ss.sss the time needs to be in UTC timezone.\n\nTo learn how events are timestamped after arriving to AppsFlyer based on the eventTime value refer to [this KB section](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#time-stamping-s2s-events). \n"
+        eventCurrency:
+          type: string
+          enum:
+          - NZD
+          - SGD
+          - ANG
+          - MNT
+          - BIF
+          - BBD
+          - HUF
+          - ERN
+          - AZN
+          - BYN
+          - AOA
+          - PYG
+          - MYR
+          - GYD
+          - VUV
+          - SLL
+          - FKP
+          - DJF
+          - GNF
+          - MMK
+          - RSD
+          - CLF
+          - XDR
+          - ZAR
+          - TND
+          - PHP
+          - KGS
+          - XPD
+          - RON
+          - RUB
+          - KMF
+          - CHW
+          - SCR
+          - GIP
+          - XBC
+          - MXV
+          - XXX
+          - TRY
+          - UYU
+          - XCD
+          - FJD
+          - GHS
+          - MVR
+          - AWG
+          - UGX
+          - TOP
+          - CVE
+          - MKD
+          - COP
+          - CUC
+          - GTQ
+          - KZT
+          - MXN
+          - MGA
+          - AUD
+          - BDT
+          - ISK
+          - KRW
+          - DZD
+          - OMR
+          - ZMW
+          - MOP
+          - CUP
+          - JPY
+          - SHP
+          - VES
+          - LSL
+          - ETB
+          - BWP
+          - MAD
+          - AED
+          - NGN
+          - BRL
+          - XTS
+          - GEL
+          - IDR
+          - EUR
+          - GBP
+          - WST
+          - UYI
+          - XAF
+          - SZL
+          - XOF
+          - SEK
+          - UZS
+          - KES
+          - KYD
+          - ILS
+          - KWD
+          - NPR
+          - MRU
+          - BZD
+          - QAR
+          - UAH
+          - XSU
+          - BTN
+          - HTG
+          - DKK
+          - USN
+          - VND
+          - SBD
+          - SSP
+          - STN
+          - JMD
+          - IQD
+          - LBP
+          - XPT
+          - HRK
+          - HKD
+          - JOD
+          - PAB
+          - CDF
+          - XAU
+          - BAM
+          - CNY
+          - SOS
+          - XPF
+          - GMD
+          - DOP
+          - XAG
+          - KPW
+          - BOB
+          - BHD
+          - LRD
+          - BGN
+          - AMD
+          - CZK
+          - CAD
+          - LAK
+          - PLN
+          - LKR
+          - XUA
+          - UYW
+          - MWK
+          - PGK
+          - YER
+          - PEN
+          - KHR
+          - RWF
+          - BSD
+          - XBA
+          - AFN
+          - ZWL
+          - LYD
+          - TMT
+          - HNL
+          - TWD
+          - XBB
+          - IRR
+          - MUR
+          - BOV
+          - THB
+          - ALL
+          - XBD
+          - TJS
+          - SDG
+          - BMD
+          - CRC
+          - USD
+          - NOK
+          - SRD
+          - MZN
+          - CLP
+          - SYP
+          - TZS
+          - EGP
+          - COU
+          - ARS
+          - MDL
+          - INR
+          - CHE
+          - SAR
+          - PKR
+          - TTD
+          - NIO
+          - BND
+          - NAD
+          - SVC
+          - CHF
+        bundleIdentifier:
+          type: string
+          example: com.myapp
+          description: "A unique app identifier. In raw-data, the parameter populates Bundle ID. \n**Best practice** - Always populate this parameter. Many ad networks require it for campaign optimization. \n"
+        sharing_filter:
+          description: "The sharing filter blocks the sharing of S2S events via postbacks/API with integrated partners and other third-party integrations. \n\nUse the filter to fulfill regulatory requirements like GDPR and CCPA, to comply with user opt-out mechanisms, and for other business logic reasons. \n\nThe `sharing_filter` has the following options:\n\n- `all`: All partners are blocked. Don't share the event with anyone. Example: \"sharing_filter\": \"all\"\n- List of partner ids in an array.            \n\n**Note:** \n  To find out the required partner IDs:\n  1. Run the [Get active integrations API](https://dev.appsflyer.com/hc/reference/get_v1-integrations) for a list of all active integrations\n  2. Use the `media_source_name` values from the [API response](https://dev.appsflyer.com/hc/reference/get_v1-integrations) as input values to the method `partners` array. \n\n  **Exceptions**:\n  - For Apple Search Ads use \"`Apple Search Ads`\" (and not \"`iossearchads_int`\").\n  - For Twitter, use \"`twitter`\" (and not \"`twitter_int`\")\n"
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+          oneOf:
+          - type: array
+            items:
+              type: string
+              minLength: 1
+            minItems: 1
+            title: list partners blocked
+          - type: string
+            enum:
+            - all
+            title: all filters blocked
+          example:
+          - googleadwords_int
+          - adcolony_int
+        custom_dimension:
+          type: string
+          description: Reserved for AppsFlyer future use
+        app_type:
+          type: string
+          enum:
+          - ''
+          - app_clip
+          description: If the user event takes place in an app_clip, send the parameter. In all other cases don't send the parameter.
+        custom_data:
+          type: string
+          format: json
+          description: "Send custom data to the AppsFlyer platform. Similar to sending data from the SDK using `setAdditionalData` \nIn raw data: populates custom_data field.\n"
+          example: '{"key_group" : { "key_a1" : "value a1", "key_a2" : "value a2" }, "key_b" : "value b"}'
+        os:
+          type: string
+          example: 14.5.1
+          description: "The device operating system version.\n\n> ⚠️\n> To enable correct data processing you **must** send this parameter. \n> For backward compatibility reasons, we don't enforce this, so it isn't marked as obligatory.\n\n> \U0001F4D8 Note \U0001F34F\n> Starting July 1, 2021, for iOS apps,  if you don't send this parameter we regard the data as having come from a device running iOS 14.5.\n"
+        aie:
+          type: boolean
+          description: "Use this flag to indicate if the user opted out of sharing their advertiser ID. \n\nUse this field for devices running Android (all versions), or iOS versions before 14. \n> \U0001F4D8 Note \n> For iOS 14.5+, use the att parameter. \n\nPopulate this field as follows: \n- `true`: if the user agreed to share the advertiser ID. \n- `false`: if the user enabled Limited Ad Tracking (LAT).\n"
+        consent_data:
+          $ref: '#/components/schemas/ConsentData'
+    ManualConsent:
+      type: object
+      properties:
+        manual:
+          type: object
+          properties:
+            gdpr_applies:
+              type: boolean
+              description: Indicates if GDPR applies
+            ad_user_data_enabled:
+              type: boolean
+              description: Indicates if the user data for ads is enabled
+            ad_personalization_enabled:
+              type: boolean
+              description: Indicates if ad personalization is enabled
+    AndroidIds_2:
+      title: Android Ids
+      type: object
+      required:
+      - appsflyer_id
+      - eventName
+      - eventValue
+      properties:
+        advertising_id:
+          type: string
+          example: 9c9a82fb-d5de-4cd1-90c3-527441c11828
+          description: "Where available populate with the device GAID (advertising ID). \nRequired to send postbacks to self-reporting networks (SRNs). If not provided and Advanced Privacy is not enabled, postbacks may be skipped.\n"
+        oaid:
+          type: string
+          example: 1fe9a970-efbb-29e0-0bdd-f5dbbf751ab5
+        amazon_aid:
+          type: string
+        imei:
+          type: string
+          example: AA-BBBBBB-CCCCCC-D
+        appsflyer_id:
+          type: string
+          pattern: \d{13}-\d{19}
+          description: 'A unique identifier, generated by AppsFlyer, when the app launches for the first time.
+
+            Learn [here](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile#fetching-the-appsflyer-id) how to obtain it
+
+            '
+          example: 1234567890123-1234567
+        customer_user_id:
+          type: string
+          example: customer_user_id
+          description: '[Customer user ID](https://support.appsflyer.com/hc/en-us/articles/207032016), a unique user identifier set by the app owner.
+
+            '
+        email_hashed:
+          type: string
+          description: 'The user''s email address, hashed using SHA-256.
+
+            Before hashing: trim leading and trailing spaces, and convert all characters to lowercase.
+
+            '
+          example: 62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f
+        phone_number_hashed:
+          type: string
+          description: 'The user''s phone number, hashed using SHA-256.
+
+            Before hashing: remove all symbols, letters, and leading zeros. The phone number must include the country code (for example, the US number (650)555-1212 becomes 16505551212).
+
+            '
+          example: e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176
+        phone_number_e164_hashed:
+          type: string
+          description: 'The user''s phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164), hashed using SHA-256.
+
+            Before hashing: normalize to E.164 format (for example, +12133734253). Include the country code prefixed with +, with no parentheses, leading zeros, spaces, letters, or symbols other than the leading +.
+
+            We recommend using [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js) for E.164 parsing.
+
+            '
+          example: 9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd
+        first_name_hashed:
+          type: string
+          description: 'The user''s first name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        last_name_hashed:
+          type: string
+          description: 'The user''s last name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        fb_login_id:
+          type: string
+          description: The user's Facebook Login ID. Send as a numeric string.
+          example: '10293847561029384'
+        ip:
+          type: string
+          description: 'The mobile device''s IP address during the event occurrence.
+
+            If sent, the IP address is used to populate geo fields.
+
+            If not sent, AppsFlyer populates the geo fields using the values from the install attribution event. The IP address isn''t populated.
+
+            '
+          example: 192.0.2.1
+          pattern: ^(([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1}))$
+          maxLength: 16
+        eventName:
+          type: string
+          description: 'Specify the event name. Ensure that the event names are aligned with the marketer''s requirements.
+
+            '
+        eventValue:
+          type: string
+          format: json
+          description: ">⚠️\n> \n> If you send an event without a value then send: `\"eventValue\":\"\"`\n- Event values must be sent without additional symbols or formatting. \n- For `af_revenue` a decimal point can be used. Negative values should be preceded by a `-`\n"
+          example: '{ "af_revenue": "6", "af_content_type": "wallets", "af_content_id": "15854", "your_custom_attribute" :"456.123" }'
+        app_version_name:
+          type: string
+          example: my_app_version
+        app_store:
+          type: string
+          example: my_android_store_is_best
+          description: 'Equivalent to `AF_STORE` in Android apps. The store from which the app was downloaded.
+
+            '
+        eventTime:
+          type: string
+          format: date-time
+          example: '2019-05-15 12:17:01.123'
+          description: "The time the event occurred using UTC timezone.\n- **Default**: If no `eventTime` is sent, the time is set to the HTTP message arrival time.\n- **Format**: string yyyy-mm-dd hh:mm:ss.sss the time needs to be in UTC timezone.\n\nTo learn how events are timestamped after arriving to AppsFlyer based on the eventTime value refer to [this KB section](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#time-stamping-s2s-events). \n"
+        eventCurrency:
+          type: string
+          enum:
+          - NZD
+          - SGD
+          - ANG
+          - MNT
+          - BIF
+          - BBD
+          - HUF
+          - ERN
+          - AZN
+          - BYN
+          - AOA
+          - PYG
+          - MYR
+          - GYD
+          - VUV
+          - SLL
+          - FKP
+          - DJF
+          - GNF
+          - MMK
+          - RSD
+          - CLF
+          - XDR
+          - ZAR
+          - TND
+          - PHP
+          - KGS
+          - XPD
+          - RON
+          - RUB
+          - KMF
+          - CHW
+          - SCR
+          - GIP
+          - XBC
+          - MXV
+          - XXX
+          - TRY
+          - UYU
+          - XCD
+          - FJD
+          - GHS
+          - MVR
+          - AWG
+          - UGX
+          - TOP
+          - CVE
+          - MKD
+          - COP
+          - CUC
+          - GTQ
+          - KZT
+          - MXN
+          - MGA
+          - AUD
+          - BDT
+          - ISK
+          - KRW
+          - DZD
+          - OMR
+          - ZMW
+          - MOP
+          - CUP
+          - JPY
+          - SHP
+          - VES
+          - LSL
+          - ETB
+          - BWP
+          - MAD
+          - AED
+          - NGN
+          - BRL
+          - XTS
+          - GEL
+          - IDR
+          - EUR
+          - GBP
+          - WST
+          - UYI
+          - XAF
+          - SZL
+          - XOF
+          - SEK
+          - UZS
+          - KES
+          - KYD
+          - ILS
+          - KWD
+          - NPR
+          - MRU
+          - BZD
+          - QAR
+          - UAH
+          - XSU
+          - BTN
+          - HTG
+          - DKK
+          - USN
+          - VND
+          - SBD
+          - SSP
+          - STN
+          - JMD
+          - IQD
+          - LBP
+          - XPT
+          - HRK
+          - HKD
+          - JOD
+          - PAB
+          - CDF
+          - XAU
+          - BAM
+          - CNY
+          - SOS
+          - XPF
+          - GMD
+          - DOP
+          - XAG
+          - KPW
+          - BOB
+          - BHD
+          - LRD
+          - BGN
+          - AMD
+          - CZK
+          - CAD
+          - LAK
+          - PLN
+          - LKR
+          - XUA
+          - UYW
+          - MWK
+          - PGK
+          - YER
+          - PEN
+          - KHR
+          - RWF
+          - BSD
+          - XBA
+          - AFN
+          - ZWL
+          - LYD
+          - TMT
+          - HNL
+          - TWD
+          - XBB
+          - IRR
+          - MUR
+          - BOV
+          - THB
+          - ALL
+          - XBD
+          - TJS
+          - SDG
+          - BMD
+          - CRC
+          - USD
+          - NOK
+          - SRD
+          - MZN
+          - CLP
+          - SYP
+          - TZS
+          - EGP
+          - COU
+          - ARS
+          - MDL
+          - INR
+          - CHE
+          - SAR
+          - PKR
+          - TTD
+          - NIO
+          - BND
+          - NAD
+          - SVC
+          - CHF
+        bundleIdentifier:
+          type: string
+          example: com.myapp
+          description: "A unique app identifier. In raw-data, the parameter populates Bundle ID. \n**Best practice** - Always populate this parameter. Many ad networks require it for campaign optimization. \n"
+        sharing_filter:
+          description: "The sharing filter blocks the sharing of S2S events via postbacks/API with integrated partners and other third-party integrations. \n\nUse the filter to fulfill regulatory requirements like GDPR and CCPA, to comply with user opt-out mechanisms, and for other business logic reasons. \n\nThe `sharing_filter` has the following options:\n\n- `all`: All partners are blocked. Don't share the event with anyone. Example: \"sharing_filter\": \"all\"\n- List of partner ids in an array. \n\n**Note:** \n  To find out the required partner IDs:\n  1. Run the [Get active integrations API](https://dev.appsflyer.com/hc/reference/get_v1-integrations) for a list of all active integrations\n  2. Use the `media_source_name` values from the [API response](https://dev.appsflyer.com/hc/reference/get_v1-integrations) as input values to the method `partners` array. \n\n  **Exceptions**:\n  - For Apple Search Ads use \"`Apple Search Ads`\" (and not \"`iossearchads_int`\").\n  - For Twitter, use \"`twitter`\" (and not \"`twitter_int`\")\n"
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+          oneOf:
+          - type: array
+            items:
+              type: string
+              minLength: 1
+            minItems: 1
+            title: list partners blocked
+          - type: string
+            enum:
+            - all
+            title: all partners blocked
+          example:
+          - googleadwords_int
+          - adcolony_int
+        custom_dimension:
+          type: string
+          description: Reserved for AppsFlyer future use
+        app_type:
+          type: string
+          enum:
+          - ''
+          - app_clip
+          description: If the user event takes place in an app_clip, send the parameter. In all other cases don't send the parameter.
+        custom_data:
+          type: string
+          format: json
+          description: "Send custom data to the AppsFlyer platform. Similar to sending data from the SDK using `setAdditionalData` \nIn raw data: populates custom_data field.\n"
+          example: '{"key_group" : { "key_a1" : "value a1", "key_a2" : "value a2" }, "key_b" : "value b"}'
+        os:
+          type: string
+          example: 14.5.1
+          description: "The device operating system version.\n\n> ⚠️\n> To enable correct data processing you **must** send this parameter. \n> For backward compatibility reasons, we don't enforce this, so it isn't marked as obligatory.\n\n> \U0001F4D8 Note \U0001F34F\n> Starting July 1, 2021, for iOS apps,  if you don't send this parameter we regard the data as having come from a device running iOS 14.5.\n"
+        ua:
+          type: string
+          description: The device user-agent
+          example: Mozilla/5.0 (Linux; Android 13; SM-G781B Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/129.0.6668.70 Mobile Safari/537.36 GoogleApp/15.38.49.28.arm64
+        aie:
+          type: boolean
+          description: "Use this flag to indicate if the user opted out of sharing their advertiser ID. \n\nUse this field for devices running Android (all versions), or iOS versions before 14. \n> \U0001F4D8 Note \n> For iOS 14.5+, use the att parameter. \n\nPopulate this field as follows: \n- `true`: if the user agreed to share the advertiser ID. \n- `false`: if the user enabled Limited Ad Tracking (LAT). \n"
+        consent_data:
+          $ref: '#/components/schemas/ConsentData'
+        app_set_id:
+          type: object
+          description: The vendor ID shared by all apps from same vendor. For more information, see [Add the app set ID SDK to your app](https://developer.android.com/identity/app-set-id#add-sdk).
+          properties:
+            scope:
+              type: integer
+              enum:
+              - 1
+              - 2
+              description: Is the app_set_id limited to this app only (1) or shared between other apps of the same developer (2).
+            id:
+              type: string
+              format: UUID
+              pattern: '[0-9a-fA-F] {8}-[0-9a-fA|-F]{43-4[0-9a-fA-F] {3}-[89abAB] [0-9a-fA-F]{33-[0-9a-fA-F]{12}$'
+              example: f47ac10b-58cc-4372-a567-0e02b2c3d479
+              description: The ID value.
+    TCFConsent_2:
+      type: object
+      description: 'You can find instructions how to collect the TCF information from the device storage [here](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#in-app-details), based on this mapping:
+
+        IABTCF_PolicyVesrion → policy_version
+
+        IABTCF_gdprApplies → gdpr_applies
+
+        IABTCF_CmpSdkID → cmp_sdk_id
+
+        IABTCF_CmpSdkVersion → cmp_sdk_version
+
+        IABTCF_TCString → tcstring
+
+        '
+      properties:
+        tcf:
+          type: object
+          properties:
+            policy_version:
+              type: integer
+              description: Version number of the policy
+            gdpr_applies:
+              type: integer
+              enum:
+              - -1
+              - 0
+              - 1
+              description: Binary value indicating if GDPR applies
+            cmp_sdk_id:
+              type: integer
+              description: Identifier for the Consent Management Provider SDK
+            cmp_sdk_version:
+              type: integer
+              description: Version number of the CMP SDK
+            tcstring:
+              type: string
+              description: Transparency and Consent String provided by the CMP
+    IosIds_2:
+      title: iOS Ids
+      type: object
+      required:
+      - appsflyer_id
+      - eventName
+      - eventValue
+      properties:
+        idfa:
+          type: string
+          pattern: ^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$
+          example: 9876F1AA-2983-3855-27BB-2C626772EFAB
+          description: Where available populate with the device IDFA
+        idfv:
+          type: string
+          pattern: ^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$
+          example: 95C9BD22-4A4C-41C8-9548-ED07C5C8C145
+          description: 'Where available populate with the device IDFV.
+
+            Required to send event postbacks to Meta Aggregated Event Measurement (AEM).
+
+            '
+        appsflyer_id:
+          type: string
+          pattern: \d{13}-\d{7}
+          description: 'A unique identifier, generated by AppsFlyer, when the app launches for the first time.
+
+            '
+          example: 1234567890123-1234567
+        customer_user_id:
+          type: string
+          example: customer_user_id
+          description: '[Customer user ID](https://support.appsflyer.com/hc/en-us/articles/207032016), a unique user identifier set by the app owner.
+
+            '
+        email_hashed:
+          type: string
+          description: 'The user''s email address, hashed using SHA-256.
+
+            Before hashing: trim leading and trailing spaces, and convert all characters to lowercase.
+
+            '
+          example: 62a14e44f765419d10fea99367361a727c12365e2520f32218d505ed9aa0f62f
+        phone_number_hashed:
+          type: string
+          description: 'The user''s phone number, hashed using SHA-256.
+
+            Before hashing: remove all symbols, letters, and leading zeros. The phone number must include the country code (for example, the US number (650)555-1212 becomes 16505551212).
+
+            '
+          example: e323ec626319ca94ee8bff2e4c87cf613be6ea19919ed1364124e16807ab3176
+        phone_number_e164_hashed:
+          type: string
+          description: 'The user''s phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164), hashed using SHA-256.
+
+            Before hashing: normalize to E.164 format (for example, +12133734253). Include the country code prefixed with +, with no parentheses, leading zeros, spaces, letters, or symbols other than the leading +.
+
+            We recommend using [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js) for E.164 parsing.
+
+            '
+          example: 9f7ec22d72092cd3c0b58726ed9c2d91b92e51a3f29837508fb2948bb22dd2fd
+        first_name_hashed:
+          type: string
+          description: 'The user''s first name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        last_name_hashed:
+          type: string
+          description: 'The user''s last name, hashed using SHA-256.
+
+            Before hashing: convert to lowercase.
+
+            '
+        fb_login_id:
+          type: string
+          description: The user's Facebook Login ID. Send as a numeric string.
+          example: '10293847561029384'
+        att:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          description: "iOS [ATTrackingManager authorization status](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/)\n\n- If the device OS version is iOS 14 or later, populate attwith ATTrackingManager.\n- The iOS values for [ATTrackingManager](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus/) are:\n  - `0`: Not determined\n  - `1`: Restricted\n  - `2`: Denied\n  - `3`: Authorize\n\n> \U0001F4D8 \n>\n> We recommend that you populate `att` with the ATTrackingManager value as it impacts which identifiers are shared with partners in accordance with your [Aggregated Advanced Privacy settings](https://support.appsflyer.com/hc/en-us/articles/360018515798).\n"
+        ip:
+          type: string
+          description: 'The mobile device''s IP address during the event occurrence.
+
+            If sent, the IP address is used to populate geo fields.
+
+            If not sent, AppsFlyer populates the geo fields using the values from the install attribution event. The IP address isn''t populated.
+
+            Required to send event postbacks to Meta Aggregated Event Measurement (AEM).
+
+            '
+          example: 192.0.2.1
+          pattern: ^(([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1})\.([1-2]{0,1}[0-9]{0,1}[0-9]{1}))$
+          maxLength: 16
+        eventName:
+          type: string
+          description: 'Specify the event name. Ensure that the event names are aligned with the marketer''s requirements.
+
+            '
+        eventValue:
+          type: string
+          format: json
+          description: ">⚠️\n> \n> If you send an event without a value then send: `\"eventValue\":\"\"`\n- Event values must be sent without additional symbols or formatting. \n- For `af_revenue` a decimal point can be used. Negative values should be preceded by a `-`\n"
+          example: '{ "af_revenue": "6", "af_content_type": "wallets", "af_content_id": "15854", "your_custom_attribute" :"456.123" }'
+        app_version_name:
+          type: string
+          example: my_app_version
+        app_store:
+          type: string
+          example: my_android_store_is_best
+          description: 'Equivalent to `AF_STORE` in Android apps. The store from which the app was downloaded.
+
+            '
+        eventTime:
+          type: string
+          format: date-time
+          example: '2019-05-15 12:17:01.123'
+          description: "The time the event occurred using UTC timezone.\n- **Default**: If no `eventTime` is sent, the time is set to the HTTP message arrival time.\n- **Format**: string yyyy-mm-dd hh:mm:ss.sss the time needs to be in UTC timezone.\n\nTo learn how events are timestamped after arriving to AppsFlyer based on the eventTime value refer to [this KB section](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#time-stamping-s2s-events). \n"
+        eventCurrency:
+          type: string
+          enum:
+          - NZD
+          - SGD
+          - ANG
+          - MNT
+          - BIF
+          - BBD
+          - HUF
+          - ERN
+          - AZN
+          - BYN
+          - AOA
+          - PYG
+          - MYR
+          - GYD
+          - VUV
+          - SLL
+          - FKP
+          - DJF
+          - GNF
+          - MMK
+          - RSD
+          - CLF
+          - XDR
+          - ZAR
+          - TND
+          - PHP
+          - KGS
+          - XPD
+          - RON
+          - RUB
+          - KMF
+          - CHW
+          - SCR
+          - GIP
+          - XBC
+          - MXV
+          - XXX
+          - TRY
+          - UYU
+          - XCD
+          - FJD
+          - GHS
+          - MVR
+          - AWG
+          - UGX
+          - TOP
+          - CVE
+          - MKD
+          - COP
+          - CUC
+          - GTQ
+          - KZT
+          - MXN
+          - MGA
+          - AUD
+          - BDT
+          - ISK
+          - KRW
+          - DZD
+          - OMR
+          - ZMW
+          - MOP
+          - CUP
+          - JPY
+          - SHP
+          - VES
+          - LSL
+          - ETB
+          - BWP
+          - MAD
+          - AED
+          - NGN
+          - BRL
+          - XTS
+          - GEL
+          - IDR
+          - EUR
+          - GBP
+          - WST
+          - UYI
+          - XAF
+          - SZL
+          - XOF
+          - SEK
+          - UZS
+          - KES
+          - KYD
+          - ILS
+          - KWD
+          - NPR
+          - MRU
+          - BZD
+          - QAR
+          - UAH
+          - XSU
+          - BTN
+          - HTG
+          - DKK
+          - USN
+          - VND
+          - SBD
+          - SSP
+          - STN
+          - JMD
+          - IQD
+          - LBP
+          - XPT
+          - HRK
+          - HKD
+          - JOD
+          - PAB
+          - CDF
+          - XAU
+          - BAM
+          - CNY
+          - SOS
+          - XPF
+          - GMD
+          - DOP
+          - XAG
+          - KPW
+          - BOB
+          - BHD
+          - LRD
+          - BGN
+          - AMD
+          - CZK
+          - CAD
+          - LAK
+          - PLN
+          - LKR
+          - XUA
+          - UYW
+          - MWK
+          - PGK
+          - YER
+          - PEN
+          - KHR
+          - RWF
+          - BSD
+          - XBA
+          - AFN
+          - ZWL
+          - LYD
+          - TMT
+          - HNL
+          - TWD
+          - XBB
+          - IRR
+          - MUR
+          - BOV
+          - THB
+          - ALL
+          - XBD
+          - TJS
+          - SDG
+          - BMD
+          - CRC
+          - USD
+          - NOK
+          - SRD
+          - MZN
+          - CLP
+          - SYP
+          - TZS
+          - EGP
+          - COU
+          - ARS
+          - MDL
+          - INR
+          - CHE
+          - SAR
+          - PKR
+          - TTD
+          - NIO
+          - BND
+          - NAD
+          - SVC
+          - CHF
+        bundleIdentifier:
+          type: string
+          example: com.myapp
+          description: "A unique app identifier. In raw-data, the parameter populates Bundle ID. \n**Best practice** - Always populate this parameter. Many ad networks require it for campaign optimization. \n"
+        sharing_filter:
+          description: "The sharing filter blocks the sharing of S2S events via postbacks/API with integrated partners and other third-party integrations. \n\nUse the filter to fulfill regulatory requirements like GDPR and CCPA, to comply with user opt-out mechanisms, and for other business logic reasons. \n\nThe `sharing_filter` has the following options:\n\n- `all`: All partners are blocked. Don't share the event with anyone. Example: \"sharing_filter\": \"all\"\n- List of partner ids in an array.            \n\n**Note:** \n  To find out the required partner IDs:\n  1. Run the [Get active integrations API](https://dev.appsflyer.com/hc/reference/get_v1-integrations) for a list of all active integrations\n  2. Use the `media_source_name` values from the [API response](https://dev.appsflyer.com/hc/reference/get_v1-integrations) as input values to the method `partners` array. \n\n  **Exceptions**:\n  - For Apple Search Ads use \"`Apple Search Ads`\" (and not \"`iossearchads_int`\").\n  - For Twitter, use \"`twitter`\" (and not \"`twitter_int`\")\n"
+          type: array
+          items:
+            type: string
+            minLength: 1
+          minItems: 1
+          oneOf:
+          - type: array
+            items:
+              type: string
+              minLength: 1
+            minItems: 1
+            title: list partners blocked
+          - type: string
+            enum:
+            - all
+            title: all filters blocked
+          example:
+          - googleadwords_int
+          - adcolony_int
+        custom_dimension:
+          type: string
+          description: Reserved for AppsFlyer future use
+        app_type:
+          type: string
+          enum:
+          - ''
+          - app_clip
+          description: If the user event takes place in an app_clip, send the parameter. In all other cases don't send the parameter.
+        custom_data:
+          type: string
+          format: json
+          description: "Send custom data to the AppsFlyer platform. Similar to sending data from the SDK using `setAdditionalData` \nIn raw data: populates custom_data field.\n"
+          example: '{"key_group" : { "key_a1" : "value a1", "key_a2" : "value a2" }, "key_b" : "value b"}'
+        os:
+          type: string
+          example: 14.5.1
+          description: "The device operating system version.\n\n> ⚠️\n> To enable correct data processing you **must** send this parameter. \n> For backward compatibility reasons, we don't enforce this, so it isn't marked as obligatory.\n\n> \U0001F4D8 Note \U0001F34F\n> Starting July 1, 2021, for iOS apps,  if you don't send this parameter we regard the data as having come from a device running iOS 14.5.\n"
+        ua:
+          type: string
+          description: The device user-agent
+          example: Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+        aie:
+          type: boolean
+          description: "Use this flag to indicate if the user opted out of sharing their advertiser ID. \n\nUse this field for devices running Android (all versions), or iOS versions before 14. \n> \U0001F4D8 Note \n> For iOS 14.5+, use the att parameter. \n\nPopulate this field as follows: \n- `true`: if the user agreed to share the advertiser ID. \n- `false`: if the user enabled Limited Ad Tracking (LAT).\n"
+        consent_data:
+          $ref: '#/components/schemas/ConsentData'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: 'To get the authentication key, in AppsFlyer dashboard go to: App Settings > Dev Key'
+      name: authentication
+      in: header
+x-refined-from:
+- appsflyer-legacy-server-to-server-events-api-for-mobile-openapi.yml
+- appsflyer-server-to-server-events-api-for-mobile-openapi.yml

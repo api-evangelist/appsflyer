@@ -1,0 +1,136 @@
+openapi: 3.2.0
+info:
+  title: SKAN conversion studio API
+  version: '0.1'
+servers:
+- url: https://hq1.appsflyer.com/api/conversion-studio-config/v1/
+security:
+- bearerAuth: []
+tags:
+- name: SKAN conversion studio API
+paths:
+  /app/{app_id}:
+    post:
+      tags:
+      - SKAN conversion studio API
+      summary: Copy SKAN schema
+      description: 'Copy the SKAN conversion value (CV) schema from 1 app to another.
+
+        '
+      operationId: skan-studio-duplicate-config
+      parameters:
+      - name: app_id
+        in: path
+        explode: true
+        style: simple
+        schema:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items:
+            type: string
+        required: true
+        description: '**First item**: source app ID (the app ID of the app from which you want to copy the CV schema)
+
+          **Second item**: destination app ID (the app ID for the app to which you want to copy the CV schema)
+
+          '
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MultipleAppNotAllowed:
+                  summary: Multiple App Not Allowed
+                  value:
+                    message: please insert only source and destination apps
+                OperationForbidden:
+                  summary: Operation Forbidden
+                  value:
+                    message: only advertisers are allowed to access this API
+                SkanModeNotSupported:
+                  summary: SKAN Mode Not Supported
+                  value:
+                    message: Only config with skan4 and custom_encode mode can be duplicated
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NotFound:
+                  summary: Not Found
+                  value:
+                    message: Method not allowed
+    get:
+      tags:
+      - SKAN conversion studio API
+      summary: Get SKAN schema
+      description: Get the SKAN conversion schema you have configured for a specific app.
+      operationId: skan-studio-read-config
+      parameters:
+      - name: app_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                MultipleAppNotAllowed:
+                  summary: Multiple App Not Allowed
+                  value:
+                    message: please insert only source and destination apps
+                OperationForbidden:
+                  summary: Operation Forbidden
+                  value:
+                    message: only advertisers are allowed to access this API
+                SkanModeNotSupported:
+                  summary: SKAN Mode Not Supported
+                  value:
+                    message: Only config with skan4 and custom_encode mode can be duplicated
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                NotFound:
+                  summary: Not Found
+                  value:
+                    message: Method not allowed
+components:
+  schemas:
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

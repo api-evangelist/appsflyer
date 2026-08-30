@@ -1,0 +1,187 @@
+openapi: 3.2.0
+info:
+  title: Audience External Audience split API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/audiences-external-api
+security:
+- bearerAuth: []
+tags:
+- name: Audience split
+paths:
+  /audience/{audience_id}/split_syncs:
+    get:
+      tags:
+      - Audience split
+      summary: Get split percentages for audience
+      parameters:
+      - name: audience_id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          description: Array of split syncs that are assigned to an audience
+          content:
+            application/json:
+              schema:
+                required:
+                - message
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      connections:
+                        $ref: '#/components/schemas/integrations_response'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience does not exist:
+                  value:
+                    error_code: 1002
+                    messege: Audience does not exist under your account
+                Not a spilt audience:
+                  value:
+                    error_code: 1005
+                    messege: This audience is not a split audience
+                Internal error:
+                  value:
+                    error_code: 1020
+                    message: Internal error occurred
+    put:
+      tags:
+      - Audience split
+      summary: Update split percentages for audience
+      parameters:
+      - name: audience_id
+        in: path
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - connections
+              type: object
+              properties:
+                connections:
+                  type: array
+                  items:
+                    required:
+                    - integration_id
+                    type: object
+                    properties:
+                      integration_id:
+                        $ref: '#/components/schemas/integration_id'
+            examples:
+              Remove all split syncs:
+                value:
+                  connections: []
+              Connect 1 split sync to an audience:
+                value:
+                  connections:
+                  - integration_id: 1234
+        required: true
+      responses:
+        '200':
+          description: Connections were updated with the given connections array
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/success_response'
+              example:
+                message: Connections split were updated successfully
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+              examples:
+                Audience does not exist:
+                  value:
+                    error_code: 1002
+                    message: Audience does not exist under your account
+                Invalid integrations:
+                  value:
+                    error_code: 1003
+                    message: 'The following integrations are invalid: 12, 34'
+                Not a spilt audience:
+                  value:
+                    error_code: 1005
+                    messege: This audience is not a split audience
+                Internal error:
+                  value:
+                    error_code: 1020
+                    message: Internal error occurred
+components:
+  schemas:
+    integration_id:
+      type: integer
+      example: 1234
+    integrations_response:
+      type: array
+      items:
+        required:
+        - integration_id
+        - integration_name
+        - partner_id
+        type: object
+        properties:
+          integration_id:
+            $ref: '#/components/schemas/integration_id'
+          partner_id:
+            $ref: '#/components/schemas/partner_id'
+          integration_name:
+            $ref: '#/components/schemas/integration_name'
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    integration_name:
+      type: string
+      example: Integration 123
+    partner_id:
+      type: string
+      example: amazon_int
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+x-id:
+- reitit.swagger/default

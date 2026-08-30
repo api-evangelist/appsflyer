@@ -1,0 +1,270 @@
+openapi: 3.2.0
+info:
+  title: Push API Configuration URL Validation API
+  version: 1.0.0
+servers:
+- url: https://hq1.appsflyer.com/api/pushapi/v1.0/
+security:
+- Bearer-Authentication: []
+tags:
+- name: URL Validation
+paths:
+  /validate-url:
+    post:
+      tags:
+      - URL Validation
+      summary: Validate URL
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+
+
+        Validates and tests URL to be used as a Push API endpoint
+
+        '
+      requestBody:
+        description: Body for validate url
+        content:
+          application/json:
+            schema:
+              required:
+              - url
+              - method
+              type: object
+              properties:
+                url:
+                  $ref: '#/components/schemas/Url'
+                method:
+                  $ref: '#/components/schemas/Method'
+      responses:
+        '200':
+          description: URL validated successfully
+          headers:
+            deprecated:
+              description: is the api version deprecated?
+              schema:
+                type: boolean
+            deprecationDate:
+              description: deprecation date
+              schema:
+                type: string
+            sunsetDate:
+              description: sunset date
+              schema:
+                type: string
+            deprecationMessage:
+              description: deprecation message
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/URLTestResponse'
+        '207':
+          description: Request to test URL returned an error
+          headers:
+            deprecated:
+              description: is the api version deprecated?
+              schema:
+                type: boolean
+            deprecationDate:
+              description: deprecation date
+              schema:
+                type: string
+            sunsetDate:
+              description: sunset date
+              schema:
+                type: string
+            deprecationMessage:
+              description: deprecation message
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/URLTestResponse'
+        '400':
+          description: JSON parsing error
+          headers:
+            deprecated:
+              description: is the api version deprecated
+              schema:
+                type: boolean
+            deprecationDate:
+              description: deprecation date
+              schema:
+                type: string
+            sunsetDate:
+              description: sunset date
+              schema:
+                type: string
+            deprecationMessage:
+              description: deprecation message
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                code: InvalidPlatform
+                message: An error occurred while parsing the JSON body. Check the body and try again..
+                requestId: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+        '401':
+          $ref: '#/components/responses/AuthenticationFailed'
+        '404':
+          $ref: '#/components/responses/VersionDoesntExist'
+        '410':
+          $ref: '#/components/responses/VersionNoLongerValid'
+        '422':
+          description: Schema Error
+          headers:
+            deprecated:
+              description: is the api version deprecated
+              schema:
+                type: boolean
+            deprecationDate:
+              description: deprecation date
+              schema:
+                type: string
+            sunsetDate:
+              description: sunset date
+              schema:
+                type: string
+            deprecationMessage:
+              description: deprecation message
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                Invalid URL:
+                  value:
+                    code: InvalidURL
+                    message: Invalid URL.
+                    request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+                Invalid Method:
+                  value:
+                    code: InvalidMethod
+                    message: Method must be POST or GET.
+                    request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+components:
+  schemas:
+    URLTestResponse:
+      type: object
+      properties:
+        tested_endpoint_url_http_response:
+          type: integer
+      example:
+        tested_endpoint_url_http_response: 404
+        request_id: 907ea912-9ce9-4dec-9423-b0a04404e1e2
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
+    Method:
+      type: string
+      enum:
+      - ''
+      - GET
+      - POST
+  responses:
+    VersionNoLongerValid:
+      description: The API version listed in the URL is no longer valid
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: The API version listed in the URL is no longer valid. Check the API documentation
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+  securitySchemes:
+    Bearer-Authentication:
+      type: http
+      scheme: bearer
+      description: "**Important: API V2 Token Revocation**\n\nAll API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nAuthorization HTTP header containing API V2 token (bearer token) is required.\n\n The admin [gets the V2 token in the dashboard](https://support.appsflyer.com/hc/en-us/articles/360004562377) "
