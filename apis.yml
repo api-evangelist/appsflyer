@@ -55,7 +55,7 @@ apis:
   tags:
   - Creatives
   - ad-networks
-  - Creative Management
+  - creative-management
   - Advertising
   - Asynchronous
   - Meta
@@ -89,10 +89,10 @@ apis:
   baseURL: https://mcp.appsflyer.com/
   tags:
   - MCP
-  - Agentic AI
-  - LLM
+  - agentic-ai
+  - llm
   - agent-native
-  - Marketing Analytics
+  - marketing-analytics
   tags_raw:
   - mcp
   - agentic-ai
@@ -363,6 +363,8 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - App Management
+  tags_raw:
   - App management
   properties:
   - type: OpenAPI
@@ -475,6 +477,8 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - Audit Logs
+  tags_raw:
   - Audit logs
   properties:
   - type: OpenAPI
@@ -519,6 +523,8 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - Circuit Breaker
+  tags_raw:
   - Circuit breaker
   properties:
   - type: OpenAPI
@@ -698,6 +704,8 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -1455,7 +1463,8 @@ apis:
     for ad networks.
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
-  tags:
+  tags: []
+  tags_raw:
   - SKAN CV schema API for ad networks
   properties:
   - type: OpenAPI
@@ -1589,7 +1598,8 @@ apis:
   description: The Test API from AppsFlyer — 1 operation(s) for test.
   humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
   baseURL: https://hq1.appsflyer.com/api/
-  tags:
+  tags: []
+  tags_raw:
   - Test
   properties:
   - type: OpenAPI
