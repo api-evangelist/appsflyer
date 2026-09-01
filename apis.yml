@@ -55,7 +55,7 @@ apis:
   tags:
   - Creatives
   - ad-networks
-  - creative-management
+  - Creative Management
   - Advertising
   - Asynchronous
   - Meta
@@ -89,10 +89,10 @@ apis:
   baseURL: https://mcp.appsflyer.com/
   tags:
   - MCP
-  - agentic-ai
-  - llm
+  - Agentic AI
+  - LLM
   - agent-native
-  - marketing-analytics
+  - Marketing Analytics
   tags_raw:
   - mcp
   - agentic-ai
