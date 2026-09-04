@@ -21,6 +21,22 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
+  method: derived
 image: https://www.appsflyer.com/wp-content/uploads/2020/08/appsflyer-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/appsflyer/refs/heads/main/apis.yml
 x-type: company

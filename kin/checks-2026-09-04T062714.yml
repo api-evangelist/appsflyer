@@ -1,23 +1,19 @@
 ---
 kin_checks:
   slug: appsflyer
-  schema_version: 0.17.2
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T063623
+  schema_version: 0.18.2
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T062714
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.17.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.2.yml; counts below let you verify that.
   counts:
-    total: 130
-    earned: 48
-    partial: 22
-    missed: 36
-    na: 24
+    total: 132
+    earned: 51
+    partial: 21
+    missed: 35
+    na: 25
   checks:
   - id: maintainer_present
-    status: missed
-  - id: human_url_per_api
-    status: missed
-  - id: base_url_per_api
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -33,6 +29,8 @@ kin_checks:
   - id: webhooks_or_callbacks
     status: missed
     detail: 0 of 70 openapi documents pass
+  - id: inbound_contract_published
+    status: missed
   - id: json_schema_present
     status: missed
   - id: json_schema_per_resource
@@ -75,7 +73,7 @@ kin_checks:
     status: missed
   - id: agentic_access
     status: missed
-  - id: reversibility_documented
+  - id: mcp_server
     status: missed
   - id: idempotency
     status: missed
@@ -89,9 +87,6 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
-  - id: servers_resolvable
-    status: partial
-    earned: 4.74
   - id: operations_description_coverage
     status: partial
     earned: 4.37
@@ -152,9 +147,9 @@ kin_checks:
   - id: agent_skill_present
     status: partial
     earned: 0.75
-  - id: mcp_server
+  - id: reversibility_documented
     status: partial
-    earned: 4.8
+    earned: 2.4
     detail: 'grade: documented'
   - id: auth_clarity
     status: partial
