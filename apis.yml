@@ -280,30 +280,6 @@ apis:
     url: sandbox/appsflyer-sandbox.yml
   - type: Webhooks
     url: asyncapi/appsflyer-push-api-webhooks.yml
-- aid: appsflyer:appsflyer-additional-identifiers-handling-api
-  name: AppsFlyer Additional Identifiers Handling API
-  description: >-
-    The Additional Identifiers Handling API from AppsFlyer — 1 operation(s) for additional identifiers
-    handling.
-  humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  baseURL: https://hq1.appsflyer.com/api/
-  tags:
-  - Additional Identifiers Handling
-  properties:
-  - type: OpenAPI
-    url: openapi/appsflyer-additional-identifiers-handling-api-openapi.yml
-  - type: Documentation
-    url: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  - type: APIReference
-    url: https://dev.appsflyer.com/hc/reference
-  - type: Authentication
-    url: authentication/appsflyer-authentication.yml
-  - type: Conventions
-    url: conventions/appsflyer-conventions.yml
-  - type: Sandbox
-    url: sandbox/appsflyer-sandbox.yml
-  - type: Webhooks
-    url: asyncapi/appsflyer-push-api-webhooks.yml
 - aid: appsflyer:appsflyer-aggregate-user-acquisition-and-retargeting-api
   name: AppsFlyer Aggregate (user acquisition and retargeting) API
   description: >-
@@ -658,28 +634,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/appsflyer-create-audience-api-openapi.yml
-  - type: Documentation
-    url: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  - type: APIReference
-    url: https://dev.appsflyer.com/hc/reference
-  - type: Authentication
-    url: authentication/appsflyer-authentication.yml
-  - type: Conventions
-    url: conventions/appsflyer-conventions.yml
-  - type: Sandbox
-    url: sandbox/appsflyer-sandbox.yml
-  - type: Webhooks
-    url: asyncapi/appsflyer-push-api-webhooks.yml
-- aid: appsflyer:appsflyer-download-events-api
-  name: AppsFlyer Download Events API
-  description: The Download Events API from AppsFlyer — 1 operation(s) for download events.
-  humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  baseURL: https://hq1.appsflyer.com/api/
-  tags:
-  - Download Events
-  properties:
-  - type: OpenAPI
-    url: openapi/appsflyer-download-events-api-openapi.yml
   - type: Documentation
     url: https://dev.appsflyer.com/hc/reference/api-reference-overview
   - type: APIReference
@@ -1094,28 +1048,6 @@ apis:
     url: sandbox/appsflyer-sandbox.yml
   - type: Webhooks
     url: asyncapi/appsflyer-push-api-webhooks.yml
-- aid: appsflyer:appsflyer-master-report-api
-  name: AppsFlyer Master Report API
-  description: The Master Report API from AppsFlyer — 1 operation(s) for master report.
-  humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  baseURL: https://hq1.appsflyer.com/api/
-  tags:
-  - Master Report
-  properties:
-  - type: OpenAPI
-    url: openapi/appsflyer-master-report-api-openapi.yml
-  - type: Documentation
-    url: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  - type: APIReference
-    url: https://dev.appsflyer.com/hc/reference
-  - type: Authentication
-    url: authentication/appsflyer-authentication.yml
-  - type: Conventions
-    url: conventions/appsflyer-conventions.yml
-  - type: Sandbox
-    url: sandbox/appsflyer-sandbox.yml
-  - type: Webhooks
-    url: asyncapi/appsflyer-push-api-webhooks.yml
 - aid: appsflyer:appsflyer-measure-first-app-opens-api
   name: AppsFlyer Measure first app opens API
   description: >-
@@ -1508,28 +1440,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/appsflyer-skan-performance-report-api-openapi.yml
-  - type: Documentation
-    url: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  - type: APIReference
-    url: https://dev.appsflyer.com/hc/reference
-  - type: Authentication
-    url: authentication/appsflyer-authentication.yml
-  - type: Conventions
-    url: conventions/appsflyer-conventions.yml
-  - type: Sandbox
-    url: sandbox/appsflyer-sandbox.yml
-  - type: Webhooks
-    url: asyncapi/appsflyer-push-api-webhooks.yml
-- aid: appsflyer:appsflyer-skan-postbacks-api
-  name: AppsFlyer SKAN postbacks API
-  description: The SKAN postbacks API from AppsFlyer — 1 operation(s) for skan postbacks.
-  humanURL: https://dev.appsflyer.com/hc/reference/api-reference-overview
-  baseURL: https://hq1.appsflyer.com/api/
-  tags:
-  - SKAN postbacks
-  properties:
-  - type: OpenAPI
-    url: openapi/appsflyer-skan-postbacks-api-openapi.yml
   - type: Documentation
     url: https://dev.appsflyer.com/hc/reference/api-reference-overview
   - type: APIReference
