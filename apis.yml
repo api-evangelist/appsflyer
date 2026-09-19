@@ -69,7 +69,7 @@ apis:
   humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
   baseURL: https://hq1.appsflyer.com/creative-dashboard/api
   tags:
-  - Creatives
+  - Creative
   - ad-networks
   - Creative Management
   - Advertising
