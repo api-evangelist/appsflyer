@@ -44,6 +44,9 @@ x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-07-31'
 modified: '2026-08-13'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-19
 tags:
 - Company
 - Mobile Attribution
