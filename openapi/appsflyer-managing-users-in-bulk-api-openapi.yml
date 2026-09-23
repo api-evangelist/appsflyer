@@ -16,12 +16,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Delete multiple users for the specified account.
-
-        '
+        Delete multiple users for the specified account.'
       tags:
       - Managing users in bulk
       operationId: bulk-users-delete
@@ -73,12 +71,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Retrieve users data for the specified account.
-
-        '
+        Retrieve users data for the specified account.'
       tags:
       - Managing users in bulk
       operationId: bulk-users-get
@@ -142,9 +138,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       tags:
       - Managing users in bulk
       operationId: bulk-users-post

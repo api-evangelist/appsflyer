@@ -18,12 +18,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Returns a list of the available event types for the specified endpoint type
-
-        '
+        Returns a list of the available event types for the specified endpoint type'
       parameters:
       - name: attributing-entity
         in: path
@@ -57,6 +55,8 @@ paths:
           $ref: '#/components/responses/VersionNoLongerValid'
         '422':
           $ref: '#/components/responses/SchemaErrorInvalidPathParam'
+      operationId: getEventTypesByAttributingEntity
+      x-operation-id-source: derived
 components:
   responses:
     SchemaErrorInvalidPathParam:
@@ -84,6 +84,33 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: Invalid path-params. Verify the content and resubmit.
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
     VersionNoLongerValid:
       description: The API version listed in the URL is no longer valid
       headers:
@@ -132,33 +159,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
   schemas:
     Error:
       example:

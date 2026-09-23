@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Partner integration settings Unique partner integration parameters API
+  title: Partner integration settings Unique partner integration…
   description: Public API for managing partner integrations
   version: 1.0.0
 servers:
@@ -32,12 +32,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Get a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a successful message is recieved with no data.
-
-        '
+        Get a list of the unique partner parameters needed for the integration. If the partner has no unique parameters, a successful message is recieved with no data.'
       responses:
         '200':
           description: Retrieved params successfully
@@ -59,13 +57,20 @@ paths:
                     message: This api is not available for your account type
         '500':
           description: Internal server error - please try again
+      operationId: getV1PartnerParamsByPidByPlatform
+      x-operation-id-source: derived
 components:
   schemas:
-    pid:
+    platform:
       type: string
-      description: 'AppsFlyer Partner ID
+      description: 'iOS/Android/Roku/Windows Phone
 
         '
+      enum:
+      - ios
+      - android
+      - roku
+      - windowsphone
     AccountTypeError:
       properties:
         status:
@@ -79,16 +84,11 @@ components:
           type: object
         in_app_postbacks_params:
           type: object
-    platform:
+    pid:
       type: string
-      description: 'iOS/Android/Roku/Windows Phone
+      description: 'AppsFlyer Partner ID
 
         '
-      enum:
-      - ios
-      - android
-      - roku
-      - windowsphone
   securitySchemes:
     bearerAuth:
       type: http

@@ -18,14 +18,12 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         In-app events performed by the user during the re-engagement window.
 
-        Data freshness: Real-time
-
-        '
+        Data freshness: Real-time'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -142,6 +140,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdInAppEventsRetargetV5
+      x-operation-id-source: derived
   /{app-id}/installs-retarget/v5:
     get:
       tags:
@@ -151,16 +151,14 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Re-engagement: Record of a user opening the app after engaging with a retargeting campaign.
 
         Re-attribution (retargeting-reinstall): Event generated when a user, having uninstalled the app, engages with a retargeting media source and reinstalls the app during the re-attribution window.
 
-        Data freshness: Real-time
-
-        '
+        Data freshness: Real-time'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -282,25 +280,396 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdInstallsRetargetV5
+      x-operation-id-source: derived
 components:
-  schemas:
-    MaximumRows:
-      type: integer
-      enum:
-      - 200000
-      - 1000000
-      description: 'Maximum number of rows returned by a single API call.
+  parameters:
+    Category:
+      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+      in: query
+      name: category
+      schema:
+        type: string
+        enum:
+        - standard
+        - facebook
+        - twitter
+    Currency:
+      name: currency
+      in: query
+      schema:
+        type: string
+        enum:
+        - preferred
+        - USD
+      description: 'Currency of revenue and cost.
 
-        - [Default] if no value is sent, up to 200K rows
-
-        - 200000: Up to 200K rows return
-
-        - 1000000: Up to 1M rows return
+        Aggregate Pull API reports always use the app-specific currency.
 
         '
-      minItems: 0
-    Error:
+    AppId:
+      in: path
+      name: app-id
+      description: Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples).
+      example: id121244
+      required: true
+      schema:
+        type: string
+    Geo:
+      name: geo
+      in: query
+      schema:
+        $ref: '#/components/schemas/Geo'
+      description: 'Filter the data by country code.
+
+        Limitation: You can set only one country code filter per API call.
+
+        '
+    MaximumRows:
+      name: maximum_rows
+      in: query
+      schema:
+        $ref: '#/components/schemas/MaximumRows'
+    EventName:
+      in: query
+      name: event_name
+      schema:
+        type: array
+        items:
+          type: string
+      explode: false
+      description: 'Filter in-app events by specified events. Select multiple events by using a comma-separated list.
+
+        Example: `event_name=af_purchase,ftd`
+
+        '
+    MediaSource:
+      description: 'Use to filter by a specific media source
+
+        Set both the `category` and `media_source` parameters as follows:
+
+        - For Facebook set `category` and `media_source` to facebook
+
+        - For Twitter set `category` and `media_source` to twitter
+
+        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
+
+        Examples
+
+        - `media_source=facebook&category=facebook`
+
+        - `media_source=abc_example&category=standard`
+
+        '
+      name: media_source
+      in: query
+      schema:
+        type: string
+      example: facebook
+    FromDate:
+      in: query
+      name: from
+      description: From date (report start date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    ToDate:
+      in: query
+      name: to
+      description: To date (report end date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    TimeZone:
+      name: timezone
+      in: query
+      schema:
+        oneOf:
+        - $ref: '#/components/schemas/TimeZoneList'
+      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
+
+        - Data returns using the app-specific time zone.
+
+        - Time zone format takes into account daylight saving time.
+
+        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
+
+        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
+
+        '
+  schemas:
+    Geo:
       type: string
+      minItems: 0
+      enum:
+      - AF
+      - AX
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AU
+      - AT
+      - AZ
+      - BS
+      - BH
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - KH
+      - CM
+      - CA
+      - CV
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CG
+      - CD
+      - CK
+      - CR
+      - CI
+      - HR
+      - CU
+      - CY
+      - CZ
+      - DK
+      - DJ
+      - DM
+      - DO
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GG
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IM
+      - IL
+      - IT
+      - JM
+      - JP
+      - JE
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KR
+      - KP
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MK
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - ME
+      - MS
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - AN
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - RE
+      - RO
+      - RU
+      - RW
+      - BL
+      - SH
+      - KN
+      - LC
+      - MF
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SZ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TL
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - UK
+      - US
+      - UM
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+      - ZW
     TimeZoneList:
       type: string
       description: Choose a time zone
@@ -898,257 +1267,48 @@ components:
       - W-SU
       - WET
       - Zulu
-    Geo:
+    Error:
       type: string
-      minItems: 0
+    MaximumRows:
+      type: integer
       enum:
-      - AF
-      - AX
-      - AL
-      - DZ
-      - AS
-      - AD
-      - AO
-      - AI
-      - AQ
-      - AG
-      - AR
-      - AM
-      - AW
-      - AU
-      - AT
-      - AZ
-      - BS
-      - BH
-      - BD
-      - BB
-      - BY
-      - BE
-      - BZ
-      - BJ
-      - BM
-      - BT
-      - BO
-      - BA
-      - BW
-      - BV
-      - BR
-      - IO
-      - BN
-      - BG
-      - BF
-      - BI
-      - KH
-      - CM
-      - CA
-      - CV
-      - KY
-      - CF
-      - TD
-      - CL
-      - CN
-      - CX
-      - CC
-      - CO
-      - KM
-      - CG
-      - CD
-      - CK
-      - CR
-      - CI
-      - HR
-      - CU
-      - CY
-      - CZ
-      - DK
-      - DJ
-      - DM
-      - DO
-      - EC
-      - EG
-      - SV
-      - GQ
-      - ER
-      - EE
-      - ET
-      - FK
-      - FO
-      - FJ
-      - FI
-      - FR
-      - GF
-      - PF
-      - TF
-      - GA
-      - GM
-      - GE
-      - DE
-      - GH
-      - GI
-      - GR
-      - GL
-      - GD
-      - GP
-      - GU
-      - GT
-      - GG
-      - GN
-      - GW
-      - GY
-      - HT
-      - HM
-      - VA
-      - HN
-      - HK
-      - HU
-      - IS
-      - IN
-      - ID
-      - IR
-      - IQ
-      - IE
-      - IM
-      - IL
-      - IT
-      - JM
-      - JP
-      - JE
-      - JO
-      - KZ
-      - KE
-      - KI
-      - KR
-      - KP
-      - KW
-      - KG
-      - LA
-      - LV
-      - LB
-      - LS
-      - LR
-      - LY
-      - LI
-      - LT
-      - LU
-      - MO
-      - MK
-      - MG
-      - MW
-      - MY
-      - MV
-      - ML
-      - MT
-      - MH
-      - MQ
-      - MR
-      - MU
-      - YT
-      - MX
-      - FM
-      - MD
-      - MC
-      - MN
-      - ME
-      - MS
-      - MA
-      - MZ
-      - MM
-      - NA
-      - NR
-      - NP
-      - NL
-      - AN
-      - NC
-      - NZ
-      - NI
-      - NE
-      - NG
-      - NU
-      - NF
-      - MP
-      - 'NO'
-      - OM
-      - PK
-      - PW
-      - PS
-      - PA
-      - PG
-      - PY
-      - PE
-      - PH
-      - PN
-      - PL
-      - PT
-      - PR
-      - QA
-      - RE
-      - RO
-      - RU
-      - RW
-      - BL
-      - SH
-      - KN
-      - LC
-      - MF
-      - PM
-      - VC
-      - WS
-      - SM
-      - ST
-      - SA
-      - SN
-      - RS
-      - SC
-      - SL
-      - SG
-      - SK
-      - SI
-      - SB
-      - SO
-      - ZA
-      - GS
-      - ES
-      - LK
-      - SD
-      - SR
-      - SJ
-      - SZ
-      - SE
-      - CH
-      - SY
-      - TW
-      - TJ
-      - TZ
-      - TH
-      - TL
-      - TG
-      - TK
-      - TO
-      - TT
-      - TN
-      - TR
-      - TM
-      - TC
-      - TV
-      - UG
-      - UA
-      - AE
-      - UK
-      - US
-      - UM
-      - UY
-      - UZ
-      - VU
-      - VE
-      - VN
-      - VG
-      - VI
-      - WF
-      - EH
-      - YE
-      - ZM
-      - ZW
+      - 200000
+      - 1000000
+      description: 'Maximum number of rows returned by a single API call.
+
+        - [Default] if no value is sent, up to 200K rows
+
+        - 200000: Up to 200K rows return
+
+        - 1000000: Up to 1M rows return
+
+        '
+      minItems: 0
   responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            CallLimit:
+              value:
+                message: Your API call limit has been reached for the given report type
+            LookBack:
+              description: Use `to` and `from` to limit the date range to 3 months or less.
+              value:
+                message: Raw reports historical lookback is limited to 90 days
+            InvalidLimit:
+              description: report_rows can have the value 200000 or 1000000.
+              value:
+                message: Invalid limit type
+    Success:
+      content:
+        text/csv:
+          schema:
+            type: string
+      description: Reports returned in CSV format
     NotFound:
       description: 'App ID wasn''t found.
 
@@ -1178,166 +1338,6 @@ components:
               description: Log in to the dashboard and check the account status
               value:
                 message: Account may be suspended
-    Success:
-      content:
-        text/csv:
-          schema:
-            type: string
-      description: Reports returned in CSV format
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            CallLimit:
-              value:
-                message: Your API call limit has been reached for the given report type
-            LookBack:
-              description: Use `to` and `from` to limit the date range to 3 months or less.
-              value:
-                message: Raw reports historical lookback is limited to 90 days
-            InvalidLimit:
-              description: report_rows can have the value 200000 or 1000000.
-              value:
-                message: Invalid limit type
-  parameters:
-    MediaSource:
-      description: 'Use to filter by a specific media source
-
-        Set both the `category` and `media_source` parameters as follows:
-
-        - For Facebook set `category` and `media_source` to facebook
-
-        - For Twitter set `category` and `media_source` to twitter
-
-        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
-
-        Examples
-
-        - `media_source=facebook&category=facebook`
-
-        - `media_source=abc_example&category=standard`
-
-        '
-      name: media_source
-      in: query
-      schema:
-        type: string
-      example: facebook
-    Currency:
-      name: currency
-      in: query
-      schema:
-        type: string
-        enum:
-        - preferred
-        - USD
-      description: 'Currency of revenue and cost.
-
-        Aggregate Pull API reports always use the app-specific currency.
-
-        '
-    MaximumRows:
-      name: maximum_rows
-      in: query
-      schema:
-        $ref: '#/components/schemas/MaximumRows'
-    FromDate:
-      in: query
-      name: from
-      description: From date (report start date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    AppId:
-      in: path
-      name: app-id
-      description: Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples).
-      example: id121244
-      required: true
-      schema:
-        type: string
-    Category:
-      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
-      in: query
-      name: category
-      schema:
-        type: string
-        enum:
-        - standard
-        - facebook
-        - twitter
-    TimeZone:
-      name: timezone
-      in: query
-      schema:
-        oneOf:
-        - $ref: '#/components/schemas/TimeZoneList'
-      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
-
-        - Data returns using the app-specific time zone.
-
-        - Time zone format takes into account daylight saving time.
-
-        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
-
-        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
-
-        '
-    EventName:
-      in: query
-      name: event_name
-      schema:
-        type: array
-        items:
-          type: string
-      explode: false
-      description: 'Filter in-app events by specified events. Select multiple events by using a comma-separated list.
-
-        Example: `event_name=af_purchase,ftd`
-
-        '
-    ToDate:
-      in: query
-      name: to
-      description: To date (report end date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    Geo:
-      name: geo
-      in: query
-      schema:
-        $ref: '#/components/schemas/Geo'
-      description: 'Filter the data by country code.
-
-        Limitation: You can set only one country code filter per API call.
-
-        '
   securitySchemes:
     Bearer-Authentication:
       type: http

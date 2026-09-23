@@ -1,0 +1,30 @@
+# Front Door AI Index — appsflyer — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: appsflyer
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.appsflyer.com
+  final_host: www.appsflyer.com
+  ownership: own
+  owner: appsflyer
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 26
+  host_score: 26
+  density: 25.02
+  words: 1039
+  tiers:
+    agentic: 7
+    core: 19
+    model: 0
+  ambiguous: 3
+  top_terms:
+    AI: 19
+    agent: 3
+    agentic: 3
+    AI agent: 2
+    AI assistant: 1
+    MCP: 1

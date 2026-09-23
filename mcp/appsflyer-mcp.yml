@@ -164,30 +164,11 @@ x-evidence:
     url: https://registry.npmjs.org/@appsflyer/sdk-mcp-server
     http_status: 200
 deployment:
-  mode: both
+  mode: none
   endpoint: https://mcp.appsflyer.com/
-  install: npx -y @appsflyer/sdk-mcp-server
-  package: https://www.npmjs.com/package/@appsflyer/sdk-mcp-server
-  auth: oauth
   verified: probed
-  checked: '2026-08-13'
-  endpoint_status: gated
-  endpoint_note: 'The remote server is real but its callable route is not publicly discoverable. Re-probed
-    2026-08-13: https://mcp.appsflyer.com/.well-known/oauth-authorization-server returns 200 with a valid
-    RFC 8414 document whose issuer is https://mcp.appsflyer.com/, and GET /authorize returns 400 invalid_request
-    — both prove a live server on that host. But /, /mcp and /sse all return 404 to an anonymous client,
-    because the beta issues a per-customer connector URL at setup time. Treat the endpoint above as the
-    authorization issuer, NOT as a URL an agent can POST tools/list to today.'
-  stdio_note: 'The local-stdio half is unambiguous and fully verified: @appsflyer/sdk-mcp-server v1.5.2
-    (published 2026-05-14) is public on npm with 19 documented tools. Note the two halves are different
-    products — the stdio server covers SDK integration, log analysis and deep-link validation for developers,
-    while the hosted remote covers marketing data (campaign performance, ROAS, SKAN, audiences, OneLink).
-    Neither substitutes for the other.'
-  auth_note: OAuth 2.1 authorization-code + PKCE (S256) with dynamic client registration for the remote;
-    the stdio server authenticates with DEV_KEY and APP_ID environment variables instead.
-  history:
-  - checked: '2026-08-12'
-    source: catalog MCP census
-    recorded: 'mode: none (probe dead)'
-    correction: 'Superseded. The census probed the endpoint path only and read the 404 as a dead server,
-      which missed both the live OAuth metadata on the same host and the published npm stdio package.'
+  probe: dead
+  note: the endpoint this manifest claimed did not answer; recorded as none rather than deleted so the
+    claim stays auditable
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -314,35 +314,6 @@ components:
         max_time_post_install:
           type: integer
           description: The upper bound, hours post-install, indicating when the user was last active in the app
-    LockWindowEvent:
-      type: string
-      description: 'The name of the in-app event that locks the window
-
-        '
-    Postback_SecondThird:
-      title: Second and third postbacks
-      properties:
-        postback_sequence_index:
-          type: integer
-          description: 'Integer that represents the sequence number of SKAN postback. Possible values: 1, 2
-
-            '
-        measurement_window:
-          $ref: '#/components/schemas/MeasurementWindow'
-        lock_window_type:
-          $ref: '#/components/schemas/LockWindowType'
-        lock_window_event:
-          $ref: '#/components/schemas/LockWindowEvent'
-        conversion_value_mapping:
-          type: array
-          description: Conversion values mapping
-          items:
-            type: object
-            properties:
-              coarse:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CoarseConversionValue'
     EventV3:
       properties:
         event_name:
@@ -381,56 +352,6 @@ components:
         max_event_counter:
           type: integer
           description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
-    CoarseConversionValue:
-      properties:
-        conversion_value:
-          description: 'Conversion value. Possible values: `low`, `medium`, `high`'
-          type: string
-          enum:
-          - low
-          - medium
-          - high
-        min_time_post_install:
-          type: integer
-          description: The lower bound of hours post-install, indicating when the user was last active in the app.
-        max_time_post_install:
-          type: integer
-          description: The upper bound of hours post-install, indicating when the user was last active in the app
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventV4'
-    Postback_First:
-      title: First postback
-      properties:
-        postback_sequence_index:
-          type: integer
-          description: "Integer that represents the sequence number of SKAN postback Possible values: `0` \n"
-        measurement_window:
-          $ref: '#/components/schemas/MeasurementWindow'
-        lock_window_type:
-          $ref: '#/components/schemas/LockWindowType'
-        lock_window_event:
-          $ref: '#/components/schemas/LockWindowEvent'
-        conversion_value_mapping:
-          type: array
-          description: Conversion values mapping
-          items:
-            type: object
-            properties:
-              fine:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FineConversionValue'
-              coarse:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CoarseConversionValue'
-    LockWindowType:
-      type: string
-      description: 'The trigger that causes the window to lock. Possible values: `in-app`, `time`, `high-coarse`, `other`
-
-        '
     FineConversionValue:
       properties:
         conversion_value:
@@ -451,6 +372,54 @@ components:
     MeasurementWindow:
       type: integer
       description: Activity window duration (in hours)
+    Postback_SecondThird:
+      title: Second and third postbacks
+      properties:
+        postback_sequence_index:
+          type: integer
+          description: 'Integer that represents the sequence number of SKAN postback. Possible values: 1, 2
+
+            '
+        measurement_window:
+          $ref: '#/components/schemas/MeasurementWindow'
+        lock_window_type:
+          $ref: '#/components/schemas/LockWindowType'
+        lock_window_event:
+          $ref: '#/components/schemas/LockWindowEvent'
+        conversion_value_mapping:
+          type: array
+          description: Conversion values mapping
+          items:
+            type: object
+            properties:
+              coarse:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoarseConversionValue'
+    LockWindowType:
+      type: string
+      description: 'The trigger that causes the window to lock. Possible values: `in-app`, `time`, `high-coarse`, `other`
+
+        '
+    CoarseConversionValue:
+      properties:
+        conversion_value:
+          description: 'Conversion value. Possible values: `low`, `medium`, `high`'
+          type: string
+          enum:
+          - low
+          - medium
+          - high
+        min_time_post_install:
+          type: integer
+          description: The lower bound of hours post-install, indicating when the user was last active in the app.
+        max_time_post_install:
+          type: integer
+          description: The upper bound of hours post-install, indicating when the user was last active in the app
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventV4'
     EventV4:
       properties:
         event_name:
@@ -486,6 +455,37 @@ components:
         max_event_counter:
           type: integer
           description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
+    Postback_First:
+      title: First postback
+      properties:
+        postback_sequence_index:
+          type: integer
+          description: "Integer that represents the sequence number of SKAN postback Possible values: `0` \n"
+        measurement_window:
+          $ref: '#/components/schemas/MeasurementWindow'
+        lock_window_type:
+          $ref: '#/components/schemas/LockWindowType'
+        lock_window_event:
+          $ref: '#/components/schemas/LockWindowEvent'
+        conversion_value_mapping:
+          type: array
+          description: Conversion values mapping
+          items:
+            type: object
+            properties:
+              fine:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FineConversionValue'
+              coarse:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoarseConversionValue'
+    LockWindowEvent:
+      type: string
+      description: 'The name of the in-app event that locks the window
+
+        '
   securitySchemes:
     bearerAuth:
       type: http

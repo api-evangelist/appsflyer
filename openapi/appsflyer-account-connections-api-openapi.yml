@@ -29,14 +29,19 @@ paths:
                     properties:
                       connections:
                         $ref: '#/components/schemas/integrations_response'
+      operationId: getConnections
+      x-operation-id-source: derived
 components:
   schemas:
-    integration_id:
-      type: integer
-      example: 1234
     integration_name:
       type: string
       example: Integration 123
+    integration_id:
+      type: integer
+      example: 1234
+    partner_id:
+      type: string
+      example: amazon_int
     integrations_response:
       type: array
       items:
@@ -52,9 +57,6 @@ components:
             $ref: '#/components/schemas/partner_id'
           integration_name:
             $ref: '#/components/schemas/integration_name'
-    partner_id:
-      type: string
-      example: amazon_int
   securitySchemes:
     bearerAuth:
       type: http

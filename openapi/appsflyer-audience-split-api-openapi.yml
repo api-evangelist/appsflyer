@@ -55,6 +55,8 @@ paths:
                   value:
                     error_code: 1020
                     message: Internal error occurred
+      operationId: getAudienceByAudienceIdSplitSyncs
+      x-operation-id-source: derived
     put:
       tags:
       - Audience split
@@ -124,8 +126,13 @@ paths:
                   value:
                     error_code: 1020
                     message: Internal error occurred
+      operationId: putAudienceByAudienceIdSplitSyncs
+      x-operation-id-source: derived
 components:
   schemas:
+    partner_id:
+      type: string
+      example: amazon_int
     integration_id:
       type: integer
       example: 1234
@@ -151,12 +158,6 @@ components:
         message:
           type: object
           example: null
-    integration_name:
-      type: string
-      example: Integration 123
-    partner_id:
-      type: string
-      example: amazon_int
     error_response:
       required:
       - error_code
@@ -178,6 +179,9 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
+    integration_name:
+      type: string
+      example: Integration 123
   securitySchemes:
     bearerAuth:
       type: http

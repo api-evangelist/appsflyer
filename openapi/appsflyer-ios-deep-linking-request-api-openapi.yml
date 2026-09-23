@@ -146,33 +146,10 @@ paths:
         '504':
           $ref: '#/components/responses/ServiceUnavailable'
       x-codegen-request-body-name: ios_request
+      operationId: postIosByAppId
+      x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - message
-    CommonIdObject:
-      required:
-      - type
-      - value
-      properties:
-        type:
-          type: string
-          enum:
-          - unhashed
-          - sha1
-          - md5
-          example: sha1
-        value:
-          type: string
-          example: 123456436CDFAC250CBEAF3BFFCD713E3F123456
     DLResponse:
       title: shared response
       required:
@@ -250,6 +227,31 @@ components:
               type:
               - string
               - 'null'
+    CommonIdObject:
+      required:
+      - type
+      - value
+      properties:
+        type:
+          type: string
+          enum:
+          - unhashed
+          - sha1
+          - md5
+          example: sha1
+        value:
+          type: string
+          example: 123456436CDFAC250CBEAF3BFFCD713E3F123456
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
   responses:
     GatewayTimeout:
       description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.

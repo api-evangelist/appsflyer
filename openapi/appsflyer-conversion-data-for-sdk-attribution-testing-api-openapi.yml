@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: GCD API for SDK attribution testing Conversion Data for SDK attribution testing API
+  title: GCD API for SDK attribution testing Conversion Data for SDK…
   version: '0.1'
 servers:
 - url: https://gcdsdk.appsflyer.com/install_data/v4.0/

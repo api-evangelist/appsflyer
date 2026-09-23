@@ -8,12 +8,12 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: App management
+- name: App Management
 paths:
   /apps/{app_id}/{platform}:
     delete:
       tags:
-      - App management
+      - App Management
       summary: Delete app
       operationId: app-mng-v2-delete
       description: Public API for deleting an app from your AppsFlyer account
@@ -134,7 +134,7 @@ paths:
           description: Too many requests - Exceeded rate limitation
     put:
       tags:
-      - App management
+      - App Management
       summary: Update app
       description: Public API for updating an app on your AppsFlyer account
       operationId: app-mng-v2-put
@@ -337,7 +337,7 @@ paths:
   /apps/:
     post:
       tags:
-      - App management
+      - App Management
       summary: Add app
       description: Public API for adding an app to your AppsFlyer account
       operationId: app-mng-v2-post
@@ -540,6 +540,125 @@ paths:
           description: Too many requests - Exceeded rate limitation
 components:
   schemas:
+    StandardApiResponse:
+      type: object
+      properties:
+        data:
+          type: object
+        message:
+          type: string
+        error:
+          $ref: '#/components/schemas/StandardApiError'
+    channel_name:
+      type: string
+      pattern: ^[A-Za-z]+$
+      description: Required only when the status is "out_of_store"
+      example: Amazon
+    StandardApiError:
+      type: object
+      properties:
+        status:
+          type: number
+        message:
+          type: string
+        code:
+          type: string
+        resource:
+          type: string
+        documentation:
+          type: string
+    out-of-store-app:
+      title: Out-of-store app
+      required:
+      - platform
+      - status
+      - currency
+      - app_id
+      - channel_name
+      - time_zone
+      - kidsPrivacy
+      - app_url
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+        app_name:
+          $ref: '#/components/schemas/app_name'
+        status:
+          type: string
+          description: "**out_of_store:** The app is in an Android app store other than Google Play.\n\n  - This option is relevant only for Android apps.\n  - If the app is available in more than one Android app store, be sure to consider and discuss with your marketing team the options for setting up [multi-store Android attribution](https://support.appsflyer.com/hc/en-us/articles/207447023).\n"
+          enum:
+          - out_of_store
+        time_zone:
+          $ref: '#/components/schemas/time_zone'
+        currency:
+          $ref: '#/components/schemas/currency'
+        kidsPrivacy:
+          $ref: '#/components/schemas/kidsPrivacy'
+        app_id:
+          allOf:
+          - $ref: '#/components/schemas/app_id'
+        app_url:
+          allOf:
+          - $ref: '#/components/schemas/app_url'
+          description: Its optional to supply an app location URL - http://www.somelink.com
+        channel_name:
+          allOf:
+          - $ref: '#/components/schemas/channel_name'
+    platform:
+      type: string
+      description: 'App platform: Android, iOS, or Windows Phone
+
+        '
+      enum:
+      - android
+      - ios
+      - windowsphone
+    app_name:
+      type: string
+      description: '**A custom name for the app**
+
+
+        - For ***available*** status, If not added to the request the extracted store name will be used.
+
+        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
+
+        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
+
+        '
+    UpdateAppRequest:
+      type: object
+      properties:
+        enableProbabilisticViewThroughAttribution:
+          type: boolean
+          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
+        enableIpMasking:
+          type: boolean
+          description: Enables or disables the IP Masking feature
+        minTimeBetweenSessions:
+          type: number
+          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
+        reAttributionWindow:
+          type: number
+          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
+        reEngagementAttribution:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+              description: Enables or disables the Retargeting Attribution feature
+            minTimeBetweenReEngagements:
+              type: number
+              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
+        enableSeoAppAttribution:
+          type: boolean
+          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
+        enableAggregatedAdvancedPrivacy:
+          type: boolean
+          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
+        enableReinstallDetection:
+          type: boolean
+          description: Detects reinstalls without depending on advertising IDs only for IOS apps
     pending-app:
       title: Pending
       required:
@@ -575,6 +694,42 @@ components:
         app_id:
           allOf:
           - $ref: '#/components/schemas/app_id'
+    app_id:
+      type: string
+      description: 'Required only when status is ***pending*** or ***out_of_store***
+
+
+        Example values
+
+
+        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
+
+        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
+
+        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
+
+        '
+    kidsPrivacy:
+      type: boolean
+      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
+    app_url:
+      type: string
+      description: '**The URL of the app in the app store**
+
+
+        Required only when status is ***available*** or ***out_of_store***.
+
+
+        Example values
+
+
+        - **Android:** *https://play.google.com/store/apps/details?id=com.publisher.name* (Google Play Store URL). When status of Android app is ***out_of_store,*** supplying a URL is optional (for example, *http://www.somelink.com*)
+
+        - **iOS:** *https://apps.apple.com/**us**/app/app-name/id123456789* (iOS App Store URL). Must include the 2-letter country code of the store. An app added to the App Store prior to June 14, 2019, may contain itunes.apple.com in its URL(instead of apps.apple.com)
+
+        - **Windows Phone:** *https://microsoft.com/en-us/store/apps/app-name/a1b2c3d4e5f6* (Windows Phone Store URL)
+
+        '
     currency:
       type: string
       description: The preferable currency
@@ -751,33 +906,37 @@ components:
       - NAD
       - SVC
       - CHF
-    app_id:
-      type: string
-      description: 'Required only when status is ***pending*** or ***out_of_store***
+    available-app:
+      title: Available
+      required:
+      - platform
+      - status
+      - currency
+      - app_url
+      - time_zone
+      - kidsPrivacy
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+        app_name:
+          $ref: '#/components/schemas/app_name'
+        status:
+          type: string
+          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
 
-
-        Example values
-
-
-        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
-
-        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
-
-        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
-
-        '
-    app_name:
-      type: string
-      description: '**A custom name for the app**
-
-
-        - For ***available*** status, If not added to the request the extracted store name will be used.
-
-        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
-
-        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
-
-        '
+            '
+          enum:
+          - available
+        time_zone:
+          $ref: '#/components/schemas/time_zone'
+        currency:
+          $ref: '#/components/schemas/currency'
+        app_url:
+          allOf:
+          - $ref: '#/components/schemas/app_url'
+        kidsPrivacy:
+          $ref: '#/components/schemas/kidsPrivacy'
     country:
       type: string
       description: The App Store country, Required Only for  iOS apps with "pending" status
@@ -1026,44 +1185,6 @@ components:
       - Yemen
       - Zambia
       - Zimbabwe
-    channel_name:
-      type: string
-      pattern: ^[A-Za-z]+$
-      description: Required only when the status is "out_of_store"
-      example: Amazon
-    UpdateAppRequest:
-      type: object
-      properties:
-        enableProbabilisticViewThroughAttribution:
-          type: boolean
-          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
-        enableIpMasking:
-          type: boolean
-          description: Enables or disables the IP Masking feature
-        minTimeBetweenSessions:
-          type: number
-          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
-        reAttributionWindow:
-          type: number
-          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
-        reEngagementAttribution:
-          type: object
-          properties:
-            isEnabled:
-              type: boolean
-              description: Enables or disables the Retargeting Attribution feature
-            minTimeBetweenReEngagements:
-              type: number
-              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
-        enableSeoAppAttribution:
-          type: boolean
-          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
-        enableAggregatedAdvancedPrivacy:
-          type: boolean
-          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
-        enableReinstallDetection:
-          type: boolean
-          description: Detects reinstalls without depending on advertising IDs only for IOS apps
     deletePlatform:
       type: string
       description: 'App platform: Android, iOS, or Windows Phone
@@ -1089,33 +1210,6 @@ components:
       - epic
       - nativepc
       - chatgpt
-    platform:
-      type: string
-      description: 'App platform: Android, iOS, or Windows Phone
-
-        '
-      enum:
-      - android
-      - ios
-      - windowsphone
-    app_url:
-      type: string
-      description: '**The URL of the app in the app store**
-
-
-        Required only when status is ***available*** or ***out_of_store***.
-
-
-        Example values
-
-
-        - **Android:** *https://play.google.com/store/apps/details?id=com.publisher.name* (Google Play Store URL). When status of Android app is ***out_of_store,*** supplying a URL is optional (for example, *http://www.somelink.com*)
-
-        - **iOS:** *https://apps.apple.com/**us**/app/app-name/id123456789* (iOS App Store URL). Must include the 2-letter country code of the store. An app added to the App Store prior to June 14, 2019, may contain itunes.apple.com in its URL(instead of apps.apple.com)
-
-        - **Windows Phone:** *https://microsoft.com/en-us/store/apps/app-name/a1b2c3d4e5f6* (Windows Phone Store URL)
-
-        '
     time_zone:
       type: string
       description: The preferable time-zone
@@ -1544,100 +1638,6 @@ components:
       - South Africa - Johannesburg
       - Zambia - Maputo
       - Zimbabwe - Maputo
-    StandardApiResponse:
-      type: object
-      properties:
-        data:
-          type: object
-        message:
-          type: string
-        error:
-          $ref: '#/components/schemas/StandardApiError'
-    out-of-store-app:
-      title: Out-of-store app
-      required:
-      - platform
-      - status
-      - currency
-      - app_id
-      - channel_name
-      - time_zone
-      - kidsPrivacy
-      - app_url
-      type: object
-      properties:
-        platform:
-          $ref: '#/components/schemas/platform'
-        app_name:
-          $ref: '#/components/schemas/app_name'
-        status:
-          type: string
-          description: "**out_of_store:** The app is in an Android app store other than Google Play.\n\n  - This option is relevant only for Android apps.\n  - If the app is available in more than one Android app store, be sure to consider and discuss with your marketing team the options for setting up [multi-store Android attribution](https://support.appsflyer.com/hc/en-us/articles/207447023).\n"
-          enum:
-          - out_of_store
-        time_zone:
-          $ref: '#/components/schemas/time_zone'
-        currency:
-          $ref: '#/components/schemas/currency'
-        kidsPrivacy:
-          $ref: '#/components/schemas/kidsPrivacy'
-        app_id:
-          allOf:
-          - $ref: '#/components/schemas/app_id'
-        app_url:
-          allOf:
-          - $ref: '#/components/schemas/app_url'
-          description: Its optional to supply an app location URL - http://www.somelink.com
-        channel_name:
-          allOf:
-          - $ref: '#/components/schemas/channel_name'
-    available-app:
-      title: Available
-      required:
-      - platform
-      - status
-      - currency
-      - app_url
-      - time_zone
-      - kidsPrivacy
-      type: object
-      properties:
-        platform:
-          $ref: '#/components/schemas/platform'
-        app_name:
-          $ref: '#/components/schemas/app_name'
-        status:
-          type: string
-          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
-
-            '
-          enum:
-          - available
-        time_zone:
-          $ref: '#/components/schemas/time_zone'
-        currency:
-          $ref: '#/components/schemas/currency'
-        app_url:
-          allOf:
-          - $ref: '#/components/schemas/app_url'
-        kidsPrivacy:
-          $ref: '#/components/schemas/kidsPrivacy'
-    kidsPrivacy:
-      type: boolean
-      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
-    StandardApiError:
-      type: object
-      properties:
-        status:
-          type: number
-        message:
-          type: string
-        code:
-          type: string
-        resource:
-          type: string
-        documentation:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

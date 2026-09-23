@@ -8,12 +8,12 @@ servers:
 security:
 - Bearer-Authentication: []
 tags:
-- name: Audit logs
+- name: Audit Logs
 paths:
   /logs:
     get:
       tags:
-      - Audit logs
+      - Audit Logs
       summary: Get audit logs
       operationId: audit-public-api-get
       parameters:

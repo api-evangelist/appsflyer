@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: InCost job status API
-  description: 'InCost API, part of AppsFlyer ROI360, lets ad network partners programmatically send advertising cost data to AppsFlyer. Doing so provides advertisers with aggregate cost data from all their ad networks in one place.
-
-    '
+  description: InCost API, part of AppsFlyer ROI360, lets ad network partners programmatically send advertising cost data to AppsFlyer. Doing so provides advertisers with aggregate cost data from all their ad networks in one place.
   version: 1.0.0
 servers:
 - url: https://hq1.appsflyer.com/api/

@@ -2,7 +2,19 @@ openapi: 3.2.0
 info:
   title: OpenDSR Stub & Testing API
   version: '1.0'
-  description: "AppsFlyer OpenDSR Requests API\n\nUse the OpenDSR Requests API as described in this section to implement DSR compliance. \n\n- **OpenDSR Request**: Perform one of the above request types: access, portability, erasure, rectification.\n- **Status Request**: Query the current status of an OpenDSR request.\n- **Discovery Request**: Inquire as to the supported API version and Data Format.\n- **Cancellation**: Cancel an OpenDSR request during its pending phase\n"
+  description: 'AppsFlyer OpenDSR Requests API
+
+
+    Use the OpenDSR Requests API as described in this section to implement DSR compliance.
+
+
+    - **OpenDSR Request**: Perform one of the above request types: access, portability, erasure, rectification.
+
+    - **Status Request**: Query the current status of an OpenDSR request.
+
+    - **Discovery Request**: Inquire as to the supported API version and Data Format.
+
+    - **Cancellation**: Cancel an OpenDSR request during its pending phase'
 servers:
 - url: https://hq1.appsflyer.com/
   description: Production server
@@ -222,35 +234,6 @@ paths:
                 $ref: '#/components/schemas/DiscoveryResponse'
 components:
   schemas:
-    CreateResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        original_request_id:
-          type: string
-        expected_completion_time:
-          type: string
-        received_time:
-          type: string
-        encoded_request:
-          type: string
-        info:
-          type: string
-    APIErrorWrapper:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    BatchRequest:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/Request'
     APIErrorData:
       type: object
       properties:
@@ -365,59 +348,35 @@ components:
           - e417
           - e511
           example: e313
-    DiscoveryResponse:
+    BatchRequest:
       type: object
       properties:
-        api_version:
-          type: string
-        supported_subject_request_types:
-          type: string
-        supported_identities:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        requests:
           type: array
           items:
-            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
-        processor_certificate:
-          type: string
-    Request:
+            $ref: '#/components/schemas/Request'
+    APIErrorWrapper:
       type: object
       properties:
-        subject_request_id:
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    CreateBatchResponse:
+      type: object
+      properties:
+        batch_id:
           type: string
-          description: External Fields
-        subject_request_type:
+        encoded_request:
           type: string
-          description: SubjectRequestType is the type of the request
-          enum:
-          - access
-          - portability
-          - rectification
-          - erasure
-          example: access
-        submitted_time:
-          type: string
-          description: SubmittedTime is the time when the request is submitted
-        api_version:
-          type: string
-          description: APIVersion is the version of the API
-        subject_identities:
+        responses:
           type: array
-          description: SubjectIdentities is the list of subject identities.
           items:
-            $ref: '#/components/schemas/SubjectIdentity'
-        status_callback_urls:
+            $ref: '#/components/schemas/CreateResponse'
+        errors:
           type: array
-          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
           items:
-            type: string
-        property_id:
-          type: string
-          description: PropertyID is the AppID
-        platform:
-          type: string
-          description: Platform is the platform of the app
-        requester:
-          type: string
-          description: Requester is the email of the requester
+            $ref: '#/components/schemas/ErrorResponse'
     SubjectIdentity:
       type: object
       properties:
@@ -473,42 +432,6 @@ components:
           type: string
           enum:
           - raw
-    Status:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-          description: SubjectRequestID is a unique identifier represent as UUID v4
-        controller_id:
-          type: string
-          description: ControllerID is the requester
-        expected_completion_time:
-          type: string
-          description: ExpectedCompletionTime is the expected time to complete the request
-        request_status:
-          type: string
-          description: RequestStatus is the current status of the request
-          enum:
-          - pending
-          - in-progress
-          - completed
-          - canceled
-          example: pending
-    CreateBatchResponse:
-      type: object
-      properties:
-        batch_id:
-          type: string
-        encoded_request:
-          type: string
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateResponse'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorResponse'
     ErrorResponse:
       type: object
       properties:
@@ -532,6 +455,95 @@ components:
           items:
             type: string
         submitted_time:
+          type: string
+    DiscoveryResponse:
+      type: object
+      properties:
+        api_version:
+          type: string
+        supported_subject_request_types:
+          type: string
+        supported_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
+        processor_certificate:
+          type: string
+    Request:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: External Fields
+        subject_request_type:
+          type: string
+          description: SubjectRequestType is the type of the request
+          enum:
+          - access
+          - portability
+          - rectification
+          - erasure
+          example: access
+        submitted_time:
+          type: string
+          description: SubmittedTime is the time when the request is submitted
+        api_version:
+          type: string
+          description: APIVersion is the version of the API
+        subject_identities:
+          type: array
+          description: SubjectIdentities is the list of subject identities.
+          items:
+            $ref: '#/components/schemas/SubjectIdentity'
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        property_id:
+          type: string
+          description: PropertyID is the AppID
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        requester:
+          type: string
+          description: Requester is the email of the requester
+    Status:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: SubjectRequestID is a unique identifier represent as UUID v4
+        controller_id:
+          type: string
+          description: ControllerID is the requester
+        expected_completion_time:
+          type: string
+          description: ExpectedCompletionTime is the expected time to complete the request
+        request_status:
+          type: string
+          description: RequestStatus is the current status of the request
+          enum:
+          - pending
+          - in-progress
+          - completed
+          - canceled
+          example: pending
+    CreateResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        original_request_id:
+          type: string
+        expected_completion_time:
+          type: string
+        received_time:
+          type: string
+        encoded_request:
+          type: string
+        info:
           type: string
     SupportedIdentitiesDiscoveryResponse:
       type: object

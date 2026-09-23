@@ -18,12 +18,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Validates and tests URL to be used as a Push API endpoint
-
-        '
+        Validates and tests URL to be used as a Push API endpoint'
       requestBody:
         description: Body for validate url
         content:
@@ -152,16 +150,16 @@ paths:
                     code: InvalidMethod
                     message: Method must be POST or GET.
                     request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      operationId: postValidateUrl
+      x-operation-id-source: derived
 components:
   schemas:
-    URLTestResponse:
-      type: object
-      properties:
-        tested_endpoint_url_http_response:
-          type: integer
-      example:
-        tested_endpoint_url_http_response: 404
-        request_id: 907ea912-9ce9-4dec-9423-b0a04404e1e2
+    Method:
+      type: string
+      enum:
+      - ''
+      - GET
+      - POST
     Error:
       example:
         code: SomeErrorCode
@@ -177,17 +175,46 @@ components:
           type: string
         request_id:
           type: string
+    URLTestResponse:
+      type: object
+      properties:
+        tested_endpoint_url_http_response:
+          type: integer
+      example:
+        tested_endpoint_url_http_response: 404
+        request_id: 907ea912-9ce9-4dec-9423-b0a04404e1e2
     Url:
       type: string
       maxLength: 2048
       example: http://some.url.com:40/dir
-    Method:
-      type: string
-      enum:
-      - ''
-      - GET
-      - POST
   responses:
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
     VersionNoLongerValid:
       description: The API version listed in the URL is no longer valid
       headers:
@@ -236,33 +263,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
   securitySchemes:
     Bearer-Authentication:
       type: http

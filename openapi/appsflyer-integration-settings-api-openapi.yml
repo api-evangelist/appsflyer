@@ -21,9 +21,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       requestBody:
         description: 'Use these examples as a template for your request body:'
         content:
@@ -135,12 +133,25 @@ paths:
                     message: Both apps should be on the same mobile platform
         '500':
           description: Internal server error - please try again
+      operationId: postCopy
+      x-operation-id-source: derived
   /v1/copy:
     post:
       tags:
       - Integration settings
       summary: Copy partner integration settings
-      description: "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\nCopy the integration settings from one app to another. Copying the parameters can be done only for apps on the same platform. To retrieve the partner's unique parameters needed for the integration, use the [GET request](https://dev.appsflyer.com/hc/reference/get_v1-partner-params-pid-platform).\n> \U0001F4D8 Note\n> Only parameters of event names with the `af_` prefix can be copied.  \n"
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
+
+
+        Copy the integration settings from one app to another. Copying the parameters can be done only for apps on the same platform. To retrieve the partner''s unique parameters needed for the integration, use the GET request.
+
+        > 📘 Note
+
+        > Only parameters of event names with the `af_` prefix can be copied.'
       requestBody:
         description: 'Use these examples as a template for your request body:'
         content:
@@ -255,8 +266,55 @@ paths:
                     message: Both apps should be on the same mobile platform
         '500':
           description: Internal server error - please try again
+      operationId: postV1Copy
+      x-operation-id-source: derived
 components:
   schemas:
+    copyPartnerParams:
+      title: Set the parameters for the request
+      required:
+      - pid
+      - copy_from_app_id
+      - copy_to_app_id
+      type: object
+      properties:
+        pid:
+          $ref: '#/components/schemas/pid'
+        copy_from_app_id:
+          $ref: '#/components/schemas/copy_from_app_id'
+        copy_to_app_id:
+          $ref: '#/components/schemas/copy_to_app_id'
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    copy_to_app_id:
+      type: string
+      description: 'App to copy integration configuration ***to*** (''destination app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
     UnauthorizedParamError:
       properties:
         status:
@@ -264,14 +322,7 @@ components:
         message:
           type: string
       type: object
-    IntegrationNotEnabledError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    TosError:
+    AccountTypeError:
       properties:
         status:
           type: string
@@ -279,20 +330,6 @@ components:
           type: string
       type: object
     GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    UnmatchedPlatformError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    AccountTypeError:
       properties:
         status:
           type: string
@@ -312,37 +349,12 @@ components:
         - **Windows Phone:** a1b2c3d4e5f6
 
         '
-    copyPartnerParams:
-      title: Set the parameters for the request
-      required:
-      - pid
-      - copy_from_app_id
-      - copy_to_app_id
-      type: object
-      properties:
-        pid:
-          $ref: '#/components/schemas/pid'
-        copy_from_app_id:
-          $ref: '#/components/schemas/copy_from_app_id'
-        copy_to_app_id:
-          $ref: '#/components/schemas/copy_to_app_id'
-        general_params:
-          type: object
-        in_app_postbacks_params:
-          type: object
     pid:
       type: string
       description: 'AppsFlyer Partner ID
 
         '
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    MissingParamError:
+    UnmatchedPlatformError:
       properties:
         status:
           type: string
@@ -385,19 +397,20 @@ components:
             mapped-in-app-events:
               type: object
       type: object
-    copy_to_app_id:
-      type: string
-      description: 'App to copy integration configuration ***to*** (''destination app'')
-
-        Examples per OS:
-
-        - **Android:** com.publisher.name
-
-        - **iOS:** id123456789
-
-        - **Windows Phone:** a1b2c3d4e5f6
-
-        '
+    TosError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

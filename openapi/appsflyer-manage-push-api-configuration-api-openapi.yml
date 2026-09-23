@@ -18,9 +18,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       parameters:
       - name: app-id
         in: path
@@ -136,6 +134,8 @@ paths:
           $ref: '#/components/responses/VersionDoesntExist'
         '410':
           $ref: '#/components/responses/VersionNoLongerValid'
+      operationId: getAppByAppId
+      x-operation-id-source: derived
     put:
       tags:
       - Manage Push API configuration
@@ -144,9 +144,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       parameters:
       - name: app-id
         in: path
@@ -368,8 +366,41 @@ paths:
                     code: RepeatingURL
                     message: Repeating URL.
                     request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      operationId: putAppByAppId
+      x-operation-id-source: derived
 components:
   schemas:
+    SkadConfig:
+      title: SKADnetwork iOS Config
+      type: object
+      required:
+      - url
+      - method
+      - attributing_entity
+      - event_types
+      - enabled
+      properties:
+        method:
+          $ref: '#/components/schemas/Method'
+        url:
+          $ref: '#/components/schemas/Url'
+        event_types:
+          type: array
+          items:
+            enum:
+            - install
+            - re-download
+            - in-app-event
+            - postback
+            - postbacks-copy
+        enabled:
+          type: boolean
+          default: true
+        attributing_entity:
+          type: string
+          enum:
+          - skadnetwork
+          default: skadnetwork
     RegularIosConfig:
       title: Regular iOS Config
       type: object
@@ -543,62 +574,6 @@ components:
           enum:
           - appsflyer
           default: appsflyer
-    Error:
-      example:
-        code: SomeErrorCode
-        message: Some error message.
-        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-      type: object
-      properties:
-        status:
-          type: integer
-        code:
-          type: string
-        message:
-          type: string
-        request_id:
-          type: string
-    Method:
-      type: string
-      enum:
-      - ''
-      - GET
-      - POST
-    Url:
-      type: string
-      maxLength: 2048
-      example: http://some.url.com:40/dir
-    SkadConfig:
-      title: SKADnetwork iOS Config
-      type: object
-      required:
-      - url
-      - method
-      - attributing_entity
-      - event_types
-      - enabled
-      properties:
-        method:
-          $ref: '#/components/schemas/Method'
-        url:
-          $ref: '#/components/schemas/Url'
-        event_types:
-          type: array
-          items:
-            enum:
-            - install
-            - re-download
-            - in-app-event
-            - postback
-            - postbacks-copy
-        enabled:
-          type: boolean
-          default: true
-        attributing_entity:
-          type: string
-          enum:
-          - skadnetwork
-          default: skadnetwork
     RegularAndroidConfig:
       title: Regular Android Config
       type: object
@@ -772,7 +747,59 @@ components:
           enum:
           - appsflyer
           default: appsflyer
+    Method:
+      type: string
+      enum:
+      - ''
+      - GET
+      - POST
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
   responses:
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
     VersionNoLongerValid:
       description: The API version listed in the URL is no longer valid
       headers:
@@ -821,33 +848,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
   securitySchemes:
     Bearer-Authentication:
       type: http

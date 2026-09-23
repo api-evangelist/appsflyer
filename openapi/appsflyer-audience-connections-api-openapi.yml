@@ -59,6 +59,8 @@ paths:
                   value:
                     error_code: 1002
                     messege: Audience does not exist under your account
+      operationId: getAudienceByAudienceIdConnections
+      x-operation-id-source: derived
     put:
       tags:
       - Audience connections
@@ -143,18 +145,10 @@ paths:
                   value:
                     error_code: 1020
                     message: Internal error occurred
+      operationId: putAudienceByAudienceIdConnections
+      x-operation-id-source: derived
 components:
   schemas:
-    integration_id:
-      type: integer
-      example: 1234
-    success_response:
-      required:
-      - message
-      properties:
-        message:
-          type: object
-          example: null
     connections_response:
       type: array
       items:
@@ -190,9 +184,6 @@ components:
           integration_upload_size:
             type: integer
             example: 5000
-    integration_name:
-      type: string
-      example: Integration 123
     split_ratio:
       type: object
       x-anyOf:
@@ -208,6 +199,16 @@ components:
     partner_id:
       type: string
       example: amazon_int
+    integration_id:
+      type: integer
+      example: 1234
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
     error_response:
       required:
       - error_code
@@ -229,6 +230,9 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
+    integration_name:
+      type: string
+      example: Integration 123
   securitySchemes:
     bearerAuth:
       type: http

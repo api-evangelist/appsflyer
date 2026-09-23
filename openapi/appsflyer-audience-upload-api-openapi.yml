@@ -49,6 +49,8 @@ paths:
                   value:
                     error_code: 1020
                     message: Internal error occurred
+      operationId: postAudienceByAudienceIdUploadNow
+      x-operation-id-source: derived
 components:
   schemas:
     success_response:

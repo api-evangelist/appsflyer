@@ -17,9 +17,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       tags:
       - Allowed devices
       operationId: test-console-api-delete
@@ -59,9 +57,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
-
-        '
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.'
       tags:
       - Allowed devices
       operationId: test-console-api-post
@@ -120,6 +116,36 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
+    Conflict:
+      description: You have added the maximum number of devices allowed by the Devices API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: device limit reached
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: The request has invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: cannot parse body
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: forbidden
     NotFound:
       description: The specified App ID does not exist within the account.
       content:
@@ -136,36 +162,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: authentication error
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
-    BadRequest:
-      description: The request has invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: cannot parse body
-    InternalError:
-      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Conflict:
-      description: You have added the maximum number of devices allowed by the Devices API.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: device limit reached
   parameters:
     AppId:
       name: app-id

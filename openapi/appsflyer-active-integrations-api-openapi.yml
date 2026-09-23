@@ -27,12 +27,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Get a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters under the integration tab.
-
-        '
+        Get a list of all the parameters for all the active integrations for a specific app. This API returns only the parameters under the integration tab.'
       responses:
         '200':
           description: Retrieved app active integrations parameters successfully
@@ -54,6 +52,8 @@ paths:
                     message: This api is not available for your account type
         '500':
           description: Internal server error - please try again
+      operationId: getV1IntegrationsByAppid
+      x-operation-id-source: derived
   /v1/integrations:
     get:
       tags:
@@ -63,7 +63,7 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Get a list of the active integrations with your partners arranged by app. An integration is considered active if one of the following is enabled:
@@ -72,9 +72,7 @@ paths:
 
         - Cost
 
-        - Ad revenue
-
-        '
+        - Ad revenue'
       responses:
         '200':
           description: Retrieved active integrations successfully
@@ -96,6 +94,8 @@ paths:
                     message: This api is not available for your account type
         '500':
           description: Internal server error - please try again
+      operationId: getV1Integrations
+      x-operation-id-source: derived
 components:
   schemas:
     ActiveIntegrationsResponse:
@@ -123,11 +123,6 @@ components:
                       type: boolean
                     is_adrevenue_active:
                       type: boolean
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
     AccountTypeError:
       properties:
         status:
@@ -144,6 +139,11 @@ components:
             type: object
           in_app_postbacks_params:
             type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
   securitySchemes:
     bearerAuth:
       type: http

@@ -18,14 +18,12 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Records in-app event postbacks sent to the media source.
 
-        Data freshness: Daily
-
-        '
+        Data freshness: Daily'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -141,6 +139,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdInAppEventsPostbacksV5
+      x-operation-id-source: derived
   /{app-id}/postbacks/v5:
     get:
       tags:
@@ -150,14 +150,12 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Records install events generated when a user opens the app for the first time.
 
-        Data freshness: Daily
-
-        '
+        Data freshness: Daily'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -278,6 +276,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdPostbacksV5
+      x-operation-id-source: derived
   /{app-id}/retarget_in_app_events_postbacks/v5:
     get:
       tags:
@@ -287,14 +287,12 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Records in-app events users performed during the re-engagement window.
 
-        Data freshness: Real-time
-
-        '
+        Data freshness: Real-time'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -410,6 +408,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdRetargetInAppEventsPostbacksV5
+      x-operation-id-source: derived
   /{app-id}/retarget_install_postbacks/v5:
     get:
       tags:
@@ -419,14 +419,12 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
         Records in-app events users performed during the re-engagement window.
 
-        Data freshness: Real-time
-
-        '
+        Data freshness: Real-time'
       parameters:
       - $ref: '#/components/parameters/AppId'
       - $ref: '#/components/parameters/FromDate'
@@ -531,215 +529,10 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getByAppIdRetargetInstallPostbacksV5
+      x-operation-id-source: derived
 components:
-  parameters:
-    FromDate:
-      in: query
-      name: from
-      description: From date (report start date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    Currency:
-      name: currency
-      in: query
-      schema:
-        type: string
-        enum:
-        - preferred
-        - USD
-      description: 'Currency of revenue and cost.
-
-        Aggregate Pull API reports always use the app-specific currency.
-
-        '
-    EventName:
-      in: query
-      name: event_name
-      schema:
-        type: array
-        items:
-          type: string
-      explode: false
-      description: 'Filter in-app events by specified events. Select multiple events by using a comma-separated list.
-
-        Example: `event_name=af_purchase,ftd`
-
-        '
-    ToInstallTime:
-      in: query
-      name: to_install_time
-      description: To install time
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    Category:
-      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
-      in: query
-      name: category
-      schema:
-        type: string
-        enum:
-        - standard
-        - facebook
-        - twitter
-    AppId:
-      in: path
-      name: app-id
-      description: Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples).
-      example: id121244
-      required: true
-      schema:
-        type: string
-    Agency:
-      in: query
-      name: agency
-      description: 'Use to filter by a specific agency
-
-        '
-      schema:
-        type: array
-        items:
-          type: string
-      examples:
-        SingleAgency:
-          summary: filter by single agency
-          value: agency=agency-name
-        MediaSourceAndAgency:
-          summary: filter by media_source & agency
-          value: media_source=media-source-name&agency=agency-name
-        MultipleAgencies:
-          summary: filter by multiple agencies
-          value: agency=agency-name-a,agency-name-b
-    ToDate:
-      in: query
-      name: to
-      description: To date (report end date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    MediaSource:
-      description: 'Use to filter by a specific media source
-
-        Set both the `category` and `media_source` parameters as follows:
-
-        - For Facebook set `category` and `media_source` to facebook
-
-        - For Twitter set `category` and `media_source` to twitter
-
-        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
-
-        Examples
-
-        - `media_source=facebook&category=facebook`
-
-        - `media_source=abc_example&category=standard`
-
-        '
-      name: media_source
-      in: query
-      schema:
-        type: string
-      example: facebook
-    FromInstallTime:
-      in: query
-      name: from_install_time
-      description: From install time
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-        DateHourMin:
-          summary: Date-Hour-Mins
-          value: 2022-04-22 21:45
-        DateHourMinSecs:
-          summary: Date-Hour-Mins-Secs
-          value: '2022-04-22 21:45:23'
-      schema:
-        type: string
-        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
-    MaximumRows:
-      name: maximum_rows
-      in: query
-      schema:
-        $ref: '#/components/schemas/MaximumRows'
-    TimeZone:
-      name: timezone
-      in: query
-      schema:
-        oneOf:
-        - $ref: '#/components/schemas/TimeZoneList'
-      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
-
-        - Data returns using the app-specific time zone.
-
-        - Time zone format takes into account daylight saving time.
-
-        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
-
-        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
-
-        '
-    Geo:
-      name: geo
-      in: query
-      schema:
-        $ref: '#/components/schemas/Geo'
-      description: 'Filter the data by country code.
-
-        Limitation: You can set only one country code filter per API call.
-
-        '
   schemas:
-    MaximumRows:
-      type: integer
-      enum:
-      - 200000
-      - 1000000
-      description: 'Maximum number of rows returned by a single API call.
-
-        - [Default] if no value is sent, up to 200K rows
-
-        - 200000: Up to 200K rows return
-
-        - 1000000: Up to 1M rows return
-
-        '
-      minItems: 0
-    Error:
-      type: string
     Geo:
       type: string
       minItems: 0
@@ -1587,6 +1380,213 @@ components:
       - W-SU
       - WET
       - Zulu
+    MaximumRows:
+      type: integer
+      enum:
+      - 200000
+      - 1000000
+      description: 'Maximum number of rows returned by a single API call.
+
+        - [Default] if no value is sent, up to 200K rows
+
+        - 200000: Up to 200K rows return
+
+        - 1000000: Up to 1M rows return
+
+        '
+      minItems: 0
+    Error:
+      type: string
+  parameters:
+    Geo:
+      name: geo
+      in: query
+      schema:
+        $ref: '#/components/schemas/Geo'
+      description: 'Filter the data by country code.
+
+        Limitation: You can set only one country code filter per API call.
+
+        '
+    FromInstallTime:
+      in: query
+      name: from_install_time
+      description: From install time
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    ToInstallTime:
+      in: query
+      name: to_install_time
+      description: To install time
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    Category:
+      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+      in: query
+      name: category
+      schema:
+        type: string
+        enum:
+        - standard
+        - facebook
+        - twitter
+    EventName:
+      in: query
+      name: event_name
+      schema:
+        type: array
+        items:
+          type: string
+      explode: false
+      description: 'Filter in-app events by specified events. Select multiple events by using a comma-separated list.
+
+        Example: `event_name=af_purchase,ftd`
+
+        '
+    Agency:
+      in: query
+      name: agency
+      description: 'Use to filter by a specific agency
+
+        '
+      schema:
+        type: array
+        items:
+          type: string
+      examples:
+        SingleAgency:
+          summary: filter by single agency
+          value: agency=agency-name
+        MediaSourceAndAgency:
+          summary: filter by media_source & agency
+          value: media_source=media-source-name&agency=agency-name
+        MultipleAgencies:
+          summary: filter by multiple agencies
+          value: agency=agency-name-a,agency-name-b
+    FromDate:
+      in: query
+      name: from
+      description: From date (report start date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    ToDate:
+      in: query
+      name: to
+      description: To date (report end date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+        DateHourMin:
+          summary: Date-Hour-Mins
+          value: 2022-04-22 21:45
+        DateHourMinSecs:
+          summary: Date-Hour-Mins-Secs
+          value: '2022-04-22 21:45:23'
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$
+    Currency:
+      name: currency
+      in: query
+      schema:
+        type: string
+        enum:
+        - preferred
+        - USD
+      description: 'Currency of revenue and cost.
+
+        Aggregate Pull API reports always use the app-specific currency.
+
+        '
+    MaximumRows:
+      name: maximum_rows
+      in: query
+      schema:
+        $ref: '#/components/schemas/MaximumRows'
+    AppId:
+      in: path
+      name: app-id
+      description: Application ID. For non-mobile apps, use the unified app ID with the required platform prefix, for example nativepc-, steam-, epic-, roku-, xbox-, and others. For the complete list see [the overview](https://dev.appsflyer.com/hc/reference/raw_data_pull_api_tokenv2-overview#supported-non-mobile-platform-prefixes-and-examples).
+      example: id121244
+      required: true
+      schema:
+        type: string
+    MediaSource:
+      description: 'Use to filter by a specific media source
+
+        Set both the `category` and `media_source` parameters as follows:
+
+        - For Facebook set `category` and `media_source` to facebook
+
+        - For Twitter set `category` and `media_source` to twitter
+
+        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
+
+        Examples
+
+        - `media_source=facebook&category=facebook`
+
+        - `media_source=abc_example&category=standard`
+
+        '
+      name: media_source
+      in: query
+      schema:
+        type: string
+      example: facebook
+    TimeZone:
+      name: timezone
+      in: query
+      schema:
+        oneOf:
+        - $ref: '#/components/schemas/TimeZoneList'
+      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
+
+        - Data returns using the app-specific time zone.
+
+        - Time zone format takes into account daylight saving time.
+
+        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
+
+        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
+
+        '
   responses:
     BadRequest:
       description: Bad Request
@@ -1606,20 +1606,6 @@ components:
               description: report_rows can have the value 200000 or 1000000.
               value:
                 message: Invalid limit type
-    NotFound:
-      description: 'App ID wasn''t found.
-
-        - Ensure that the app ID is correct. iOS apps must start with ID.
-
-        - The token doesn''t match the app. Are you using the correct token?
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: AppsFlyer 404 error message page displays
     Unauthorized:
       description: Account may be suspended. Log in to the dashboard and check the account status.
       content:
@@ -1641,6 +1627,20 @@ components:
           schema:
             type: string
       description: Reports returned in CSV format
+    NotFound:
+      description: 'App ID wasn''t found.
+
+        - Ensure that the app ID is correct. iOS apps must start with ID.
+
+        - The token doesn''t match the app. Are you using the correct token?
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: AppsFlyer 404 error message page displays
   securitySchemes:
     Bearer-Authentication:
       type: http

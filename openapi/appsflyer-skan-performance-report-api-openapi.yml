@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: SKAN aggregated performance report SKAN performance report API
+  title: SKAN aggregated performance report SKAN performance report…
   version: 1.0.0
 servers:
 - url: https://hq1.appsflyer.com/api/skadnetworks/v3
@@ -17,7 +17,16 @@ paths:
       tags:
       - SKAN performance report
       summary: Get performance report
-      description: "> ⚠️ Important\n>\n> All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).\n\n> ℹ️ For the base URL (on the right), select either /v2/ for SKAN V3 or /v3/ for SKAN V4.\n> If you select SKAN V4, but results are for SKAN V3 postbacks, the SKAN V4 fields return `null`. \n"
+      description: '> ⚠️ Important
+
+        >
+
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
+
+
+        > ℹ️ For the base URL (on the right), select either /v2/ for SKAN V3 or /v3/ for SKAN V4.
+
+        > If you select SKAN V4, but results are for SKAN V3 postbacks, the SKAN V4 fields return `null`.'
       operationId: skan-agg-performance-report-api-get
       parameters:
       - name: app_id

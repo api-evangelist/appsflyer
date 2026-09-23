@@ -1,27 +1,7 @@
 openapi: 3.2.0
 info:
   title: ROI360 Net Revenue API (v2.0) Store commission rates API
-  description: 'ROI360 automatically calculates net in-app-purchase (IAP) and subscription revenue by deducting store commissions and local taxes from the gross amount.
-
-
-    The default settings cover standard App Store and Google Play fees and taxes. If your store commission differs (e.g. Apple Small Business Program at 15%) or you operate in a country with special tax treatment, use the Net Revenue API to override the defaults.
-
-
-    ROI360 applies the following default store commissions:
-
-    - **IAP (one-time purchases):** 30% on both iOS and Android.
-
-    - **Subscriptions:** 30% on iOS during the first 12 months, dropping to 15% thereafter; 15% on Android from day one.
-
-
-    Default tax rates can be found [here](https://docs.google.com/document/d/e/2PACX-1vSl3DwlK2Gt2aa5gmDzD3-K3CtnIM85oMNrqx3PCTamwCERWYU48GugNpD31BFjA2PJjZnqaXIVe2Hx/pub).
-
-
-    > ⚠️
-
-    >  **Deprecation Notice:** API v1.0 (`/api/stores-taxes/v1.0/`) is deprecated. Please migrate to v2.0 (`/api/net-revenue/v2.0/`).
-
-    '
+  description: ROI360 automatically calculates net in-app-purchase (IAP) and subscription revenue by deducting store commissions and local taxes from the gross amount.
   version: 2.0.0
 servers:
 - url: https://hq1.appsflyer.com/api/net-revenue/v2.0/
@@ -123,6 +103,8 @@ paths:
                   value:
                     message: Internal error. please try again later.
                     request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+      operationId: deleteStoreCommissionRatesAppByAppIds
+      x-operation-id-source: derived
     get:
       tags:
       - Store commission rates
@@ -225,6 +207,8 @@ paths:
                   value:
                     message: Internal error. please try again later.
                     request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+      operationId: getStoreCommissionRatesAppByAppIds
+      x-operation-id-source: derived
   /store_commission_rates:
     post:
       tags:
@@ -371,14 +355,10 @@ paths:
                   value:
                     message: Internal error. please try again later.
                     request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+      operationId: postStoreCommissionRates
+      x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      properties:
-        message:
-          type: string
-        request_id:
-          type: string
     StoreCommission:
       type: object
       required:
@@ -420,6 +400,12 @@ components:
 
             '
           example: google_15pct_tier_first_1m
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
   responses:
     Success:
       description: Valid request

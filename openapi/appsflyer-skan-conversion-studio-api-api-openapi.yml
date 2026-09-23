@@ -14,9 +14,7 @@ paths:
       tags:
       - SKAN conversion studio API
       summary: Copy SKAN schema
-      description: 'Copy the SKAN conversion value (CV) schema from 1 app to another.
-
-        '
+      description: Copy the SKAN conversion value (CV) schema from 1 app to another.
       operationId: skan-studio-duplicate-config
       parameters:
       - name: app_id

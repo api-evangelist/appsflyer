@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Partner integration settings Google Play install referrer API
+  title: Partner integration settings Google Play install referrer…
   description: Public API for managing partner integrations
   version: 1.0.0
 servers:
@@ -20,12 +20,10 @@ paths:
 
         >
 
-        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. [Learn how](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-AppsFlyer-tokens).
+        > All API V2 tokens generated before March 10, 2026, 19:00 UTC have been revoked. If your token was generated before this date, please regenerate it. Learn how.
 
 
-        Set the Google Play install referrer decryption key for each app as recieved by Facebook.
-
-        '
+        Set the Google Play install referrer decryption key for each app as recieved by Facebook.'
       requestBody:
         description: 'Use these examples as a template for your request body:'
         content:
@@ -93,9 +91,18 @@ paths:
                     message: Integration for app <app id> with <pid> is not enabled
         '500':
           description: Internal server error - please try again
+      operationId: postV1IntegrationParams
+      x-operation-id-source: derived
 components:
   schemas:
-    IntegrationNotEnabledError:
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    InvalidValueError:
       properties:
         status:
           type: string
@@ -122,23 +129,14 @@ components:
               description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
 
                 '
-    app_id:
-      type: string
-      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
-
-        Example values:
-
-        - **Android:** com.publisher.name
-
-        '
-    GeneralFailureError:
+    AccountTypeError:
       properties:
         status:
           type: string
         message:
           type: string
       type: object
-    AccountTypeError:
+    GeneralFailureError:
       properties:
         status:
           type: string
@@ -150,20 +148,15 @@ components:
       description: 'AppsFlyer Partner ID
 
         '
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    MissingParamError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
+    app_id:
+      type: string
+      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
+
+        Example values:
+
+        - **Android:** com.publisher.name
+
+        '
     UnauthorizedAppError:
       properties:
         status:
@@ -199,6 +192,13 @@ components:
           properties:
             mapped-in-app-events:
               type: object
+      type: object
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
       type: object
   securitySchemes:
     bearerAuth:
