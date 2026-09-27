@@ -112,15 +112,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    platform:
-      type: string
-      description: 'Android, iOS
-
-        '
-      enum:
-      - android
-      - ios
-      example: android
     connection:
       required:
       - integration_id
@@ -131,16 +122,6 @@ components:
         split_ratio:
           type: integer
           example: 50
-    integration_id:
-      type: integer
-      example: 1234
-    success_response:
-      required:
-      - message
-      properties:
-        message:
-          type: object
-          example: null
     error_response:
       required:
       - error_code
@@ -162,6 +143,25 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    platform:
+      type: string
+      description: 'Android, iOS
+
+        '
+      enum:
+      - android
+      - ios
+      example: android
+    integration_id:
+      type: integer
+      example: 1234
   securitySchemes:
     bearerAuth:
       type: http

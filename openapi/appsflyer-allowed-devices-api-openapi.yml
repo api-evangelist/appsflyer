@@ -116,6 +116,22 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: authentication error
+    NotFound:
+      description: The specified App ID does not exist within the account.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: app_id not found
     Conflict:
       description: You have added the maximum number of devices allowed by the Devices API.
       content:
@@ -124,12 +140,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: device limit reached
-    InternalError:
-      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: The request has invalid parameters
       content:
@@ -146,22 +156,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: forbidden
-    NotFound:
-      description: The specified App ID does not exist within the account.
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: app_id not found
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: authentication error
   parameters:
     AppId:
       name: app-id

@@ -57,6 +57,19 @@ tags:
 - Ad Fraud Prevention
 - SKAdNetwork
 - Privacy
+- AdTech
+- Mobile SDK
+- AI Agents
+tags_raw:
+- Company
+- Mobile Attribution
+- Marketing Analytics
+- Mobile Measurement
+- Deep Linking
+- Audiences
+- Ad Fraud Prevention
+- SKAdNetwork
+- Privacy
 - Advertising Technology
 - Mobile SDK
 - Agentic AI
@@ -108,9 +121,9 @@ apis:
   baseURL: https://mcp.appsflyer.com/
   tags:
   - MCP
-  - Agentic AI
+  - AI Agents
   - LLM
-  - agent-native
+  - Agent-Native
   - Marketing Analytics
   tags_raw:
   - mcp
@@ -118,6 +131,7 @@ apis:
   - llm
   - agent-native
   - marketing-analytics
+  - Agentic AI
   properties:
   - type: Documentation
     url: https://www.appsflyer.com/products/agentic-ai/mcp/

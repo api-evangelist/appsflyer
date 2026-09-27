@@ -270,6 +270,34 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    UnmatchedPlatformError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
     copyPartnerParams:
       title: Set the parameters for the request
       required:
@@ -288,20 +316,31 @@ components:
           type: object
         in_app_postbacks_params:
           type: object
-    MissingParamError:
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AccountTypeError:
       properties:
         status:
           type: string
         message:
           type: string
       type: object
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
+    copy_from_app_id:
+      type: string
+      description: 'App to copy integration configuration ***from*** (''source app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
     copy_to_app_id:
       type: string
       description: 'App to copy integration configuration ***to*** (''destination app'')
@@ -322,46 +361,14 @@ components:
         message:
           type: string
       type: object
-    AccountTypeError:
+    TosError:
       properties:
         status:
           type: string
         message:
           type: string
       type: object
-    GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    copy_from_app_id:
-      type: string
-      description: 'App to copy integration configuration ***from*** (''source app'')
-
-        Examples per OS:
-
-        - **Android:** com.publisher.name
-
-        - **iOS:** id123456789
-
-        - **Windows Phone:** a1b2c3d4e5f6
-
-        '
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
-    UnmatchedPlatformError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    UnauthorizedAppError:
+    IntegrationNotEnabledError:
       properties:
         status:
           type: string
@@ -397,14 +404,7 @@ components:
             mapped-in-app-events:
               type: object
       type: object
-    TosError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    IntegrationNotEnabledError:
+    UnauthorizedAppError:
       properties:
         status:
           type: string

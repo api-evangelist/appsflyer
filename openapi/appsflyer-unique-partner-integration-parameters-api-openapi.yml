@@ -61,6 +61,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    PartnerParamsResponse:
+      properties:
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
     platform:
       type: string
       description: 'iOS/Android/Roku/Windows Phone
@@ -71,24 +89,6 @@ components:
       - android
       - roku
       - windowsphone
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    PartnerParamsResponse:
-      properties:
-        general_params:
-          type: object
-        in_app_postbacks_params:
-          type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
   securitySchemes:
     bearerAuth:
       type: http

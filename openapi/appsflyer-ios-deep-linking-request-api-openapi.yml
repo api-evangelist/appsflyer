@@ -149,7 +149,32 @@ paths:
       operationId: postIosByAppId
       x-operation-id-source: derived
 components:
+  responses:
+    GatewayTimeout:
+      description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.
+      content: {}
+    BadRequest:
+      description: Bad Request. The request message is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Bad Request
+    ServiceUnavailable:
+      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
+      content: {}
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
     DLResponse:
       title: shared response
       required:
@@ -242,28 +267,3 @@ components:
         value:
           type: string
           example: 123456436CDFAC250CBEAF3BFFCD713E3F123456
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - message
-  responses:
-    GatewayTimeout:
-      description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.
-      content: {}
-    ServiceUnavailable:
-      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
-      content: {}
-    BadRequest:
-      description: Bad Request. The request message is not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Bad Request

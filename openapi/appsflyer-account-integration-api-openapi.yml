@@ -138,43 +138,17 @@ paths:
       operationId: postIntegrations
       x-operation-id-source: derived
 components:
-  responses:
-    MissingAuthorizationToken:
-      description: Missing authorization token
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-            example:
-              error: Missing authorization header
-    AppIdNotFound:
-      description: app_id is not under the account linked to the authorization token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-            example:
-              message: 'integration 0: app_id ''com.config.test'' not permitted for provided token'
-              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
-    Success:
-      description: Valid request
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-              request_id:
-                type: string
-            example:
-              message: Successfully processed 1 integration updates
-              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
   schemas:
-    Appodeal:
+    Chartboost:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        user_signature:
+          type: string
+        user_id:
+          type: string
+    Inmobi:
       type: object
       properties:
         api_key:
@@ -182,38 +156,6 @@ components:
         user_id:
           type: string
         network_app_id:
-          type: string
-        app_key:
-          type: string
-    Applovin_MAX:
-      type: object
-      properties:
-        report_key:
-          type: string
-        package_name:
-          type: string
-    ByteDance_China:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        secure_key:
-          type: string
-        account_id:
-          type: string
-    AdMost:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        token:
-          type: string
-    Vungle:
-      type: object
-      properties:
-        app_id:
-          type: string
-        application_id:
           type: string
     IronSource:
       type: object
@@ -226,6 +168,45 @@ components:
           type: string
         username:
           type: string
+    Mintegral:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        secret:
+          type: string
+        skey:
+          type: string
+    Applovin_MAX:
+      type: object
+      properties:
+        report_key:
+          type: string
+        package_name:
+          type: string
+    Appodeal:
+      type: object
+      properties:
+        api_key:
+          type: string
+        user_id:
+          type: string
+        network_app_id:
+          type: string
+        app_key:
+          type: string
+    Tapdaq:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        report_key:
+          type: string
+    Odeeo:
+      type: object
+      properties:
+        api_key:
+          type: string
     Fyber:
       type: object
       properties:
@@ -235,7 +216,14 @@ components:
           type: string
         client_secret:
           type: string
-    TikTok_for_business:
+    Applovin:
+      type: object
+      properties:
+        api_key:
+          type: string
+        filter_package_name:
+          type: string
+    ByteDance_China:
       type: object
       properties:
         network_app_id:
@@ -243,15 +231,6 @@ components:
         secure_key:
           type: string
         account_id:
-          type: string
-    Mintegral:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        secret:
-          type: string
-        skey:
           type: string
     Unity:
       type: object
@@ -291,26 +270,27 @@ components:
           example: true
         source_event:
           type: string
-    Tapdaq:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        report_key:
-          type: string
-    AdColony:
+    Vungle:
       type: object
       properties:
         app_id:
           type: string
-        user_credentials:
+        application_id:
           type: string
-    Applovin:
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
+    TikTok_for_business:
       type: object
       properties:
-        api_key:
+        network_app_id:
           type: string
-        filter_package_name:
+        secure_key:
+          type: string
+        account_id:
           type: string
     Tradplusad:
       type: object
@@ -319,35 +299,19 @@ components:
           type: string
         api_key:
           type: string
-    Odeeo:
-      type: object
-      properties:
-        api_key:
-          type: string
-    Inmobi:
-      type: object
-      properties:
-        api_key:
-          type: string
-        user_id:
-          type: string
-        network_app_id:
-          type: string
-    Chartboost:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        user_signature:
-          type: string
-        user_id:
-          type: string
     Topon:
       type: object
       properties:
         network_app_id:
           type: string
         publisher_key:
+          type: string
+    AdColony:
+      type: object
+      properties:
+        app_id:
+          type: string
+        user_credentials:
           type: string
     Integration:
       title: An array describing the ad revenue integrations for which all the hierarchical data is defined.
@@ -412,12 +376,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
-    Error:
+    AdMost:
+      type: object
       properties:
-        message:
+        network_app_id:
           type: string
-        request_id:
+        token:
           type: string
+  responses:
+    AppIdNotFound:
+      description: app_id is not under the account linked to the authorization token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            example:
+              message: 'integration 0: app_id ''com.config.test'' not permitted for provided token'
+              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    Success:
+      description: Valid request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              request_id:
+                type: string
+            example:
+              message: Successfully processed 1 integration updates
+              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    MissingAuthorizationToken:
+      description: Missing authorization token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+            example:
+              error: Missing authorization header
   securitySchemes:
     bearerAuth:
       type: http

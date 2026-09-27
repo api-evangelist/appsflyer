@@ -150,6 +150,12 @@ components:
       properties:
         message:
           type: string
+    error_response:
+      required:
+      - message
+      properties:
+        message:
+          type: string
     device_identifier:
       type: object
       properties:
@@ -176,12 +182,6 @@ components:
         braze_id:
           type: string
         amplitude_id:
-          type: string
-    error_response:
-      required:
-      - message
-      properties:
-        message:
           type: string
   securitySchemes:
     bearerAuth:

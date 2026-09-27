@@ -234,6 +234,50 @@ paths:
                 $ref: '#/components/schemas/APIErrorData'
 components:
   schemas:
+    DiscoveryResponse:
+      type: object
+      properties:
+        api_version:
+          type: string
+        supported_subject_request_types:
+          type: string
+        supported_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
+        processor_certificate:
+          type: string
+    CreateBatchResponse:
+      type: object
+      properties:
+        batch_id:
+          type: string
+        encoded_request:
+          type: string
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateResponse'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    BatchRequest:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Request'
     APIErrorData:
       type: object
       properties:
@@ -348,35 +392,6 @@ components:
           - e417
           - e511
           example: e313
-    BatchRequest:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/Request'
-    APIErrorWrapper:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    CreateBatchResponse:
-      type: object
-      properties:
-        batch_id:
-          type: string
-        encoded_request:
-          type: string
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateResponse'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorResponse'
     SubjectIdentity:
       type: object
       properties:
@@ -432,43 +447,6 @@ components:
           type: string
           enum:
           - raw
-    ErrorResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    Meta:
-      type: object
-      properties:
-        api_version:
-          type: string
-        property_id:
-          type: string
-        platform:
-          type: string
-          description: Platform is the platform of the app
-        status_callback_urls:
-          type: array
-          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
-          items:
-            type: string
-        submitted_time:
-          type: string
-    DiscoveryResponse:
-      type: object
-      properties:
-        api_version:
-          type: string
-        supported_subject_request_types:
-          type: string
-        supported_identities:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
-        processor_certificate:
-          type: string
     Request:
       type: object
       properties:
@@ -509,42 +487,6 @@ components:
         requester:
           type: string
           description: Requester is the email of the requester
-    Status:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-          description: SubjectRequestID is a unique identifier represent as UUID v4
-        controller_id:
-          type: string
-          description: ControllerID is the requester
-        expected_completion_time:
-          type: string
-          description: ExpectedCompletionTime is the expected time to complete the request
-        request_status:
-          type: string
-          description: RequestStatus is the current status of the request
-          enum:
-          - pending
-          - in-progress
-          - completed
-          - canceled
-          example: pending
-    CreateResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        original_request_id:
-          type: string
-        expected_completion_time:
-          type: string
-        received_time:
-          type: string
-        encoded_request:
-          type: string
-        info:
-          type: string
     SupportedIdentitiesDiscoveryResponse:
       type: object
       properties:
@@ -587,6 +529,64 @@ components:
           - idfv
           example: android_advertising_id
         identity_format:
+          type: string
+    Meta:
+      type: object
+      properties:
+        api_version:
+          type: string
+        property_id:
+          type: string
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        submitted_time:
+          type: string
+    Status:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: SubjectRequestID is a unique identifier represent as UUID v4
+        controller_id:
+          type: string
+          description: ControllerID is the requester
+        expected_completion_time:
+          type: string
+          description: ExpectedCompletionTime is the expected time to complete the request
+        request_status:
+          type: string
+          description: RequestStatus is the current status of the request
+          enum:
+          - pending
+          - in-progress
+          - completed
+          - canceled
+          example: pending
+    APIErrorWrapper:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    CreateResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        original_request_id:
+          type: string
+        expected_completion_time:
+          type: string
+        received_time:
+          type: string
+        encoded_request:
+          type: string
+        info:
           type: string
   securitySchemes:
     BearerAuth:

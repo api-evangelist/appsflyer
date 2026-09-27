@@ -22,14 +22,10 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  schemas:
+    Error:
+      type: string
   responses:
-    Success:
-      description: Request successful.
-      content:
-        text/plain:
-          schema:
-            type: string
-            example: '2023-08-13'
     Unauthorized:
       description: Account may be suspended. Log in to the dashboard and check the account status.
       content:
@@ -41,9 +37,13 @@ components:
               summary: Invalid authorization token
               value:
                 message: The supplied API token is invalid
-  schemas:
-    Error:
-      type: string
+    Success:
+      description: Request successful.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: '2023-08-13'
   securitySchemes:
     Bearer-Authentication:
       type: http

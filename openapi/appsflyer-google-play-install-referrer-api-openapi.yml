@@ -95,13 +95,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MissingParamError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
     InvalidValueError:
       properties:
         status:
@@ -109,6 +102,41 @@ components:
         message:
           type: string
       type: object
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    app_id:
+      type: string
+      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
+
+        Example values:
+
+        - **Android:** com.publisher.name
+
+        '
     setFacebook:
       title: Facebook Ads
       required:
@@ -129,35 +157,7 @@ components:
               description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
 
                 '
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
-    app_id:
-      type: string
-      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
-
-        Example values:
-
-        - **Android:** com.publisher.name
-
-        '
-    UnauthorizedAppError:
+    IntegrationNotEnabledError:
       properties:
         status:
           type: string
@@ -193,7 +193,7 @@ components:
             mapped-in-app-events:
               type: object
       type: object
-    IntegrationNotEnabledError:
+    UnauthorizedAppError:
       properties:
         status:
           type: string

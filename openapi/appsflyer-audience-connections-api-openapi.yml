@@ -149,6 +149,9 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    partner_id:
+      type: string
+      example: amazon_int
     connections_response:
       type: array
       items:
@@ -196,19 +199,6 @@ components:
       - type: object
         example: null
       example: 50
-    partner_id:
-      type: string
-      example: amazon_int
-    integration_id:
-      type: integer
-      example: 1234
-    success_response:
-      required:
-      - message
-      properties:
-        message:
-          type: object
-          example: null
     error_response:
       required:
       - error_code
@@ -230,6 +220,16 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
+    integration_id:
+      type: integer
+      example: 1234
     integration_name:
       type: string
       example: Integration 123

@@ -38,6 +38,42 @@ paths:
       operationId: postByAppId
       x-operation-id-source: derived
 components:
+  responses:
+    UnprocessableEntity:
+      description: Unprocessable entity.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              expose:
+                type: string
+          example:
+            error: 'Invalid value: days for key: granularity. Expected one of: hour, week, month, day'
+            expose: false
+    Unauthorized:
+      description: Authentication failed.
+      content:
+        application/json:
+          schema:
+            type: string
+          example: Authentication error
+    RateLimitError:
+      description: Rate Limit Error.
+      content:
+        application/json:
+          schema:
+            type: string
+    Success:
+      description: Request successful.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: {}
+        text/csv: {}
   schemas:
     Filters:
       type: object
@@ -397,42 +433,6 @@ components:
         type: string
         description: App ID of the app for which you get the report
         example: com.example.testapp
-  responses:
-    UnprocessableEntity:
-      description: Unprocessable entity.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              expose:
-                type: string
-          example:
-            error: 'Invalid value: days for key: granularity. Expected one of: hour, week, month, day'
-            expose: false
-    Success:
-      description: Request successful.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: {}
-        text/csv: {}
-    Unauthorized:
-      description: Authentication failed.
-      content:
-        application/json:
-          schema:
-            type: string
-          example: Authentication error
-    RateLimitError:
-      description: Rate Limit Error.
-      content:
-        application/json:
-          schema:
-            type: string
   requestBodies:
     createReportBody:
       description: Body for create report request
