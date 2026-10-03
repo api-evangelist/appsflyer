@@ -163,21 +163,44 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    TimeZone:
-      name: timezone
+    ReAttribution:
+      name: reattr
+      in: query
+      description: 'Get retargeting conversions data.
+
+        **[Default]** is false - user acquisition data (UA) campaigns returns.
+
+        If true, retargeting conversion returns.
+
+        '
+      schema:
+        type: string
+        enum:
+        - ''
+        - true
+    FromDate:
+      in: query
+      name: from
+      description: From date (report start date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+      required: true
+      schema:
+        type: string
+        format: date
+    Currency:
+      name: currency
       in: query
       schema:
-        oneOf:
-        - $ref: '#/components/schemas/TimeZoneList'
-      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
+        type: string
+        enum:
+        - preferred
+        - USD
+      description: 'Currency of revenue and cost.
 
-        - Data returns using the app-specific time zone.
-
-        - Time zone format takes into account daylight saving time.
-
-        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
-
-        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
+        Aggregate Pull API reports always use the app-specific currency.
 
         '
     MediaSource:
@@ -213,19 +236,23 @@ components:
         - standard
         - facebook
         - twitter
-    Currency:
-      name: currency
+    AttributionTouchType:
+      description: Set this parameter as shown in the example to get view-through attribution (VTA) KPIs.
+      name: attribution_touch_type
       in: query
       schema:
         type: string
         enum:
-        - preferred
-        - USD
-      description: 'Currency of revenue and cost.
-
-        Aggregate Pull API reports always use the app-specific currency.
-
-        '
+        - ''
+        - impression
+    AppId:
+      in: path
+      name: app-id
+      description: Application ID
+      example: id121244
+      required: true
+      schema:
+        type: string
     ToDate:
       in: query
       name: to
@@ -238,104 +265,23 @@ components:
       schema:
         type: string
         format: date
-    AppId:
-      in: path
-      name: app-id
-      description: Application ID
-      example: id121244
-      required: true
-      schema:
-        type: string
-    ReAttribution:
-      name: reattr
+    TimeZone:
+      name: timezone
       in: query
-      description: 'Get retargeting conversions data.
+      schema:
+        oneOf:
+        - $ref: '#/components/schemas/TimeZoneList'
+      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
 
-        **[Default]** is false - user acquisition data (UA) campaigns returns.
+        - Data returns using the app-specific time zone.
 
-        If true, retargeting conversion returns.
+        - Time zone format takes into account daylight saving time.
+
+        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
+
+        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
 
         '
-      schema:
-        type: string
-        enum:
-        - ''
-        - true
-    AttributionTouchType:
-      description: Set this parameter as shown in the example to get view-through attribution (VTA) KPIs.
-      name: attribution_touch_type
-      in: query
-      schema:
-        type: string
-        enum:
-        - ''
-        - impression
-    FromDate:
-      in: query
-      name: from
-      description: From date (report start date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-      required: true
-      schema:
-        type: string
-        format: date
-  responses:
-    Unauthorized:
-      description: Account may be suspended. Log in to the dashboard and check the account status.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            InvalidToken:
-              description: Ask an admin for the current token
-              value:
-                message: Supplied API token is invalid
-            Suspended:
-              description: Log in to the dashboard and check the account status
-              value:
-                message: Account may be suspended
-    NotFound:
-      description: 'App ID wasn''t found.
-
-        - Ensure that the app ID is correct. iOS apps must start with ID.
-
-        - The token doesn''t match the app. Are you using the correct token?
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: AppsFlyer 404 error message page displays
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            CallLimit:
-              value:
-                message: Your API call limit has been reached for the given report type
-            LookBack:
-              description: Use `to` and `from` to limit the date range to 3 months or less.
-              value:
-                message: Raw reports historical lookback is limited to 90 days
-            InvalidLimit:
-              description: report_rows can have the value 200000 or 1000000.
-              value:
-                message: Invalid limit type
-    Success:
-      content:
-        text/csv:
-          schema:
-            type: string
-      description: Reports returned in CSV format
   schemas:
     Error:
       type: string
@@ -937,6 +883,60 @@ components:
       - W-SU
       - WET
       - Zulu
+  responses:
+    NotFound:
+      description: 'App ID wasn''t found.
+
+        - Ensure that the app ID is correct. iOS apps must start with ID.
+
+        - The token doesn''t match the app. Are you using the correct token?
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: AppsFlyer 404 error message page displays
+    Success:
+      content:
+        text/csv:
+          schema:
+            type: string
+      description: Reports returned in CSV format
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            CallLimit:
+              value:
+                message: Your API call limit has been reached for the given report type
+            LookBack:
+              description: Use `to` and `from` to limit the date range to 3 months or less.
+              value:
+                message: Raw reports historical lookback is limited to 90 days
+            InvalidLimit:
+              description: report_rows can have the value 200000 or 1000000.
+              value:
+                message: Invalid limit type
+    Unauthorized:
+      description: Account may be suspended. Log in to the dashboard and check the account status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            InvalidToken:
+              description: Ask an admin for the current token
+              value:
+                message: Supplied API token is invalid
+            Suspended:
+              description: Log in to the dashboard and check the account status
+              value:
+                message: Account may be suspended
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

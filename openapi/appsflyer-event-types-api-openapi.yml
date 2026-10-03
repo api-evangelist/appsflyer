@@ -59,8 +59,8 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
       headers:
         deprecated:
           description: is the api version deprecated
@@ -82,6 +82,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
     SchemaErrorInvalidPathParam:
       description: Invalid path-params. Verify the content and resubmit.
       headers:
@@ -132,8 +136,8 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: The API version listed in the URL is no longer valid. Check the API documentation
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
       headers:
         deprecated:
           description: is the api version deprecated
@@ -155,10 +159,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
   schemas:
     Error:
       example:

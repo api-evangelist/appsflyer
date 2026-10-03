@@ -583,13 +583,22 @@ paths:
       operationId: postTaxRatesAppByAppId
       x-operation-id-source: derived
 components:
+  responses:
+    Success:
+      description: Valid request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              request_id:
+                type: string
+            example:
+              message: Successfully processed
+              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
   schemas:
-    Error:
-      properties:
-        message:
-          type: string
-        request_id:
-          type: string
     TaxRateRule:
       type: object
       required:
@@ -907,21 +916,12 @@ components:
             - 2 - Both tax and store commission are deducted from the total revenue.
 
             '
-  responses:
-    Success:
-      description: Valid request
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-              request_id:
-                type: string
-            example:
-              message: Successfully processed
-              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

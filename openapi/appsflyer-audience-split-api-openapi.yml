@@ -130,9 +130,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    partner_id:
+    integration_name:
       type: string
-      example: amazon_int
+      example: Integration 123
+    integration_id:
+      type: integer
+      example: 1234
     error_response:
       required:
       - error_code
@@ -176,12 +179,9 @@ components:
             $ref: '#/components/schemas/partner_id'
           integration_name:
             $ref: '#/components/schemas/integration_name'
-    integration_id:
-      type: integer
-      example: 1234
-    integration_name:
+    partner_id:
       type: string
-      example: Integration 123
+      example: amazon_int
   securitySchemes:
     bearerAuth:
       type: http

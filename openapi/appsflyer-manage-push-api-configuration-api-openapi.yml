@@ -369,7 +369,104 @@ paths:
       operationId: putAppByAppId
       x-operation-id-source: derived
 components:
+  responses:
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+    VersionNoLongerValid:
+      description: The API version listed in the URL is no longer valid
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: The API version listed in the URL is no longer valid. Check the API documentation
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+    Method:
+      type: string
+      enum:
+      - ''
+      - GET
+      - POST
     RegularIosConfig:
       title: Regular iOS Config
       type: object
@@ -543,16 +640,6 @@ components:
           enum:
           - appsflyer
           default: appsflyer
-    Url:
-      type: string
-      maxLength: 2048
-      example: http://some.url.com:40/dir
-    Method:
-      type: string
-      enum:
-      - ''
-      - GET
-      - POST
     RegularAndroidConfig:
       title: Regular Android Config
       type: object
@@ -726,21 +813,6 @@ components:
           enum:
           - appsflyer
           default: appsflyer
-    Error:
-      example:
-        code: SomeErrorCode
-        message: Some error message.
-        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-      type: object
-      properties:
-        status:
-          type: integer
-        code:
-          type: string
-        message:
-          type: string
-        request_id:
-          type: string
     SkadConfig:
       title: SKADnetwork iOS Config
       type: object
@@ -772,82 +844,10 @@ components:
           enum:
           - skadnetwork
           default: skadnetwork
-  responses:
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    VersionNoLongerValid:
-      description: The API version listed in the URL is no longer valid
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: The API version listed in the URL is no longer valid. Check the API documentation
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
   securitySchemes:
     Bearer-Authentication:
       type: http

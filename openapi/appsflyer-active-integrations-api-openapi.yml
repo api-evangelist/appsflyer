@@ -123,11 +123,6 @@ components:
                       type: boolean
                     is_adrevenue_active:
                       type: boolean
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
     AccountTypeError:
       properties:
         status:
@@ -144,6 +139,11 @@ components:
             type: object
           in_app_postbacks_params:
             type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
   securitySchemes:
     bearerAuth:
       type: http

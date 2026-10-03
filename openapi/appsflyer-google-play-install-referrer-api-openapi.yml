@@ -95,39 +95,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    MissingParamError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
     app_id:
       type: string
       description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
@@ -157,13 +124,6 @@ components:
               description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
 
                 '
-    IntegrationNotEnabledError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
     Response:
       properties:
         general_params:
@@ -194,6 +154,46 @@ components:
               type: object
       type: object
     UnauthorizedAppError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    AccountTypeError:
       properties:
         status:
           type: string

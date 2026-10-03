@@ -116,14 +116,14 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: authentication error
+            error: forbidden
     NotFound:
       description: The specified App ID does not exist within the account.
       content:
@@ -148,20 +148,26 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: cannot parse body
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
     InternalError:
       description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: authentication error
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   parameters:
     AppId:
       name: app-id
@@ -171,12 +177,6 @@ components:
         type: string
         description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
         example: com.example.testapp
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
   securitySchemes:
     Bearer-Authentication:
       type: http

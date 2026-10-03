@@ -122,6 +122,18 @@ components:
         split_ratio:
           type: integer
           example: 50
+    platform:
+      type: string
+      description: 'Android, iOS
+
+        '
+      enum:
+      - android
+      - ios
+      example: android
+    integration_id:
+      type: integer
+      example: 1234
     error_response:
       required:
       - error_code
@@ -150,18 +162,6 @@ components:
         message:
           type: object
           example: null
-    platform:
-      type: string
-      description: 'Android, iOS
-
-        '
-      enum:
-      - android
-      - ios
-      example: android
-    integration_id:
-      type: integer
-      example: 1234
   securitySchemes:
     bearerAuth:
       type: http

@@ -74,11 +74,6 @@ components:
         message:
           type: string
       type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
     platform:
       type: string
       description: 'iOS/Android/Roku/Windows Phone
@@ -89,6 +84,11 @@ components:
       - android
       - roku
       - windowsphone
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
   securitySchemes:
     bearerAuth:
       type: http

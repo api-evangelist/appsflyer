@@ -132,6 +132,42 @@ paths:
       operationId: postFirstOpenAppByPlatformByAppId
       x-operation-id-source: derived
 components:
+  parameters:
+    AppId:
+      name: app-id
+      in: path
+      schema:
+        type: string
+        pattern: ^[A-Za-z0-9.\-]+$
+      required: true
+      description: 'Application ID
+
+        '
+    Platform:
+      name: platform
+      in: path
+      schema:
+        type: string
+        enum:
+        - ''
+        - roku
+        - smartcast
+        - tizen
+        - webos
+        - playstation
+        - vidaa
+        - steam
+        - quest
+        - battlenet
+        - epic
+        - switch
+        - xbox
+        - nativepc
+        - vega
+      required: true
+      description: 'The CTV platform of the measured app
+
+        '
   schemas:
     DeviceIds:
       type: array
@@ -188,42 +224,6 @@ components:
         minItems: 1
         maxItems: 1
         title: all partners blocked
-  parameters:
-    Platform:
-      name: platform
-      in: path
-      schema:
-        type: string
-        enum:
-        - ''
-        - roku
-        - smartcast
-        - tizen
-        - webos
-        - playstation
-        - vidaa
-        - steam
-        - quest
-        - battlenet
-        - epic
-        - switch
-        - xbox
-        - nativepc
-        - vega
-      required: true
-      description: 'The CTV platform of the measured app
-
-        '
-    AppId:
-      name: app-id
-      in: path
-      schema:
-        type: string
-        pattern: ^[A-Za-z0-9.\-]+$
-      required: true
-      description: 'Application ID
-
-        '
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

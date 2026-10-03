@@ -270,90 +270,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    MissingParamError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    UnmatchedPlatformError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    copyPartnerParams:
-      title: Set the parameters for the request
-      required:
-      - pid
-      - copy_from_app_id
-      - copy_to_app_id
-      type: object
-      properties:
-        pid:
-          $ref: '#/components/schemas/pid'
-        copy_from_app_id:
-          $ref: '#/components/schemas/copy_from_app_id'
-        copy_to_app_id:
-          $ref: '#/components/schemas/copy_to_app_id'
-        general_params:
-          type: object
-        in_app_postbacks_params:
-          type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    copy_from_app_id:
-      type: string
-      description: 'App to copy integration configuration ***from*** (''source app'')
-
-        Examples per OS:
-
-        - **Android:** com.publisher.name
-
-        - **iOS:** id123456789
-
-        - **Windows Phone:** a1b2c3d4e5f6
-
-        '
-    copy_to_app_id:
-      type: string
-      description: 'App to copy integration configuration ***to*** (''destination app'')
-
-        Examples per OS:
-
-        - **Android:** com.publisher.name
-
-        - **iOS:** id123456789
-
-        - **Windows Phone:** a1b2c3d4e5f6
-
-        '
     UnauthorizedParamError:
       properties:
         status:
@@ -368,13 +284,11 @@ components:
         message:
           type: string
       type: object
-    IntegrationNotEnabledError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
     Response:
       properties:
         general_params:
@@ -404,7 +318,93 @@ components:
             mapped-in-app-events:
               type: object
       type: object
+    UnmatchedPlatformError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
     UnauthorizedAppError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    copy_to_app_id:
+      type: string
+      description: 'App to copy integration configuration ***to*** (''destination app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
+    copy_from_app_id:
+      type: string
+      description: 'App to copy integration configuration ***from*** (''source app'')
+
+        Examples per OS:
+
+        - **Android:** com.publisher.name
+
+        - **iOS:** id123456789
+
+        - **Windows Phone:** a1b2c3d4e5f6
+
+        '
+    copyPartnerParams:
+      title: Set the parameters for the request
+      required:
+      - pid
+      - copy_from_app_id
+      - copy_to_app_id
+      type: object
+      properties:
+        pid:
+          $ref: '#/components/schemas/pid'
+        copy_from_app_id:
+          $ref: '#/components/schemas/copy_from_app_id'
+        copy_to_app_id:
+          $ref: '#/components/schemas/copy_to_app_id'
+        general_params:
+          type: object
+        in_app_postbacks_params:
+          type: object
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    MissingParamError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    GeneralFailureError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    InvalidValueError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    AccountTypeError:
       properties:
         status:
           type: string

@@ -88,15 +88,6 @@ paths:
                       error_message: Incorrect JSON format. Verify and resubmit.
 components:
   schemas:
-    Error:
-      properties:
-        error:
-          type: object
-          properties:
-            af_error_code:
-              type: string
-            error_message:
-              type: string
     InCostData:
       type: object
       required:
@@ -662,6 +653,15 @@ components:
 
             '
           example: abc app
+    Error:
+      properties:
+        error:
+          type: object
+          properties:
+            af_error_code:
+              type: string
+            error_message:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http

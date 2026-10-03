@@ -128,6 +128,11 @@ paths:
                     error: 'Access Denied: Account does not have required permissions to access this page'
 components:
   schemas:
+    StandardApiError:
+      type: object
+      properties:
+        error:
+          type: string
     AuditLogsResponse:
       type: object
       properties:
@@ -204,11 +209,6 @@ components:
       - pagination_metadata
       - pagination_links
       - logs
-    StandardApiError:
-      type: object
-      properties:
-        error:
-          type: string
   securitySchemes:
     Bearer-Authentication:
       type: http
