@@ -60,6 +60,7 @@ tags:
 - AdTech
 - Mobile SDK
 - AI Agents
+- Attribution
 tags_raw:
 - Company
 - Mobile Attribution
@@ -73,6 +74,7 @@ tags_raw:
 - Advertising Technology
 - Mobile SDK
 - Agentic AI
+- Attribution
 apis:
 - name: Creative External API
   description: >-
