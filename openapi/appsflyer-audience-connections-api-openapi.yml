@@ -149,24 +149,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    integration_name:
-      type: string
-      example: Integration 123
-    split_ratio:
-      type: object
-      x-anyOf:
-      - type: string
-        example: 'null'
-      - type: integer
-        minimum: 1
-        maximum: 99
-        example: 50
-      - type: object
-        example: null
-      example: 50
-    integration_id:
-      type: integer
-      example: 1234
     error_response:
       required:
       - error_code
@@ -195,6 +177,24 @@ components:
         message:
           type: object
           example: null
+    integration_name:
+      type: string
+      example: Integration 123
+    split_ratio:
+      type: object
+      x-anyOf:
+      - type: string
+        example: 'null'
+      - type: integer
+        minimum: 1
+        maximum: 99
+        example: 50
+      - type: object
+        example: null
+      example: 50
+    integration_id:
+      type: integer
+      example: 1234
     connections_response:
       type: array
       items:

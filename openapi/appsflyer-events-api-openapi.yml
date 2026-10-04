@@ -142,14 +142,12 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
     NotFound:
       description: The specified App ID does not exist within the account.
       content:
@@ -158,14 +156,14 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: app_id not found
-    Conflict:
-      description: You have added the maximum number of devices allowed by the Devices API.
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: device limit reached
+            error: forbidden
     BadRequest:
       description: The request has invalid parameters
       content:
@@ -174,12 +172,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: cannot parse body
-    InternalError:
-      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or incorrect
       content:
@@ -188,14 +180,28 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: authentication error
+    Conflict:
+      description: You have added the maximum number of devices allowed by the Devices API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: device limit reached
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   parameters:
-    StartTime:
-      name: start_time
+    EndTime:
+      name: end_time
       in: query
-      required: true
+      required: false
       schema:
         type: string
-        description: The Date and Time in UTC ISO 8601 format. The start time must be within the past 2 hours
+        description: Date and Time in UTC ISO 8601 format
       example: '2023-07-12T09:02:26Z'
     DeviceId:
       name: device_id
@@ -206,14 +212,6 @@ components:
         description: The ID of the device registered for testing
         pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
       example: 09ad6f30-a39c-4c6c-8862-636eabd54709
-    EndTime:
-      name: end_time
-      in: query
-      required: false
-      schema:
-        type: string
-        description: Date and Time in UTC ISO 8601 format
-      example: '2023-07-12T09:02:26Z'
     AppId:
       name: app-id
       in: path
@@ -222,12 +220,14 @@ components:
         type: string
         description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
         example: com.example.testapp
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
+    StartTime:
+      name: start_time
+      in: query
+      required: true
+      schema:
+        type: string
+        description: The Date and Time in UTC ISO 8601 format. The start time must be within the past 2 hours
+      example: '2023-07-12T09:02:26Z'
   securitySchemes:
     Bearer-Authentication:
       type: http

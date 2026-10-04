@@ -67,13 +67,6 @@ components:
           type: object
         in_app_postbacks_params:
           type: object
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
     platform:
       type: string
       description: 'iOS/Android/Roku/Windows Phone
@@ -89,6 +82,13 @@ components:
       description: 'AppsFlyer Partner ID
 
         '
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

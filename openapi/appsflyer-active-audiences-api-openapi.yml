@@ -38,27 +38,6 @@ paths:
                 $ref: '#/components/schemas/error_response'
 components:
   schemas:
-    error_response:
-      required:
-      - error_code
-      - message
-      properties:
-        error_code:
-          type: integer
-          enum:
-          - 1000
-          - 1001
-          - 1002
-          - 1003
-          - 1004
-          - 1005
-          - 1006
-          - 1009
-          - 1020
-          example: 1002
-        message:
-          type: string
-          example: Audience does not exist under your account
     active_audiences_response:
       type: array
       items:
@@ -95,6 +74,27 @@ components:
             type: integer
           count_campaigns:
             type: integer
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
   securitySchemes:
     bearerAuth:
       type: http

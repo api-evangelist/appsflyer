@@ -133,31 +133,28 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TCFConsent:
+    ErrorResponse:
+      type: string
+    ConsentData:
+      type: object
+      oneOf:
+      - $ref: '#/components/schemas/TCFConsent'
+      - $ref: '#/components/schemas/ManualConsent'
+    ManualConsent:
       type: object
       properties:
-        tcf:
+        manual:
           type: object
           properties:
-            policy_version:
-              type: integer
-              description: Version number of the policy
             gdpr_applies:
-              type: integer
-              enum:
-              - -1
-              - 0
-              - 1
-              description: Binary value indicating if GDPR applies
-            cmp_sdk_id:
-              type: integer
-              description: Identifier for the Consent Management Provider SDK
-            cmp_sdk_version:
-              type: integer
-              description: Version number of the CMP SDK
-            tcstring:
-              type: string
-              description: Transparency and Consent String provided by the CMP
+              type: boolean
+              description: Indicates if GDPR applies
+            ad_user_data_enabled:
+              type: boolean
+              description: Indicates if the user data for ads is enabled
+            ad_personalization_enabled:
+              type: boolean
+              description: Indicates if ad personalization is enabled
     IosIds:
       title: iOS Ids
       type: object
@@ -507,8 +504,31 @@ components:
           description: "Use this flag to indicate if the user opted out of sharing their advertiser ID. \n\nUse this field for devices running Android (all versions), or iOS versions before 14. \n> \U0001F4D8 Note \n> For iOS 14.5+, use the att parameter. \n\nPopulate this field as follows: \n- `true`: if the user agreed to share the advertiser ID. \n- `false`: if the user enabled Limited Ad Tracking (LAT).\n"
         consent_data:
           $ref: '#/components/schemas/ConsentData'
-    ErrorResponse:
-      type: string
+    TCFConsent:
+      type: object
+      properties:
+        tcf:
+          type: object
+          properties:
+            policy_version:
+              type: integer
+              description: Version number of the policy
+            gdpr_applies:
+              type: integer
+              enum:
+              - -1
+              - 0
+              - 1
+              description: Binary value indicating if GDPR applies
+            cmp_sdk_id:
+              type: integer
+              description: Identifier for the Consent Management Provider SDK
+            cmp_sdk_version:
+              type: integer
+              description: Version number of the CMP SDK
+            tcstring:
+              type: string
+              description: Transparency and Consent String provided by the CMP
     AndroidIds:
       title: Android Ids
       type: object
@@ -868,26 +888,6 @@ components:
               pattern: '[0-9a-fA-F] {8}-[0-9a-fA|-F]{43-4[0-9a-fA-F] {3}-[89abAB] [0-9a-fA-F]{33-[0-9a-fA-F]{12}$'
               example: f47ac10b-58cc-4372-a567-0e02b2c3d479
               description: The ID value.
-    ConsentData:
-      type: object
-      oneOf:
-      - $ref: '#/components/schemas/TCFConsent'
-      - $ref: '#/components/schemas/ManualConsent'
-    ManualConsent:
-      type: object
-      properties:
-        manual:
-          type: object
-          properties:
-            gdpr_applies:
-              type: boolean
-              description: Indicates if GDPR applies
-            ad_user_data_enabled:
-              type: boolean
-              description: Indicates if the user data for ads is enabled
-            ad_personalization_enabled:
-              type: boolean
-              description: Indicates if ad personalization is enabled
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

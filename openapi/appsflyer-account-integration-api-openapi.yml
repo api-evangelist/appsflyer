@@ -139,28 +139,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Mintegral:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        secret:
-          type: string
-        skey:
-          type: string
-    Vungle:
-      type: object
-      properties:
-        app_id:
-          type: string
-        application_id:
-          type: string
-    Error:
-      properties:
-        message:
-          type: string
-        request_id:
-          type: string
     ByteDance_China:
       type: object
       properties:
@@ -170,57 +148,42 @@ components:
           type: string
         account_id:
           type: string
-    Applovin:
+    Unity:
       type: object
       properties:
         api_key:
           type: string
-        filter_package_name:
+        source_ids:
           type: string
-    TikTok_for_business:
+    Topon:
       type: object
       properties:
         network_app_id:
           type: string
-        secure_key:
+        publisher_key:
           type: string
-        account_id:
-          type: string
-    Odeeo:
-      type: object
-      properties:
-        api_key:
-          type: string
-    Product:
-      description: The products block lists the products & integration types that the customer wishes to configure for the defined partner `network`.
-      required:
-      - name
-      - enabled
-      type: object
-      properties:
-        name:
-          type: string
-          enum:
-          - attribution_app_level
-          - attribution_user_level
-          - attribution_sdk_level
-          - attribution_ad_impression
-          - attribution_sdk_and_user_level
-          example: attribution_app_level
-        enabled:
-          type: string
-          enum:
-          - true
-          - false
-          example: true
-        source_event:
-          type: string
-    Tapjoy:
+    Tradplusad:
       type: object
       properties:
         network_app_id:
           type: string
         api_key:
+          type: string
+    Fyber:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+    Vungle:
+      type: object
+      properties:
+        app_id:
+          type: string
+        application_id:
           type: string
     Appodeal:
       type: object
@@ -303,6 +266,112 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
+    TikTok_for_business:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        secure_key:
+          type: string
+        account_id:
+          type: string
+    Chartboost:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        user_signature:
+          type: string
+        user_id:
+          type: string
+    Tapdaq:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        report_key:
+          type: string
+    AdMost:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        token:
+          type: string
+    Tapjoy:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        api_key:
+          type: string
+    Odeeo:
+      type: object
+      properties:
+        api_key:
+          type: string
+    Mintegral:
+      type: object
+      properties:
+        network_app_id:
+          type: string
+        secret:
+          type: string
+        skey:
+          type: string
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
+    Applovin_MAX:
+      type: object
+      properties:
+        report_key:
+          type: string
+        package_name:
+          type: string
+    Applovin:
+      type: object
+      properties:
+        api_key:
+          type: string
+        filter_package_name:
+          type: string
+    Product:
+      description: The products block lists the products & integration types that the customer wishes to configure for the defined partner `network`.
+      required:
+      - name
+      - enabled
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - attribution_app_level
+          - attribution_user_level
+          - attribution_sdk_level
+          - attribution_ad_impression
+          - attribution_sdk_and_user_level
+          example: attribution_app_level
+        enabled:
+          type: string
+          enum:
+          - true
+          - false
+          example: true
+        source_event:
+          type: string
+    Inmobi:
+      type: object
+      properties:
+        api_key:
+          type: string
+        user_id:
+          type: string
+        network_app_id:
+          type: string
     IronSource:
       type: object
       properties:
@@ -314,96 +383,7 @@ components:
           type: string
         username:
           type: string
-    Chartboost:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        user_signature:
-          type: string
-        user_id:
-          type: string
-    Applovin_MAX:
-      type: object
-      properties:
-        report_key:
-          type: string
-        package_name:
-          type: string
-    AdMost:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        token:
-          type: string
-    Fyber:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-    Inmobi:
-      type: object
-      properties:
-        api_key:
-          type: string
-        user_id:
-          type: string
-        network_app_id:
-          type: string
-    Topon:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        publisher_key:
-          type: string
-    Tapdaq:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        report_key:
-          type: string
-    Tradplusad:
-      type: object
-      properties:
-        network_app_id:
-          type: string
-        api_key:
-          type: string
-    Unity:
-      type: object
-      properties:
-        api_key:
-          type: string
-        source_ids:
-          type: string
   responses:
-    MissingAuthorizationToken:
-      description: Missing authorization token
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-            example:
-              error: Missing authorization header
-    AppIdNotFound:
-      description: app_id is not under the account linked to the authorization token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-            example:
-              message: 'integration 0: app_id ''com.config.test'' not permitted for provided token'
-              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
     Success:
       description: Valid request
       content:
@@ -418,6 +398,26 @@ components:
             example:
               message: Successfully processed 1 integration updates
               request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    AppIdNotFound:
+      description: app_id is not under the account linked to the authorization token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            example:
+              message: 'integration 0: app_id ''com.config.test'' not permitted for provided token'
+              request_id: f1c0af47-bb7a-4e25-a261-d94d07689bb8
+    MissingAuthorizationToken:
+      description: Missing authorization token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+            example:
+              error: Missing authorization header
   securitySchemes:
     bearerAuth:
       type: http

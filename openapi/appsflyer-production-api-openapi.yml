@@ -234,34 +234,46 @@ paths:
                 $ref: '#/components/schemas/APIErrorData'
 components:
   schemas:
-    DiscoveryResponse:
+    Request:
       type: object
       properties:
+        subject_request_id:
+          type: string
+          description: External Fields
+        subject_request_type:
+          type: string
+          description: SubjectRequestType is the type of the request
+          enum:
+          - access
+          - portability
+          - rectification
+          - erasure
+          example: access
+        submitted_time:
+          type: string
+          description: SubmittedTime is the time when the request is submitted
         api_version:
           type: string
-        supported_subject_request_types:
-          type: string
-        supported_identities:
+          description: APIVersion is the version of the API
+        subject_identities:
           type: array
+          description: SubjectIdentities is the list of subject identities.
           items:
-            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
-        processor_certificate:
-          type: string
-    CreateBatchResponse:
-      type: object
-      properties:
-        batch_id:
-          type: string
-        encoded_request:
-          type: string
-        responses:
+            $ref: '#/components/schemas/SubjectIdentity'
+        status_callback_urls:
           type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
           items:
-            $ref: '#/components/schemas/CreateResponse'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorResponse'
+            type: string
+        property_id:
+          type: string
+          description: PropertyID is the AppID
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        requester:
+          type: string
+          description: Requester is the email of the requester
     CreateResponse:
       type: object
       properties:
@@ -277,6 +289,191 @@ components:
           type: string
         info:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    DiscoveryResponse:
+      type: object
+      properties:
+        api_version:
+          type: string
+        supported_subject_request_types:
+          type: string
+        supported_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
+        processor_certificate:
+          type: string
+    SupportedIdentitiesDiscoveryResponse:
+      type: object
+      properties:
+        identity_type:
+          type: string
+          description: 'Type of identity supported by the API.
+
+
+            **For Android, iOS, Web, WindowsPhone platforms:**
+
+            - `ios_advertising_id`
+
+            - `android_advertising_id`
+
+            - `fire_advertising_id`
+
+            - `microsoft_advertising_id`
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            - `idfv`
+
+
+            **For CTV, PC, and Console platforms:**
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            '
+          enum:
+          - ios_advertising_id
+          - android_advertising_id
+          - fire_advertising_id
+          - microsoft_advertising_id
+          - appsflyer_id
+          - customer_user_id
+          - idfv
+          example: android_advertising_id
+        identity_format:
+          type: string
+    BatchRequest:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Request'
+    Meta:
+      type: object
+      properties:
+        api_version:
+          type: string
+        property_id:
+          type: string
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        submitted_time:
+          type: string
+    SubjectIdentity:
+      type: object
+      properties:
+        identity_type:
+          type: string
+          description: 'Type of identity used to identify the data subject.
+
+
+            **For Android, iOS, Web, WindowsPhone platforms:**
+
+            - `ios_advertising_id`
+
+            - `android_advertising_id`
+
+            - `fire_advertising_id`
+
+            - `microsoft_advertising_id`
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            - `idfv`
+
+
+            **For CTV, PC, and Console platforms:**
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+
+            > **Important!**
+
+            >
+
+            > To use CUID through the OpenDSR API, you must send the CUID with idfa/appsflyer_id inside in-app events using `event_name: Login - Complete` or `Registration - Account created`
+
+            '
+          enum:
+          - ios_advertising_id
+          - android_advertising_id
+          - fire_advertising_id
+          - microsoft_advertising_id
+          - appsflyer_id
+          - customer_user_id
+          - idfv
+          example: android_advertising_id
+        identity_value:
+          type: string
+          description: Value of the identifier used to identify the data subject
+        identity_format:
+          type: string
+          enum:
+          - raw
+    APIErrorWrapper:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    Status:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: SubjectRequestID is a unique identifier represent as UUID v4
+        controller_id:
+          type: string
+          description: ControllerID is the requester
+        expected_completion_time:
+          type: string
+          description: ExpectedCompletionTime is the expected time to complete the request
+        request_status:
+          type: string
+          description: RequestStatus is the current status of the request
+          enum:
+          - pending
+          - in-progress
+          - completed
+          - canceled
+          example: pending
+    CreateBatchResponse:
+      type: object
+      properties:
+        batch_id:
+          type: string
+        encoded_request:
+          type: string
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateResponse'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
     APIErrorData:
       type: object
       properties:
@@ -391,203 +588,6 @@ components:
           - e417
           - e511
           example: e313
-    Meta:
-      type: object
-      properties:
-        api_version:
-          type: string
-        property_id:
-          type: string
-        platform:
-          type: string
-          description: Platform is the platform of the app
-        status_callback_urls:
-          type: array
-          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
-          items:
-            type: string
-        submitted_time:
-          type: string
-    Status:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-          description: SubjectRequestID is a unique identifier represent as UUID v4
-        controller_id:
-          type: string
-          description: ControllerID is the requester
-        expected_completion_time:
-          type: string
-          description: ExpectedCompletionTime is the expected time to complete the request
-        request_status:
-          type: string
-          description: RequestStatus is the current status of the request
-          enum:
-          - pending
-          - in-progress
-          - completed
-          - canceled
-          example: pending
-    SubjectIdentity:
-      type: object
-      properties:
-        identity_type:
-          type: string
-          description: 'Type of identity used to identify the data subject.
-
-
-            **For Android, iOS, Web, WindowsPhone platforms:**
-
-            - `ios_advertising_id`
-
-            - `android_advertising_id`
-
-            - `fire_advertising_id`
-
-            - `microsoft_advertising_id`
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-            - `idfv`
-
-
-            **For CTV, PC, and Console platforms:**
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-
-            > **Important!**
-
-            >
-
-            > To use CUID through the OpenDSR API, you must send the CUID with idfa/appsflyer_id inside in-app events using `event_name: Login - Complete` or `Registration - Account created`
-
-            '
-          enum:
-          - ios_advertising_id
-          - android_advertising_id
-          - fire_advertising_id
-          - microsoft_advertising_id
-          - appsflyer_id
-          - customer_user_id
-          - idfv
-          example: android_advertising_id
-        identity_value:
-          type: string
-          description: Value of the identifier used to identify the data subject
-        identity_format:
-          type: string
-          enum:
-          - raw
-    ErrorResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    APIErrorWrapper:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    Request:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-          description: External Fields
-        subject_request_type:
-          type: string
-          description: SubjectRequestType is the type of the request
-          enum:
-          - access
-          - portability
-          - rectification
-          - erasure
-          example: access
-        submitted_time:
-          type: string
-          description: SubmittedTime is the time when the request is submitted
-        api_version:
-          type: string
-          description: APIVersion is the version of the API
-        subject_identities:
-          type: array
-          description: SubjectIdentities is the list of subject identities.
-          items:
-            $ref: '#/components/schemas/SubjectIdentity'
-        status_callback_urls:
-          type: array
-          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
-          items:
-            type: string
-        property_id:
-          type: string
-          description: PropertyID is the AppID
-        platform:
-          type: string
-          description: Platform is the platform of the app
-        requester:
-          type: string
-          description: Requester is the email of the requester
-    SupportedIdentitiesDiscoveryResponse:
-      type: object
-      properties:
-        identity_type:
-          type: string
-          description: 'Type of identity supported by the API.
-
-
-            **For Android, iOS, Web, WindowsPhone platforms:**
-
-            - `ios_advertising_id`
-
-            - `android_advertising_id`
-
-            - `fire_advertising_id`
-
-            - `microsoft_advertising_id`
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-            - `idfv`
-
-
-            **For CTV, PC, and Console platforms:**
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-            '
-          enum:
-          - ios_advertising_id
-          - android_advertising_id
-          - fire_advertising_id
-          - microsoft_advertising_id
-          - appsflyer_id
-          - customer_user_id
-          - idfv
-          example: android_advertising_id
-        identity_format:
-          type: string
-    BatchRequest:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/Request'
   securitySchemes:
     BearerAuth:
       type: http

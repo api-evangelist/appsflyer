@@ -95,15 +95,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    app_id:
-      type: string
-      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
-
-        Example values:
-
-        - **Android:** com.publisher.name
-
-        '
     setFacebook:
       title: Facebook Ads
       required:
@@ -124,6 +115,13 @@ components:
               description: 'Google Play Referrer decryption key provided by Facebook. Must be a hexadecimal 64-character string.
 
                 '
+    IntegrationNotEnabledError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
     Response:
       properties:
         general_params:
@@ -160,12 +158,16 @@ components:
         message:
           type: string
       type: object
-    pid:
+    app_id:
       type: string
-      description: 'AppsFlyer Partner ID
+      description: 'App ID for which the decryption key is being set. Relevant for Android apps only.
+
+        Example values:
+
+        - **Android:** com.publisher.name
 
         '
-    IntegrationNotEnabledError:
+    InvalidValueError:
       properties:
         status:
           type: string
@@ -179,21 +181,19 @@ components:
         message:
           type: string
       type: object
-    GeneralFailureError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    InvalidValueError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
     AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    GeneralFailureError:
       properties:
         status:
           type: string

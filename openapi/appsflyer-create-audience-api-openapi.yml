@@ -112,28 +112,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    connection:
-      required:
-      - integration_id
-      type: object
-      properties:
-        integration_id:
-          $ref: '#/components/schemas/integration_id'
-        split_ratio:
-          type: integer
-          example: 50
-    platform:
-      type: string
-      description: 'Android, iOS
-
-        '
-      enum:
-      - android
-      - ios
-      example: android
-    integration_id:
-      type: integer
-      example: 1234
     error_response:
       required:
       - error_code
@@ -162,6 +140,28 @@ components:
         message:
           type: object
           example: null
+    connection:
+      required:
+      - integration_id
+      type: object
+      properties:
+        integration_id:
+          $ref: '#/components/schemas/integration_id'
+        split_ratio:
+          type: integer
+          example: 50
+    integration_id:
+      type: integer
+      example: 1234
+    platform:
+      type: string
+      description: 'Android, iOS
+
+        '
+      enum:
+      - android
+      - ios
+      example: android
   securitySchemes:
     bearerAuth:
       type: http

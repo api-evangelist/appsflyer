@@ -53,6 +53,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    success_response:
+      required:
+      - message
+      properties:
+        message:
+          type: object
+          example: null
     error_response:
       required:
       - error_code
@@ -74,13 +81,6 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
-    success_response:
-      required:
-      - message
-      properties:
-        message:
-          type: object
-          example: null
   securitySchemes:
     bearerAuth:
       type: http

@@ -190,6 +190,9 @@ components:
     GatewayTimeout:
       description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.
       content: {}
+    ServiceUnavailable:
+      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
+      content: {}
     BadRequest:
       description: Bad Request. The request message is not valid.
       content:
@@ -198,20 +201,22 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: Bad Request
-    ServiceUnavailable:
-      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
-      content: {}
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
+    CommonIdObject:
       required:
-      - code
-      - message
+      - type
+      - value
+      properties:
+        type:
+          type: string
+          enum:
+          - unhashed
+          - sha1
+          - md5
+          example: sha1
+        value:
+          type: string
+          example: 123456436CDFAC250CBEAF3BFFCD713E3F123456
     DLResponse:
       title: shared response
       required:
@@ -289,18 +294,13 @@ components:
               type:
               - string
               - 'null'
-    CommonIdObject:
-      required:
-      - type
-      - value
+    Error:
+      type: object
       properties:
-        type:
+        code:
           type: string
-          enum:
-          - unhashed
-          - sha1
-          - md5
-          example: sha1
-        value:
+        message:
           type: string
-          example: 123456436CDFAC250CBEAF3BFFCD713E3F123456
+      required:
+      - code
+      - message

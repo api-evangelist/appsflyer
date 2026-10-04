@@ -370,6 +370,31 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
+    VersionNoLongerValid:
+      description: The API version listed in the URL is no longer valid
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: The API version listed in the URL is no longer valid. Check the API documentation
     VersionDoesntExist:
       description: The API version listed in the URL doesn't exist
       headers:
@@ -397,31 +422,6 @@ components:
             code: InvalidVersion
             message: The API version listed in the URL doesn't exist. Check the API documentation
             request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-    VersionNoLongerValid:
-      description: The API version listed in the URL is no longer valid
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: The API version listed in the URL is no longer valid. Check the API documentation
     AuthenticationFailed:
       description: Authentication failed. The authentication token is not valid.
       headers:
@@ -446,29 +446,8 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      example:
-        code: SomeErrorCode
-        message: Some error message.
-        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-      type: object
-      properties:
-        status:
-          type: integer
-        code:
-          type: string
-        message:
-          type: string
-        request_id:
-          type: string
-    Method:
-      type: string
-      enum:
-      - ''
-      - GET
-      - POST
-    RegularIosConfig:
-      title: Regular iOS Config
+    SkadConfig:
+      title: SKADnetwork iOS Config
       type: object
       required:
       - url
@@ -485,161 +464,38 @@ components:
           type: array
           items:
             enum:
-            - organic-install-in-app-event
             - install
-            - organic-install
-            - re-engagement
-            - re-attribution
-            - reinstall
-            - organic-reinstall
-            - install-in-app-event
-            - re-engagement-in-app-event
-            - re-attribution-in-app-event
-        selected_fields:
-          oneOf:
-          - type: string
-            enum:
-            - all
-            title: All fields
-          - type: string
-            enum:
-            - default
-            title: Default fields
-          - type: array
-            title: Select fields
-            items:
-              enum:
-              - api_version
-              - af_c_id
-              - campaign
-              - af_adset_id
-              - af_adset
-              - af_ad_id
-              - af_ad
-              - af_ad_type
-              - af_channel
-              - af_cost_currency
-              - af_cost_model
-              - af_cost_value
-              - af_keywords
-              - af_attribution_lookback
-              - af_prt
-              - af_reengagement_window
-              - af_siteid
-              - af_sub_siteid
-              - af_sub1
-              - af_sub2
-              - af_sub3
-              - af_sub4
-              - af_sub5
-              - is_retargeting
-              - media_source
-              - original_url
-              - user_agent
-              - advertising_id
-              - android_id
-              - amazon_aid
-              - app_id
-              - app_name
-              - app_version
-              - appsflyer_id
-              - bundle_id
-              - carrier
-              - country_code
-              - custom_data
-              - customer_user_id
-              - device_category
-              - device_type
-              - device_model
-              - event_name
-              - event_revenue
-              - event_revenue_currency
-              - event_time
-              - event_value
-              - idfa
-              - idfv
-              - imei
-              - install_app_store
-              - install_time
-              - ip
-              - language
-              - operator
-              - os_version
-              - platform
-              - sdk_version
-              - wifi
-              - gp_broadcast_referrer
-              - city
-              - attributed_touch_time
-              - attributed_touch_type
-              - contributor_1_af_prt
-              - contributor_1_campaign
-              - contributor_1_match_type
-              - contributor_1_media_source
-              - contributor_1_touch_time
-              - contributor_1_touch_type
-              - contributor_2_af_prt
-              - contributor_2_campaign
-              - contributor_2_match_type
-              - contributor_2_media_source
-              - contributor_2_touch_time
-              - contributor_2_touch_type
-              - contributor_3_af_prt
-              - contributor_3_campaign
-              - contributor_3_match_type
-              - contributor_3_media_source
-              - contributor_3_touch_time
-              - contributor_3_touch_type
-              - dma
-              - event_revenue_usd
-              - event_source
-              - http_referrer
-              - is_primary_attribution
-              - is_receipt_validated
-              - match_type
-              - postal_code
-              - region
-              - retargeting_conversion_type
-              - state
-              - network_account_id
-              - gp_click_time
-              - gp_install_begin
-              - gp_referrer
-              - keyword_match_type
-              - selected_currency
-              - revenue_in_selected_currency
-              - cost_in_selected_currency
-              - attributed_touch_time_selected_timezone
-              - install_time_selected_timezone
-              - event_time_selected_timezone
-              - selected_timezone
-              - deeplink_url
-              - oaid
-              - keyword_id
-              - store_reinstall
-              - is_lat
-              - device_download_time
-              - device_download_time_selected_timezone
-              - conversion_type
-              - custom_dimension
-              - campaign_type
-        selected_inapps:
-          oneOf:
-          - type: string
-            enum:
-            - all
-            title: All Inapps
-          - type: array
-            title: Select Inapps
-            items:
-              type: string
+            - re-download
+            - in-app-event
+            - postback
+            - postbacks-copy
         enabled:
           type: boolean
+          default: true
         attributing_entity:
           type: string
           enum:
-          - appsflyer
-          default: appsflyer
+          - skadnetwork
+          default: skadnetwork
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
     RegularAndroidConfig:
       title: Regular Android Config
       type: object
@@ -813,8 +669,8 @@ components:
           enum:
           - appsflyer
           default: appsflyer
-    SkadConfig:
-      title: SKADnetwork iOS Config
+    RegularIosConfig:
+      title: Regular iOS Config
       type: object
       required:
       - url
@@ -831,23 +687,167 @@ components:
           type: array
           items:
             enum:
+            - organic-install-in-app-event
             - install
-            - re-download
-            - in-app-event
-            - postback
-            - postbacks-copy
+            - organic-install
+            - re-engagement
+            - re-attribution
+            - reinstall
+            - organic-reinstall
+            - install-in-app-event
+            - re-engagement-in-app-event
+            - re-attribution-in-app-event
+        selected_fields:
+          oneOf:
+          - type: string
+            enum:
+            - all
+            title: All fields
+          - type: string
+            enum:
+            - default
+            title: Default fields
+          - type: array
+            title: Select fields
+            items:
+              enum:
+              - api_version
+              - af_c_id
+              - campaign
+              - af_adset_id
+              - af_adset
+              - af_ad_id
+              - af_ad
+              - af_ad_type
+              - af_channel
+              - af_cost_currency
+              - af_cost_model
+              - af_cost_value
+              - af_keywords
+              - af_attribution_lookback
+              - af_prt
+              - af_reengagement_window
+              - af_siteid
+              - af_sub_siteid
+              - af_sub1
+              - af_sub2
+              - af_sub3
+              - af_sub4
+              - af_sub5
+              - is_retargeting
+              - media_source
+              - original_url
+              - user_agent
+              - advertising_id
+              - android_id
+              - amazon_aid
+              - app_id
+              - app_name
+              - app_version
+              - appsflyer_id
+              - bundle_id
+              - carrier
+              - country_code
+              - custom_data
+              - customer_user_id
+              - device_category
+              - device_type
+              - device_model
+              - event_name
+              - event_revenue
+              - event_revenue_currency
+              - event_time
+              - event_value
+              - idfa
+              - idfv
+              - imei
+              - install_app_store
+              - install_time
+              - ip
+              - language
+              - operator
+              - os_version
+              - platform
+              - sdk_version
+              - wifi
+              - gp_broadcast_referrer
+              - city
+              - attributed_touch_time
+              - attributed_touch_type
+              - contributor_1_af_prt
+              - contributor_1_campaign
+              - contributor_1_match_type
+              - contributor_1_media_source
+              - contributor_1_touch_time
+              - contributor_1_touch_type
+              - contributor_2_af_prt
+              - contributor_2_campaign
+              - contributor_2_match_type
+              - contributor_2_media_source
+              - contributor_2_touch_time
+              - contributor_2_touch_type
+              - contributor_3_af_prt
+              - contributor_3_campaign
+              - contributor_3_match_type
+              - contributor_3_media_source
+              - contributor_3_touch_time
+              - contributor_3_touch_type
+              - dma
+              - event_revenue_usd
+              - event_source
+              - http_referrer
+              - is_primary_attribution
+              - is_receipt_validated
+              - match_type
+              - postal_code
+              - region
+              - retargeting_conversion_type
+              - state
+              - network_account_id
+              - gp_click_time
+              - gp_install_begin
+              - gp_referrer
+              - keyword_match_type
+              - selected_currency
+              - revenue_in_selected_currency
+              - cost_in_selected_currency
+              - attributed_touch_time_selected_timezone
+              - install_time_selected_timezone
+              - event_time_selected_timezone
+              - selected_timezone
+              - deeplink_url
+              - oaid
+              - keyword_id
+              - store_reinstall
+              - is_lat
+              - device_download_time
+              - device_download_time_selected_timezone
+              - conversion_type
+              - custom_dimension
+              - campaign_type
+        selected_inapps:
+          oneOf:
+          - type: string
+            enum:
+            - all
+            title: All Inapps
+          - type: array
+            title: Select Inapps
+            items:
+              type: string
         enabled:
           type: boolean
-          default: true
         attributing_entity:
           type: string
           enum:
-          - skadnetwork
-          default: skadnetwork
-    Url:
+          - appsflyer
+          default: appsflyer
+    Method:
       type: string
-      maxLength: 2048
-      example: http://some.url.com:40/dir
+      enum:
+      - ''
+      - GET
+      - POST
   securitySchemes:
     Bearer-Authentication:
       type: http

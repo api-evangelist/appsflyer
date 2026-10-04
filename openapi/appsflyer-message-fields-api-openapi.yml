@@ -84,8 +84,8 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    SchemaErrorInvalidPathParam:
-      description: Invalid path-params. Verify the content and resubmit.
+    VersionNoLongerValid:
+      description: The API version listed in the URL is no longer valid
       headers:
         deprecated:
           description: is the api version deprecated
@@ -108,7 +108,7 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
           example:
-            message: Invalid path-params. Verify the content and resubmit.
+            message: The API version listed in the URL is no longer valid. Check the API documentation
     VersionDoesntExist:
       description: The API version listed in the URL doesn't exist
       headers:
@@ -136,8 +136,8 @@ components:
             code: InvalidVersion
             message: The API version listed in the URL doesn't exist. Check the API documentation
             request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-    AccountProblem:
-      description: An account problem occurred. Please contact your AppsFlyer account executive.
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
       headers:
         deprecated:
           description: is the api version deprecated
@@ -159,8 +159,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    VersionNoLongerValid:
-      description: The API version listed in the URL is no longer valid
+    SchemaErrorInvalidPathParam:
+      description: Invalid path-params. Verify the content and resubmit.
       headers:
         deprecated:
           description: is the api version deprecated
@@ -183,9 +183,9 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
           example:
-            message: The API version listed in the URL is no longer valid. Check the API documentation
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
+            message: Invalid path-params. Verify the content and resubmit.
+    AccountProblem:
+      description: An account problem occurred. Please contact your AppsFlyer account executive.
       headers:
         deprecated:
           description: is the api version deprecated

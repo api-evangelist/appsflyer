@@ -540,91 +540,6 @@ paths:
           description: Too many requests - Exceeded rate limitation
 components:
   schemas:
-    app_id:
-      type: string
-      description: 'Required only when status is ***pending*** or ***out_of_store***
-
-
-        Example values
-
-
-        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
-
-        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
-
-        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
-
-        '
-    StandardApiResponse:
-      type: object
-      properties:
-        data:
-          type: object
-        message:
-          type: string
-        error:
-          $ref: '#/components/schemas/StandardApiError'
-    UpdateAppRequest:
-      type: object
-      properties:
-        enableProbabilisticViewThroughAttribution:
-          type: boolean
-          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
-        enableIpMasking:
-          type: boolean
-          description: Enables or disables the IP Masking feature
-        minTimeBetweenSessions:
-          type: number
-          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
-        reAttributionWindow:
-          type: number
-          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
-        reEngagementAttribution:
-          type: object
-          properties:
-            isEnabled:
-              type: boolean
-              description: Enables or disables the Retargeting Attribution feature
-            minTimeBetweenReEngagements:
-              type: number
-              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
-        enableSeoAppAttribution:
-          type: boolean
-          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
-        enableAggregatedAdvancedPrivacy:
-          type: boolean
-          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
-        enableReinstallDetection:
-          type: boolean
-          description: Detects reinstalls without depending on advertising IDs only for IOS apps
-    deletePlatform:
-      type: string
-      description: 'App platform: Android, iOS, or Windows Phone
-
-        '
-      enum:
-      - ''
-      - android
-      - ios
-      - windowsphone
-      - roku
-      - smartcast
-      - tizen
-      - webos
-      - playstation
-      - vidaa
-      - steam
-      - quest
-      - battlenet
-      - web
-      - switch
-      - xbox
-      - epic
-      - nativepc
-      - chatgpt
-    kidsPrivacy:
-      type: boolean
-      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
     app_url:
       type: string
       description: '**The URL of the app in the app store**
@@ -681,274 +596,15 @@ components:
         channel_name:
           allOf:
           - $ref: '#/components/schemas/channel_name'
-    platform:
-      type: string
-      description: 'App platform: Android, iOS, or Windows Phone
-
-        '
-      enum:
-      - android
-      - ios
-      - windowsphone
-    currency:
-      type: string
-      description: The preferable currency
-      enum:
-      - USD
-      - NZD
-      - SGD
-      - IMP
-      - ANG
-      - MNT
-      - BIF
-      - BBD
-      - HUF
-      - ERN
-      - AZN
-      - AOA
-      - PYG
-      - MYR
-      - GYD
-      - VUV
-      - SLL
-      - FKP
-      - DJF
-      - GNF
-      - LVL
-      - MMK
-      - MRO
-      - RSD
-      - CLF
-      - XDR
-      - ZAR
-      - TND
-      - PHP
-      - KGS
-      - XPD
-      - RON
-      - RUB
-      - KMF
-      - SCR
-      - GIP
-      - TRY
-      - JEP
-      - UYU
-      - XCD
-      - FJD
-      - GHS
-      - MVR
-      - AWG
-      - UGX
-      - TOP
-      - CVE
-      - MKD
-      - COP
-      - CUC
-      - GTQ
-      - KZT
-      - MXN
-      - MGA
-      - AUD
-      - BDT
-      - ISK
-      - KRW
-      - DZD
-      - GGP
-      - OMR
-      - ZMW
-      - MOP
-      - CUP
-      - JPY
-      - SHP
-      - LSL
-      - ETB
-      - BWP
-      - MAD
-      - AED
-      - NGN
-      - BRL
-      - GEL
-      - IDR
-      - EUR
-      - GBP
-      - WST
-      - XAF
-      - SZL
-      - XOF
-      - SEK
-      - UZS
-      - KES
-      - KYD
-      - ILS
-      - KWD
-      - NPR
-      - BZD
-      - QAR
-      - UAH
-      - BTN
-      - HTG
-      - DKK
-      - VND
-      - SBD
-      - JMD
-      - IQD
-      - LBP
-      - XPT
-      - HRK
-      - HKD
-      - JOD
-      - PAB
-      - CDF
-      - VEF
-      - XAU
-      - BAM
-      - CNY
-      - SOS
-      - XPF
-      - GMD
-      - DOP
-      - XAG
-      - KPW
-      - BOB
-      - BHD
-      - BYN
-      - BYR
-      - LRD
-      - BGN
-      - AMD
-      - CZK
-      - CAD
-      - LAK
-      - EEK
-      - MTL
-      - PLN
-      - LKR
-      - BTC
-      - MWK
-      - LTL
-      - ZMK
-      - PGK
-      - YER
-      - PEN
-      - KHR
-      - RWF
-      - BSD
-      - AFN
-      - ZWL
-      - LYD
-      - TMT
-      - HNL
-      - TWD
-      - IRR
-      - MUR
-      - THB
-      - ALL
-      - TJS
-      - SDG
-      - BMD
-      - CRC
-      - NOK
-      - SRD
-      - MZN
-      - CLP
-      - STD
-      - SYP
-      - TZS
-      - EGP
-      - ARS
-      - MDL
-      - INR
-      - SAR
-      - PKR
-      - TTD
-      - NIO
-      - BND
-      - NAD
-      - SVC
-      - CHF
-    pending-app:
-      title: Pending
-      required:
-      - platform
-      - status
-      - currency
-      - app_id
-      - time_zone
-      - kidsPrivacy
+    StandardApiResponse:
       type: object
       properties:
-        platform:
-          $ref: '#/components/schemas/platform'
-        app_name:
-          $ref: '#/components/schemas/app_name'
-        status:
+        data:
+          type: object
+        message:
           type: string
-          description: '**Pending:** The app is not yet published or is pending approval from the store.
-
-            - When a pending app goes live, AppsFlyer automatically updates its status in your account, so there is no need to update it manually.
-
-            '
-          enum:
-          - pending
-        time_zone:
-          $ref: '#/components/schemas/time_zone'
-        currency:
-          $ref: '#/components/schemas/currency'
-        country:
-          $ref: '#/components/schemas/country'
-        kidsPrivacy:
-          $ref: '#/components/schemas/kidsPrivacy'
-        app_id:
-          allOf:
-          - $ref: '#/components/schemas/app_id'
-    available-app:
-      title: Available
-      required:
-      - platform
-      - status
-      - currency
-      - app_url
-      - time_zone
-      - kidsPrivacy
-      type: object
-      properties:
-        platform:
-          $ref: '#/components/schemas/platform'
-        app_name:
-          $ref: '#/components/schemas/app_name'
-        status:
-          type: string
-          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
-
-            '
-          enum:
-          - available
-        time_zone:
-          $ref: '#/components/schemas/time_zone'
-        currency:
-          $ref: '#/components/schemas/currency'
-        app_url:
-          allOf:
-          - $ref: '#/components/schemas/app_url'
-        kidsPrivacy:
-          $ref: '#/components/schemas/kidsPrivacy'
-    app_name:
-      type: string
-      description: '**A custom name for the app**
-
-
-        - For ***available*** status, If not added to the request the extracted store name will be used.
-
-        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
-
-        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
-
-        '
-    channel_name:
-      type: string
-      pattern: ^[A-Za-z]+$
-      description: Required only when the status is "out_of_store"
-      example: Amazon
+        error:
+          $ref: '#/components/schemas/StandardApiError'
     time_zone:
       type: string
       description: The preferable time-zone
@@ -1625,6 +1281,37 @@ components:
       - Yemen
       - Zambia
       - Zimbabwe
+    available-app:
+      title: Available
+      required:
+      - platform
+      - status
+      - currency
+      - app_url
+      - time_zone
+      - kidsPrivacy
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+        app_name:
+          $ref: '#/components/schemas/app_name'
+        status:
+          type: string
+          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
+
+            '
+          enum:
+          - available
+        time_zone:
+          $ref: '#/components/schemas/time_zone'
+        currency:
+          $ref: '#/components/schemas/currency'
+        app_url:
+          allOf:
+          - $ref: '#/components/schemas/app_url'
+        kidsPrivacy:
+          $ref: '#/components/schemas/kidsPrivacy'
     StandardApiError:
       type: object
       properties:
@@ -1638,6 +1325,319 @@ components:
           type: string
         documentation:
           type: string
+    app_id:
+      type: string
+      description: 'Required only when status is ***pending*** or ***out_of_store***
+
+
+        Example values
+
+
+        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
+
+        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
+
+        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
+
+        '
+    app_name:
+      type: string
+      description: '**A custom name for the app**
+
+
+        - For ***available*** status, If not added to the request the extracted store name will be used.
+
+        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
+
+        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
+
+        '
+    deletePlatform:
+      type: string
+      description: 'App platform: Android, iOS, or Windows Phone
+
+        '
+      enum:
+      - ''
+      - android
+      - ios
+      - windowsphone
+      - roku
+      - smartcast
+      - tizen
+      - webos
+      - playstation
+      - vidaa
+      - steam
+      - quest
+      - battlenet
+      - web
+      - switch
+      - xbox
+      - epic
+      - nativepc
+      - chatgpt
+    UpdateAppRequest:
+      type: object
+      properties:
+        enableProbabilisticViewThroughAttribution:
+          type: boolean
+          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
+        enableIpMasking:
+          type: boolean
+          description: Enables or disables the IP Masking feature
+        minTimeBetweenSessions:
+          type: number
+          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
+        reAttributionWindow:
+          type: number
+          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
+        reEngagementAttribution:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+              description: Enables or disables the Retargeting Attribution feature
+            minTimeBetweenReEngagements:
+              type: number
+              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
+        enableSeoAppAttribution:
+          type: boolean
+          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
+        enableAggregatedAdvancedPrivacy:
+          type: boolean
+          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
+        enableReinstallDetection:
+          type: boolean
+          description: Detects reinstalls without depending on advertising IDs only for IOS apps
+    channel_name:
+      type: string
+      pattern: ^[A-Za-z]+$
+      description: Required only when the status is "out_of_store"
+      example: Amazon
+    platform:
+      type: string
+      description: 'App platform: Android, iOS, or Windows Phone
+
+        '
+      enum:
+      - android
+      - ios
+      - windowsphone
+    pending-app:
+      title: Pending
+      required:
+      - platform
+      - status
+      - currency
+      - app_id
+      - time_zone
+      - kidsPrivacy
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+        app_name:
+          $ref: '#/components/schemas/app_name'
+        status:
+          type: string
+          description: '**Pending:** The app is not yet published or is pending approval from the store.
+
+            - When a pending app goes live, AppsFlyer automatically updates its status in your account, so there is no need to update it manually.
+
+            '
+          enum:
+          - pending
+        time_zone:
+          $ref: '#/components/schemas/time_zone'
+        currency:
+          $ref: '#/components/schemas/currency'
+        country:
+          $ref: '#/components/schemas/country'
+        kidsPrivacy:
+          $ref: '#/components/schemas/kidsPrivacy'
+        app_id:
+          allOf:
+          - $ref: '#/components/schemas/app_id'
+    currency:
+      type: string
+      description: The preferable currency
+      enum:
+      - USD
+      - NZD
+      - SGD
+      - IMP
+      - ANG
+      - MNT
+      - BIF
+      - BBD
+      - HUF
+      - ERN
+      - AZN
+      - AOA
+      - PYG
+      - MYR
+      - GYD
+      - VUV
+      - SLL
+      - FKP
+      - DJF
+      - GNF
+      - LVL
+      - MMK
+      - MRO
+      - RSD
+      - CLF
+      - XDR
+      - ZAR
+      - TND
+      - PHP
+      - KGS
+      - XPD
+      - RON
+      - RUB
+      - KMF
+      - SCR
+      - GIP
+      - TRY
+      - JEP
+      - UYU
+      - XCD
+      - FJD
+      - GHS
+      - MVR
+      - AWG
+      - UGX
+      - TOP
+      - CVE
+      - MKD
+      - COP
+      - CUC
+      - GTQ
+      - KZT
+      - MXN
+      - MGA
+      - AUD
+      - BDT
+      - ISK
+      - KRW
+      - DZD
+      - GGP
+      - OMR
+      - ZMW
+      - MOP
+      - CUP
+      - JPY
+      - SHP
+      - LSL
+      - ETB
+      - BWP
+      - MAD
+      - AED
+      - NGN
+      - BRL
+      - GEL
+      - IDR
+      - EUR
+      - GBP
+      - WST
+      - XAF
+      - SZL
+      - XOF
+      - SEK
+      - UZS
+      - KES
+      - KYD
+      - ILS
+      - KWD
+      - NPR
+      - BZD
+      - QAR
+      - UAH
+      - BTN
+      - HTG
+      - DKK
+      - VND
+      - SBD
+      - JMD
+      - IQD
+      - LBP
+      - XPT
+      - HRK
+      - HKD
+      - JOD
+      - PAB
+      - CDF
+      - VEF
+      - XAU
+      - BAM
+      - CNY
+      - SOS
+      - XPF
+      - GMD
+      - DOP
+      - XAG
+      - KPW
+      - BOB
+      - BHD
+      - BYN
+      - BYR
+      - LRD
+      - BGN
+      - AMD
+      - CZK
+      - CAD
+      - LAK
+      - EEK
+      - MTL
+      - PLN
+      - LKR
+      - BTC
+      - MWK
+      - LTL
+      - ZMK
+      - PGK
+      - YER
+      - PEN
+      - KHR
+      - RWF
+      - BSD
+      - AFN
+      - ZWL
+      - LYD
+      - TMT
+      - HNL
+      - TWD
+      - IRR
+      - MUR
+      - THB
+      - ALL
+      - TJS
+      - SDG
+      - BMD
+      - CRC
+      - NOK
+      - SRD
+      - MZN
+      - CLP
+      - STD
+      - SYP
+      - TZS
+      - EGP
+      - ARS
+      - MDL
+      - INR
+      - SAR
+      - PKR
+      - TTD
+      - NIO
+      - BND
+      - NAD
+      - SVC
+      - CHF
+    kidsPrivacy:
+      type: boolean
+      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
   securitySchemes:
     bearerAuth:
       type: http

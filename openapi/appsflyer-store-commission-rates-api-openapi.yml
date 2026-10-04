@@ -359,6 +359,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      properties:
+        message:
+          type: string
+        request_id:
+          type: string
     StoreCommission:
       type: object
       required:
@@ -400,12 +406,6 @@ components:
 
             '
           example: google_15pct_tier_first_1m
-    Error:
-      properties:
-        message:
-          type: string
-        request_id:
-          type: string
   responses:
     Success:
       description: Valid request

@@ -116,14 +116,12 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
     NotFound:
       description: The specified App ID does not exist within the account.
       content:
@@ -132,14 +130,14 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: app_id not found
-    Conflict:
-      description: You have added the maximum number of devices allowed by the Devices API.
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: device limit reached
+            error: forbidden
     BadRequest:
       description: The request has invalid parameters
       content:
@@ -148,12 +146,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: cannot parse body
-    InternalError:
-      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication credentials were missing or incorrect
       content:
@@ -162,6 +154,14 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: authentication error
+    Conflict:
+      description: You have added the maximum number of devices allowed by the Devices API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: device limit reached
   schemas:
     ErrorResponse:
       type: object
