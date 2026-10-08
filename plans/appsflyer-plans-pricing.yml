@@ -84,3 +84,30 @@ machine_readable_pricing: false
 note: AppsFlyer publishes named, priced self-serve tiers and a single unit price ($0.07 per conversion),
   which is more than most enterprise martech vendors disclose, but the Enterprise tier and every premium
   add-on remain quote-only. There is no machine-readable pricing or catalog endpoint.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - negotiated
+  units: []
+  plans:
+  - name: Zero
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
