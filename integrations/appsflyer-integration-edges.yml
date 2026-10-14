@@ -2,6 +2,10 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://docs.mparticle.com/integrations/appsflyer/event/
+- https://hightouch.com/docs/destinations/appsflyer
+- https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/appsflyer
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -49,3 +53,110 @@ edges:
   seller_name: AppsFlyer UK
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Google Ad Tech Providers
+  partner: null
+  partner_match: domain
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: AppsFlyer
+    register_id: '2577'
+    products:
+    - AppsFlyer
+    matched_domain: appsflyer.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  detected_by: sweep-adtech.py
+  detected: '2026-10-14'
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/appsflyer
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - appsflyer
+      status: PUBLIC
+      partner_owned: false
+      connection_modes:
+      - cloud:mobile
+      - cloud:server
+      - device:mobile
+      accepted_methods:
+      - Identify
+      - Track
+      component_owners:
+      - PARTNER
+      - SEGMENT
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: mParticle
+  partner: mparticle
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://docs.mparticle.com/integrations/appsflyer/event/
+  coverage_role:
+  - destination
+  - source
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - appsflyer
+      integration_types:
+      - event
+      - forwarding-dsr
+    source:
+      catalog_entries:
+      - appsflyer
+      integration_types:
+      - feed
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/appsflyer
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - appsflyer
+      status: released
+      sync_types:
+      - Audiences
+      - Server-to-server events
+      sync_modes:
+      - add
+      - insert
+      - remove
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+source:
+- https://docs.mparticle.com/integrations/appsflyer/event/
+- https://hightouch.com/docs/destinations/appsflyer
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/appsflyer
