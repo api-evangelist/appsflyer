@@ -53,29 +53,6 @@ edges:
   seller_name: AppsFlyer UK
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
-- partner_name: Google Ad Tech Providers
-  partner: null
-  partner_match: domain
-  type: contract
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
-  contract_reference:
-    register: Google Ad Tech Providers (Additional Consent)
-    spec_file: null
-    role: google-atp
-    registered_name: AppsFlyer
-    register_id: '2577'
-    products:
-    - AppsFlyer
-    matched_domain: appsflyer.com
-    api_families: null
-    api_families_basis: null
-    detected_by: sweep-adtech.py
-    detected: '2026-10-14'
-  detected_by: sweep-adtech.py
-  detected: '2026-10-14'
 - partner_name: Twilio Segment
   partner: segment
   partner_match: aggregator
@@ -156,6 +133,29 @@ edges:
       - remove
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Google Ad Tech Providers
+  partner: null
+  partner_match: domain
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: AppsFlyer
+    register_id: '2577'
+    products:
+    - AppsFlyer
+    matched_domain: appsflyer.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
+  detected_by: sweep-adtech.py
+  detected: '2026-10-14'
 source:
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer

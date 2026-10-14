@@ -15,29 +15,6 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
-- slug: appsflyer-google-ad-tech-providers
-  label: Google Ad Tech Providers
-  partner_name: Google Ad Tech Providers
-  type: contract
-  channel: standard-directory
-  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: Google Ad Tech Providers (Additional Consent)
-    spec_file: null
-    role: google-atp
-    registered_name: AppsFlyer
-    register_id: '2577'
-    products:
-    - AppsFlyer
-    matched_domain: appsflyer.com
-    api_families: null
-    api_families_basis: null
-    detected_by: sweep-adtech.py
-    detected: '2026-10-14'
-  status: not-a-workflow
-  arazzo: null
 - slug: appsflyer-twilio-segment
   label: Twilio Segment
   partner: segment
@@ -72,5 +49,28 @@
   evidence: https://hightouch.com/docs/destinations/appsflyer
   source: edge
   relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-google-ad-tech-providers
+  label: Google Ad Tech Providers
+  partner_name: Google Ad Tech Providers
+  type: contract
+  channel: standard-directory
+  evidence: https://storage.googleapis.com/tcfac/additional-consent-providers.csv
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Google Ad Tech Providers (Additional Consent)
+    spec_file: null
+    role: google-atp
+    registered_name: AppsFlyer
+    register_id: '2577'
+    products:
+    - AppsFlyer
+    matched_domain: appsflyer.com
+    api_families: null
+    api_families_basis: null
+    detected_by: sweep-adtech.py
+    detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
