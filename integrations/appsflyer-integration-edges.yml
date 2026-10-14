@@ -4,6 +4,7 @@ checked:
 - https://aws.amazon.com/marketplace/
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer
+- https://registry.modelcontextprotocol.io/v0/servers
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/appsflyer
 marketplace_apps: []
@@ -132,6 +133,37 @@ edges:
       - insert
       - remove
   detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.appsflyer
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: com.appsflyer/mcp
+    register_id: com.appsflyer/mcp
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-14'
+  mcp_registry:
+    servers:
+    - com.appsflyer/mcp
+    hosted_remote: 1
+    local_package: 0
+    transports:
+      streamable-http: 1
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - appsflyer.com
+  matched_by:
+  - namespace-domain
+  detected_by: sweep-agent-tools.py
   first_seen: '2026-10-14'
 - partner_name: Google Ad Tech Providers
   partner: null
