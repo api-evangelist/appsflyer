@@ -38,42 +38,6 @@ paths:
       operationId: postByAppId
       x-operation-id-source: derived
 components:
-  responses:
-    Success:
-      description: Request successful.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: {}
-        text/csv: {}
-    RateLimitError:
-      description: Rate Limit Error.
-      content:
-        application/json:
-          schema:
-            type: string
-    UnprocessableEntity:
-      description: Unprocessable entity.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-              expose:
-                type: string
-          example:
-            error: 'Invalid value: days for key: granularity. Expected one of: hour, week, month, day'
-            expose: false
-    Unauthorized:
-      description: Authentication failed.
-      content:
-        application/json:
-          schema:
-            type: string
-          example: Authentication error
   schemas:
     Filters:
       type: object
@@ -424,15 +388,42 @@ components:
           minimum: 0
           maximum: 180
           description: "Period refers to the day post-attribution, where period 0 is the attribution day. \nFor example, a user installs the app on January 1. This is the attribution day. A purchase made on period 0 means it was made on January 1.\nA purchase made on period 3 means it was made on January 4. \nSimilarly, a user who installs on January 11, this is period 0. A purchase made on January 14 would be period 3.\nMore information you can find [here](https://support.appsflyer.com/hc/en-us/articles/360004799057#using-period-filters).\n"
-  parameters:
-    AppId:
-      name: app_id
-      in: path
-      required: true
-      schema:
-        type: string
-        description: App ID of the app for which you get the report
-        example: com.example.testapp
+  responses:
+    Success:
+      description: Request successful.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: {}
+        text/csv: {}
+    RateLimitError:
+      description: Rate Limit Error.
+      content:
+        application/json:
+          schema:
+            type: string
+    UnprocessableEntity:
+      description: Unprocessable entity.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              expose:
+                type: string
+          example:
+            error: 'Invalid value: days for key: granularity. Expected one of: hour, week, month, day'
+            expose: false
+    Unauthorized:
+      description: Authentication failed.
+      content:
+        application/json:
+          schema:
+            type: string
+          example: Authentication error
   requestBodies:
     createReportBody:
       description: Body for create report request
@@ -564,6 +555,15 @@ components:
                   - If false, KPI values are not divided by the number of users.
 
                   '
+  parameters:
+    AppId:
+      name: app_id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: App ID of the app for which you get the report
+        example: com.example.testapp
   securitySchemes:
     BearerAuth:
       type: http

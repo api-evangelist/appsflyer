@@ -144,7 +144,7 @@ paths:
                     message: Too many requests
 components:
   schemas:
-    success_response:
+    error_response:
       required:
       - message
       properties:
@@ -177,7 +177,7 @@ components:
           type: string
         amplitude_id:
           type: string
-    error_response:
+    success_response:
       required:
       - message
       properties:

@@ -109,8 +109,8 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: The API version listed in the URL is no longer valid. Check the API documentation
-    VersionDoesntExist:
-      description: The API version listed in the URL doesn't exist
+    AccountProblem:
+      description: An account problem occurred. Please contact your AppsFlyer account executive.
       headers:
         deprecated:
           description: is the api version deprecated
@@ -132,10 +132,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-          example:
-            code: InvalidVersion
-            message: The API version listed in the URL doesn't exist. Check the API documentation
-            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
     AuthenticationFailed:
       description: Authentication failed. The authentication token is not valid.
       headers:
@@ -184,8 +180,8 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: Invalid path-params. Verify the content and resubmit.
-    AccountProblem:
-      description: An account problem occurred. Please contact your AppsFlyer account executive.
+    VersionDoesntExist:
+      description: The API version listed in the URL doesn't exist
       headers:
         deprecated:
           description: is the api version deprecated
@@ -207,6 +203,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            code: InvalidVersion
+            message: The API version listed in the URL doesn't exist. Check the API documentation
+            request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
   schemas:
     Error:
       example:

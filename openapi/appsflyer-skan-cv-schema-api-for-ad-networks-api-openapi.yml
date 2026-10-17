@@ -297,6 +297,28 @@ paths:
                   value: Exceeded rate limitation
 components:
   schemas:
+    LockWindowType:
+      type: string
+      description: 'The trigger that causes the window to lock. Possible values: `in-app`, `time`, `high-coarse`, `other`
+
+        '
+    CvMapping:
+      properties:
+        conversion_value:
+          description: Conversion value
+          type: integer
+          minimum: 0
+          maximum: 63
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventV3'
+        min_time_post_install:
+          type: integer
+          description: The lower bound, hours post-install, indicating when the user was last active in the app.
+        max_time_post_install:
+          type: integer
+          description: The upper bound, hours post-install, indicating when the user was last active in the app
     Postback_First:
       title: First postback
       properties:
@@ -332,23 +354,6 @@ components:
           - low
           - medium
           - high
-        min_time_post_install:
-          type: integer
-          description: The lower bound of hours post-install, indicating when the user was last active in the app.
-        max_time_post_install:
-          type: integer
-          description: The upper bound of hours post-install, indicating when the user was last active in the app
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventV4'
-    FineConversionValue:
-      properties:
-        conversion_value:
-          description: 'Conversion value. Possible values: 0-63'
-          type: integer
-          minimum: 0
-          maximum: 63
         min_time_post_install:
           type: integer
           description: The lower bound of hours post-install, indicating when the user was last active in the app.
@@ -397,6 +402,11 @@ components:
         max_event_counter:
           type: integer
           description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
+    LockWindowEvent:
+      type: string
+      description: 'The name of the in-app event that locks the window
+
+        '
     EventV4:
       properties:
         event_name:
@@ -432,11 +442,6 @@ components:
         max_event_counter:
           type: integer
           description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
-    LockWindowType:
-      type: string
-      description: 'The trigger that causes the window to lock. Possible values: `in-app`, `time`, `high-coarse`, `other`
-
-        '
     Postback_SecondThird:
       title: Second and third postbacks
       properties:
@@ -461,31 +466,26 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/CoarseConversionValue'
-    MeasurementWindow:
-      type: integer
-      description: Activity window duration (in hours)
-    CvMapping:
+    FineConversionValue:
       properties:
         conversion_value:
-          description: Conversion value
+          description: 'Conversion value. Possible values: 0-63'
           type: integer
           minimum: 0
           maximum: 63
+        min_time_post_install:
+          type: integer
+          description: The lower bound of hours post-install, indicating when the user was last active in the app.
+        max_time_post_install:
+          type: integer
+          description: The upper bound of hours post-install, indicating when the user was last active in the app
         events:
           type: array
           items:
-            $ref: '#/components/schemas/EventV3'
-        min_time_post_install:
-          type: integer
-          description: The lower bound, hours post-install, indicating when the user was last active in the app.
-        max_time_post_install:
-          type: integer
-          description: The upper bound, hours post-install, indicating when the user was last active in the app
-    LockWindowEvent:
-      type: string
-      description: 'The name of the in-app event that locks the window
-
-        '
+            $ref: '#/components/schemas/EventV4'
+    MeasurementWindow:
+      type: integer
+      description: Activity window duration (in hours)
   securitySchemes:
     bearerAuth:
       type: http

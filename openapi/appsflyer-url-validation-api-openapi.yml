@@ -179,6 +179,29 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: The API version listed in the URL is no longer valid. Check the API documentation
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     VersionDoesntExist:
       description: The API version listed in the URL doesn't exist
       headers:
@@ -206,29 +229,6 @@ components:
             code: InvalidVersion
             message: The API version listed in the URL doesn't exist. Check the API documentation
             request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       example:
@@ -245,10 +245,6 @@ components:
           type: string
         request_id:
           type: string
-    Url:
-      type: string
-      maxLength: 2048
-      example: http://some.url.com:40/dir
     URLTestResponse:
       type: object
       properties:
@@ -257,6 +253,10 @@ components:
       example:
         tested_endpoint_url_http_response: 404
         request_id: 907ea912-9ce9-4dec-9423-b0a04404e1e2
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
     Method:
       type: string
       enum:

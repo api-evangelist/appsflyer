@@ -130,6 +130,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    integration_name:
+      type: string
+      example: Integration 123
+    integrations_response:
+      type: array
+      items:
+        required:
+        - integration_id
+        - integration_name
+        - partner_id
+        type: object
+        properties:
+          integration_id:
+            $ref: '#/components/schemas/integration_id'
+          partner_id:
+            $ref: '#/components/schemas/partner_id'
+          integration_name:
+            $ref: '#/components/schemas/integration_name'
     error_response:
       required:
       - error_code
@@ -151,6 +169,12 @@ components:
         message:
           type: string
           example: Audience does not exist under your account
+    integration_id:
+      type: integer
+      example: 1234
+    partner_id:
+      type: string
+      example: amazon_int
     success_response:
       required:
       - message
@@ -158,30 +182,6 @@ components:
         message:
           type: object
           example: null
-    integrations_response:
-      type: array
-      items:
-        required:
-        - integration_id
-        - integration_name
-        - partner_id
-        type: object
-        properties:
-          integration_id:
-            $ref: '#/components/schemas/integration_id'
-          partner_id:
-            $ref: '#/components/schemas/partner_id'
-          integration_name:
-            $ref: '#/components/schemas/integration_name'
-    integration_name:
-      type: string
-      example: Integration 123
-    integration_id:
-      type: integer
-      example: 1234
-    partner_id:
-      type: string
-      example: amazon_int
   securitySchemes:
     bearerAuth:
       type: http

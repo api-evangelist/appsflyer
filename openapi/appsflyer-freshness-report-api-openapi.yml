@@ -22,9 +22,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  schemas:
-    Error:
-      type: string
   responses:
     Success:
       description: Request successful.
@@ -44,6 +41,9 @@ components:
               summary: Invalid authorization token
               value:
                 message: The supplied API token is invalid
+  schemas:
+    Error:
+      type: string
   securitySchemes:
     Bearer-Authentication:
       type: http

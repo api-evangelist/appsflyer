@@ -163,54 +163,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    Category:
-      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
-      in: query
-      name: category
-      schema:
-        type: string
-        enum:
-        - standard
-        - facebook
-        - twitter
-    MediaSource:
-      description: 'Use to filter by a specific media source
-
-        Set both the `category` and `media_source` parameters as follows:
-
-        - For Facebook set `category` and `media_source` to facebook
-
-        - For Twitter set `category` and `media_source` to twitter
-
-        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
-
-        Examples
-
-        - `media_source=facebook&category=facebook`
-
-        - `media_source=abc_example&category=standard`
-
-        '
-      name: media_source
-      in: query
-      schema:
-        type: string
-      example: facebook
-    ReAttribution:
-      name: reattr
-      in: query
-      description: 'Get retargeting conversions data.
-
-        **[Default]** is false - user acquisition data (UA) campaigns returns.
-
-        If true, retargeting conversion returns.
-
-        '
-      schema:
-        type: string
-        enum:
-        - ''
-        - true
     ToDate:
       in: query
       name: to
@@ -235,14 +187,42 @@ components:
       schema:
         type: string
         format: date
-    AppId:
-      in: path
-      name: app-id
-      description: Application ID
-      example: id121244
-      required: true
+    Currency:
+      name: currency
+      in: query
       schema:
         type: string
+        enum:
+        - preferred
+        - USD
+      description: 'Currency of revenue and cost.
+
+        Aggregate Pull API reports always use the app-specific currency.
+
+        '
+    MediaSource:
+      description: 'Use to filter by a specific media source
+
+        Set both the `category` and `media_source` parameters as follows:
+
+        - For Facebook set `category` and `media_source` to facebook
+
+        - For Twitter set `category` and `media_source` to twitter
+
+        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
+
+        Examples
+
+        - `media_source=facebook&category=facebook`
+
+        - `media_source=abc_example&category=standard`
+
+        '
+      name: media_source
+      in: query
+      schema:
+        type: string
+      example: facebook
     TimeZone:
       name: timezone
       in: query
@@ -269,20 +249,58 @@ components:
         enum:
         - ''
         - impression
-    Currency:
-      name: currency
+    AppId:
+      in: path
+      name: app-id
+      description: Application ID
+      example: id121244
+      required: true
+      schema:
+        type: string
+    ReAttribution:
+      name: reattr
       in: query
+      description: 'Get retargeting conversions data.
+
+        **[Default]** is false - user acquisition data (UA) campaigns returns.
+
+        If true, retargeting conversion returns.
+
+        '
       schema:
         type: string
         enum:
-        - preferred
-        - USD
-      description: 'Currency of revenue and cost.
-
-        Aggregate Pull API reports always use the app-specific currency.
-
-        '
+        - ''
+        - true
+    Category:
+      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+      in: query
+      name: category
+      schema:
+        type: string
+        enum:
+        - standard
+        - facebook
+        - twitter
   responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            CallLimit:
+              value:
+                message: Your API call limit has been reached for the given report type
+            LookBack:
+              description: Use `to` and `from` to limit the date range to 3 months or less.
+              value:
+                message: Raw reports historical lookback is limited to 90 days
+            InvalidLimit:
+              description: report_rows can have the value 200000 or 1000000.
+              value:
+                message: Invalid limit type
     NotFound:
       description: 'App ID wasn''t found.
 
@@ -303,24 +321,6 @@ components:
           schema:
             type: string
       description: Reports returned in CSV format
-    BadRequest:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            CallLimit:
-              value:
-                message: Your API call limit has been reached for the given report type
-            LookBack:
-              description: Use `to` and `from` to limit the date range to 3 months or less.
-              value:
-                message: Raw reports historical lookback is limited to 90 days
-            InvalidLimit:
-              description: report_rows can have the value 200000 or 1000000.
-              value:
-                message: Invalid limit type
     Unauthorized:
       description: Account may be suspended. Log in to the dashboard and check the account status.
       content:
@@ -337,8 +337,6 @@ components:
               value:
                 message: Account may be suspended
   schemas:
-    Error:
-      type: string
     TimeZoneList:
       type: string
       description: Choose a time zone
@@ -937,6 +935,8 @@ components:
       - W-SU
       - WET
       - Zulu
+    Error:
+      type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

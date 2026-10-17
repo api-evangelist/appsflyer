@@ -187,12 +187,6 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    GatewayTimeout:
-      description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.
-      content: {}
-    ServiceUnavailable:
-      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
-      content: {}
     BadRequest:
       description: Bad Request. The request message is not valid.
       content:
@@ -201,6 +195,12 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: Bad Request
+    GatewayTimeout:
+      description: Gateway Timeout. ELB (Amazon Load-balancer) service unavailable.
+      content: {}
+    ServiceUnavailable:
+      description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
+      content: {}
   schemas:
     CommonIdObject:
       required:

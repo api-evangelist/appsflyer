@@ -142,28 +142,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
-    InternalError:
-      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The specified App ID does not exist within the account.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: app_id not found
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
     BadRequest:
       description: The request has invalid parameters
       content:
@@ -172,6 +150,28 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: cannot parse body
+    NotFound:
+      description: The specified App ID does not exist within the account.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: app_id not found
+    InternalError:
+      description: A generic error message displayed when an unexpected condition occurs and no specific error message applies.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: forbidden
     Unauthorized:
       description: Authentication credentials were missing or incorrect
       content:
@@ -188,12 +188,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: device limit reached
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
   parameters:
     EndTime:
       name: end_time
@@ -212,14 +206,6 @@ components:
         description: The ID of the device registered for testing
         pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
       example: 09ad6f30-a39c-4c6c-8862-636eabd54709
-    AppId:
-      name: app-id
-      in: path
-      required: true
-      schema:
-        type: string
-        description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
-        example: com.example.testapp
     StartTime:
       name: start_time
       in: query
@@ -228,6 +214,20 @@ components:
         type: string
         description: The Date and Time in UTC ISO 8601 format. The start time must be within the past 2 hours
       example: '2023-07-12T09:02:26Z'
+    AppId:
+      name: app-id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
+        example: com.example.testapp
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   securitySchemes:
     Bearer-Authentication:
       type: http

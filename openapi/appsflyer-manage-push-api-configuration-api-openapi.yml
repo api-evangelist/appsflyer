@@ -395,6 +395,29 @@ components:
             $ref: '#/components/schemas/Error'
           example:
             message: The API version listed in the URL is no longer valid. Check the API documentation
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     VersionDoesntExist:
       description: The API version listed in the URL doesn't exist
       headers:
@@ -422,80 +445,7 @@ components:
             code: InvalidVersion
             message: The API version listed in the URL doesn't exist. Check the API documentation
             request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    SkadConfig:
-      title: SKADnetwork iOS Config
-      type: object
-      required:
-      - url
-      - method
-      - attributing_entity
-      - event_types
-      - enabled
-      properties:
-        method:
-          $ref: '#/components/schemas/Method'
-        url:
-          $ref: '#/components/schemas/Url'
-        event_types:
-          type: array
-          items:
-            enum:
-            - install
-            - re-download
-            - in-app-event
-            - postback
-            - postbacks-copy
-        enabled:
-          type: boolean
-          default: true
-        attributing_entity:
-          type: string
-          enum:
-          - skadnetwork
-          default: skadnetwork
-    Error:
-      example:
-        code: SomeErrorCode
-        message: Some error message.
-        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-      type: object
-      properties:
-        status:
-          type: integer
-        code:
-          type: string
-        message:
-          type: string
-        request_id:
-          type: string
-    Url:
-      type: string
-      maxLength: 2048
-      example: http://some.url.com:40/dir
     RegularAndroidConfig:
       title: Regular Android Config
       type: object
@@ -669,6 +619,56 @@ components:
           enum:
           - appsflyer
           default: appsflyer
+    SkadConfig:
+      title: SKADnetwork iOS Config
+      type: object
+      required:
+      - url
+      - method
+      - attributing_entity
+      - event_types
+      - enabled
+      properties:
+        method:
+          $ref: '#/components/schemas/Method'
+        url:
+          $ref: '#/components/schemas/Url'
+        event_types:
+          type: array
+          items:
+            enum:
+            - install
+            - re-download
+            - in-app-event
+            - postback
+            - postbacks-copy
+        enabled:
+          type: boolean
+          default: true
+        attributing_entity:
+          type: string
+          enum:
+          - skadnetwork
+          default: skadnetwork
+    Error:
+      example:
+        code: SomeErrorCode
+        message: Some error message.
+        request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
+      type: object
+      properties:
+        status:
+          type: integer
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+    Url:
+      type: string
+      maxLength: 2048
+      example: http://some.url.com:40/dir
     RegularIosConfig:
       title: Regular iOS Config
       type: object

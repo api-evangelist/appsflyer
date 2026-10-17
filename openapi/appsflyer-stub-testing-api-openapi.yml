@@ -234,133 +234,6 @@ paths:
                 $ref: '#/components/schemas/DiscoveryResponse'
 components:
   schemas:
-    Request:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-          description: External Fields
-        subject_request_type:
-          type: string
-          description: SubjectRequestType is the type of the request
-          enum:
-          - access
-          - portability
-          - rectification
-          - erasure
-          example: access
-        submitted_time:
-          type: string
-          description: SubmittedTime is the time when the request is submitted
-        api_version:
-          type: string
-          description: APIVersion is the version of the API
-        subject_identities:
-          type: array
-          description: SubjectIdentities is the list of subject identities.
-          items:
-            $ref: '#/components/schemas/SubjectIdentity'
-        status_callback_urls:
-          type: array
-          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
-          items:
-            type: string
-        property_id:
-          type: string
-          description: PropertyID is the AppID
-        platform:
-          type: string
-          description: Platform is the platform of the app
-        requester:
-          type: string
-          description: Requester is the email of the requester
-    CreateResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        original_request_id:
-          type: string
-        expected_completion_time:
-          type: string
-        received_time:
-          type: string
-        encoded_request:
-          type: string
-        info:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        subject_request_id:
-          type: string
-        error:
-          $ref: '#/components/schemas/APIErrorData'
-    DiscoveryResponse:
-      type: object
-      properties:
-        api_version:
-          type: string
-        supported_subject_request_types:
-          type: string
-        supported_identities:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
-        processor_certificate:
-          type: string
-    SupportedIdentitiesDiscoveryResponse:
-      type: object
-      properties:
-        identity_type:
-          type: string
-          description: 'Type of identity supported by the API.
-
-
-            **For Android, iOS, Web, WindowsPhone platforms:**
-
-            - `ios_advertising_id`
-
-            - `android_advertising_id`
-
-            - `fire_advertising_id`
-
-            - `microsoft_advertising_id`
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-            - `idfv`
-
-
-            **For CTV, PC, and Console platforms:**
-
-            - `appsflyer_id`
-
-            - `customer_user_id` (CUID)
-
-            '
-          enum:
-          - ios_advertising_id
-          - android_advertising_id
-          - fire_advertising_id
-          - microsoft_advertising_id
-          - appsflyer_id
-          - customer_user_id
-          - idfv
-          example: android_advertising_id
-        identity_format:
-          type: string
-    BatchRequest:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/Request'
     Meta:
       type: object
       properties:
@@ -433,9 +306,79 @@ components:
           type: string
           enum:
           - raw
-    APIErrorWrapper:
+    DiscoveryResponse:
       type: object
       properties:
+        api_version:
+          type: string
+        supported_subject_request_types:
+          type: string
+        supported_identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupportedIdentitiesDiscoveryResponse'
+        processor_certificate:
+          type: string
+    Request:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+          description: External Fields
+        subject_request_type:
+          type: string
+          description: SubjectRequestType is the type of the request
+          enum:
+          - access
+          - portability
+          - rectification
+          - erasure
+          example: access
+        submitted_time:
+          type: string
+          description: SubmittedTime is the time when the request is submitted
+        api_version:
+          type: string
+          description: APIVersion is the version of the API
+        subject_identities:
+          type: array
+          description: SubjectIdentities is the list of subject identities.
+          items:
+            $ref: '#/components/schemas/SubjectIdentity'
+        status_callback_urls:
+          type: array
+          description: StatusCallbackURLs is the callback URLs to notify when the request is completed
+          items:
+            type: string
+        property_id:
+          type: string
+          description: PropertyID is the AppID
+        platform:
+          type: string
+          description: Platform is the platform of the app
+        requester:
+          type: string
+          description: Requester is the email of the requester
+    CreateResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
+        original_request_id:
+          type: string
+        expected_completion_time:
+          type: string
+        received_time:
+          type: string
+        encoded_request:
+          type: string
+        info:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        subject_request_id:
+          type: string
         error:
           $ref: '#/components/schemas/APIErrorData'
     Status:
@@ -459,6 +402,49 @@ components:
           - completed
           - canceled
           example: pending
+    SupportedIdentitiesDiscoveryResponse:
+      type: object
+      properties:
+        identity_type:
+          type: string
+          description: 'Type of identity supported by the API.
+
+
+            **For Android, iOS, Web, WindowsPhone platforms:**
+
+            - `ios_advertising_id`
+
+            - `android_advertising_id`
+
+            - `fire_advertising_id`
+
+            - `microsoft_advertising_id`
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            - `idfv`
+
+
+            **For CTV, PC, and Console platforms:**
+
+            - `appsflyer_id`
+
+            - `customer_user_id` (CUID)
+
+            '
+          enum:
+          - ios_advertising_id
+          - android_advertising_id
+          - fire_advertising_id
+          - microsoft_advertising_id
+          - appsflyer_id
+          - customer_user_id
+          - idfv
+          example: android_advertising_id
+        identity_format:
+          type: string
     CreateBatchResponse:
       type: object
       properties:
@@ -474,6 +460,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorResponse'
+    APIErrorWrapper:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/APIErrorData'
+    BatchRequest:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/Request'
     APIErrorData:
       type: object
       properties:
