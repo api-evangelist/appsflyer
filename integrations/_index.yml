@@ -172,7 +172,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: appsflyer-fivetran
   label: Fivetran
@@ -198,7 +198,7 @@
     - connectors/applications/appsflyer
     vendor_link: https://www.appsflyer.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: appsflyer-meltano
   label: Meltano
@@ -230,5 +230,5 @@
     - bronze
     - silver
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
