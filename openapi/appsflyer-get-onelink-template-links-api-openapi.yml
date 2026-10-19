@@ -1,0 +1,44 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Onelink Template Links API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Onelink Template Links
+paths:
+  /get-onelink-template-links:
+    post:
+      summary: Get-onelink-template-links
+      description: 'Get all OneLink links from a specific template. Returns clickable short links created via UI (excludes API/SDK/bulk-created links). Args: onelink_id: The OneLink template ID to fetch links for'
+      operationId: get-onelink-template-links
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                onelink_id:
+                  maxLength: 64
+                  minLength: 1
+                  pattern: ^[A-Za-z0-9_-]{1,64}$
+                  type: string
+              required:
+              - onelink_id
+              type: object
+      tags:
+      - Get Onelink Template Links

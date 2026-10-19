@@ -1,0 +1,492 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Fetch Aggregated Data API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Fetch Aggregated Data
+paths:
+  /fetch-aggregated-data:
+    post:
+      summary: Fetch-aggregated-data
+      description: Use this tool to help the campaign manager to get the user's aggregated dashboard data. [important] Each user is limited to 20 tool calls per min and 200 tool calls per day. Please be mindful of this, and in case the user is asking a question that require few tool calls in a row, make sure to not...
+      operationId: fetch-aggregated-data
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+        '429':
+          description: Too Many Requests
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                query:
+                  properties:
+                    start_date:
+                      description: 'The start date of the date range, required, format: yyyy-MM-dd, default- last 7 days from yesterday'
+                      type: string
+                    end_date:
+                      description: 'The end date of the date range, required, format: yyyy-MM-dd, default- yesterday'
+                      type: string
+                    row_count:
+                      anyOf:
+                      - maximum: 300
+                        minimum: 1
+                        type: integer
+                      - type: 'null'
+                      default: 25
+                      description: The number of rows to return, top x from the aggregated data
+                    metrics:
+                      description: The metrics to get the data for.
+                      items:
+                        properties:
+                          metric_name:
+                            enum:
+                            - ROAS
+                            - SKAN duplicates
+                            - Conversion rate
+                            - Net ROAS
+                            - ARPU
+                            - Sessions
+                            - Revenue
+                            - eCPI
+                            - Uninstalls
+                            - mau-30
+                            - Gross profit
+                            - DAU/MAU
+                            - First visits
+                            - Total attributions
+                            - Net ROI
+                            - Click-to-install rate
+                            - Net ARPU
+                            - Unique users
+                            - IPM
+                            - ROI
+                            - Re-visits
+                            - Revenue per unique user
+                            - Clicks
+                            - CTR
+                            - Installs
+                            - CPM
+                            - Uninstalls rate
+                            - Average count
+                            - CPC
+                            - Count per unique user
+                            - Assisted installs
+                            - Impressions
+                            - Net profit
+                            - Re-attributions
+                            - View-throughs
+                            - Count
+                            - Retention rate
+                            - eCPA
+                            - Cost
+                            - User acquisitions
+                            - Platform activations
+                            - Active users
+                            - Click-throughs
+                            - Re-engagements
+                            - Net revenue
+                            type: string
+                            description: The metric name
+                          attribution_source:
+                            enum:
+                            - ''
+                            - skan
+                            - cross-platform
+                            - appsflyer
+                            - ssot
+                            type: string
+                            default: ''
+                            description: The attribution source of the metric
+                          period:
+                            enum:
+                            - ''
+                            - '170'
+                            - '157'
+                            - '98'
+                            - '141'
+                            - '34'
+                            - '149'
+                            - '134'
+                            - '166'
+                            - '61'
+                            - '178'
+                            - '49'
+                            - '14'
+                            - '129'
+                            - '12'
+                            - '111'
+                            - '128'
+                            - '63'
+                            - '33'
+                            - '105'
+                            - '82'
+                            - '117'
+                            - '18'
+                            - '115'
+                            - ltv
+                            - '150'
+                            - '97'
+                            - '92'
+                            - '90'
+                            - '24'
+                            - '168'
+                            - '58'
+                            - '60'
+                            - '38'
+                            - '176'
+                            - '162'
+                            - '41'
+                            - '67'
+                            - '17'
+                            - '80'
+                            - '89'
+                            - '87'
+                            - '158'
+                            - '139'
+                            - '160'
+                            - '68'
+                            - '132'
+                            - '73'
+                            - '86'
+                            - '57'
+                            - '71'
+                            - '7'
+                            - '74'
+                            - '131'
+                            - '174'
+                            - '56'
+                            - '8'
+                            - '2'
+                            - '151'
+                            - '173'
+                            - '40'
+                            - '159'
+                            - '9'
+                            - '26'
+                            - '43'
+                            - '94'
+                            - '25'
+                            - '5'
+                            - '164'
+                            - '114'
+                            - '83'
+                            - '130'
+                            - '45'
+                            - '137'
+                            - '125'
+                            - '16'
+                            - '172'
+                            - '79'
+                            - '48'
+                            - '32'
+                            - '155'
+                            - '148'
+                            - '4'
+                            - '84'
+                            - '69'
+                            - '55'
+                            - '15'
+                            - '27'
+                            - '136'
+                            - '147'
+                            - '167'
+                            - '13'
+                            - '54'
+                            - '165'
+                            - '122'
+                            - '177'
+                            - '10'
+                            - '102'
+                            - '109'
+                            - '133'
+                            - '175'
+                            - '28'
+                            - '88'
+                            - '108'
+                            - '93'
+                            - '81'
+                            - '179'
+                            - '152'
+                            - '39'
+                            - '143'
+                            - '78'
+                            - '47'
+                            - '116'
+                            - '156'
+                            - '22'
+                            - '1'
+                            - '103'
+                            - '169'
+                            - '118'
+                            - '121'
+                            - '0'
+                            - '95'
+                            - '104'
+                            - '31'
+                            - '124'
+                            - '21'
+                            - '153'
+                            - '161'
+                            - '37'
+                            - '51'
+                            - '140'
+                            - '106'
+                            - '65'
+                            - '85'
+                            - '50'
+                            - '77'
+                            - '127'
+                            - '112'
+                            - '30'
+                            - '110'
+                            - '138'
+                            - '20'
+                            - '64'
+                            - '163'
+                            - '135'
+                            - '11'
+                            - '96'
+                            - '53'
+                            - '107'
+                            - '144'
+                            - '154'
+                            - '19'
+                            - '142'
+                            - '36'
+                            - '123'
+                            - '59'
+                            - '119'
+                            - '70'
+                            - '146'
+                            - '76'
+                            - '91'
+                            - '29'
+                            - '62'
+                            - '113'
+                            - '75'
+                            - '101'
+                            - '44'
+                            - '52'
+                            - '23'
+                            - '126'
+                            - '120'
+                            - '66'
+                            - '100'
+                            - activity
+                            - '180'
+                            - '3'
+                            - '42'
+                            - '6'
+                            - '35'
+                            - '99'
+                            - '72'
+                            - 1-35
+                            - '46'
+                            - '145'
+                            - '171'
+                            type: string
+                            default: ''
+                            description: The period of the metric
+                          aggregation_type:
+                            anyOf:
+                            - enum:
+                              - cumulative
+                              - on-period
+                              type: string
+                            - type: 'null'
+                            default: null
+                            description: The aggregation type of the metric
+                        required:
+                        - metric_name
+                        type: object
+                      maxItems: 25
+                      minItems: 1
+                      type: array
+                    app_ids:
+                      description: The app ids to get the data for
+                      items:
+                        type: string
+                      maxItems: 10
+                      minItems: 1
+                      type: array
+                    groupings:
+                      anyOf:
+                      - items:
+                          enum:
+                          - Ad
+                          - Ad ID
+                          - Adset
+                          - Adset ID
+                          - App
+                          - App version
+                          - Attributed touch type
+                          - Attribution type
+                          - Campaign
+                          - Campaign ID
+                          - Channel
+                          - Conversion type
+                          - Geo
+                          - Custom dimension
+                          - Date
+                          - Engagement Destination
+                          - Engagement type
+                          - Event name
+                          - Install app store
+                          - Keywords
+                          - Media source
+                          - OS version
+                          - Agency
+                          - Platform
+                          - Platform group
+                          - Product line
+                          - Site ID
+                          - Source
+                          - Store product page
+                          - Sub param 1
+                          type: string
+                        maxItems: 4
+                        type: array
+                      - type: 'null'
+                      default: []
+                      description: The dimensions to group the data by, use get_supported_metadata tool to get the supported dimensions,in case of a user asking for a dimension that is not supported, add the closest supported dimension
+                    filters:
+                      anyOf:
+                      - additionalProperties:
+                          items:
+                            type: string
+                          type: array
+                        propertyNames:
+                          enum:
+                          - Ad
+                          - Ad ID
+                          - Adset
+                          - Adset ID
+                          - App version
+                          - Attributed touch type
+                          - Attribution type
+                          - Campaign
+                          - Campaign ID
+                          - Channel
+                          - Conversion type
+                          - Geo
+                          - Custom dimension
+                          - Engagement Destination
+                          - Engagement type
+                          - Event name
+                          - Install app store
+                          - Keywords
+                          - Media source
+                          - OS version
+                          - Agency
+                          - Platform
+                          - Platform group
+                          - Site ID
+                          - Source
+                          - Store product page
+                          - Sub param 1
+                          type: string
+                        type: object
+                      - type: 'null'
+                      default: {}
+                      description: 'The filters to apply to the data. key is a dimension, value is list of whitelisted values i.e ''Geo'': [''US'', ''CA''] or ''Media source'': [''Facebook'']'
+                    sort_by_metrics:
+                      anyOf:
+                      - items:
+                          properties:
+                            metric_name:
+                              enum:
+                              - ROAS
+                              - SKAN duplicates
+                              - Conversion rate
+                              - Net ROAS
+                              - ARPU
+                              - Sessions
+                              - Revenue
+                              - eCPI
+                              - Uninstalls
+                              - mau-30
+                              - Gross profit
+                              - DAU/MAU
+                              - First visits
+                              - Total attributions
+                              - Net ROI
+                              - Click-to-install rate
+                              - Net ARPU
+                              - Unique users
+                              - IPM
+                              - ROI
+                              - Re-visits
+                              - Revenue per unique user
+                              - Clicks
+                              - CTR
+                              - Installs
+                              - CPM
+                              - Uninstalls rate
+                              - Average count
+                              - CPC
+                              - Count per unique user
+                              - Assisted installs
+                              - Impressions
+                              - Net profit
+                              - Re-attributions
+                              - View-throughs
+                              - Count
+                              - Retention rate
+                              - eCPA
+                              - Cost
+                              - User acquisitions
+                              - Platform activations
+                              - Active users
+                              - Click-throughs
+                              - Re-engagements
+                              - Net revenue
+                              type: string
+                              description: The metric id to sort by
+                            order:
+                              default: desc
+                              description: The order of the sort
+                              pattern: ^(asc|desc)$
+                              type: string
+                          required:
+                          - metric_name
+                          type: object
+                        type: array
+                      - type: 'null'
+                      default:
+                      - metric_name: Total attributions
+                        order: desc
+                      description: The metrics to sort by. Each metric must be one of the fetched/requested metrics (i.e., included in the `metrics` parameter).
+                    in_app_event:
+                      anyOf:
+                      - items:
+                          type: string
+                        maxItems: 1
+                        type: array
+                      - type: 'null'
+                      default: []
+                      description: Specific event name representing user actions within your app
+                  required:
+                  - start_date
+                  - end_date
+                  - metrics
+                  - app_ids
+                  type: object
+              required:
+              - query
+              type: object
+      tags:
+      - Fetch Aggregated Data

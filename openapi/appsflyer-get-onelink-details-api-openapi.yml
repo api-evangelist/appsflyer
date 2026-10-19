@@ -1,0 +1,47 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Onelink Details API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Onelink Details
+paths:
+  /get-onelink-details:
+    post:
+      summary: Get-onelink-details
+      description: Get comprehensive configuration details for a known OneLink link, by its template ID and shortlink ID. Returns complete link setup including attribution parameters, deep linking, platform settings, and QR code configuration. Use this when you already have both the template ID and the shortlink ID...
+      operationId: get-onelink-details
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                onelink_id:
+                  maxLength: 64
+                  minLength: 1
+                  pattern: ^[A-Za-z0-9_-]{1,64}$
+                  type: string
+                shortlink_id:
+                  type: string
+              required:
+              - onelink_id
+              - shortlink_id
+              type: object
+      tags:
+      - Get Onelink Details

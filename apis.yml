@@ -1629,6 +1629,322 @@ apis:
     url: sandbox/appsflyer-sandbox.yml
   - type: Webhooks
     url: asyncapi/appsflyer-push-api-webhooks.yml
+- aid: appsflyer:appsflyer-create-onelink-link-api
+  name: AppsFlyer Create Onelink Link API
+  description: The Create Onelink Link API from AppsFlyer — 1 operation(s) for create onelink link.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Create Onelink Link
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-create-onelink-link-api-openapi.yml
+- aid: appsflyer:appsflyer-discover-onelink-api
+  name: AppsFlyer Discover Onelink API
+  description: The Discover Onelink API from AppsFlyer — 1 operation(s) for discover onelink.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Discover Onelink
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-discover-onelink-api-openapi.yml
+- aid: appsflyer:appsflyer-fetch-aggregated-data-api
+  name: AppsFlyer Fetch Aggregated Data API
+  description: The Fetch Aggregated Data API from AppsFlyer — 1 operation(s) for fetch aggregated data.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Fetch Aggregated Data
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-fetch-aggregated-data-api-openapi.yml
+- aid: appsflyer:appsflyer-get-active-adrevenue-integrations-api
+  name: AppsFlyer Get Active Adrevenue Integrations API
+  description: >-
+    The Get Active Adrevenue Integrations API from AppsFlyer — 1 operation(s) for get active adrevenue
+    integrations.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Active Adrevenue Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-active-adrevenue-integrations-api-openapi.yml
+- aid: appsflyer:appsflyer-get-active-cost-integrations-api
+  name: AppsFlyer Get Active Cost Integrations API
+  description: >-
+    The Get Active Cost Integrations API from AppsFlyer — 1 operation(s) for get active cost integrations.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Active Cost Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-active-cost-integrations-api-openapi.yml
+- aid: appsflyer:appsflyer-get-app-settings-api
+  name: AppsFlyer Get App Settings API
+  description: The Get App Settings API from AppsFlyer — 1 operation(s) for get app settings.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get App Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-app-settings-api-openapi.yml
+- aid: appsflyer:appsflyer-get-apps-api
+  name: AppsFlyer Get Apps API
+  description: The Get Apps API from AppsFlyer — 1 operation(s) for get apps.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-apps-api-openapi.yml
+- aid: appsflyer:appsflyer-get-audience-connections-api
+  name: AppsFlyer Get Audience Connections API
+  description: >-
+    The Get Audience Connections API from AppsFlyer — 1 operation(s) for get audience connections.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Audience Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-audience-connections-api-openapi.yml
+- aid: appsflyer:appsflyer-get-creative-performance-api
+  name: AppsFlyer Get Creative Performance API
+  description: >-
+    The Get Creative Performance API from AppsFlyer — 1 operation(s) for get creative performance.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Creative Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-creative-performance-api-openapi.yml
+- aid: appsflyer:appsflyer-get-onelink-details-api
+  name: AppsFlyer Get Onelink Details API
+  description: The Get Onelink Details API from AppsFlyer — 1 operation(s) for get onelink details.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Onelink Details
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-onelink-details-api-openapi.yml
+- aid: appsflyer:appsflyer-get-onelink-template-links-api
+  name: AppsFlyer Get Onelink Template Links API
+  description: >-
+    The Get Onelink Template Links API from AppsFlyer — 1 operation(s) for get onelink template links.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Onelink Template Links
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-onelink-template-links-api-openapi.yml
+- aid: appsflyer:appsflyer-get-onelink-templates-api
+  name: AppsFlyer Get Onelink Templates API
+  description: The Get Onelink Templates API from AppsFlyer — 1 operation(s) for get onelink templates.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Onelink Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-onelink-templates-api-openapi.yml
+- aid: appsflyer:appsflyer-get-p360-available-filters-api
+  name: AppsFlyer Get P360 Available Filters API
+  description: >-
+    The Get P360 Available Filters API from AppsFlyer — 1 operation(s) for get p360 available filters.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get P360 Available Filters
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-p360-available-filters-api-openapi.yml
+- aid: appsflyer:appsflyer-get-p360-breakdown-api
+  name: AppsFlyer Get P360 Breakdown API
+  description: The Get P360 Breakdown API from AppsFlyer — 1 operation(s) for get p360 breakdown.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get P360 Breakdown
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-p360-breakdown-api-openapi.yml
+- aid: appsflyer:appsflyer-get-p360-kpis-api
+  name: AppsFlyer Get P360 Kpis API
+  description: The Get P360 Kpis API from AppsFlyer — 1 operation(s) for get p360 kpis.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get P360 Kpis
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-p360-kpis-api-openapi.yml
+- aid: appsflyer:appsflyer-get-p360-over-time-api
+  name: AppsFlyer Get P360 Over Time API
+  description: The Get P360 Over Time API from AppsFlyer — 1 operation(s) for get p360 over time.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get P360 Over Time
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-p360-over-time-api-openapi.yml
+- aid: appsflyer:appsflyer-get-p360-top-fraud-api
+  name: AppsFlyer Get P360 Top Fraud API
+  description: The Get P360 Top Fraud API from AppsFlyer — 1 operation(s) for get p360 top fraud.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get P360 Top Fraud
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-p360-top-fraud-api-openapi.yml
+- aid: appsflyer:appsflyer-get-public-knowledge-api
+  name: AppsFlyer Get Public Knowledge API
+  description: The Get Public Knowledge API from AppsFlyer — 1 operation(s) for get public knowledge.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Public Knowledge
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-public-knowledge-api-openapi.yml
+- aid: appsflyer:appsflyer-get-smart-banner-performance-api
+  name: AppsFlyer Get Smart Banner Performance API
+  description: >-
+    The Get Smart Banner Performance API from AppsFlyer — 1 operation(s) for get smart banner performance.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Smart Banner Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-smart-banner-performance-api-openapi.yml
+- aid: appsflyer:appsflyer-get-users-api
+  name: AppsFlyer Get Users API
+  description: The Get Users API from AppsFlyer — 1 operation(s) for get users.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Get Users
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-get-users-api-openapi.yml
+- aid: appsflyer:appsflyer-incrementality-get-experiment-results-api
+  name: AppsFlyer Incrementality Get Experiment Results API
+  description: >-
+    The Incrementality Get Experiment Results API from AppsFlyer — 1 operation(s) for incrementality get
+    experiment results.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Incrementality Get Experiment Results
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-incrementality-get-experiment-results-api-openapi.yml
+- aid: appsflyer:appsflyer-incrementality-list-experiments-api
+  name: AppsFlyer Incrementality List Experiments API
+  description: >-
+    The Incrementality List Experiments API from AppsFlyer — 1 operation(s) for incrementality list experiments.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Incrementality List Experiments
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-incrementality-list-experiments-api-openapi.yml
+- aid: appsflyer:appsflyer-list-active-audiences-api
+  name: AppsFlyer List Active Audiences API
+  description: The List Active Audiences API from AppsFlyer — 1 operation(s) for list active audiences.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Active Audiences
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-active-audiences-api-openapi.yml
+- aid: appsflyer:appsflyer-list-adrevenue-supported-media-sources-api
+  name: AppsFlyer List Adrevenue Supported Media Sources API
+  description: >-
+    The List Adrevenue Supported Media Sources API from AppsFlyer — 1 operation(s) for list adrevenue
+    supported media sources.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Adrevenue Supported Media Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-adrevenue-supported-media-sources-api-openapi.yml
+- aid: appsflyer:appsflyer-list-audiences-connections-api
+  name: AppsFlyer List Audiences Connections API
+  description: >-
+    The List Audiences Connections API from AppsFlyer — 1 operation(s) for list audiences connections.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Audiences Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-audiences-connections-api-openapi.yml
+- aid: appsflyer:appsflyer-list-cost-connections-api
+  name: AppsFlyer List Cost Connections API
+  description: The List Cost Connections API from AppsFlyer — 1 operation(s) for list cost connections.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Cost Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-cost-connections-api-openapi.yml
+- aid: appsflyer:appsflyer-list-cost-supported-media-sources-api
+  name: AppsFlyer List Cost Supported Media Sources API
+  description: >-
+    The List Cost Supported Media Sources API from AppsFlyer — 1 operation(s) for list cost supported
+    media sources.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Cost Supported Media Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-cost-supported-media-sources-api-openapi.yml
+- aid: appsflyer:appsflyer-list-smart-banners-api
+  name: AppsFlyer List Smart Banners API
+  description: The List Smart Banners API from AppsFlyer — 1 operation(s) for list smart banners.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - List Smart Banners
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-list-smart-banners-api-openapi.yml
+- aid: appsflyer:appsflyer-reasoning-search-api
+  name: AppsFlyer Reasoning Search API
+  description: The Reasoning Search API from AppsFlyer — 1 operation(s) for reasoning search.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Reasoning Search
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-reasoning-search-api-openapi.yml
+- aid: appsflyer:appsflyer-skan-get-app-data-api
+  name: AppsFlyer Skan Get App Data API
+  description: The Skan Get App Data API from AppsFlyer — 1 operation(s) for skan get app data.
+  humanURL: https://dev.appsflyer.com/hc/reference/creative-external-api-overview
+  baseURL: https://hq1.appsflyer.com/creative-dashboard/api
+  tags:
+  - Skan Get App Data
+  properties:
+  - type: OpenAPI
+    url: openapi/appsflyer-skan-get-app-data-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -165,6 +165,16 @@ components:
       description: Service Unavailable. ELB (Amazon Load-balancer) service unavailable.
       content: {}
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
     CommonIdObject:
       required:
       - type
@@ -257,13 +267,3 @@ components:
               type:
               - string
               - 'null'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - message

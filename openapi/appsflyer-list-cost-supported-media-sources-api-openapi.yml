@@ -1,0 +1,39 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Cost Supported Media Sources API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Cost Supported Media Sources
+paths:
+  /list-cost-supported-media-sources:
+    post:
+      summary: List-cost-supported-media-sources
+      description: The tool returns a list of Media Sources that support a Cost reporting integration
+      operationId: list-cost-supported-media-sources
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      tags:
+      - List Cost Supported Media Sources

@@ -162,127 +162,42 @@ paths:
       operationId: getByAppIdPartnersReportV5
       x-operation-id-source: derived
 components:
-  parameters:
-    ToDate:
-      in: query
-      name: to
-      description: To date (report end date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-      required: true
-      schema:
-        type: string
-        format: date
-    FromDate:
-      in: query
-      name: from
-      description: From date (report start date)
-      examples:
-        DateOnly:
-          summary: Date only
-          value: '2022-04-22'
-      required: true
-      schema:
-        type: string
-        format: date
-    Currency:
-      name: currency
-      in: query
-      schema:
-        type: string
-        enum:
-        - preferred
-        - USD
-      description: 'Currency of revenue and cost.
-
-        Aggregate Pull API reports always use the app-specific currency.
-
-        '
-    MediaSource:
-      description: 'Use to filter by a specific media source
-
-        Set both the `category` and `media_source` parameters as follows:
-
-        - For Facebook set `category` and `media_source` to facebook
-
-        - For Twitter set `category` and `media_source` to twitter
-
-        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
-
-        Examples
-
-        - `media_source=facebook&category=facebook`
-
-        - `media_source=abc_example&category=standard`
-
-        '
-      name: media_source
-      in: query
-      schema:
-        type: string
-      example: facebook
-    TimeZone:
-      name: timezone
-      in: query
-      schema:
-        oneOf:
-        - $ref: '#/components/schemas/TimeZoneList'
-      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
-
-        - Data returns using the app-specific time zone.
-
-        - Time zone format takes into account daylight saving time.
-
-        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
-
-        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
-
-        '
-    AttributionTouchType:
-      description: Set this parameter as shown in the example to get view-through attribution (VTA) KPIs.
-      name: attribution_touch_type
-      in: query
-      schema:
-        type: string
-        enum:
-        - ''
-        - impression
-    AppId:
-      in: path
-      name: app-id
-      description: Application ID
-      example: id121244
-      required: true
-      schema:
-        type: string
-    ReAttribution:
-      name: reattr
-      in: query
-      description: 'Get retargeting conversions data.
-
-        **[Default]** is false - user acquisition data (UA) campaigns returns.
-
-        If true, retargeting conversion returns.
-
-        '
-      schema:
-        type: string
-        enum:
-        - ''
-        - true
-    Category:
-      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
-      in: query
-      name: category
-      schema:
-        type: string
-        enum:
-        - standard
-        - facebook
-        - twitter
   responses:
+    NotFound:
+      description: 'App ID wasn''t found.
+
+        - Ensure that the app ID is correct. iOS apps must start with ID.
+
+        - The token doesn''t match the app. Are you using the correct token?
+
+        '
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: AppsFlyer 404 error message page displays
+    Unauthorized:
+      description: Account may be suspended. Log in to the dashboard and check the account status.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            InvalidToken:
+              description: Ask an admin for the current token
+              value:
+                message: Supplied API token is invalid
+            Suspended:
+              description: Log in to the dashboard and check the account status
+              value:
+                message: Account may be suspended
+    Success:
+      content:
+        text/csv:
+          schema:
+            type: string
+      description: Reports returned in CSV format
     BadRequest:
       description: Bad Request
       content:
@@ -301,41 +216,6 @@ components:
               description: report_rows can have the value 200000 or 1000000.
               value:
                 message: Invalid limit type
-    NotFound:
-      description: 'App ID wasn''t found.
-
-        - Ensure that the app ID is correct. iOS apps must start with ID.
-
-        - The token doesn''t match the app. Are you using the correct token?
-
-        '
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: AppsFlyer 404 error message page displays
-    Success:
-      content:
-        text/csv:
-          schema:
-            type: string
-      description: Reports returned in CSV format
-    Unauthorized:
-      description: Account may be suspended. Log in to the dashboard and check the account status.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            InvalidToken:
-              description: Ask an admin for the current token
-              value:
-                message: Supplied API token is invalid
-            Suspended:
-              description: Log in to the dashboard and check the account status
-              value:
-                message: Account may be suspended
   schemas:
     TimeZoneList:
       type: string
@@ -937,6 +817,126 @@ components:
       - Zulu
     Error:
       type: string
+  parameters:
+    FromDate:
+      in: query
+      name: from
+      description: From date (report start date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+      required: true
+      schema:
+        type: string
+        format: date
+    AppId:
+      in: path
+      name: app-id
+      description: Application ID
+      example: id121244
+      required: true
+      schema:
+        type: string
+    ReAttribution:
+      name: reattr
+      in: query
+      description: 'Get retargeting conversions data.
+
+        **[Default]** is false - user acquisition data (UA) campaigns returns.
+
+        If true, retargeting conversion returns.
+
+        '
+      schema:
+        type: string
+        enum:
+        - ''
+        - true
+    AttributionTouchType:
+      description: Set this parameter as shown in the example to get view-through attribution (VTA) KPIs.
+      name: attribution_touch_type
+      in: query
+      schema:
+        type: string
+        enum:
+        - ''
+        - impression
+    Category:
+      description: "media_source: Use to filter the call for a specific media source. \nSet both the `media_source` and `category` parameters as follows:\n- For Facebook set `category` and `media_source` to facebook\n- For Twitter set `category` and `media_source` to twitter\n- For all other media sources set `category` to standard and `media_source` to the name of the media source.\nExamples\n- `media_source=facebook&category=facebook`\n- `media_source=abc_example&category=standard`\n"
+      in: query
+      name: category
+      schema:
+        type: string
+        enum:
+        - standard
+        - facebook
+        - twitter
+    MediaSource:
+      description: 'Use to filter by a specific media source
+
+        Set both the `category` and `media_source` parameters as follows:
+
+        - For Facebook set `category` and `media_source` to facebook
+
+        - For Twitter set `category` and `media_source` to twitter
+
+        - For all other media sources set `category` to standard and `media_source` to the name of the media source.
+
+        Examples
+
+        - `media_source=facebook&category=facebook`
+
+        - `media_source=abc_example&category=standard`
+
+        '
+      name: media_source
+      in: query
+      schema:
+        type: string
+      example: facebook
+    Currency:
+      name: currency
+      in: query
+      schema:
+        type: string
+        enum:
+        - preferred
+        - USD
+      description: 'Currency of revenue and cost.
+
+        Aggregate Pull API reports always use the app-specific currency.
+
+        '
+    ToDate:
+      in: query
+      name: to
+      description: To date (report end date)
+      examples:
+        DateOnly:
+          summary: Date only
+          value: '2022-04-22'
+      required: true
+      schema:
+        type: string
+        format: date
+    TimeZone:
+      name: timezone
+      in: query
+      schema:
+        oneOf:
+        - $ref: '#/components/schemas/TimeZoneList'
+      description: '- **[Default]** If the parameter is not sent, data returns using UTC.
+
+        - Data returns using the app-specific time zone.
+
+        - Time zone format takes into account daylight saving time.
+
+        - The timezone value must be identical to the value in the app settings page. For example, if the timezone setting is Paris, the timezone value in the Pull API URL should be timezone=Europe/Paris.
+
+        - Pulling data in the selected time zone is only available from the date when the timezone setting was made. Any data prior to the date of the change uses UTC as the timezone.
+
+        '
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -540,22 +540,510 @@ paths:
           description: Too many requests - Exceeded rate limitation
 components:
   schemas:
-    StandardApiError:
+    app_url:
+      type: string
+      description: '**The URL of the app in the app store**
+
+
+        Required only when status is ***available*** or ***out_of_store***.
+
+
+        Example values
+
+
+        - **Android:** *https://play.google.com/store/apps/details?id=com.publisher.name* (Google Play Store URL). When status of Android app is ***out_of_store,*** supplying a URL is optional (for example, *http://www.somelink.com*)
+
+        - **iOS:** *https://apps.apple.com/**us**/app/app-name/id123456789* (iOS App Store URL). Must include the 2-letter country code of the store. An app added to the App Store prior to June 14, 2019, may contain itunes.apple.com in its URL(instead of apps.apple.com)
+
+        - **Windows Phone:** *https://microsoft.com/en-us/store/apps/app-name/a1b2c3d4e5f6* (Windows Phone Store URL)
+
+        '
+    app_id:
+      type: string
+      description: 'Required only when status is ***pending*** or ***out_of_store***
+
+
+        Example values
+
+
+        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
+
+        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
+
+        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
+
+        '
+    country:
+      type: string
+      description: The App Store country, Required Only for  iOS apps with "pending" status
+      enum:
+      - Afghanistan
+      - Åland Islands
+      - Albania
+      - Algeria
+      - American Samoa
+      - AndorrA
+      - Angola
+      - Anguilla
+      - Antarctica
+      - Antigua and Barbuda
+      - Argentina
+      - Armenia
+      - Aruba
+      - Australia
+      - Austria
+      - Azerbaijan
+      - Bahamas
+      - Bahrain
+      - Bangladesh
+      - Barbados
+      - Belarus
+      - Belgium
+      - Belize
+      - Benin
+      - Bermuda
+      - Bhutan
+      - Bolivia
+      - Bosnia and Herzegovina
+      - Botswana
+      - Bouvet Island
+      - Brazil
+      - British Indian Ocean Territory
+      - Brunei Darussalam
+      - Bulgaria
+      - Burkina Faso
+      - Burundi
+      - Cambodia
+      - Cameroon
+      - Canada
+      - Cape Verde
+      - Cayman Islands
+      - Central African Republic
+      - Chad
+      - Chile
+      - China
+      - Christmas Island
+      - Cocos (Keeling) Islands
+      - Colombia
+      - Comoros
+      - Congo
+      - Congo, The Democratic Republic of the
+      - Cook Islands
+      - Costa Rica
+      - Cote D"Ivoire
+      - Croatia
+      - Cuba
+      - Cyprus
+      - Czech Republic
+      - Denmark
+      - Djibouti
+      - Dominica
+      - Dominican Republic
+      - Ecuador
+      - Egypt
+      - El Salvador
+      - Equatorial Guinea
+      - Eritrea
+      - Estonia
+      - Ethiopia
+      - Falkland Islands (Malvinas)
+      - Faroe Islands
+      - Fiji
+      - Finland
+      - France
+      - French Guiana
+      - French Polynesia
+      - French Southern Territories
+      - Gabon
+      - Gambia
+      - Georgia
+      - Germany
+      - Ghana
+      - Gibraltar
+      - Greece
+      - Greenland
+      - Grenada
+      - Guadeloupe
+      - Guam
+      - Guatemala
+      - Guernsey
+      - Guinea
+      - Guinea-Bissau
+      - Guyana
+      - Haiti
+      - Heard Island and Mcdonald Islands
+      - Holy See (Vatican City State)
+      - Honduras
+      - Hong Kong
+      - Hungary
+      - Iceland
+      - India
+      - Indonesia
+      - Iran, Islamic Republic Of
+      - Iraq
+      - Ireland
+      - Isle of Man
+      - Israel
+      - Italy
+      - Jamaica
+      - Japan
+      - Jersey
+      - Jordan
+      - Kazakhstan
+      - Kenya
+      - Kiribati
+      - Korea, Democratic People"S Republic of
+      - Korea, Republic of
+      - Kuwait
+      - Kyrgyzstan
+      - Lao People"S Democratic Republic
+      - Latvia
+      - Lebanon
+      - Lesotho
+      - Liberia
+      - Libyan Arab Jamahiriya
+      - Liechtenstein
+      - Lithuania
+      - Luxembourg
+      - Macao
+      - Macedonia, The Former Yugoslav Republic of
+      - Madagascar
+      - Malawi
+      - Malaysia
+      - Maldives
+      - Mali
+      - Malta
+      - Marshall Islands
+      - Martinique
+      - Mauritania
+      - Mauritius
+      - Mayotte
+      - Mexico
+      - Micronesia, Federated States of
+      - Moldova, Republic of
+      - Monaco
+      - Mongolia
+      - Montserrat
+      - Morocco
+      - Mozambique
+      - Myanmar
+      - Namibia
+      - Nauru
+      - Nepal
+      - Netherlands
+      - Netherlands Antilles
+      - New Caledonia
+      - New Zealand
+      - Nicaragua
+      - Niger
+      - Nigeria
+      - Niue
+      - Norfolk Island
+      - Northern Mariana Islands
+      - Norway
+      - Oman
+      - Pakistan
+      - Palau
+      - Palestinian Territory, Occupied
+      - Panama
+      - Papua New Guinea
+      - Paraguay
+      - Peru
+      - Philippines
+      - Pitcairn
+      - Poland
+      - Portugal
+      - Puerto Rico
+      - Qatar
+      - Reunion
+      - Romania
+      - Russian Federation
+      - RWANDA
+      - Saint Helena
+      - Saint Kitts and Nevis
+      - Saint Lucia
+      - Saint Pierre and Miquelon
+      - Saint Vincent and the Grenadines
+      - Samoa
+      - San Marino
+      - Sao Tome and Principe
+      - Saudi Arabia
+      - Senegal
+      - Serbia
+      - Montenegro
+      - Seychelles
+      - Sierra Leone
+      - Singapore
+      - Slovakia
+      - Slovenia
+      - Solomon Islands
+      - Somalia
+      - South Africa
+      - South Georgia and the South Sandwich Islands
+      - Spain
+      - Sri Lanka
+      - Sudan
+      - Suriname
+      - Svalbard and Jan Mayen
+      - Swaziland
+      - Sweden
+      - Switzerland
+      - Syrian Arab Republic
+      - Taiwan, Province of China
+      - Tajikistan
+      - Tanzania, United Republic of
+      - Thailand
+      - Timor-Leste
+      - Togo
+      - Tokelau
+      - Tonga
+      - Trinidad and Tobago
+      - Tunisia
+      - Turkey
+      - Turkmenistan
+      - Turks and Caicos Islands
+      - Tuvalu
+      - Uganda
+      - Ukraine
+      - United Arab Emirates
+      - United Kingdom
+      - United States
+      - United States Minor Outlying Islands
+      - Uruguay
+      - Uzbekistan
+      - Vanuatu
+      - Venezuela
+      - Viet Nam
+      - Virgin Islands, British
+      - Virgin Islands, U.S.
+      - Wallis and Futuna
+      - Western Sahara
+      - Yemen
+      - Zambia
+      - Zimbabwe
+    pending-app:
+      title: Pending
+      required:
+      - platform
+      - status
+      - currency
+      - app_id
+      - time_zone
+      - kidsPrivacy
       type: object
       properties:
+        platform:
+          $ref: '#/components/schemas/platform'
+        app_name:
+          $ref: '#/components/schemas/app_name'
         status:
-          type: number
-        message:
           type: string
-        code:
-          type: string
-        resource:
-          type: string
-        documentation:
-          type: string
-    kidsPrivacy:
-      type: boolean
-      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
+          description: '**Pending:** The app is not yet published or is pending approval from the store.
+
+            - When a pending app goes live, AppsFlyer automatically updates its status in your account, so there is no need to update it manually.
+
+            '
+          enum:
+          - pending
+        time_zone:
+          $ref: '#/components/schemas/time_zone'
+        currency:
+          $ref: '#/components/schemas/currency'
+        country:
+          $ref: '#/components/schemas/country'
+        kidsPrivacy:
+          $ref: '#/components/schemas/kidsPrivacy'
+        app_id:
+          allOf:
+          - $ref: '#/components/schemas/app_id'
+    currency:
+      type: string
+      description: The preferable currency
+      enum:
+      - USD
+      - NZD
+      - SGD
+      - IMP
+      - ANG
+      - MNT
+      - BIF
+      - BBD
+      - HUF
+      - ERN
+      - AZN
+      - AOA
+      - PYG
+      - MYR
+      - GYD
+      - VUV
+      - SLL
+      - FKP
+      - DJF
+      - GNF
+      - LVL
+      - MMK
+      - MRO
+      - RSD
+      - CLF
+      - XDR
+      - ZAR
+      - TND
+      - PHP
+      - KGS
+      - XPD
+      - RON
+      - RUB
+      - KMF
+      - SCR
+      - GIP
+      - TRY
+      - JEP
+      - UYU
+      - XCD
+      - FJD
+      - GHS
+      - MVR
+      - AWG
+      - UGX
+      - TOP
+      - CVE
+      - MKD
+      - COP
+      - CUC
+      - GTQ
+      - KZT
+      - MXN
+      - MGA
+      - AUD
+      - BDT
+      - ISK
+      - KRW
+      - DZD
+      - GGP
+      - OMR
+      - ZMW
+      - MOP
+      - CUP
+      - JPY
+      - SHP
+      - LSL
+      - ETB
+      - BWP
+      - MAD
+      - AED
+      - NGN
+      - BRL
+      - GEL
+      - IDR
+      - EUR
+      - GBP
+      - WST
+      - XAF
+      - SZL
+      - XOF
+      - SEK
+      - UZS
+      - KES
+      - KYD
+      - ILS
+      - KWD
+      - NPR
+      - BZD
+      - QAR
+      - UAH
+      - BTN
+      - HTG
+      - DKK
+      - VND
+      - SBD
+      - JMD
+      - IQD
+      - LBP
+      - XPT
+      - HRK
+      - HKD
+      - JOD
+      - PAB
+      - CDF
+      - VEF
+      - XAU
+      - BAM
+      - CNY
+      - SOS
+      - XPF
+      - GMD
+      - DOP
+      - XAG
+      - KPW
+      - BOB
+      - BHD
+      - BYN
+      - BYR
+      - LRD
+      - BGN
+      - AMD
+      - CZK
+      - CAD
+      - LAK
+      - EEK
+      - MTL
+      - PLN
+      - LKR
+      - BTC
+      - MWK
+      - LTL
+      - ZMK
+      - PGK
+      - YER
+      - PEN
+      - KHR
+      - RWF
+      - BSD
+      - AFN
+      - ZWL
+      - LYD
+      - TMT
+      - HNL
+      - TWD
+      - IRR
+      - MUR
+      - THB
+      - ALL
+      - TJS
+      - SDG
+      - BMD
+      - CRC
+      - NOK
+      - SRD
+      - MZN
+      - CLP
+      - STD
+      - SYP
+      - TZS
+      - EGP
+      - ARS
+      - MDL
+      - INR
+      - SAR
+      - PKR
+      - TTD
+      - NIO
+      - BND
+      - NAD
+      - SVC
+      - CHF
+    app_name:
+      type: string
+      description: '**A custom name for the app**
+
+
+        - For ***available*** status, If not added to the request the extracted store name will be used.
+
+        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
+
+        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
+
+        '
     out-of-store-app:
       title: Out-of-store app
       required:
@@ -594,13 +1082,110 @@ components:
         channel_name:
           allOf:
           - $ref: '#/components/schemas/channel_name'
-    pending-app:
-      title: Pending
+    channel_name:
+      type: string
+      pattern: ^[A-Za-z]+$
+      description: Required only when the status is "out_of_store"
+      example: Amazon
+    deletePlatform:
+      type: string
+      description: 'App platform: Android, iOS, or Windows Phone
+
+        '
+      enum:
+      - ''
+      - android
+      - ios
+      - windowsphone
+      - roku
+      - smartcast
+      - tizen
+      - webos
+      - playstation
+      - vidaa
+      - steam
+      - quest
+      - battlenet
+      - web
+      - switch
+      - xbox
+      - epic
+      - nativepc
+      - chatgpt
+    StandardApiResponse:
+      type: object
+      properties:
+        data:
+          type: object
+        message:
+          type: string
+        error:
+          $ref: '#/components/schemas/StandardApiError'
+    kidsPrivacy:
+      type: boolean
+      description: Indicates whether your app is directed towards children, either exclusively or as part of a mixed audience.
+    StandardApiError:
+      type: object
+      properties:
+        status:
+          type: number
+        message:
+          type: string
+        code:
+          type: string
+        resource:
+          type: string
+        documentation:
+          type: string
+    UpdateAppRequest:
+      type: object
+      properties:
+        enableProbabilisticViewThroughAttribution:
+          type: boolean
+          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
+        enableIpMasking:
+          type: boolean
+          description: Enables or disables the IP Masking feature
+        minTimeBetweenSessions:
+          type: number
+          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
+        reAttributionWindow:
+          type: number
+          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
+        reEngagementAttribution:
+          type: object
+          properties:
+            isEnabled:
+              type: boolean
+              description: Enables or disables the Retargeting Attribution feature
+            minTimeBetweenReEngagements:
+              type: number
+              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
+        enableSeoAppAttribution:
+          type: boolean
+          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
+        enableAggregatedAdvancedPrivacy:
+          type: boolean
+          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
+        enableReinstallDetection:
+          type: boolean
+          description: Detects reinstalls without depending on advertising IDs only for IOS apps
+    platform:
+      type: string
+      description: 'App platform: Android, iOS, or Windows Phone
+
+        '
+      enum:
+      - android
+      - ios
+      - windowsphone
+    available-app:
+      title: Available
       required:
       - platform
       - status
       - currency
-      - app_id
+      - app_url
       - time_zone
       - kidsPrivacy
       type: object
@@ -611,24 +1196,20 @@ components:
           $ref: '#/components/schemas/app_name'
         status:
           type: string
-          description: '**Pending:** The app is not yet published or is pending approval from the store.
-
-            - When a pending app goes live, AppsFlyer automatically updates its status in your account, so there is no need to update it manually.
+          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
 
             '
           enum:
-          - pending
+          - available
         time_zone:
           $ref: '#/components/schemas/time_zone'
         currency:
           $ref: '#/components/schemas/currency'
-        country:
-          $ref: '#/components/schemas/country'
+        app_url:
+          allOf:
+          - $ref: '#/components/schemas/app_url'
         kidsPrivacy:
           $ref: '#/components/schemas/kidsPrivacy'
-        app_id:
-          allOf:
-          - $ref: '#/components/schemas/app_id'
     time_zone:
       type: string
       description: The preferable time-zone
@@ -1057,587 +1638,6 @@ components:
       - South Africa - Johannesburg
       - Zambia - Maputo
       - Zimbabwe - Maputo
-    currency:
-      type: string
-      description: The preferable currency
-      enum:
-      - USD
-      - NZD
-      - SGD
-      - IMP
-      - ANG
-      - MNT
-      - BIF
-      - BBD
-      - HUF
-      - ERN
-      - AZN
-      - AOA
-      - PYG
-      - MYR
-      - GYD
-      - VUV
-      - SLL
-      - FKP
-      - DJF
-      - GNF
-      - LVL
-      - MMK
-      - MRO
-      - RSD
-      - CLF
-      - XDR
-      - ZAR
-      - TND
-      - PHP
-      - KGS
-      - XPD
-      - RON
-      - RUB
-      - KMF
-      - SCR
-      - GIP
-      - TRY
-      - JEP
-      - UYU
-      - XCD
-      - FJD
-      - GHS
-      - MVR
-      - AWG
-      - UGX
-      - TOP
-      - CVE
-      - MKD
-      - COP
-      - CUC
-      - GTQ
-      - KZT
-      - MXN
-      - MGA
-      - AUD
-      - BDT
-      - ISK
-      - KRW
-      - DZD
-      - GGP
-      - OMR
-      - ZMW
-      - MOP
-      - CUP
-      - JPY
-      - SHP
-      - LSL
-      - ETB
-      - BWP
-      - MAD
-      - AED
-      - NGN
-      - BRL
-      - GEL
-      - IDR
-      - EUR
-      - GBP
-      - WST
-      - XAF
-      - SZL
-      - XOF
-      - SEK
-      - UZS
-      - KES
-      - KYD
-      - ILS
-      - KWD
-      - NPR
-      - BZD
-      - QAR
-      - UAH
-      - BTN
-      - HTG
-      - DKK
-      - VND
-      - SBD
-      - JMD
-      - IQD
-      - LBP
-      - XPT
-      - HRK
-      - HKD
-      - JOD
-      - PAB
-      - CDF
-      - VEF
-      - XAU
-      - BAM
-      - CNY
-      - SOS
-      - XPF
-      - GMD
-      - DOP
-      - XAG
-      - KPW
-      - BOB
-      - BHD
-      - BYN
-      - BYR
-      - LRD
-      - BGN
-      - AMD
-      - CZK
-      - CAD
-      - LAK
-      - EEK
-      - MTL
-      - PLN
-      - LKR
-      - BTC
-      - MWK
-      - LTL
-      - ZMK
-      - PGK
-      - YER
-      - PEN
-      - KHR
-      - RWF
-      - BSD
-      - AFN
-      - ZWL
-      - LYD
-      - TMT
-      - HNL
-      - TWD
-      - IRR
-      - MUR
-      - THB
-      - ALL
-      - TJS
-      - SDG
-      - BMD
-      - CRC
-      - NOK
-      - SRD
-      - MZN
-      - CLP
-      - STD
-      - SYP
-      - TZS
-      - EGP
-      - ARS
-      - MDL
-      - INR
-      - SAR
-      - PKR
-      - TTD
-      - NIO
-      - BND
-      - NAD
-      - SVC
-      - CHF
-    channel_name:
-      type: string
-      pattern: ^[A-Za-z]+$
-      description: Required only when the status is "out_of_store"
-      example: Amazon
-    UpdateAppRequest:
-      type: object
-      properties:
-        enableProbabilisticViewThroughAttribution:
-          type: boolean
-          description: Enables or disables the probabilistic View-through Attribution (VTA) feature
-        enableIpMasking:
-          type: boolean
-          description: Enables or disables the IP Masking feature
-        minTimeBetweenSessions:
-          type: number
-          description: Minimum time between sessions, expressed in seconds. The accepted values are either whole minutes ranging from 1 to 59 minutes (60 to 3540 seconds), or whole hours ranging from 1 to 24 hours (3600 to 86,400 seconds)
-        reAttributionWindow:
-          type: number
-          description: Number of days after the first install that reinstalls aren't attributed as new installs, expressed in days. The accepted values are whole months ranging from 1 to 23 month (30 to 690 days), and 730 days.
-        reEngagementAttribution:
-          type: object
-          properties:
-            isEnabled:
-              type: boolean
-              description: Enables or disables the Retargeting Attribution feature
-            minTimeBetweenReEngagements:
-              type: number
-              description: Minimum time between re-engagement conversions, expressed in seconds. The accepted values are either whole hours ranging from 0 to 23 hours (0 to 82,800 seconds), or whole days ranging from 1 to 30 days (86,400 to 2,592,000 seconds)
-        enableSeoAppAttribution:
-          type: boolean
-          description: Enables or disables the organic search attribution feature. Available for IOS and Android apps only
-        enableAggregatedAdvancedPrivacy:
-          type: boolean
-          description: Enables or disables the Aggregated Advanced Privacy (AAP) feature only for IOS apps
-        enableReinstallDetection:
-          type: boolean
-          description: Detects reinstalls without depending on advertising IDs only for IOS apps
-    country:
-      type: string
-      description: The App Store country, Required Only for  iOS apps with "pending" status
-      enum:
-      - Afghanistan
-      - Åland Islands
-      - Albania
-      - Algeria
-      - American Samoa
-      - AndorrA
-      - Angola
-      - Anguilla
-      - Antarctica
-      - Antigua and Barbuda
-      - Argentina
-      - Armenia
-      - Aruba
-      - Australia
-      - Austria
-      - Azerbaijan
-      - Bahamas
-      - Bahrain
-      - Bangladesh
-      - Barbados
-      - Belarus
-      - Belgium
-      - Belize
-      - Benin
-      - Bermuda
-      - Bhutan
-      - Bolivia
-      - Bosnia and Herzegovina
-      - Botswana
-      - Bouvet Island
-      - Brazil
-      - British Indian Ocean Territory
-      - Brunei Darussalam
-      - Bulgaria
-      - Burkina Faso
-      - Burundi
-      - Cambodia
-      - Cameroon
-      - Canada
-      - Cape Verde
-      - Cayman Islands
-      - Central African Republic
-      - Chad
-      - Chile
-      - China
-      - Christmas Island
-      - Cocos (Keeling) Islands
-      - Colombia
-      - Comoros
-      - Congo
-      - Congo, The Democratic Republic of the
-      - Cook Islands
-      - Costa Rica
-      - Cote D"Ivoire
-      - Croatia
-      - Cuba
-      - Cyprus
-      - Czech Republic
-      - Denmark
-      - Djibouti
-      - Dominica
-      - Dominican Republic
-      - Ecuador
-      - Egypt
-      - El Salvador
-      - Equatorial Guinea
-      - Eritrea
-      - Estonia
-      - Ethiopia
-      - Falkland Islands (Malvinas)
-      - Faroe Islands
-      - Fiji
-      - Finland
-      - France
-      - French Guiana
-      - French Polynesia
-      - French Southern Territories
-      - Gabon
-      - Gambia
-      - Georgia
-      - Germany
-      - Ghana
-      - Gibraltar
-      - Greece
-      - Greenland
-      - Grenada
-      - Guadeloupe
-      - Guam
-      - Guatemala
-      - Guernsey
-      - Guinea
-      - Guinea-Bissau
-      - Guyana
-      - Haiti
-      - Heard Island and Mcdonald Islands
-      - Holy See (Vatican City State)
-      - Honduras
-      - Hong Kong
-      - Hungary
-      - Iceland
-      - India
-      - Indonesia
-      - Iran, Islamic Republic Of
-      - Iraq
-      - Ireland
-      - Isle of Man
-      - Israel
-      - Italy
-      - Jamaica
-      - Japan
-      - Jersey
-      - Jordan
-      - Kazakhstan
-      - Kenya
-      - Kiribati
-      - Korea, Democratic People"S Republic of
-      - Korea, Republic of
-      - Kuwait
-      - Kyrgyzstan
-      - Lao People"S Democratic Republic
-      - Latvia
-      - Lebanon
-      - Lesotho
-      - Liberia
-      - Libyan Arab Jamahiriya
-      - Liechtenstein
-      - Lithuania
-      - Luxembourg
-      - Macao
-      - Macedonia, The Former Yugoslav Republic of
-      - Madagascar
-      - Malawi
-      - Malaysia
-      - Maldives
-      - Mali
-      - Malta
-      - Marshall Islands
-      - Martinique
-      - Mauritania
-      - Mauritius
-      - Mayotte
-      - Mexico
-      - Micronesia, Federated States of
-      - Moldova, Republic of
-      - Monaco
-      - Mongolia
-      - Montserrat
-      - Morocco
-      - Mozambique
-      - Myanmar
-      - Namibia
-      - Nauru
-      - Nepal
-      - Netherlands
-      - Netherlands Antilles
-      - New Caledonia
-      - New Zealand
-      - Nicaragua
-      - Niger
-      - Nigeria
-      - Niue
-      - Norfolk Island
-      - Northern Mariana Islands
-      - Norway
-      - Oman
-      - Pakistan
-      - Palau
-      - Palestinian Territory, Occupied
-      - Panama
-      - Papua New Guinea
-      - Paraguay
-      - Peru
-      - Philippines
-      - Pitcairn
-      - Poland
-      - Portugal
-      - Puerto Rico
-      - Qatar
-      - Reunion
-      - Romania
-      - Russian Federation
-      - RWANDA
-      - Saint Helena
-      - Saint Kitts and Nevis
-      - Saint Lucia
-      - Saint Pierre and Miquelon
-      - Saint Vincent and the Grenadines
-      - Samoa
-      - San Marino
-      - Sao Tome and Principe
-      - Saudi Arabia
-      - Senegal
-      - Serbia
-      - Montenegro
-      - Seychelles
-      - Sierra Leone
-      - Singapore
-      - Slovakia
-      - Slovenia
-      - Solomon Islands
-      - Somalia
-      - South Africa
-      - South Georgia and the South Sandwich Islands
-      - Spain
-      - Sri Lanka
-      - Sudan
-      - Suriname
-      - Svalbard and Jan Mayen
-      - Swaziland
-      - Sweden
-      - Switzerland
-      - Syrian Arab Republic
-      - Taiwan, Province of China
-      - Tajikistan
-      - Tanzania, United Republic of
-      - Thailand
-      - Timor-Leste
-      - Togo
-      - Tokelau
-      - Tonga
-      - Trinidad and Tobago
-      - Tunisia
-      - Turkey
-      - Turkmenistan
-      - Turks and Caicos Islands
-      - Tuvalu
-      - Uganda
-      - Ukraine
-      - United Arab Emirates
-      - United Kingdom
-      - United States
-      - United States Minor Outlying Islands
-      - Uruguay
-      - Uzbekistan
-      - Vanuatu
-      - Venezuela
-      - Viet Nam
-      - Virgin Islands, British
-      - Virgin Islands, U.S.
-      - Wallis and Futuna
-      - Western Sahara
-      - Yemen
-      - Zambia
-      - Zimbabwe
-    app_url:
-      type: string
-      description: '**The URL of the app in the app store**
-
-
-        Required only when status is ***available*** or ***out_of_store***.
-
-
-        Example values
-
-
-        - **Android:** *https://play.google.com/store/apps/details?id=com.publisher.name* (Google Play Store URL). When status of Android app is ***out_of_store,*** supplying a URL is optional (for example, *http://www.somelink.com*)
-
-        - **iOS:** *https://apps.apple.com/**us**/app/app-name/id123456789* (iOS App Store URL). Must include the 2-letter country code of the store. An app added to the App Store prior to June 14, 2019, may contain itunes.apple.com in its URL(instead of apps.apple.com)
-
-        - **Windows Phone:** *https://microsoft.com/en-us/store/apps/app-name/a1b2c3d4e5f6* (Windows Phone Store URL)
-
-        '
-    app_name:
-      type: string
-      description: '**A custom name for the app**
-
-
-        - For ***available*** status, If not added to the request the extracted store name will be used.
-
-        - For ***pending*** or ***out_of_store***, If not added to the request, The ***app_id*** will be used by default.
-
-        - The **app_name** length must not exceed 100 characters, And should not contain XSS tags.
-
-        '
-    platform:
-      type: string
-      description: 'App platform: Android, iOS, or Windows Phone
-
-        '
-      enum:
-      - android
-      - ios
-      - windowsphone
-    StandardApiResponse:
-      type: object
-      properties:
-        data:
-          type: object
-        message:
-          type: string
-        error:
-          $ref: '#/components/schemas/StandardApiError'
-    deletePlatform:
-      type: string
-      description: 'App platform: Android, iOS, or Windows Phone
-
-        '
-      enum:
-      - ''
-      - android
-      - ios
-      - windowsphone
-      - roku
-      - smartcast
-      - tizen
-      - webos
-      - playstation
-      - vidaa
-      - steam
-      - quest
-      - battlenet
-      - web
-      - switch
-      - xbox
-      - epic
-      - nativepc
-      - chatgpt
-    available-app:
-      title: Available
-      required:
-      - platform
-      - status
-      - currency
-      - app_url
-      - time_zone
-      - kidsPrivacy
-      type: object
-      properties:
-        platform:
-          $ref: '#/components/schemas/platform'
-        app_name:
-          $ref: '#/components/schemas/app_name'
-        status:
-          type: string
-          description: '**Available:** The app is currently available in one of the proprietary app stores: iOS App Store, Google Play, Windows Phone Store.
-
-            '
-          enum:
-          - available
-        time_zone:
-          $ref: '#/components/schemas/time_zone'
-        currency:
-          $ref: '#/components/schemas/currency'
-        app_url:
-          allOf:
-          - $ref: '#/components/schemas/app_url'
-        kidsPrivacy:
-          $ref: '#/components/schemas/kidsPrivacy'
-    app_id:
-      type: string
-      description: 'Required only when status is ***pending*** or ***out_of_store***
-
-
-        Example values
-
-
-        - **Android:** *com.publisher.name* (Android package name, case-sensitive)
-
-        - **iOS:** *123456789* (App ID assigned by the App Store, without the prefix *id*)
-
-        - **Windows Phone:** *a1b2c3d4e5f6* (App ID assigned by the Windows Phone Store)
-
-        '
   securitySchemes:
     bearerAuth:
       type: http

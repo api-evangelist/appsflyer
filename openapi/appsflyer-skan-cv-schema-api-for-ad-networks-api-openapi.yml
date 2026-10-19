@@ -297,11 +297,130 @@ paths:
                   value: Exceeded rate limitation
 components:
   schemas:
+    Postback_SecondThird:
+      title: Second and third postbacks
+      properties:
+        postback_sequence_index:
+          type: integer
+          description: 'Integer that represents the sequence number of SKAN postback. Possible values: 1, 2
+
+            '
+        measurement_window:
+          $ref: '#/components/schemas/MeasurementWindow'
+        lock_window_type:
+          $ref: '#/components/schemas/LockWindowType'
+        lock_window_event:
+          $ref: '#/components/schemas/LockWindowEvent'
+        conversion_value_mapping:
+          type: array
+          description: Conversion values mapping
+          items:
+            type: object
+            properties:
+              coarse:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CoarseConversionValue'
+    CoarseConversionValue:
+      properties:
+        conversion_value:
+          description: 'Conversion value. Possible values: `low`, `medium`, `high`'
+          type: string
+          enum:
+          - low
+          - medium
+          - high
+        min_time_post_install:
+          type: integer
+          description: The lower bound of hours post-install, indicating when the user was last active in the app.
+        max_time_post_install:
+          type: integer
+          description: The upper bound of hours post-install, indicating when the user was last active in the app
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventV4'
     LockWindowType:
       type: string
       description: 'The trigger that causes the window to lock. Possible values: `in-app`, `time`, `high-coarse`, `other`
 
         '
+    MeasurementWindow:
+      type: integer
+      description: Activity window duration (in hours)
+    EventV3:
+      properties:
+        event_name:
+          type: string
+          description: Advertiser in-app event name
+        mapped_event_name:
+          type: string
+          description: Partner's in-app event name. The advertiser maps event_name to mapped_event_name on a per app basis in AppsFlyer.
+        event_counter:
+          type: integer
+          description: The number of times the user performed an event.
+        conversion_event:
+          type: boolean
+          description: In the case of more than one event, if true, this event is a conversion event as defined by the advertiser
+        event_currency:
+          type: string
+          description: Currency for event_revenue
+        event_revenue:
+          type: integer
+          description: In case of a revenue event, monetary value using event_currency
+        min_event_revenue:
+          type: number
+          format: float
+          description: The lower bound of the event revenue range
+        max_event_revenue:
+          type: number
+          format: float
+          description: 'The upper bound of the event counter range. Example: To calculate the revenue, (min_event_revenue + max_event_revenue)/2'
+        event_revenue_usd:
+          type: number
+          format: float
+          description: In case of a revenue event, monetary value
+        min_event_counter:
+          type: integer
+          description: The lower bound of the event counter range
+        max_event_counter:
+          type: integer
+          description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
+    EventV4:
+      properties:
+        event_name:
+          type: string
+          description: Advertiser in-app event name
+        mapped_event_name:
+          type: string
+          description: Partner's in-app event name. The advertiser maps event_name to mapped_event_name on a per app basis in AppsFlyer.
+        event_counter:
+          type: integer
+          description: The number of times the user performed an event.
+        conversion_event:
+          type: boolean
+          description: In the case of more than one event, if true, this event is a conversion event as defined by the advertiser
+        event_currency:
+          type: string
+          description: Currency for `min_event_revenue` and `max_event_revenue`
+        min_event_revenue:
+          type: number
+          format: float
+          description: The lower bound of the event revenue range
+        max_event_revenue:
+          type: number
+          format: float
+          description: 'The upper bound of the event counter range. Example: To calculate the revenue, (min_event_revenue + max_event_revenue)/2'
+        event_revenue_usd:
+          type: number
+          format: float
+          description: In case of a revenue event, monetary value
+        min_event_counter:
+          type: integer
+          description: The lower bound of the event counter range
+        max_event_counter:
+          type: integer
+          description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
     CvMapping:
       properties:
         conversion_value:
@@ -345,127 +464,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/CoarseConversionValue'
-    CoarseConversionValue:
-      properties:
-        conversion_value:
-          description: 'Conversion value. Possible values: `low`, `medium`, `high`'
-          type: string
-          enum:
-          - low
-          - medium
-          - high
-        min_time_post_install:
-          type: integer
-          description: The lower bound of hours post-install, indicating when the user was last active in the app.
-        max_time_post_install:
-          type: integer
-          description: The upper bound of hours post-install, indicating when the user was last active in the app
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventV4'
-    EventV3:
-      properties:
-        event_name:
-          type: string
-          description: Advertiser in-app event name
-        mapped_event_name:
-          type: string
-          description: Partner's in-app event name. The advertiser maps event_name to mapped_event_name on a per app basis in AppsFlyer.
-        event_counter:
-          type: integer
-          description: The number of times the user performed an event.
-        conversion_event:
-          type: boolean
-          description: In the case of more than one event, if true, this event is a conversion event as defined by the advertiser
-        event_currency:
-          type: string
-          description: Currency for event_revenue
-        event_revenue:
-          type: integer
-          description: In case of a revenue event, monetary value using event_currency
-        min_event_revenue:
-          type: number
-          format: float
-          description: The lower bound of the event revenue range
-        max_event_revenue:
-          type: number
-          format: float
-          description: 'The upper bound of the event counter range. Example: To calculate the revenue, (min_event_revenue + max_event_revenue)/2'
-        event_revenue_usd:
-          type: number
-          format: float
-          description: In case of a revenue event, monetary value
-        min_event_counter:
-          type: integer
-          description: The lower bound of the event counter range
-        max_event_counter:
-          type: integer
-          description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
-    LockWindowEvent:
-      type: string
-      description: 'The name of the in-app event that locks the window
-
-        '
-    EventV4:
-      properties:
-        event_name:
-          type: string
-          description: Advertiser in-app event name
-        mapped_event_name:
-          type: string
-          description: Partner's in-app event name. The advertiser maps event_name to mapped_event_name on a per app basis in AppsFlyer.
-        event_counter:
-          type: integer
-          description: The number of times the user performed an event.
-        conversion_event:
-          type: boolean
-          description: In the case of more than one event, if true, this event is a conversion event as defined by the advertiser
-        event_currency:
-          type: string
-          description: Currency for `min_event_revenue` and `max_event_revenue`
-        min_event_revenue:
-          type: number
-          format: float
-          description: The lower bound of the event revenue range
-        max_event_revenue:
-          type: number
-          format: float
-          description: 'The upper bound of the event counter range. Example: To calculate the revenue, (min_event_revenue + max_event_revenue)/2'
-        event_revenue_usd:
-          type: number
-          format: float
-          description: In case of a revenue event, monetary value
-        min_event_counter:
-          type: integer
-          description: The lower bound of the event counter range
-        max_event_counter:
-          type: integer
-          description: 'The upper bound of the event counter range. Example: To calcualte the number of ocurrences, roundup (min_event_counter + max_event_counter )/ 2'
-    Postback_SecondThird:
-      title: Second and third postbacks
-      properties:
-        postback_sequence_index:
-          type: integer
-          description: 'Integer that represents the sequence number of SKAN postback. Possible values: 1, 2
-
-            '
-        measurement_window:
-          $ref: '#/components/schemas/MeasurementWindow'
-        lock_window_type:
-          $ref: '#/components/schemas/LockWindowType'
-        lock_window_event:
-          $ref: '#/components/schemas/LockWindowEvent'
-        conversion_value_mapping:
-          type: array
-          description: Conversion values mapping
-          items:
-            type: object
-            properties:
-              coarse:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CoarseConversionValue'
     FineConversionValue:
       properties:
         conversion_value:
@@ -483,9 +481,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventV4'
-    MeasurementWindow:
-      type: integer
-      description: Activity window duration (in hours)
+    LockWindowEvent:
+      type: string
+      description: 'The name of the in-app event that locks the window
+
+        '
   securitySchemes:
     bearerAuth:
       type: http

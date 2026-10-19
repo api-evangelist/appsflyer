@@ -1,0 +1,45 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Audience Connections API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Audience Connections
+paths:
+  /get-audience-connections:
+    post:
+      summary: Get-audience-connections
+      description: 'Get partner connections for a specific audience. This tool retrieves all advertising partner integrations that are connected to a specific audience. These connections determine how audience data is shared with external platforms for targeted advertising campaigns. Connection details include: - In...'
+      operationId: get-audience-connections
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                audience_id:
+                  type: string
+              required:
+              - audience_id
+              type: object
+      tags:
+      - Get Audience Connections

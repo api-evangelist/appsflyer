@@ -1,0 +1,41 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Users API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Users
+paths:
+  /get-users:
+    post:
+      summary: Get-users
+      description: 'Fetch users and roles from the AppsFlyer API. Returns: - A formatted list of users including: - username, email, role, associated apps, media sources, geos, and last login - A formatted list of available roles including: - role name, and capabilities by section and access level'
+      operationId: get-users
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      tags:
+      - Get Users

@@ -116,14 +116,6 @@ paths:
           $ref: '#/components/responses/InternalError'
 components:
   responses:
-    BadRequest:
-      description: The request has invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: cannot parse body
     NotFound:
       description: The specified App ID does not exist within the account.
       content:
@@ -138,22 +130,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Request acknowledged but denied. Access is not permitted.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: forbidden
-    Unauthorized:
-      description: Authentication credentials were missing or incorrect
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: authentication error
     Conflict:
       description: You have added the maximum number of devices allowed by the Devices API.
       content:
@@ -162,12 +138,30 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
           example:
             error: device limit reached
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
+    Unauthorized:
+      description: Authentication credentials were missing or incorrect
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: authentication error
+    Forbidden:
+      description: Request acknowledged but denied. Access is not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: forbidden
+    BadRequest:
+      description: The request has invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: cannot parse body
   parameters:
     AppId:
       name: app-id
@@ -177,6 +171,12 @@ components:
         type: string
         description: The App ID of the app being tested. Use the 'Package Name' for Android apps and the 'App Store ID' for iOS apps.
         example: com.example.testapp
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
   securitySchemes:
     Bearer-Authentication:
       type: http

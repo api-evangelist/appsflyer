@@ -1,0 +1,272 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Skan Get App Data API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Skan Get App Data
+paths:
+  /skan-get-app-data:
+    post:
+      summary: Skan-get-app-data
+      description: 'Retrieve SKAN (StoreKit Ad Network) attribution data for iOS campaigns, including installs, revenue, and conversion metrics. Note: This endpoint is intended for use exclusively in the Apple SKAN (StoreKit Ad Network) context. You may omit null values in the query for cleaner queries. If you are u...'
+      operationId: skan-get-app-data
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                app_id:
+                  description: application id
+                  title: App Id
+                  type: string
+                query:
+                  properties:
+                    start_date:
+                      description: Start date in YYYY-MM-DD format. Skip the most recent 2 days of SKAN data.
+                      pattern: ^\d{4}-\d{2}-\d{2}$
+                      title: Start Date
+                      type: string
+                    end_date:
+                      description: End date in YYYY-MM-DD format. Use inclusive ranges for date filtering.
+                      pattern: ^\d{4}-\d{2}-\d{2}$
+                      title: End Date
+                      type: string
+                    kpis:
+                      description: 'List of KPI metrics to retrieve. Common mappings: ROAS→roas, ARPU→arpu, null conversion value rate→null_cv_rate'
+                      items:
+                        enum:
+                        - installs
+                        - unique_users_pb_0
+                        - impressions
+                        - revenue
+                        - roas
+                        - conv_rate
+                        - event_count_modeled_pb_0
+                        - unique_users_pb_1
+                        - click_through_installs
+                        - clicks
+                        - unique_users_modeled
+                        - direct_first_installs_ratio
+                        - revenue_modeled
+                        - unique_users_pb_2
+                        - converted_users
+                        - revenue_pb_1
+                        - install_cost
+                        - null_cv_installs
+                        - event_count_modeled
+                        - unique_users_modeled_pb_0
+                        - roas_modeled
+                        - direct_click_through_ratio
+                        - avg_ecpi
+                        - arpu
+                        - null_cv_rate
+                        - unique_users
+                        - non_organic_installs
+                        - revenue_modeled_pb_0
+                        - direct_redownloads_ratio
+                        - roi_modeled
+                        - event_count
+                        - arpu_modeled
+                        - view_through_installs
+                        - revenue_pb_0
+                        - revenue_pb_2
+                        - roi
+                        - direct_view_through_ratio
+                        - direct_installs
+                        - ctr
+                        - converted_users_installs
+                        type: string
+                      title: Kpis
+                      type: array
+                    sort_by:
+                      anyOf:
+                      - items:
+                          items:
+                            type: string
+                          maxItems: 2
+                          minItems: 1
+                          type: array
+                        type: array
+                      - type: 'null'
+                      default: null
+                      description: Sort criteria as [['field']] or [['field', 'asc|desc']]. Default direction is ascending.
+                      title: Sort By
+                    groupings:
+                      anyOf:
+                      - items:
+                          enum:
+                          - date
+                          - campaign_id
+                          - mode
+                          - af_attribution_flag
+                          - adset_id
+                          - channel
+                          - source_app_name
+                          - install_type
+                          - source
+                          - creative
+                          - adset_name
+                          - ad_id
+                          - postback_sequence_index
+                          - campaign
+                          - inapps
+                          - ad_name
+                          - site_id
+                          - version
+                          - media_source
+                          - attributed_touch_type
+                          - country
+                          - fidelity_type
+                          - event_name
+                          type: string
+                        type: array
+                      - type: 'null'
+                      default: null
+                      description: Dimensions to group by. Use ['date'] for daily trends, ['date', 'media_source'] for breakdowns.
+                      title: Groupings
+                    totals:
+                      anyOf:
+                      - type: boolean
+                      - type: 'null'
+                      default: true
+                      description: Include totals row in results. Use true for single metrics, false for detailed breakdowns.
+                      title: Totals
+                    others:
+                      anyOf:
+                      - type: boolean
+                      - type: 'null'
+                      default: true
+                      description: Include 'others' aggregation for ungrouped data.
+                      title: Others
+                    filters:
+                      anyOf:
+                      - additionalProperties:
+                          items:
+                            type: string
+                          type: array
+                        type: object
+                      - type: 'null'
+                      default: null
+                      description: 'Exact-match filters for dimensions. For media_source, use canonical names: ''googleadwords_int'' for Google Ads, ''facebook'' for Facebook.For example, to filter for Google Ads, use {''media_source'': [''googleadwords_int'']}.'
+                      title: Filters
+                    limit:
+                      anyOf:
+                      - type: integer
+                      - type: 'null'
+                      default: null
+                      description: Maximum number of results. Use for 'top N' queries.
+                      title: Limit
+                    context:
+                      anyOf:
+                      - properties:
+                          id:
+                            title: Id
+                            type: string
+                          feature:
+                            title: Feature
+                            type: string
+                        required:
+                        - id
+                        - feature
+                        title: QueryContext
+                        type: object
+                      - type: 'null'
+                      default: null
+                      description: Query context for tracking and analytics. Not commonly used.
+                    date_type:
+                      default: install
+                      description: 'Date type for filtering: ''install'' (default) or ''arrival''.'
+                      enum:
+                      - install
+                      - arrival
+                      title: Date Type
+                      type: string
+                    revenue_alt:
+                      anyOf:
+                      - type: boolean
+                      - type: 'null'
+                      default: null
+                      description: Revenue in the customer pre-configured currency.
+                      title: Revenue Alt
+                    exclusions:
+                      anyOf:
+                      - additionalProperties:
+                          items:
+                            type: string
+                          type: array
+                        type: object
+                      - type: 'null'
+                      default: null
+                      description: Exclude specific dimension values from results.
+                      title: Exclusions
+                    inapps-kpis:
+                      anyOf:
+                      - items:
+                          enum:
+                          - event_count_modeled_pb_0
+                          - unique_count_modeled_pb_0
+                          - ecpa_modeled
+                          - ecpa
+                          - unique_count_pb_1
+                          - unique_count
+                          - event_count_pb_1
+                          - unique_count_pb_0
+                          - event_count_modeled
+                          - event_count_pb_0
+                          - event_count_pb_2
+                          - unique_count_pb_2
+                          - unique_count_modeled
+                          - event_count
+                          type: string
+                        type: array
+                      - type: 'null'
+                      default: null
+                      description: In-app event KPIs to include in the query.
+                      title: Inapps-Kpis
+                    simulation:
+                      anyOf:
+                      - type: boolean
+                      - type: 'null'
+                      default: null
+                      description: Enable simulation mode for testing queries. Don't pass unless requested.
+                      title: Simulation
+                    demo_mode:
+                      anyOf:
+                      - enum:
+                        - revenue
+                        - engagement
+                        - events
+                        type: string
+                      - type: 'null'
+                      default: null
+                      description: Demo mode type for sample data generation. Don't pass unless requested.
+                      title: Demo Mode
+                  required:
+                  - start_date
+                  - end_date
+                  - kpis
+                  title: Query
+                  type: object
+                  description: the user query
+              required:
+              - app_id
+              - query
+              type: object
+      tags:
+      - Skan Get App Data

@@ -1,0 +1,41 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Audiences Connections API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Audiences Connections
+paths:
+  /list-audiences-connections:
+    post:
+      summary: List-audiences-connections
+      description: 'List all audiences connections. Connections are integrations created for uploading audience data to advertising partners. These connections enable you to share your audience segments with external advertising platforms for targeted marketing campaigns. Key features: - Connections can be linked to...'
+      operationId: list-audiences-connections
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      tags:
+      - List Audiences Connections

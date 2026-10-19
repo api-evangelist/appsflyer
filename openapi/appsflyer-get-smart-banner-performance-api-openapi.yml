@@ -1,0 +1,61 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Smart Banner Performance API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Smart Banner Performance
+paths:
+  /get-smart-banner-performance:
+    post:
+      summary: Get-smart-banner-performance
+      description: Get Smart Banner performance metrics for a date range. Returns impressions, clicks, dismiss, installs, re-attributions, retargeting, CTR, and CVR. The response includes the requested start/end window and granularity. Performance data is retained for at most 90 days. Do not request a start date ol...
+      operationId: get-smart-banner-performance
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                banner_id:
+                  description: Banner UUID from list_smart_banners (or provided by the user).
+                  minLength: 1
+                  pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                  type: string
+                start:
+                  description: Start date as YYYY-MM-DD (UTC); must be within the last 90 days.
+                  pattern: ^\d{4}-\d{2}-\d{2}$
+                  type: string
+                end:
+                  description: End date as YYYY-MM-DD (inclusive, UTC).
+                  pattern: ^\d{4}-\d{2}-\d{2}$
+                  type: string
+                granularity:
+                  default: total
+                  description: '"total" (default): single aggregate for the inclusive range. "daily": one entry per calendar day (zero-filled) plus the period total.'
+                  enum:
+                  - total
+                  - daily
+                  type: string
+              required:
+              - banner_id
+              - start
+              - end
+              type: object
+      tags:
+      - Get Smart Banner Performance

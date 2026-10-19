@@ -1,0 +1,378 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Creative Performance API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Creative Performance
+paths:
+  /get-creative-performance:
+    post:
+      summary: Get-creative-performance
+      description: Get aggregated creative performance data for the authenticated user. Returns CSV rows plus metadata JSON. Each row matches the group_by grain (omitted or [] = one overall totals row). Rows include creative_name and creative_id when grouped by creative. [creative IDs — operative only] creative_id,...
+      operationId: get-creative-performance
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                query:
+                  properties:
+                    start_date:
+                      description: 'Start date (yyyy-MM-dd). Default: 7 days before yesterday. Must be a real calendar date; end_date - start_date must be ≤ 365 days.'
+                      type: string
+                    end_date:
+                      description: 'End date (yyyy-MM-dd). Default: yesterday. Must be on or after start_date; span ≤ 365 days.'
+                      type: string
+                    app_ids:
+                      description: App IDs to query within the authenticated account. Use [] for account-level scope — backend resolves apps configured in creative analytics (same scope as the dashboard). Pass explicit app_ids when the user names specific apps.
+                      items:
+                        type: string
+                      type: array
+                    metrics:
+                      description: Regular metrics to fetch (0-15). May be empty when in_app_events + in_app_metrics are set. Do not put in-app aliases here — use in_app_metrics.
+                      items:
+                        enum:
+                        - install_cost
+                        - installs
+                        - installs_reattr
+                        - installs_retarget
+                        - clicks
+                        - impressions
+                        - ctr
+                        - cpi
+                        - cpm
+                        - ipm
+                        - cvr
+                        - partner_cost_in_usd
+                        - partner_installs
+                        - partner_clicks
+                        - partner_impressions
+                        - partner_conversions
+                        - partner_ctr
+                        - partner_cpi
+                        - partner_cpm
+                        - partner_ipm
+                        - partner_cvr
+                        - unique_ads
+                        - partner_video_25p_views
+                        - partner_video_50p_views
+                        - partner_video_75p_views
+                        - partner_video_started
+                        - partner_video_completions
+                        - partner_video_viewed_2s
+                        - partner_video_3_second_views
+                        - partner_video_viewed_6s
+                        - partner_engaged_views_6s
+                        - partner_engaged_views_15s
+                        - revenue_0
+                        - revenue_1
+                        - revenue_3
+                        - revenue_7
+                        - revenue_14
+                        - revenue_30
+                        - revenue_60
+                        - revenue_90
+                        - roas_0
+                        - roas_1
+                        - roas_3
+                        - roas_7
+                        - roas_14
+                        - roas_30
+                        - roas_60
+                        - roas_90
+                        - unique_users_0_per
+                        - unique_users_1_per
+                        - unique_users_3_per
+                        - unique_users_7_per
+                        - unique_users_14_per
+                        - unique_users_30_per
+                        - unique_users_60_per
+                        - unique_users_90_per
+                        - unique_users_0
+                        - unique_users_1
+                        - unique_users_3
+                        - unique_users_7
+                        - unique_users_14
+                        - unique_users_30
+                        - unique_users_60
+                        - unique_users_90
+                        type: string
+                      maxItems: 15
+                      minItems: 0
+                      type: array
+                    in_app_events:
+                      description: In-app event names to add as columns (up to 5 events, e.g. ["af_purchase", "af_login"]). Exact case-sensitive AppsFlyer event ids from the user. Must be paired with in_app_metrics. Unknown/wrong-case names typically return zeros.
+                      items:
+                        type: string
+                      maxItems: 5
+                      minItems: 0
+                      type: array
+                    in_app_metrics:
+                      description: 'In-app KPIs for each name in in_app_events: event_unique_users, event_count, event_revenue, event_cpa. Response columns are {event}.{metric} (e.g. af_purchase.event_count). Must be paired with in_app_events.'
+                      items:
+                        description: Public in-app event metric aliases (not part of SupportedMetric).
+                        enum:
+                        - event_unique_users
+                        - event_count
+                        - event_revenue
+                        - event_cpa
+                        type: string
+                      maxItems: 4
+                      type: array
+                    group_by:
+                      description: 'Dimensions that define each result row (0-4). Default when omitted: [] — one overall totals row. Pass [creative_id] to list/rank creatives. Add a dimension only if the user asks to segment/rank by it (by/per/broken down by); narrowing scope uses filters, not group_by. Do not add dimensions just to display columns. having applies at this grain.'
+                      items:
+                        description: Agent-facing dimensions in get_creative_performance (tool schema).
+                        enum:
+                        - creative_id
+                        - end_card_creative_id
+                        - media_source
+                        - campaign_id
+                        - campaign
+                        - adset_id
+                        - adset
+                        - ad_id
+                        - ad
+                        - channel
+                        - country
+                        - creative_type
+                        - asset_name
+                        - app_id
+                        - platform
+                        - agency
+                        - orientation
+                        - resolution
+                        - video_len_in_sec
+                        - end_card_asset_name
+                        - end_card_creative_type
+                        - end_card_orientation
+                        - end_card_resolution
+                        - end_card_video_len_in_sec
+                        - similarity_group_name
+                        - similarity_group_id
+                        - orientations_group_name
+                        - orientations_group_id
+                        - text_type
+                        - age
+                        - month
+                        - week
+                        - day
+                        - first_seen_date
+                        type: string
+                      maxItems: 4
+                      minItems: 0
+                      type: array
+                    filters:
+                      description: Restrict data without changing row grain. Use for media_source, channel, geo, campaign, platform, or specific creatives (e.g. country=US, media_source=unityads_int, creative_type=html, platform=ios, creative_id=<id>). Each filter has mode include (default) or exclude — exclude drops listed values. Do not include and exclude the same dimension in one query. media_source values are AppsFlyer PIDs (exact match), not brand names (e.g. applovin_int, googleadwords_int, facebook, unityads_int). creative_type values are lowercase IDs (html, video, image, carousel_image, text, link) — never HTML/Video/Image. platform values are lowercase OS ids (ios, android) — not iOS/Android display labels. video_len_in_sec is Duration in seconds (dashboard label). country values are ISO 3166-1 alpha-2 codes (US, DE, FR); United Kingdom is UK not GB. When group_by omits creative_id, filter by creative IDs here.
+                      items:
+                        description: Single dimension filter. List form is required for OpenAI strict tool schemas.
+                        properties:
+                          dimension:
+                            description: Agent-facing dimensions in get_creative_performance (tool schema).
+                            enum:
+                            - creative_id
+                            - end_card_creative_id
+                            - media_source
+                            - campaign_id
+                            - campaign
+                            - adset_id
+                            - adset
+                            - ad_id
+                            - ad
+                            - channel
+                            - country
+                            - creative_type
+                            - asset_name
+                            - app_id
+                            - platform
+                            - agency
+                            - orientation
+                            - resolution
+                            - video_len_in_sec
+                            - end_card_asset_name
+                            - end_card_creative_type
+                            - end_card_orientation
+                            - end_card_resolution
+                            - end_card_video_len_in_sec
+                            - similarity_group_name
+                            - similarity_group_id
+                            - orientations_group_name
+                            - orientations_group_id
+                            - text_type
+                            - age
+                            - month
+                            - week
+                            - day
+                            - first_seen_date
+                            type: string
+                          values:
+                            description: Non-empty allow/deny list (max 100 values).
+                            items:
+                              type: string
+                            maxItems: 100
+                            minItems: 1
+                            type: array
+                          mode:
+                            default: include
+                            description: 'include (default): keep only these values. exclude: drop these values. Do not include and exclude the same dimension in one query.'
+                            enum:
+                            - include
+                            - exclude
+                            type: string
+                        required:
+                        - dimension
+                        - values
+                        type: object
+                      type: array
+                    having:
+                      description: Metric thresholds applied after aggregation (HAVING), before sort and row_count. Applies at the group_by grain — set grain to match the question first. Use for spend floors and KPI cutoffs (e.g. install_cost greaterThanEqual 500, roas_7 greaterThan 20). Values use the same numeric scale as returned CSV metrics. Do not invent post-filters — express thresholds here.
+                      items:
+                        description: Metric threshold applied after aggregation (HAVING), before sort/limit.
+                        properties:
+                          metric:
+                            enum:
+                            - install_cost
+                            - installs
+                            - installs_reattr
+                            - installs_retarget
+                            - clicks
+                            - impressions
+                            - ctr
+                            - cpi
+                            - cpm
+                            - ipm
+                            - cvr
+                            - partner_cost_in_usd
+                            - partner_installs
+                            - partner_clicks
+                            - partner_impressions
+                            - partner_conversions
+                            - partner_ctr
+                            - partner_cpi
+                            - partner_cpm
+                            - partner_ipm
+                            - partner_cvr
+                            - unique_ads
+                            - partner_video_25p_views
+                            - partner_video_50p_views
+                            - partner_video_75p_views
+                            - partner_video_started
+                            - partner_video_completions
+                            - partner_video_viewed_2s
+                            - partner_video_3_second_views
+                            - partner_video_viewed_6s
+                            - partner_engaged_views_6s
+                            - partner_engaged_views_15s
+                            - revenue_0
+                            - revenue_1
+                            - revenue_3
+                            - revenue_7
+                            - revenue_14
+                            - revenue_30
+                            - revenue_60
+                            - revenue_90
+                            - roas_0
+                            - roas_1
+                            - roas_3
+                            - roas_7
+                            - roas_14
+                            - roas_30
+                            - roas_60
+                            - roas_90
+                            - unique_users_0_per
+                            - unique_users_1_per
+                            - unique_users_3_per
+                            - unique_users_7_per
+                            - unique_users_14_per
+                            - unique_users_30_per
+                            - unique_users_60_per
+                            - unique_users_90_per
+                            - unique_users_0
+                            - unique_users_1
+                            - unique_users_3
+                            - unique_users_7
+                            - unique_users_14
+                            - unique_users_30
+                            - unique_users_60
+                            - unique_users_90
+                            type: string
+                            description: Metric to threshold (same allowlist as metrics).
+                          operator:
+                            enum:
+                            - greaterThan
+                            - greaterThanEqual
+                            - lessThan
+                            - lessThanEqual
+                            - equal
+                            type: string
+                            description: 'Comparison operator: greaterThan, greaterThanEqual, lessThan, lessThanEqual, equal.'
+                          value:
+                            description: Threshold value in the same numeric scale as returned CSV metrics.
+                            type: number
+                        required:
+                        - metric
+                        - operator
+                        - value
+                        type: object
+                      maxItems: 10
+                      type: array
+                    row_count:
+                      default: 25
+                      description: Max rows to return (1-300, default 25).
+                      maximum: 300
+                      minimum: 1
+                      type: integer
+                    view_type:
+                      enum:
+                      - unified
+                      - user_acquisition
+                      - retargeting
+                      type: string
+                      default: unified
+                      description: unified (default), user_acquisition, or retargeting.
+                    sort_by:
+                      anyOf:
+                      - properties:
+                          metric:
+                            description: Metric to sort by (regular metric or {event}.{in_app_metric})
+                            type: string
+                          order:
+                            enum:
+                            - asc
+                            - desc
+                            type: string
+                            default: desc
+                            description: Sort order
+                        required:
+                        - metric
+                        type: object
+                      - type: 'null'
+                      default: null
+                      description: 'Sort by metric and order. Regular metric id, or public IAE column {event}.{in_app_metric} when that pair is requested. Requires a non-empty group_by — rejected on overall totals (group_by []). When group_by is set and sort_by is omitted: defaults to first regular metric, else first IAE column, descending.'
+                    include_creative_urls:
+                      default: false
+                      description: True when the user wants a URL to the actual creative (view, open, share, or link). False (default) when they only need names, rankings, or KPIs.
+                      type: boolean
+                  type: object
+              required:
+              - query
+              type: object
+      tags:
+      - Get Creative Performance

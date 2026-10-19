@@ -1,0 +1,39 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Smart Banners API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Smart Banners
+paths:
+  /list-smart-banners:
+    post:
+      summary: List-smart-banners
+      description: 'List Smart Banners for the account (metadata only; no creatives). Returns for each banner: id, name, banner group (name and id), website id, banner type (e.g. top/bottom), isActive, and lastModified. Does not include creative HTML or images. Soft-deleted banners are excluded, while inactive banne...'
+      operationId: list-smart-banners
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '429':
+          description: Too Many Requests
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties: {}
+              type: object
+      tags:
+      - List Smart Banners

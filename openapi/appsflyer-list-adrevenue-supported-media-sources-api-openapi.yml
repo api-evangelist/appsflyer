@@ -1,0 +1,36 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Adrevenue Supported Media Sources API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Adrevenue Supported Media Sources
+paths:
+  /list-adrevenue-supported-media-sources:
+    post:
+      summary: List-adrevenue-supported-media-sources
+      description: 'Lists Ad Revenue Media Sources and their integration types. Unlisted/unentitled types aren''t available. Priority (best first, if listed and entitled): 1. Impression-level (SDK) with Device-level (S2S API) - needs ROI360 Advanced+SDK+creds. Fresh (day 0); accurate from day 1. SKAN/UA/postbacks. 2....'
+      operationId: list-adrevenue-supported-media-sources
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      tags:
+      - List Adrevenue Supported Media Sources

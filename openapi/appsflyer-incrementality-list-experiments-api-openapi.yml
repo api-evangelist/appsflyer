@@ -1,0 +1,106 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Incrementality List Experiments API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Incrementality List Experiments
+paths:
+  /incrementality-list-experiments:
+    post:
+      summary: Incrementality-list-experiments
+      description: 'List Incrementality for UA experiments for the caller''s AppsFlyer account. Use this to discover experiments and their high-level status, then fetch detailed metrics for a specific one with `get_experiment_results`. Typical flow: list experiments to resolve the experiment_id you need, then call th...'
+      operationId: incrementality-list-experiments
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                filters:
+                  anyOf:
+                  - description: 'Client-side filters for the experiments list.
+
+
+                      Filtering is applied by this service after fetching the account''s experiments;
+
+                      the upstream API does not support server-side filtering yet.'
+                    properties:
+                      app_id:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                        default: null
+                        description: Keep only experiments targeting this app (matches an experiment cell or a draft's app).
+                        title: App Id
+                      status:
+                        default: all
+                        description: Filter by coarse list status. 'active' includes draft, scheduled, and running experiments; 'complete' means ended or stopped; 'all' (default) returns every experiment.
+                        enum:
+                        - active
+                        - complete
+                        - all
+                        title: Status
+                        type: string
+                      media_source_pid:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                        default: null
+                        description: Keep experiments with a cell on this canonical media-source PID, e.g. 'facebook_int', 'googleadwords_int', or 'bytedanceglobal_int'.
+                        title: Media Source Pid
+                      media_source_name:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                        default: null
+                        description: Best-effort, case-insensitive substring match against the media-source PID only. Human-readable media-source names are not yet available upstream; prefer media_source_pid for precise filters.
+                        title: Media Source Name
+                      country:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                        default: null
+                        description: Keep experiments with a cell targeting this ISO country code (e.g. 'US').
+                        title: Country
+                      date_from:
+                        anyOf:
+                        - format: date
+                          type: string
+                        - type: 'null'
+                        default: null
+                        description: Keep experiments whose run window overlaps this date or later (YYYY-MM-DD); compared against the effective end date (stop_date when present, otherwise end_date).
+                        title: Date From
+                      date_to:
+                        anyOf:
+                        - format: date
+                          type: string
+                        - type: 'null'
+                        default: null
+                        description: Keep experiments whose run window overlaps this date or earlier (YYYY-MM-DD); compared against experiment start_date.
+                        title: Date To
+                    title: ListExperimentsFilters
+                    type: object
+                  - type: 'null'
+                  default: null
+                  description: Optional client-side filters (app, status, media source, country, dates).
+                  title: Filters
+              type: object
+      tags:
+      - Incrementality List Experiments

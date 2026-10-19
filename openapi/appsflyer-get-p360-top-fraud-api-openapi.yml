@@ -1,0 +1,94 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get P360 Top Fraud API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get P360 Top Fraud
+paths:
+  /get-p360-top-fraud:
+    post:
+      summary: Get-p360-top-fraud
+      description: 'Get Protect360 top fraud rankings. At most the top 5 rows; say so, and describe a source only by its returned metrics, not as a proven fraudster. app_id required (param or app_id filter): an ID or list like com.example.app / id123456, never display names - resolve names or no-app via get_apps. ty...'
+      operationId: get-p360-top-fraud
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Get-P360-Top-FraudRequest'
+      tags:
+      - Get P360 Top Fraud
+components:
+  schemas:
+    Get-P360-Top-FraudRequest:
+      additionalProperties: false
+      properties:
+        start_date:
+          type: string
+        end_date:
+          type: string
+        app_id:
+          anyOf:
+          - type: string
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+        type:
+          default: partners
+          enum:
+          - partners
+          - sources
+          type: string
+        sort_by:
+          default: fraud_rate
+          enum:
+          - fraud_rate
+          - fraud_amount
+          - total_attributions
+          type: string
+        group_by:
+          default: media_source
+          enum:
+          - media_source
+          - site_id
+          - country
+          - app_id
+          type: string
+        filters:
+          anyOf:
+          - items:
+              properties:
+                type:
+                  type: string
+                values:
+                  items:
+                    type: string
+                  type: array
+              required:
+              - type
+              - values
+              type: object
+            type: array
+          - type: 'null'
+          default: null
+      required:
+      - start_date
+      - end_date
+      type: object

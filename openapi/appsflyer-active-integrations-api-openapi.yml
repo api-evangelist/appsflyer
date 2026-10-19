@@ -98,6 +98,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    AppIntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          general_params:
+            type: object
+          in_app_postbacks_params:
+            type: object
+    pid:
+      type: string
+      description: 'AppsFlyer Partner ID
+
+        '
+    AccountTypeError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      type: object
     ActiveIntegrationsResponse:
       type: object
       properties:
@@ -123,27 +144,6 @@ components:
                       type: boolean
                     is_adrevenue_active:
                       type: boolean
-    AppIntegrationsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          general_params:
-            type: object
-          in_app_postbacks_params:
-            type: object
-    AccountTypeError:
-      properties:
-        status:
-          type: string
-        message:
-          type: string
-      type: object
-    pid:
-      type: string
-      description: 'AppsFlyer Partner ID
-
-        '
   securitySchemes:
     bearerAuth:
       type: http

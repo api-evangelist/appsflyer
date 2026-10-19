@@ -149,45 +149,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    integration_name:
-      type: string
-      example: Integration 123
-    split_ratio:
-      type: object
-      x-anyOf:
-      - type: string
-        example: 'null'
-      - type: integer
-        minimum: 1
-        maximum: 99
-        example: 50
-      - type: object
-        example: null
-      example: 50
-    error_response:
-      required:
-      - error_code
-      - message
-      properties:
-        error_code:
-          type: integer
-          enum:
-          - 1000
-          - 1001
-          - 1002
-          - 1003
-          - 1004
-          - 1005
-          - 1006
-          - 1009
-          - 1020
-          example: 1002
-        message:
-          type: string
-          example: Audience does not exist under your account
-    integration_id:
-      type: integer
-      example: 1234
     partner_id:
       type: string
       example: amazon_int
@@ -226,6 +187,45 @@ components:
           integration_upload_size:
             type: integer
             example: 5000
+    integration_name:
+      type: string
+      example: Integration 123
+    error_response:
+      required:
+      - error_code
+      - message
+      properties:
+        error_code:
+          type: integer
+          enum:
+          - 1000
+          - 1001
+          - 1002
+          - 1003
+          - 1004
+          - 1005
+          - 1006
+          - 1009
+          - 1020
+          example: 1002
+        message:
+          type: string
+          example: Audience does not exist under your account
+    split_ratio:
+      type: object
+      x-anyOf:
+      - type: string
+        example: 'null'
+      - type: integer
+        minimum: 1
+        maximum: 99
+        example: 50
+      - type: object
+        example: null
+      example: 50
+    integration_id:
+      type: integer
+      example: 1234
     success_response:
       required:
       - message

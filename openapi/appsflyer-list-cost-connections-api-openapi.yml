@@ -1,0 +1,42 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Cost Connections API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Cost Connections
+paths:
+  /list-cost-connections:
+    post:
+      summary: List-cost-connections
+      description: Returns a list of configured Cost Connections for the account, including the connection name, the media source name, its PID (partner ID) the list of app IDs associated with the connection and its status.
+      operationId: list-cost-connections
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verbose:
+                  type: boolean
+                  description: If true, returns a verbose response detailing the full list of connections for each media source, including its status and the list of connected app ids. If false (default), only returns a list of connected media sources with no further drilldown
+      tags:
+      - List Cost Connections

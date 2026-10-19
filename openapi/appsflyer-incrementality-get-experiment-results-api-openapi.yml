@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Incrementality Get Experiment Results API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Incrementality Get Experiment Results
+paths:
+  /incrementality-get-experiment-results:
+    post:
+      summary: Incrementality-get-experiment-results
+      description: 'Get geo-experiment results for one Incrementality for UA experiment. Returns the measured incremental impact of the campaign: lift, incremental installs/in-app events, cost per incremental action, Incremental Factor, estimated incremental revenue and ROAS, and the credible interval. Call `list_ex...'
+      operationId: incrementality-get-experiment-results
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                experiment_id:
+                  description: Numeric experiment ID
+                  title: Experiment Id
+                  type: integer
+                include_time_series:
+                  default: false
+                  description: Set true to include the daily time_series array. Leave false (summary only) unless the user asks about daily movement, trends, or timelines.
+                  title: Include Time Series
+                  type: boolean
+                include_geo_breakdown:
+                  default: false
+                  description: Set true to also attach, per cell, the geo_breakdown (holdout_regions, exposure_regions, geo_policies). This makes an additional backend call, so leave false unless the user asks about geo assignment, test/control regions.
+                  title: Include Geo Breakdown
+                  type: boolean
+              required:
+              - experiment_id
+              type: object
+      tags:
+      - Incrementality Get Experiment Results

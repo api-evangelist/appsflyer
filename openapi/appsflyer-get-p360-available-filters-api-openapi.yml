@@ -1,0 +1,62 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get P360 Available Filters API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get P360 Available Filters
+paths:
+  /get-p360-available-filters:
+    post:
+      summary: Get-p360-available-filters
+      description: 'Discovery: call this FIRST, before any other Protect360 tool. Returns the account''s safe date range, groupings, localization, and valid filter values - feed these into the other tools instead of guessing. Use safeStartDate/safeEndDate as the date bounds; registrationStartDate is the earliest quer...'
+      operationId: get-p360-available-filters
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                app_id:
+                  anyOf:
+                  - type: string
+                  - items:
+                      type: string
+                    type: array
+                  - type: 'null'
+                  default: null
+                start_date:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                  default: null
+                end_date:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+                  default: null
+                sections_list:
+                  anyOf:
+                  - items:
+                      type: string
+                    type: array
+                  - type: 'null'
+                  default: null
+              type: object
+      tags:
+      - Get P360 Available Filters

@@ -331,6 +331,29 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
+    AuthenticationFailed:
+      description: Authentication failed. The authentication token is not valid.
+      headers:
+        deprecated:
+          description: is the api version deprecated
+          schema:
+            type: boolean
+        deprecationDate:
+          description: deprecation date
+          schema:
+            type: string
+        sunsetDate:
+          description: sunset date
+          schema:
+            type: string
+        deprecationMessage:
+          description: deprecation message
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     VersionNoLongerValid:
       description: The API version listed in the URL is no longer valid
       headers:
@@ -383,29 +406,6 @@ components:
             code: InvalidVersion
             message: The API version listed in the URL doesn't exist. Check the API documentation
             request_id: 8a3f4fa6-a91c-11ec-b909-0242ac120002
-    AuthenticationFailed:
-      description: Authentication failed. The authentication token is not valid.
-      headers:
-        deprecated:
-          description: is the api version deprecated
-          schema:
-            type: boolean
-        deprecationDate:
-          description: deprecation date
-          schema:
-            type: string
-        sunsetDate:
-          description: sunset date
-          schema:
-            type: string
-        deprecationMessage:
-          description: deprecation message
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       example:

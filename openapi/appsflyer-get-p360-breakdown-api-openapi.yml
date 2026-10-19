@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get P360 Breakdown API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get P360 Breakdown
+paths:
+  /get-p360-breakdown:
+    post:
+      summary: Get-p360-breakdown
+      description: 'Get Protect360 fraud metrics as a table grouped by a dimension. Rows return as one CSV string under rows_csv: header = dimension fields then metric datapoints, an empty cell = no data for that datapoint. Capped at 50 rows; when capped=true tell the user the list is truncated (total_rows = full co...'
+      operationId: get-p360-breakdown
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Get-P360-BreakdownRequest'
+      tags:
+      - Get P360 Breakdown
+components:
+  schemas:
+    Get-P360-BreakdownRequest:
+      additionalProperties: false
+      properties:
+        start_date:
+          type: string
+        end_date:
+          type: string
+        grouping:
+          type: string
+        app_id:
+          anyOf:
+          - type: string
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+        breakdown_type:
+          default: table
+          enum:
+          - table
+          - table_cpa
+          - fraud_reasons
+          - attribution_correction
+          type: string
+        filters:
+          anyOf:
+          - items:
+              properties:
+                type:
+                  type: string
+                values:
+                  items:
+                    type: string
+                  type: array
+              required:
+              - type
+              - values
+              type: object
+            type: array
+          - type: 'null'
+          default: null
+        limit:
+          default: 50
+          type: integer
+      required:
+      - start_date
+      - end_date
+      - grouping
+      type: object

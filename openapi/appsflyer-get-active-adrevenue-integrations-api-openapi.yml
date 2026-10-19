@@ -1,0 +1,40 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Active Adrevenue Integrations API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Active Adrevenue Integrations
+paths:
+  /get-active-adrevenue-integrations:
+    post:
+      summary: Get-active-adrevenue-integrations
+      description: 'Returns active Ad Revenue integrations for the account. Each integration includes: network name, app_id, state (ACTIVE/NO_DATA/ERROR), last_success timestamp, integration_type (SDK/S2S Device-level/S2S Aggregate-level), and event_name (for Aggregate-level only).'
+      operationId: get-active-adrevenue-integrations
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      tags:
+      - Get Active Adrevenue Integrations

@@ -1,0 +1,264 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Create Onelink Link API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Create Onelink Link
+paths:
+  /create-onelink-link:
+    post:
+      summary: Create-onelink-link
+      description: 'WRITE ACTION — create a new short link under an existing OneLink template. Call this once all required arguments are known. It does not create the link immediately: it returns a confirmation question to relay to the user in plain language, and the link is created only after they approve. You do n...'
+      operationId: create-onelink-link
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Create-Onelink-LinkRequest'
+      tags:
+      - Create Onelink Link
+components:
+  schemas:
+    Create-Onelink-LinkRequest:
+      additionalProperties: false
+      properties:
+        onelink_id:
+          description: Required. OneLink template this custom link is based on (e.g. "G1bY"). Get it from get_onelink_templates. Never invent a placeholder.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+          type: string
+        shortlink_id:
+          description: 'Required. Last part of the short URL (UI: Short URL). Customize it for the brand (e.g. email123). Cannot be changed after create. Letters, digits, ''_'' or ''-'' only, max 50.'
+          maxLength: 50
+          minLength: 1
+          pattern: ^[A-Za-z0-9_-]+$
+          type: string
+        domain:
+          description: Required. Hostname for the short URL. If the account uses Branded Domains, pick one of the template's domains from get_onelink_templates.
+          maxLength: 253
+          minLength: 1
+          pattern: ^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$
+          type: string
+        pid:
+          description: 'Required. Owned/custom media source (UI: Owned media source). Appears on the link as pid=. Use a custom name such as email, newsletter, brochures, web_cta. Integrated-partner names (facebook, googleadwords_int, …) are reserved and rejected. Cannot contain : < > * & ? = /.'
+          maxLength: 150
+          minLength: 1
+          pattern: ^[^:<>*&?=/]+$
+          type: string
+        link_name:
+          description: Required. Custom link name for management only. Visible to the team; not added as a URL parameter and has no effect on link behavior.
+          maxLength: 150
+          minLength: 1
+          type: string
+        campaign:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional campaign name (UI: Campaign name). Appears on the link as the c parameter.'
+        af_channel:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Channel through which the ad is presented, e.g. "mobile_web" (UI: Channel).'
+        af_adset:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Ad set name. Ad sets contain one or more ads; often used for targeting, budget, schedule, bidding, and placement.
+        af_ad:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Ad/creative name or identifier, e.g. "discount_blue_ad" (UI: Ad name).'
+        af_sub1:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Subscriber parameter 1. Record any useful KPI; parsed into raw data reports for aggregation or filtering.
+        af_sub2:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Subscriber parameter 2. Same as af_sub1 — extra KPI dimension in raw data reports.
+        af_sub3:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Subscriber parameter 3. Same as af_sub1 — extra KPI dimension in raw data reports.
+        af_sub4:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Subscriber parameter 4. Same as af_sub1 — extra KPI dimension in raw data reports.
+        af_sub5:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Subscriber parameter 5. Same as af_sub1 — extra KPI dimension in raw data reports.
+        is_retargeting:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. "true" if this link retargets existing users (UI: Retargeting campaign). Appends is_retargeting=true; metrics show on the Retargeting dashboard. Also turn on retargeting in App Settings.'
+        af_inactivity_window:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Inactivity window in days (e.g. 7). Users active during this window are ignored for retargeting. Appends af_inactivity_window.
+        af_reengagement_window:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Re-engagement window (e.g. "30d" or "lifetime"): max time from click to re-engagement for attribution.'
+        af_click_lookback:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Click lookback window (e.g. "7d"). Maximum period from click to install/re-engagement when the user can be attributed to this ad (UI: Customize lookback window).'
+        af_dp:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. URI scheme to launch the app (UI: Android and iOS fallback), e.g. "greatapp://". Overrides the template URI scheme. Do not use http/https if Android App Links are configured. On iOS, URI scheme often also needs af_force_deeplink=true.'
+        af_web_dp:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Web URL for desktop clicks (and social preview fallback). Overrides the template desktop redirect. Appears as af_web_dp.
+        af_ios_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Web URL for iOS users when the app isn’t installed, overriding the template (App Store vs web URL). Appears as af_ios_url.
+        af_android_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Web URL for Android users when the app isn’t installed, overriding the template (Google Play vs web URL). Appears as af_android_url.
+        af_r:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Single-platform redirect URL when the app isn’t installed (af_r).
+        af_force_deeplink:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. "true" to force the URI-scheme deeplink. On iOS, most browsers will not trigger the URI scheme without this.
+        deep_link_value:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Deep link value — in-app content for deep linking and deferred deep linking, e.g. "earbuds_gray_discount_page". Appears as deep_link_value. The template must have an app-open method, and the apps must implement deep-link handling.
+        deep_link_sub1:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Additional deep link value, e.g. "extra_discount". Appears as deep_link_sub1.
+        af_cost_value:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Fixed cost per install attributed to this link (UI: Enable cost per install). Pair with af_cost_currency.'
+        af_cost_currency:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Currency for that cost, e.g. "USD". Appended with af_cost_value.
+        af_prt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Agency/partner identifier on the link (af_prt).
+        af_xp:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Optional. Link experience (UI: experience). Typical values: "custom" or "social". Social often pairs with a social app landing page.'
+        af_qr:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. QR-code flag on the short URL (af_qr), e.g. "true", or "c" when a custom QR style is set.
+        af_og_title:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Social media preview title (Open Graph). Up to 40 characters. Used when the link is shared on social.
+        af_og_description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Social media preview description (Open Graph). Up to 300 characters.
+        af_og_image:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. Social media preview image URL (Open Graph), e.g. https://image.example.com/photo-123. Recommended 1200x628 px, max 5 MB.
+        af_ios_store_cpp:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Optional. App Store custom product page ID from App Store Connect (UUID). Do not set together with an iOS web URL override.
+        extra_params:
+          anyOf:
+          - additionalProperties:
+              type: string
+            type: object
+          - type: 'null'
+          default: null
+          description: Optional. Any other URL parameters not listed above, including custom keys and deep_link_sub2–10. Custom params can be read from conversion-data SDK APIs but do not appear in raw data reports. Cannot override pid or c.
+      required:
+      - onelink_id
+      - shortlink_id
+      - domain
+      - pid
+      - link_name
+      type: object

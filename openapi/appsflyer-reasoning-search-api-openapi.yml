@@ -1,0 +1,55 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Reasoning Search API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Reasoning Search
+paths:
+  /reasoning-search:
+    post:
+      summary: Reasoning-search
+      description: Search reasoning history for a specific agent run. Retrieves the most relevant trace chunks (reasoning steps, tool calls, tool outputs) that match the question via semantic search. Use the returned chunks to understand *why* the agent made specific decisions during execution. **Return format (JSO...
+      operationId: reasoning-search
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                run_id:
+                  description: UUID of the agent run to search (e.g. '3fa85f64-5717-4562-b3fc-2c963f66afa6')
+                  format: uuid
+                  type: string
+                question:
+                  description: Natural-language question about the agent run, e.g. 'Why did the campaign fail to install?'
+                  maxLength: 2000
+                  minLength: 1
+                  type: string
+                top_k:
+                  default: 5
+                  description: Maximum number of reasoning chunks to return. Higher values give more context but slower responses.
+                  maximum: 50
+                  minimum: 1
+                  type: integer
+              required:
+              - run_id
+              - question
+              type: object
+      tags:
+      - Reasoning Search

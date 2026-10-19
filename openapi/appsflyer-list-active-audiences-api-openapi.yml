@@ -1,0 +1,39 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST List Active Audiences API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: List Active Audiences
+paths:
+  /list-active-audiences:
+    post:
+      summary: List-active-audiences
+      description: 'List all active audiences. Active audiences are audiences that are calculated and updated every day by AppsFlyer''s system. These represent your currently maintained audience segments that are actively being processed and kept up-to-date. Important notes: - Active audiences are recalculated daily ...'
+      operationId: list-active-audiences
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+                default: []
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      tags:
+      - List Active Audiences

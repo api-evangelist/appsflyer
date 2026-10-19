@@ -1,0 +1,38 @@
+openapi: 3.2.0
+info:
+  title: MCP Tools REST Get Apps API
+  description: Auto-generated REST API for MCP tools
+  version: 1.0.0
+servers:
+- url: https://mcp.appsflyer.com/api
+  description: Production server
+tags:
+- name: Get Apps
+paths:
+  /get-apps:
+    post:
+      summary: Get-apps
+      description: 'Retrieve user''s permitted apps from AppsFlyer organized by pinned and unpinned status. This tool fetches apps that the authenticated user has permission to access in their AppsFlyer account. Apps are organized into two main categories: - Pinned apps: Prioritized/favorite apps for quick access and...'
+      operationId: get-apps
+      x - openai - isConsequential: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '403':
+          description: Forbidden
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      tags:
+      - Get Apps
