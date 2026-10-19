@@ -232,3 +232,168 @@
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
   status: not-a-workflow
   arazzo: null
+- slug: appsflyer-maven-central
+  label: Maven Central
+  partner: maven-central
+  partner_name: Maven Central
+  category: official SDK (Java/JVM)
+  type: register
+  channel: package-registry
+  evidence: https://central.sonatype.com/artifact/com.appsflyer/af-android-sdk
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Maven Central (public registry JSON)
+    spec_file: null
+    language: Java/JVM
+    packages:
+    - name: com.appsflyer:af-android-sdk
+      version: 7.0.1
+      released: '2026-07-23'
+      released_field: lastUpdated
+      lapsed: false
+      page: https://central.sonatype.com/artifact/com.appsflyer/af-android-sdk
+      repo_leg: domain:appsflyer.com
+      publisher_leg: groupId:appsflyer.com
+      matched_by: domain
+    - name: com.appsflyer:appsflyer-adobe-aep-sdk-extension
+      version: 6.17.51
+      released: '2026-01-08'
+      released_field: lastUpdated
+      lapsed: false
+      page: https://central.sonatype.com/artifact/com.appsflyer/appsflyer-adobe-aep-sdk-extension
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: groupId:appsflyer.com
+      matched_by: domain
+    - name: com.appsflyer:purchase-connector
+      version: 2.3.0
+      released: '2026-06-04'
+      released_field: lastUpdated
+      lapsed: false
+      page: https://central.sonatype.com/artifact/com.appsflyer/purchase-connector
+      repo_leg: domain:appsflyer.com
+      publisher_leg: groupId:appsflyer.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/appsflyer-capacitor-plugin
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: appsflyer-capacitor-plugin
+      version: 7.0.2-v2
+      released: '2026-09-14'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/appsflyer-capacitor-plugin
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    - name: appsflyer-html5-ctv-sdk
+      version: 0.0.5
+      released: '2026-02-02'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/appsflyer-html5-ctv-sdk
+      repo_leg: domain:appsflyer.com
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    - name: appsflyer-web-sdk
+      version: 0.0.1
+      released: '2022-10-06'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/appsflyer-web-sdk
+      repo_leg: domain:appsflyer.com
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    - name: cordova-plugin-appsflyer-sdk
+      version: 7.0.2
+      released: '2026-09-17'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/cordova-plugin-appsflyer-sdk
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    - name: nativescript-plugin-appsflyer
+      version: 6.14.3
+      released: '2024-05-07'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/nativescript-plugin-appsflyer
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    - name: react-native-appsflyer
+      version: 7.0.2-v2
+      released: '2026-09-14'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/react-native-appsflyer
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: email:appsflyer.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-nuget-gallery
+  label: NuGet Gallery
+  partner: nuget
+  partner_name: NuGet Gallery
+  category: official SDK (.NET)
+  type: register
+  channel: package-registry
+  evidence: https://www.nuget.org/packages/AppsFlyerXamarinBinding
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: NuGet Gallery (public registry JSON)
+    spec_file: null
+    language: .NET
+    packages:
+    - name: AppsFlyerXamarinBinding
+      version: 6.18.1
+      released: '2026-07-21'
+      released_field: published
+      lapsed: false
+      page: https://www.nuget.org/packages/AppsFlyerXamarinBinding
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: org:appsflyer
+      matched_by: github-org
+    - name: AppsFlyerXamarinBindingAndroid
+      version: 6.18.1
+      released: '2026-07-21'
+      released_field: published
+      lapsed: false
+      page: https://www.nuget.org/packages/AppsFlyerXamarinBindingAndroid
+      repo_leg: github-org:appsflyersdk
+      publisher_leg: org:appsflyer
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
