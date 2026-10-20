@@ -3,10 +3,12 @@ method: searched
 checked:
 - https://api.nuget.org/v3
 - https://aws.amazon.com/marketplace/
+- https://cloudsecurityalliance.org/star/registry
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://crates.io/api/v1
 - https://docs.mparticle.com/integrations/appsflyer/event/
+- https://eucoc.cloud/en/public-register/list-of-adherent-services
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
@@ -504,6 +506,36 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/appsflyer/services/appsflyer
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: AppsFlyer
+    registry_id: appsflyer
+    service_url: https://www.appsflyer.com/
+    matched_domain: appsflyer.com
+    matched_by: domain
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
 source:
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer
