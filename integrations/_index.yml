@@ -427,3 +427,44 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: appsflyer-amazon-ads-partner-directory-technology
+  label: Amazon Ads (partner directory, technology)
+  partner: amazon
+  partner_name: Amazon Ads (partner directory, technology)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://advertising.amazon.com/partners/directory
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: Amazon Ads Partner Directory (advertising.amazon.com/partners/directory, GetPartners)
+    registered_name: AppsFlyer
+    register_id: amzn1.ads1.ma1.8u7820818k7t3ip8tstzn6gws
+    matched_domain: appsflyer.com
+    matched_by: domain
+    services:
+    - ADVERTISING_EFFECTIVENESS
+    - AUDIENCE_AND_TARGETING
+    - AUDIENCE_MEASUREMENT
+    - CAMPAIGN_MANAGEMENT
+    - CAMPAIGN_REPORTING
+    - CLEAN_ROOM_ANALYTICS
+    - CLEAN_ROOM_INTEGRATION
+    - CUSTOMER_DATA_PLATFORM
+    - DATA_CONNECTORS
+    - MOBILE_AND_APP_ATTRIBUTION
+    - MULTI_TOUCH_ATTRIBUTION
+    - REPORTING_AND_ANALYTICS
+    - RETAIL_PERFORMANCE_MEASUREMENT
+    ads_products:
+    - AMAZON_ATTRIBUTION
+    - AMAZON_DSP
+    service_models:
+    - SELF_SERVICE
+    signal_note: listing = participation; accreditation recorded as partner_tier; ads_certifications are Amazon
+      Ads LEARNING certifications held by staff, not product conformance, never certified_products
+    detected_by: sweep-amazon-sp-api-appstore.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null

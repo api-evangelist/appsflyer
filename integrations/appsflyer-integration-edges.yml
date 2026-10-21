@@ -24,6 +24,9 @@ checked:
 - https://storage.googleapis.com/tcfac/additional-consent-providers.csv
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/appsflyer
 - https://zapier.com/api/v4/apps/
+- https://advertising.amazon.com/partners/directory
+- https://sellercentral.amazon.com/gspn
+- https://sellercentral.amazon.com/selling-partner-appstore
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -536,6 +539,52 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-compliance-assurance.py
   first_seen: '2026-10-20'
+- partner_name: Amazon Ads (partner directory, technology)
+  partner: amazon
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://advertising.amazon.com/partners/directory
+  mirror_of: amazon/integrations/amazon-integration-edges.yml
+  apps:
+  - AppsFlyer
+  contract_reference:
+    register: Amazon Ads Partner Directory (advertising.amazon.com/partners/directory, GetPartners)
+    registered_name: AppsFlyer
+    register_id: amzn1.ads1.ma1.8u7820818k7t3ip8tstzn6gws
+    matched_domain: appsflyer.com
+    matched_by: domain
+    services:
+    - ADVERTISING_EFFECTIVENESS
+    - AUDIENCE_AND_TARGETING
+    - AUDIENCE_MEASUREMENT
+    - CAMPAIGN_MANAGEMENT
+    - CAMPAIGN_REPORTING
+    - CLEAN_ROOM_ANALYTICS
+    - CLEAN_ROOM_INTEGRATION
+    - CUSTOMER_DATA_PLATFORM
+    - DATA_CONNECTORS
+    - MOBILE_AND_APP_ATTRIBUTION
+    - MULTI_TOUCH_ATTRIBUTION
+    - REPORTING_AND_ANALYTICS
+    - RETAIL_PERFORMANCE_MEASUREMENT
+    ads_products:
+    - AMAZON_ATTRIBUTION
+    - AMAZON_DSP
+    service_models:
+    - SELF_SERVICE
+    signal_note: listing = participation; accreditation recorded as partner_tier; ads_certifications are Amazon
+      Ads LEARNING certifications held by staff, not product conformance, never certified_products
+    detected_by: sweep-amazon-sp-api-appstore.py
+    detected: '2026-10-21'
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
+  partner_tier:
+  - PARTNER
 source:
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer
