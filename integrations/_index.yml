@@ -468,3 +468,86 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: appsflyer-cocoapods-trunk
+  label: CocoaPods trunk
+  partner_name: CocoaPods trunk
+  category: iOS SDK (CocoaPods)
+  type: register
+  channel: package-registry
+  evidence: https://cocoapods.org/pods/AppsFlyer-Core
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: CocoaPods trunk (cdn.cocoapods.org Specs; github.com/CocoaPods/Specs)
+    spec_file: null
+    role: cocoapods-publisher
+    registered_name: AppsFlyer team
+    matched_domain: appsflyer.com
+    matched_by: domain
+    pods:
+    - pod: AppsFlyer-Core
+      version: 0.1.627
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyer-SDK
+      version: 4.6.1
+      homepage: http://appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerDynamicFramework
+      version: 4.6.2
+      homepage: http://appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerFWTestBuild
+      version: 9.9.948
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework
+      version: 7.0.3
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework-MacCatalyst
+      version: 6.2.6
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework-SPM-fork
+      version: 6.10.1.111
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFrameworkTest
+      version: 0.0.3
+      homepage: http://www.appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerMigrationHelper
+      version: 1.0.4
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerRPC
+      version: 7.0.13
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerSwift
+      version: 1.0.0
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerTracker
+      version: 5.2.0
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    signal_note: latest podspec homepage (domain) + authors (name); pods, versions and counts are context
+    detected_by: sweep-mobile-sdk-index.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-google-play-developer-google-play-sdk-index
+  label: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_name: Google Play Developer (Google Play SDK Index)
+  category: mobile SDK (analytics, marketing-and-engagement)
+  type: marketplace
+  marketplace: Google Play SDK Index
+  channel: partner-built
+  evidence: https://play.google.com/sdks/details/com-appsflyer-af-android-sdk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

@@ -27,6 +27,11 @@ checked:
 - https://advertising.amazon.com/partners/directory
 - https://sellercentral.amazon.com/gspn
 - https://sellercentral.amazon.com/selling-partner-appstore
+- https://cdn.cocoapods.org/all_pods.txt
+- https://cert.appdefensealliance.org/certifications
+- https://play.google.com/sdks
+- https://search.maven.org/solrsearch/select
+- google-play/integrations/google-play-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -585,6 +590,95 @@ edges:
   detected_by: sweep-amazon-sp-api-appstore.py
   partner_tier:
   - PARTNER
+- partner_name: CocoaPods trunk
+  partner: null
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: provider-built
+  evidence: https://cocoapods.org/pods/AppsFlyer-Core
+  category: iOS SDK (CocoaPods)
+  contract_reference:
+    register: CocoaPods trunk (cdn.cocoapods.org Specs; github.com/CocoaPods/Specs)
+    spec_file: null
+    role: cocoapods-publisher
+    registered_name: AppsFlyer team
+    matched_domain: appsflyer.com
+    matched_by: domain
+    pods:
+    - pod: AppsFlyer-Core
+      version: 0.1.627
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyer-SDK
+      version: 4.6.1
+      homepage: http://appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerDynamicFramework
+      version: 4.6.2
+      homepage: http://appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerFWTestBuild
+      version: 9.9.948
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework
+      version: 7.0.3
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework-MacCatalyst
+      version: 6.2.6
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFramework-SPM-fork
+      version: 6.10.1.111
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerFrameworkTest
+      version: 0.0.3
+      homepage: http://www.appsflyer.com
+      deprecated: true
+    - pod: AppsFlyerMigrationHelper
+      version: 1.0.4
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerRPC
+      version: 7.0.13
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerSwift
+      version: 1.0.0
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    - pod: AppsFlyerTracker
+      version: 5.2.0
+      homepage: https://www.appsflyer.com
+      deprecated: false
+    signal_note: latest podspec homepage (domain) + authors (name); pods, versions and counts are context
+    detected_by: sweep-mobile-sdk-index.py
+    detected: '2026-10-21'
+  detected_by: sweep-mobile-sdk-index.py
+  first_seen: '2026-10-21'
+- partner_name: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: Google Play SDK Index
+  evidence: https://play.google.com/sdks/details/com-appsflyer-af-android-sdk
+  mirror_of: google-play/integrations/google-play-integration-edges.yml
+  apps:
+  - AppsFlyer SDK
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: mobile SDK (analytics, marketing-and-engagement)
+  publisher_verified:
+  - Registered in Google Play SDK Console
 source:
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer
