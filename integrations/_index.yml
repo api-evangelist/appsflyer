@@ -538,19 +538,6 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
-- slug: appsflyer-google-play-developer-google-play-sdk-index
-  label: Google Play Developer (Google Play SDK Index)
-  partner: google-play
-  partner_name: Google Play Developer (Google Play SDK Index)
-  category: mobile SDK (analytics, marketing-and-engagement)
-  type: marketplace
-  marketplace: Google Play SDK Index
-  channel: partner-built
-  evidence: https://play.google.com/sdks/details/com-appsflyer-af-android-sdk
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: appsflyer-pub-dev
   label: pub.dev
   partner: pub-dev
@@ -580,5 +567,44 @@
       24 months'
     detected_by: sweep-php-dart-elixir-package-registries.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-google-play-developer-google-play-sdk-index
+  label: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_name: Google Play Developer (Google Play SDK Index)
+  category: mobile SDK (analytics, marketing-and-engagement)
+  type: marketplace
+  marketplace: Google Play SDK Index
+  channel: partner-built
+  evidence: https://play.google.com/sdks/details/com-appsflyer-af-android-sdk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-adobe-analytics-own
+  label: Adobe Analytics (own)
+  partner: adobe-analytics
+  partner_name: Adobe Analytics (own)
+  category: Adobe Exchange Experience Cloud listing (Analytics)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/ec/100038
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appsflyer-adobe-experience-cloud-own
+  label: Adobe Experience Cloud (own)
+  partner: adobe-experience-cloud
+  partner_name: Adobe Experience Cloud (own)
+  category: Adobe Exchange Experience Cloud listing (Experience Platform)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://exchange.adobe.com/apps/ec/101096
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
