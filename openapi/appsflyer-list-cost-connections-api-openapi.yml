@@ -40,3 +40,9 @@ paths:
                   description: If true, returns a verbose response detailing the full list of connections for each media source, including its status and the list of connected app ids. If false (default), only returns a list of connected media sources with no further drilldown
       tags:
       - List Cost Connections
+x-provenance:
+  method: harvested
+  publisher: AppsFlyer
+  source: https://mcp.appsflyer.com/api/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

@@ -270,3 +270,9 @@ paths:
               type: object
       tags:
       - Skan Get App Data
+x-provenance:
+  method: harvested
+  publisher: AppsFlyer
+  source: https://mcp.appsflyer.com/api/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
