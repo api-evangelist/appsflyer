@@ -32,6 +32,9 @@ checked:
 - https://play.google.com/sdks
 - https://search.maven.org/solrsearch/select
 - google-play/integrations/google-play-integration-edges.yml
+- https://hex.pm/api
+- https://packagist.org/packages
+- https://pub.dev/api
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -679,6 +682,36 @@ edges:
   category: mobile SDK (analytics, marketing-and-engagement)
   publisher_verified:
   - Registered in Google Play SDK Console
+- partner_name: pub.dev
+  partner: pub-dev
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Dart/Flutter)
+  evidence: https://pub.dev/packages/appsflyer_sdk
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: pub.dev (public registry JSON)
+    spec_file: null
+    language: Dart/Flutter
+    packages:
+    - name: appsflyer_sdk
+      version: 7.0.2+2-rc1
+      released: '2026-09-15'
+      released_field: published
+      lapsed: false
+      page: https://pub.dev/packages/appsflyer_sdk
+      repo_leg: not required (verified publisher)
+      publisher_leg: verified-publisher:appsflyer.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
+    detected: '2026-10-22'
+  detected_by: sweep-php-dart-elixir-package-registries.py
+  first_seen: '2026-10-22'
 source:
 - https://docs.mparticle.com/integrations/appsflyer/event/
 - https://hightouch.com/docs/destinations/appsflyer
